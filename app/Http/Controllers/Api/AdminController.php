@@ -31,4 +31,15 @@ class AdminController extends Controller
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
         }
     }
+
+    public function auth()
+    {
+
+        $user =  Auth::user();
+        if ($user->type->type == 'admin') {
+            return Auth::user();
+        } else {
+            return response(['message' => 'You are not an admin'], Response::HTTP_UNAUTHORIZED);;
+        }
+    }
 }

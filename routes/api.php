@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\Api\HomeBannerController;
 use App\Http\Controllers\Api\HotelsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/admin/login', [AdminController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/auth', [AdminController::class, 'auth']);
-    Route::post('/admin/logout', [AdminController::class, 'logout']);
+    // Route::post('/admin/logout', [AdminController::class, 'logout']);
 });
 
-Route::get('/admin/all', [AdminController::class, 'getallusers']);
+
+
+//home banner
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/homebanners/add', [HomeBannerController::class, 'add']);
+});
