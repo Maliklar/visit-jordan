@@ -42,3 +42,5 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/homebanners/add', [HomeBannerController::class, 'add']);
 });
+
+Route::get('/homebanners/get', [HomeBannerController::class, 'get']);

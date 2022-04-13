@@ -37,4 +37,9 @@ class HomeBannerController extends Controller
             return response(['message' => 'You are not an admin'], Response::HTTP_UNAUTHORIZED);;
         }
     }
+
+    public function get()
+    {
+        return HomeBanner::all();
+    }
 }
