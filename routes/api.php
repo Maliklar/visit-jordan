@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\HotelsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,12 +24,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /*
 |--------------------------------------------------------------------------
-| Hotels Users
+| Admin Users
 |--------------------------------------------------------------------------
 */
 
-// Admin
+Route::post('/admin/login', [AdminController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('hotels/login', [HotelsController::class, 'login']);
-    Route::post('hotels/register', [HotelsController::class, 'register']);
+    Route::get('/admin/auth', [AdminController::class, 'auth']);
+    Route::post('/admin/logout', [AdminController::class, 'logout']);
 });
+
+Route::get('/admin/all', [AdminController::class, 'getallusers']);

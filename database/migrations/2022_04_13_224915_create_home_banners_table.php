@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users_types', function (Blueprint $table) {
+        Schema::create('home_banners', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->string('description');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_types');
+        Schema::dropIfExists('home_banners');
     }
 };

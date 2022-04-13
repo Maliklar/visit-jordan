@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'user_type',
         'email',
         'password',
     ];
@@ -32,6 +33,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function type()
+    {
+        return $this->hasOne(UsersTypes::class, 'id', 'user_type');
+    }
+
 
     /**
      * The attributes that should be cast.
