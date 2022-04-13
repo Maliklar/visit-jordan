@@ -20,7 +20,19 @@ class HomeBannerController extends Controller
                 'video' => 'required|mimes:mp4,mov,ogg,qt | max:20000',
             ]);
 
-            HomeBanner::create($request->all());
+            $video = $request->file('video');
+            $name_gen = hexdec(uniqid());
+            $img_ext = strtolower($video->getClientOriginalExtension());
+            $imgName = $name_gen . '.' . $img_ext;
+            $upload_location = 'assets/videos/';
+            $last_img = $upload_location . $imgName;
+            $video->move($upload_location, $imgName);
+
+            HomeBanner::create([
+                'title' => $request->title,
+                'subtitle' => $request->subtitle,
+                'video' => $last_img,
+            ]);
         } else {
             return response(['message' => 'You are not an admin'], Response::HTTP_UNAUTHORIZED);;
         }
