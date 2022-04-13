@@ -1,10 +1,21 @@
 <template>
-  <div>home</div>
+  <div class="home-page">
+    <HomeCarousel />
+  </div>
 </template>
 
 <script>
-export default {};
+import HomeCarousel from "../components/HomeCarousel.vue";
+export default {
+  components: { HomeCarousel },
+};
 </script>
 
 <style>
+.home-page {
+  position: absolute;
+  top: 0;
+  z-index: -10;
+  width: 100%;
+}
 </style>
