@@ -1,0 +1,84 @@
+/* This file contains the initial stayling of html tags and wedgets */
+.lightNavBar {
+  background-color: rgba(158, 158, 158, 0.5);
+  backdrop-filter: blur(3px);
+  color: black;
+  transition: all 0.5s;
+}
+
+.darkNavBar {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  color: white;
+  transition: all 0.5s;
+}
+
+.container-light {
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  color: black;
+  background-image: linear-gradient(
+    rgba(138, 138, 138, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+
+  border-radius: 15px;
+  transition: all 0.5s;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+.container-dark {
+  border-radius: 15px;
+  color: white;
+  background-image: linear-gradient(rgba(73, 73, 73, 0.5), rgba(0, 0, 0, 0.5));
+  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 1px 1px 10px rgba(15, 15, 15, 0.2);
+}
+
+button:hover {
+  transition: all 0.5s;
+  transform: scale(1.05);
+  box-shadow: 1px 1px 10px rgba(15, 15, 15, 0.534);
+}
+
+input {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.479);
+  display: block;
+  color: white;
+  box-shadow: 1px 1px 10px rgba(15, 15, 15, 0.2);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.432);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

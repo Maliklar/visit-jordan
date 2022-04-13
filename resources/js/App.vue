@@ -1,6 +1,6 @@
 <template>
   <h1>Hello From vue</h1>
-  dkdkkdkd
+  <router-view />
 </template>
 <script>
 export default {};
