@@ -26,6 +26,20 @@ const routes = [{
             import ( /* webpackChunkName: "about" */ "../views/signup/SignUpHotelFinish.vue"),
     },
 
+    {
+        path: "/login",
+        name: "Login",
+        component: () =>
+            import ( /* webpackChunkName: "about" */ "../views/login/Login.vue"),
+    },
+
+    {
+        path: "/admin/hotel/dashboard",
+        name: "Dashboard",
+        component: () =>
+            import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Dashboard.vue"),
+    },
+
 
 ];
 

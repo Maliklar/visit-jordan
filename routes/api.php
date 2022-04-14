@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\HomeBannerController;
 use App\Http\Controllers\Api\HotelsController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -58,3 +59,9 @@ Route::post('/hotels/login', [HotelsController::class, 'login']);
 
 
 Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
+
+
+// HOTELS
+Route::middleware('auth:sanctum')->group(function () {
+});
+Route::post('/users/login', [UserController::class, 'login']);

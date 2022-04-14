@@ -40,7 +40,9 @@
             </li>
           </ul>
           <div class="d-flex">
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-primary">
+              <router-link to="/login">Login</router-link>
+            </button>
             <button class="btn btn-primary">
               <router-link to="/signup"> Sign Up</router-link>
             </button>
