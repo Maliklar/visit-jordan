@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Hotel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +57,34 @@ class HotelsController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-            return Auth::user();
+            $validated = $request->validate(
+                [
+                    'name' => 'required|max:50|min:3',
+                    'tagline' => 'required|max:5000|min:3',
+                    'logo' => 'required',
+                    'website' => 'required',
+                    'email' => 'required',
+                    'phone' => 'required',
+                ]
+            );
+
+            $image = $request->file('logo');
+            $name_gen = hexdec(uniqid());
+            $img_ext = strtolower($image->getClientOriginalExtension());
+            $imgName = $name_gen . '.' . $img_ext;
+            $upload_location = 'images/hotles/logo/';
+            $last_img = $upload_location . $imgName;
+            $image->move($upload_location, $imgName);
+
+            Hotel::create([
+                'name' => $request->name,
+                'tagline' => $request->tagline,
+                'website' => $request->website,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'logo' => $last_img,
+                'user' => $user->id,
+            ]);
         } else {
             return response(['message' => 'You are not an hotel'], Response::HTTP_UNAUTHORIZED);;
         }

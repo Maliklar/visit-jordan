@@ -50,7 +50,7 @@ Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
 // HOTELS
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/hotels/auth', [HotelsController::class, 'auth']);
-    Route::get('/hotels/add', [HotelsController::class, 'add']);
+    Route::post('/hotels/add', [HotelsController::class, 'add']);
 });
 
 Route::post('/hotels/register', [HotelsController::class, 'register']);
