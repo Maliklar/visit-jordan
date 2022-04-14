@@ -15,16 +15,16 @@ class HotelsController extends Controller
     {
         $validated = $request->validate(
             [
-                'name' => 'required|max:50|min:3',
+                // 'name' => 'required|max:50|min:3',
                 'email' => 'required|unique:users|email:rfc,dns',
                 'password' => 'required|min:8',
             ]
         );
 
         $insert = User::create([
-            'name' => $request->name,
+            'name' => "some name",
             'email' => $request->email,
-            'type' => 3, // hotel
+            'user_type' => 3, // hotel
             'password' => Hash::make($request->password),
         ]);
         return response("Normal user created successfully");
@@ -52,9 +52,18 @@ class HotelsController extends Controller
         }
     }
 
+    public function add(Request $request)
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            return Auth::user();
+        } else {
+            return response(['message' => 'You are not an hotel'], Response::HTTP_UNAUTHORIZED);;
+        }
+    }
+
     public function auth()
     {
-
         $user =  Auth::user();
         if ($user->type->type == 'hotel') {
             return Auth::user();

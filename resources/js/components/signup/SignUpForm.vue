@@ -5,6 +5,7 @@
       <input
         type="email"
         class="form-control"
+        v-model="email"
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
       />
@@ -14,7 +15,12 @@
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" />
+      <input
+        type="password"
+        v-model="password"
+        class="form-control"
+        id="exampleInputPassword1"
+      />
     </div>
 
     <button type="submit" class="btn btn-primary">Sign up</button>
@@ -23,10 +29,30 @@
 
 <script>
 export default {
+  data() {
+    return {
+      email: null,
+      passwrod: null,
+    };
+  },
   methods: {
     submit() {
-      this.$router.push({
-        path: "/signup/hotel/finish",
+      let data = {
+        email: this.email,
+        password: this.password,
+      };
+      this.hotelService.register(data).then((result) => {
+        if (result.status == 200) {
+          this.hotelService.login(data).then((result) => {
+            if (result.status == 200) {
+              this.$router.push({
+                path: "/signup/hotel/finish",
+              });
+            }
+          });
+        } else {
+          console.log(result);
+        }
       });
     },
   },

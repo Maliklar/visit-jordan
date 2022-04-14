@@ -11,6 +11,11 @@
 <script>
 import HotelDetailsForm from "../../components/signup/HotelDetailsForm.vue";
 export default {
+  async created() {
+    this.hotelService.auth().then((result) => {
+      console.log(result);
+    });
+  },
   components: {
     HotelDetailsForm,
   },

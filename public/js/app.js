@@ -23348,7 +23348,7 @@ function _auth() {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/auth")).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/hotels/auth")).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;

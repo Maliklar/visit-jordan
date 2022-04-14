@@ -20,7 +20,7 @@ async function register(data) {
 
 async function auth() {
     return await axios
-        .get(`${ROOT_API}/admin/auth`)
+        .get(`${ROOT_API}/hotels/auth`)
         .then(response => response)
         .catch(e => e.response);
 }
