@@ -15,7 +15,6 @@ export default {
 .home-page {
   position: absolute;
   top: 0;
-  z-index: -10;
   width: 100%;
 }
 </style>

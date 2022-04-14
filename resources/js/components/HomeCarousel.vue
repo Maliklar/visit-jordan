@@ -94,13 +94,14 @@ export default {
   height: 100vh;
   width: 100%;
   top: 0;
-  background-color: black;
+  background-color: rgb(255, 0, 0);
 }
 
 .home-carousel-content {
   position: absolute;
   align-content: center;
   background-color: black;
+  overflow: hidden;
 }
 
 .carousel-text {
@@ -108,14 +109,20 @@ export default {
   color: white;
   top: 30%;
   left: 15%;
-  text-shadow: 10px 10px 10px black;
+  text-shadow: 1px 1px 2px black;
 }
 
 .home-carousel-content > video {
-  height: 100%;
-  width: 177.77777778vh; /* 100 * 16 / 9 */
-  min-width: 100%;
-  min-height: 56.25vw; /* 100 * 9 / 16 */
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  object-fit: cover;
+  overflow: hidden;
+
+  z-index: 0;
 }
 
 .carousel-search-bar {
@@ -146,6 +153,7 @@ export default {
   outline: none;
   border-radius: 10px 0px 0px 10px;
   padding: 10px;
+  box-shadow: 5px 5px 10px black;
 }
 
 .carousel-search-bar > button {
@@ -157,5 +165,6 @@ export default {
   border-radius: 0px 10px 10px 0px;
   background-color: rgba(0, 0, 0, 0.363);
   backdrop-filter: blur(10px);
+  box-shadow: 5px 5px 10px black;
 }
 </style>
