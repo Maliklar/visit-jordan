@@ -44,3 +44,12 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
+
+
+
+// HOTELS
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/hotels/register', [HomeBannerController::class, 'register']);
+});
+
+Route::get('/homebanners/get', [HomeBannerController::class, 'get']);

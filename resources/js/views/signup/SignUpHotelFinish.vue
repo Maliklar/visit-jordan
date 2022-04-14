@@ -1,18 +1,18 @@
 <template>
   <div class="hotel-sign-up">
-    <h1>Sign up as a hotel</h1>
+    <h1>Hotel Details</h1>
     <hr />
   </div>
   <div class="hotel-sign-up-form-container">
-    <sign-up-form />
+    <HotelDetailsForm />
   </div>
 </template>
 
 <script>
-import SignUpForm from "../../components/signup/SignUpForm.vue";
+import HotelDetailsForm from "../../components/signup/HotelDetailsForm.vue";
 export default {
   components: {
-    SignUpForm,
+    HotelDetailsForm,
   },
 };
 </script>

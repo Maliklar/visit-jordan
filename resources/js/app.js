@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 // import "./assets/css/main.css";
 const bannerService = require('./javascript/api/bannerService');
+const hotelService = require('./javascript/api/hotelService');
 console.log('env:  ', process.env.MIX_PUSHER_APP_API);
 
 
@@ -15,6 +16,7 @@ const GLOBAL = {
     data() {
         return {
             bannerService: bannerService,
+            hotelService: hotelService,
         };
     },
 };
