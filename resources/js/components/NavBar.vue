@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Visit Jordan</a>
         <button
@@ -68,4 +68,9 @@ export default {};
 </script>
 
 <style>
+nav {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
 </style>

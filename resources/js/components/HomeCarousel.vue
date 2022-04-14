@@ -18,9 +18,14 @@
             ></video>
           </div>
           <div v-else class="carousel-item home-carousel-content">
+            <div class="carousel-text">
+              <h1>{{ banner.title }}</h1>
+              <h3>{{ banner.subtitle }}</h3>
+            </div>
             <video
               :src="'http://localhost:8000/' + banner.video"
-              autoplay="true"
+              autoplay
+              muted
             ></video>
           </div>
         </template>
@@ -43,6 +48,27 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
+      <div class="carousel-search-bar">
+        <input
+          type="search"
+          placeholder="Search , Hotels, Cars to rent, or a Local Guide"
+        />
+        <button>
+          Find
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -68,18 +94,20 @@ export default {
   height: 100vh;
   width: 100%;
   top: 0;
+  background-color: black;
 }
 
 .home-carousel-content {
   position: absolute;
   align-content: center;
+  background-color: black;
 }
 
 .carousel-text {
   position: absolute;
   color: white;
-  margin-top: 30%;
-  margin-left: 15%;
+  top: 30%;
+  left: 15%;
   text-shadow: 10px 10px 10px black;
 }
 
@@ -88,5 +116,46 @@ export default {
   width: 177.77777778vh; /* 100 * 16 / 9 */
   min-width: 100%;
   min-height: 56.25vw; /* 100 * 9 / 16 */
+}
+
+.carousel-search-bar {
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  bottom: 25%;
+  display: flex;
+  justify-content: center;
+  animation-name: search-bar;
+  animation-duration: 1s;
+}
+
+@keyframes search-bar {
+  0% {
+    transform: translateY(500%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+}
+
+.carousel-search-bar > input {
+  width: 70%;
+  border: none;
+  outline: none;
+  border-radius: 10px 0px 0px 10px;
+  padding: 10px;
+}
+
+.carousel-search-bar > button {
+  border: none;
+  widows: 20%;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  border-radius: 0px 10px 10px 0px;
+  background-color: rgba(0, 0, 0, 0.363);
+  backdrop-filter: blur(10px);
 }
 </style>
