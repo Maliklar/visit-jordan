@@ -13,7 +13,7 @@ export default {
 
 
 <style >
-/* #app {
+#app {
   transition: all 0.5s;
   background-image: url(./assets/images/svg/dark_background.svg);
   background-attachment: fixed;
@@ -21,5 +21,5 @@ export default {
   min-height: 100vh;
 
   background-repeat: no-repeat;
-} */
+}
 </style>
