@@ -1,13 +1,13 @@
 <template  >
   <div class="background-temp">
-    <NavBar />
+    <!-- <NavBar /> -->
     <router-view />
   </div>
 </template>
 <script>
-import NavBar from "./components/NavBar.vue";
+// import NavBar from "./components/NavBar.vue";
 export default {
-  components: { NavBar },
+  // components: { NavBar },
 };
 </script>
 
@@ -19,6 +19,7 @@ export default {
   background-attachment: fixed;
   background-size: cover;
   min-height: 100vh;
+
   background-repeat: no-repeat;
   color: white;
 }
