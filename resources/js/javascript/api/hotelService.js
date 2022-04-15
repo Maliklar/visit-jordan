@@ -18,6 +18,13 @@ async function register(data) {
         .catch(e => e.response);
 }
 
+async function edit(data) {
+    return await axios
+        .post(`${ROOT_API}/hotels/add`, data)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
 async function auth() {
     return await axios
         .get(`${ROOT_API}/hotels/auth`)
@@ -68,4 +75,4 @@ async function deleteAdmin(token, id) {
         });
 }
 
-export { deleteAdmin, createAdmin, register, auth, getAdmins, login };
+export { deleteAdmin, edit, createAdmin, register, auth, getAdmins, login };

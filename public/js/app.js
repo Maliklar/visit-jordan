@@ -23081,6 +23081,8 @@ var hotelService = __webpack_require__(/*! ./javascript/api/hotelService */ "./r
 
 var userService = __webpack_require__(/*! ./javascript/api/userService */ "./resources/js/javascript/api/userService.js");
 
+var hotelAdminService = __webpack_require__(/*! ./javascript/api/hotelAdminService */ "./resources/js/javascript/api/hotelAdminService.js");
+
 console.log('env:  ', "http://localhost:8000/api");
 
 
@@ -23103,7 +23105,8 @@ var GLOBAL = {
     return {
       bannerService: bannerService,
       hotelService: hotelService,
-      userService: userService
+      userService: userService,
+      hotelAdminService: hotelAdminService
     };
   }
 };
@@ -23176,6 +23179,95 @@ function _get() {
 
 /***/ }),
 
+/***/ "./resources/js/javascript/api/hotelAdminService.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/javascript/api/hotelAdminService.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "edit": () => (/* binding */ edit),
+/* harmony export */   "get": () => (/* binding */ get)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var ROOT_API = "http://localhost:8000/api";
+
+function get() {
+  return _get.apply(this, arguments);
+}
+
+function _get() {
+  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/hotels/get")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context.abrupt("return", _context.sent);
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _get.apply(this, arguments);
+}
+
+function edit(_x) {
+  return _edit.apply(this, arguments);
+}
+
+function _edit() {
+  _edit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/admin/hotels/edit"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _edit.apply(this, arguments);
+}
+
+
+
+/***/ }),
+
 /***/ "./resources/js/javascript/api/hotelService.js":
 /*!*****************************************************!*\
   !*** ./resources/js/javascript/api/hotelService.js ***!
@@ -23188,6 +23280,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "auth": () => (/* binding */ auth),
 /* harmony export */   "createAdmin": () => (/* binding */ createAdmin),
 /* harmony export */   "deleteAdmin": () => (/* binding */ deleteAdmin),
+/* harmony export */   "edit": () => (/* binding */ edit),
 /* harmony export */   "getAdmins": () => (/* binding */ getAdmins),
 /* harmony export */   "login": () => (/* binding */ login),
 /* harmony export */   "register": () => (/* binding */ register)
@@ -23265,18 +23358,18 @@ function _register() {
   return _register.apply(this, arguments);
 }
 
-function auth() {
-  return _auth.apply(this, arguments);
+function edit(_x3) {
+  return _edit.apply(this, arguments);
 }
 
-function _auth() {
-  _auth = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+function _edit() {
+  _edit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/hotels/auth")).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/hotels/add"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -23292,15 +23385,15 @@ function _auth() {
       }
     }, _callee3);
   }));
+  return _edit.apply(this, arguments);
+}
+
+function auth() {
   return _auth.apply(this, arguments);
 }
 
-function getHotel() {
-  return _getHotel.apply(this, arguments);
-}
-
-function _getHotel() {
-  _getHotel = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+function _auth() {
+  _auth = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
@@ -23322,59 +23415,57 @@ function _getHotel() {
       }
     }, _callee4);
   }));
+  return _auth.apply(this, arguments);
+}
+
+function getHotel() {
   return _getHotel.apply(this, arguments);
 }
 
-function createAdmin(_x3, _x4, _x5) {
-  return _createAdmin.apply(this, arguments);
-}
-
-function _createAdmin() {
-  _createAdmin = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(token, username, password) {
-    var data;
+function _getHotel() {
+  _getHotel = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            data = {
-              token: token,
-              username: username,
-              password: password
-            };
-            _context5.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/create_admin"), data).then(function (result) {
-              return result.data;
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/hotels/auth")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
             });
 
-          case 3:
+          case 2:
             return _context5.abrupt("return", _context5.sent);
 
-          case 4:
+          case 3:
           case "end":
             return _context5.stop();
         }
       }
     }, _callee5);
   }));
+  return _getHotel.apply(this, arguments);
+}
+
+function createAdmin(_x4, _x5, _x6) {
   return _createAdmin.apply(this, arguments);
 }
 
-function getAdmins(_x6) {
-  return _getAdmins.apply(this, arguments);
-}
-
-function _getAdmins() {
-  _getAdmins = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(token) {
+function _createAdmin() {
+  _createAdmin = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(token, username, password) {
     var data;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
             data = {
-              token: token
+              token: token,
+              username: username,
+              password: password
             };
             _context6.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/get_admins"), data).then(function (result) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/create_admin"), data).then(function (result) {
               return result.data;
             });
 
@@ -23388,26 +23479,25 @@ function _getAdmins() {
       }
     }, _callee6);
   }));
+  return _createAdmin.apply(this, arguments);
+}
+
+function getAdmins(_x7) {
   return _getAdmins.apply(this, arguments);
 }
 
-function deleteAdmin(_x7, _x8) {
-  return _deleteAdmin.apply(this, arguments);
-}
-
-function _deleteAdmin() {
-  _deleteAdmin = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(token, id) {
+function _getAdmins() {
+  _getAdmins = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(token) {
     var data;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
       while (1) {
         switch (_context7.prev = _context7.next) {
           case 0:
             data = {
-              token: token,
-              id: id
+              token: token
             };
             _context7.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/delete_admin"), data).then(function (result) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/get_admins"), data).then(function (result) {
               return result.data;
             });
 
@@ -23420,6 +23510,39 @@ function _deleteAdmin() {
         }
       }
     }, _callee7);
+  }));
+  return _getAdmins.apply(this, arguments);
+}
+
+function deleteAdmin(_x8, _x9) {
+  return _deleteAdmin.apply(this, arguments);
+}
+
+function _deleteAdmin() {
+  _deleteAdmin = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(token, id) {
+    var data;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            data = {
+              token: token,
+              id: id
+            };
+            _context8.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/delete_admin"), data).then(function (result) {
+              return result.data;
+            });
+
+          case 3:
+            return _context8.abrupt("return", _context8.sent);
+
+          case 4:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee8);
   }));
   return _deleteAdmin.apply(this, arguments);
 }

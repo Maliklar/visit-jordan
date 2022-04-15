@@ -28,6 +28,11 @@ class HotelsController extends Controller
             'user_type' => 3, // hotel
             'password' => Hash::make($request->password),
         ]);
+
+        Hotel::create([
+            'user_id' => $insert->id
+        ]);
+
         return response("Normal user created successfully");
     }
 
@@ -53,7 +58,7 @@ class HotelsController extends Controller
         }
     }
 
-    public function add(Request $request)
+    public function adminUpdate(Request $request)
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -101,6 +106,7 @@ class HotelsController extends Controller
                     'website' => 'required',
                     'email' => 'required',
                     'phone' => 'required',
+                    'logo' => 'mimes:jpeg,jpg,png,gif|required|max:10000'
                 ]
             );
 
@@ -112,14 +118,14 @@ class HotelsController extends Controller
             $last_img = $upload_location . $imgName;
             $image->move($upload_location, $imgName);
 
-            Hotel::create([
+            Hotel::where('user_id', $user->id)->update([
                 'name' => $request->name,
                 'tagline' => $request->tagline,
                 'website' => $request->website,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'logo' => $last_img,
-                'user' => $user->id,
+                'user_id' => $user->id,
             ]);
         } else {
             return response(['message' => 'You are not an hotel'], Response::HTTP_UNAUTHORIZED);;
@@ -133,6 +139,21 @@ class HotelsController extends Controller
             return Auth::user();
         } else {
             return response(['message' => 'You are not an hotel'], Response::HTTP_UNAUTHORIZED);;
+        }
+    }
+
+    public function getAdmin()
+    {
+        $user =  Auth::user();
+        if ($user->type->type == 'hotel') {
+            //look if user has a hotel
+            $hotelData = Hotel::where('user_id', $user->id)->get();
+            if ($hotelData->isEmpty()) {
+                return response(['message' => 'Not Found'], Response::HTTP_NOT_FOUND);;
+            }
+            return $hotelData[0];
+        } else {
+            return response(['message' => 'You are not an hotel'], Response::HTTP_UNAUTHORIZED);
         }
     }
 }

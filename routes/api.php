@@ -67,6 +67,8 @@ Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/hotels/auth', [HotelsController::class, 'auth']);  // Auth
     Route::post('/hotels/add', [HotelsController::class, 'add']);  // Add (admin add a hotel)
+    Route::get('/admin/hotels/get', [HotelsController::class, 'getAdmin']);  // Add (admin add a hotel)
+    Route::post('/admin/hotels/edit', [HotelsController::class, 'edit']);  // Add (admin add a hotel)
     Route::patch('/hotels/edit', [HotelsController::class, 'edit']);  // Edit (admin Edit hotel info)
 });
 

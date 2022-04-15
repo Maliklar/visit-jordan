@@ -16,10 +16,11 @@ class Hotel extends Model
         'phone',
         'logo',
         'user',
+        'user_id'
     ];
 
     public function user()
     {
-        return $this->hasOne(User::class, 'id', 'user');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

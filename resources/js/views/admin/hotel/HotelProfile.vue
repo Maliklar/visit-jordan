@@ -1,8 +1,8 @@
 <template>
   <div class="hotel-profile-view">
-    <h1>Hotel Profile</h1>
+    <h1>Hotel Profile {{ actionMessage }}</h1>
     <hr />
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <v-form ref="form" @submit.prevent="submit" lazy-validation>
       <v-text-field
         v-model="name"
         :counter="25"
@@ -43,21 +43,19 @@
       <div class="row">
         <div class="col">
           <v-file-input
-            label="File input"
+            label="Hotel Logo"
             filled
+            @change="uploadLogo"
             prepend-icon="mdi-camera"
+            required
           ></v-file-input>
         </div>
-        <div class="col">Preview</div>
+        <div class="col">
+          <img :src="previewImage" alt="" height="60" />
+        </div>
       </div>
 
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
-        Validate
-      </v-btn>
-
-      <v-btn color="error" class="mr-4" @click="reset"> Reset Form </v-btn>
-
-      <v-btn color="warning" @click="resetValidation"> Reset Validation </v-btn>
+      <v-btn color="success" class="mr-4" type="submit"> Update </v-btn>
     </v-form>
   </div>
 </template>
@@ -65,8 +63,10 @@
 <script>
 export default {
   data: () => ({
-    valid: true,
     name: "",
+    actionMessage: null,
+    previewImage: null,
+    hotelLogo: null,
 
     nameRules: [
       (v) => !!v || "Name is required",
@@ -92,15 +92,38 @@ export default {
   }),
 
   methods: {
-    validate() {
-      this.$refs.form.validate();
+    submit() {
+      let data = new FormData();
+      data.append("name", this.name);
+      data.append("tagline", this.tagline);
+      data.append("website", this.website);
+      data.append("email", this.email);
+      data.append("phone", this.number);
+      data.append("logo", this.hotelLogo);
+      this.hotelAdminService.edit(data).then((result) => {
+        console.log(result);
+      });
     },
-    reset() {
-      this.$refs.form.reset();
+    uploadLogo(e) {
+      this.previewImage = URL.createObjectURL(e.target.files[0]);
+      this.hotelLogo = e.target.files[0];
     },
-    resetValidation() {
-      this.$refs.form.resetValidation();
-    },
+  },
+
+  async created() {
+    this.hotelAdminService.get().then((result) => {
+      if (result.status == 404) {
+        this.actionMessage = result.data.message;
+      }
+
+      this.name = result.data.name;
+      this.tagline = result.data.tagline;
+      this.website = result.data.website;
+      this.email = result.data.email;
+      this.previewImage = result.data.logo;
+      this.number = result.data.phone;
+      console.log(result.data);
+    });
   },
 };
 </script>

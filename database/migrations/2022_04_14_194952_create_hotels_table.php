@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
-            $table->integer('user')->foreign()->references('users')->on('id');
-            $table->string('name');
-            $table->string('tagline');
-            $table->string('website');
-            $table->string('email');
-            $table->string('logo');
-            $table->string('phone');
+            $table->integer('user_id')->foreign()->references('users')->on('id');
+            $table->string('name')->nullable();
+            $table->string('tagline')->nullable();
+            $table->string('website')->nullable();
+            $table->string('email')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('phone')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
