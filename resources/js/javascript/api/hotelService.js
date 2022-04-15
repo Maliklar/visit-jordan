@@ -25,6 +25,13 @@ async function auth() {
         .catch(e => e.response);
 }
 
+async function getHotel() {
+    return await axios
+        .get(`${ROOT_API}/hotels/auth`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
 async function createAdmin(token, username, password) {
     let data = {
         token,

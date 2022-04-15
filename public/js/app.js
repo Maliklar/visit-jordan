@@ -23378,56 +23378,54 @@ function _auth() {
   return _auth.apply(this, arguments);
 }
 
-function createAdmin(_x3, _x4, _x5) {
-  return _createAdmin.apply(this, arguments);
+function getHotel() {
+  return _getHotel.apply(this, arguments);
 }
 
-function _createAdmin() {
-  _createAdmin = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(token, username, password) {
-    var data;
+function _getHotel() {
+  _getHotel = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
-            data = {
-              token: token,
-              username: username,
-              password: password
-            };
-            _context4.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/create_admin"), data).then(function (result) {
-              return result.data;
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/hotels/auth")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
             });
 
-          case 3:
+          case 2:
             return _context4.abrupt("return", _context4.sent);
 
-          case 4:
+          case 3:
           case "end":
             return _context4.stop();
         }
       }
     }, _callee4);
   }));
+  return _getHotel.apply(this, arguments);
+}
+
+function createAdmin(_x3, _x4, _x5) {
   return _createAdmin.apply(this, arguments);
 }
 
-function getAdmins(_x6) {
-  return _getAdmins.apply(this, arguments);
-}
-
-function _getAdmins() {
-  _getAdmins = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(token) {
+function _createAdmin() {
+  _createAdmin = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(token, username, password) {
     var data;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             data = {
-              token: token
+              token: token,
+              username: username,
+              password: password
             };
             _context5.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/get_admins"), data).then(function (result) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/create_admin"), data).then(function (result) {
               return result.data;
             });
 
@@ -23441,26 +23439,25 @@ function _getAdmins() {
       }
     }, _callee5);
   }));
+  return _createAdmin.apply(this, arguments);
+}
+
+function getAdmins(_x6) {
   return _getAdmins.apply(this, arguments);
 }
 
-function deleteAdmin(_x7, _x8) {
-  return _deleteAdmin.apply(this, arguments);
-}
-
-function _deleteAdmin() {
-  _deleteAdmin = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(token, id) {
+function _getAdmins() {
+  _getAdmins = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(token) {
     var data;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
             data = {
-              token: token,
-              id: id
+              token: token
             };
             _context6.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/delete_admin"), data).then(function (result) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/get_admins"), data).then(function (result) {
               return result.data;
             });
 
@@ -23473,6 +23470,39 @@ function _deleteAdmin() {
         }
       }
     }, _callee6);
+  }));
+  return _getAdmins.apply(this, arguments);
+}
+
+function deleteAdmin(_x7, _x8) {
+  return _deleteAdmin.apply(this, arguments);
+}
+
+function _deleteAdmin() {
+  _deleteAdmin = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(token, id) {
+    var data;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            data = {
+              token: token,
+              id: id
+            };
+            _context7.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "admin/delete_admin"), data).then(function (result) {
+              return result.data;
+            });
+
+          case 3:
+            return _context7.abrupt("return", _context7.sent);
+
+          case 4:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
   }));
   return _deleteAdmin.apply(this, arguments);
 }
@@ -23721,6 +23751,13 @@ var routes = [{
 }, {
   path: "/admin/hotel/dashboard",
   name: "Dashboard",
+  children: [{
+    path: "overview",
+    name: "Overview",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Overview.vue */ "./resources/js/views/admin/hotel/Overview.vue"));
+    }
+  }],
   component: function component() {
     return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Dashboard.vue */ "./resources/js/views/admin/hotel/Dashboard.vue"));
   }

@@ -36,9 +36,17 @@ const routes = [{
     {
         path: "/admin/hotel/dashboard",
         name: "Dashboard",
+        children: [{
+            path: "overview",
+            name: "Overview",
+            component: () =>
+                import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Overview.vue"),
+        }, ],
         component: () =>
             import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Dashboard.vue"),
     },
+
+
 
 
 ];

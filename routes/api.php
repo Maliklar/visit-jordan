@@ -22,23 +22,32 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/*
+|--------------------------------------------------------------------------
+| All Users Login Point (Single piont to login all users)
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+*/
 
+Route::post('/users/login', [UserController::class, 'login']);
 
 /*
 |--------------------------------------------------------------------------
 | Admin Users
-|--------------------------------------------------------------------------
+|----------------------------------------------------------------------------------------------------------------------------------------------------
 */
 
 Route::post('/admin/login', [AdminController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/auth', [AdminController::class, 'auth']);
-    // Route::post('/admin/logout', [AdminController::class, 'logout']);
 });
 
 
 
-//home banner
+/*
+|--------------------------------------------------------------------------
+| Home Banners (Only Admin can access)
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+*/
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/homebanners/add', [HomeBannerController::class, 'add']);
@@ -48,20 +57,17 @@ Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
 
 
 
-// HOTELS
+
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+| Hotel API
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+*/
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/hotels/auth', [HotelsController::class, 'auth']);
-    Route::post('/hotels/add', [HotelsController::class, 'add']);
+    Route::get('/hotels/auth', [HotelsController::class, 'auth']);  // Auth
+    Route::post('/hotels/add', [HotelsController::class, 'add']);  // Add (admin add a hotel)
+    Route::patch('/hotels/edit', [HotelsController::class, 'edit']);  // Edit (admin Edit hotel info)
 });
 
 Route::post('/hotels/register', [HotelsController::class, 'register']);
-Route::post('/hotels/login', [HotelsController::class, 'login']);
-
-
-Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
-
-
-// HOTELS
-Route::middleware('auth:sanctum')->group(function () {
-});
-Route::post('/users/login', [UserController::class, 'login']);
