@@ -6,9 +6,11 @@ import router from "./router";
 import store from "./store";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
+import { aliases, mdi } from 'vuetify/lib/iconsets/mdi'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
 import { createVuetify } from 'vuetify'
-// import "./assets/css/main.css";
 const bannerService = require('./javascript/api/bannerService');
 const hotelService = require('./javascript/api/hotelService');
 const userService = require('./javascript/api/userService');
@@ -19,6 +21,20 @@ import * as directives from 'vuetify/directives'
 const vuetify = createVuetify({
     components,
     directives,
+    theme: {
+        defaultTheme: 'dark'
+    },
+    icons: {
+        defaultSet: 'mdi',
+        aliases,
+        sets: {
+            mdi,
+        }
+    },
+
+
+
+
 })
 
 const GLOBAL = {

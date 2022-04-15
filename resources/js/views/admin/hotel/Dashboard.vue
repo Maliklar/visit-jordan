@@ -24,23 +24,35 @@
 
         <v-list density="compact" nav>
           <v-list-item
-            prepend-icon="mdi-home-city"
-            title="Home"
-            value="home"
-          ></v-list-item>
-          <v-list-item
             prepend-icon="mdi-account"
-            title="My Account"
+            title="Account"
             value="account"
           ></v-list-item>
+
+          <v-list-item
+            prepend-icon="mdi-home-city"
+            title="Hotel Profile"
+            value="hotel_profile"
+            @click="hotelProfile"
+          ></v-list-item>
+
+          <v-list-item
+            prepend-icon="mdi-office-building-outline"
+            title="Branches"
+            value="reservations"
+            @click="branches"
+          ></v-list-item>
+
           <v-list-item
             prepend-icon="mdi-account-group-outline"
-            title="Users"
-            value="users"
+            title="Reservations"
+            value="reservations"
           ></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 250px"> Main content </v-main>
+      <v-main class="dashbaord-background" style="min-height: 100vh">
+        <router-view />
+      </v-main>
     </v-layout>
   </v-card>
 </template>
@@ -50,12 +62,28 @@ export default {
     return {
       drawer: true,
       items: [
-        { title: "Home", icon: "mdi-home-city" },
-        { title: "My Account", icon: "mdi-account" },
+        { title: "Account", icon: "mdi-account" },
+        { title: "Hotel Profile", icon: "mdi-home-city" },
         { title: "Users", icon: "mdi-account-group-outline" },
       ],
       rail: true,
     };
   },
+
+  methods: {
+    hotelProfile() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/hotel_profile",
+      });
+    },
+    branches() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/branches",
+      });
+    },
+  },
 };
 </script>
+
+<style scoped>
+</style>

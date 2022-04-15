@@ -37,11 +37,30 @@ const routes = [{
         path: "/admin/hotel/dashboard",
         name: "Dashboard",
         children: [{
-            path: "overview",
-            name: "Overview",
-            component: () =>
-                import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Overview.vue"),
-        }, ],
+                path: "overview",
+                name: "Overview",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Overview.vue"),
+            },
+            {
+                path: "hotel_profile",
+                name: "HotelProfile",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/HotelProfile.vue"),
+            },
+            {
+                path: "branches",
+                name: "Branches",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Branches.vue"),
+            },
+            {
+                path: "branches/add",
+                name: "AddBranch",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/AddBranch.vue"),
+            }
+        ],
         component: () =>
             import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Dashboard.vue"),
     },
