@@ -43,10 +43,10 @@ class BranchController extends Controller
                 'has_double' => $request->has_double === 'true' ? true : false,
                 'has_trible' => $request->has_trible === 'true' ? true : false,
                 'has_suite' => $request->has_suite === 'true' ? true : false,
-                'number_of_single' => $request->number_of_single,
-                'number_of_double' => $request->number_of_double,
-                'number_of_trible' => $request->number_of_trible,
-                'number_of_suites' => $request->number_of_suites,
+                'number_of_single' => $request->number_of_single === 'null' ? null :  $request->number_of_single,
+                'number_of_double' => $request->number_of_double === 'null' ? null : $request->number_of_double,
+                'number_of_trible' => $request->number_of_trible === 'null' ? null : $request->number_of_trible,
+                'number_of_suites' => $request->number_of_suites === 'null' ? null : $request->number_of_suites,
                 'map_location' => $request->map_location,
                 'location_description' => $request->location_description,
                 'wi_fi' => $request->wi_fi === 'true' ? true : false,
@@ -104,6 +104,16 @@ class BranchController extends Controller
             }
         } else {
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    public function get()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            // $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
+
+            return Branch::where('user_id', $user->id)->get();
         }
     }
 }

@@ -23624,7 +23624,8 @@ function _get() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "add": () => (/* binding */ add)
+/* harmony export */   "add": () => (/* binding */ add),
+/* harmony export */   "get": () => (/* binding */ get)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -23650,18 +23651,17 @@ function _add() {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log(ROOT_API);
-            _context.next = 3;
+            _context.next = 2;
             return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/admin/").concat(API_POINT, "/add"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
             });
 
-          case 3:
+          case 2:
             return _context.abrupt("return", _context.sent);
 
-          case 4:
+          case 3:
           case "end":
             return _context.stop();
         }
@@ -23669,6 +23669,36 @@ function _add() {
     }, _callee);
   }));
   return _add.apply(this, arguments);
+}
+
+function get() {
+  return _get.apply(this, arguments);
+}
+
+function _get() {
+  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/").concat(API_POINT, "/get")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _get.apply(this, arguments);
 }
 
 

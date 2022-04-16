@@ -275,16 +275,16 @@ __webpack_require__.r(__webpack_exports__);
       building_img: [],
       rooms_img: null,
       phone: null,
-      has_single: null,
+      has_single: false,
       has_double: null,
       has_trible: null,
       has_suite: null,
-      number_of_single: null,
-      number_of_double: null,
-      number_of_trible: null,
-      number_of_suites: null,
-      number_of_rooms: null,
-      number_of_floors: null,
+      number_of_single: 0,
+      number_of_double: 0,
+      number_of_trible: 0,
+      number_of_suites: 0,
+      number_of_rooms: 0,
+      number_of_floors: 0,
       smoking: null,
       pets: null,
       wi_fi: null,
@@ -295,27 +295,92 @@ __webpack_require__.r(__webpack_exports__);
       location_description: null,
       map_location: null,
       tagline: "",
-      items: [true, false],
       email: "",
+      website: "",
+      isLoading: false,
+      items: [true, false],
+      //Rules
       emailRules: [function (v) {
         return !!v || "E-mail is required";
       }, function (v) {
         return /.+@.+\..+/.test(v) || "E-mail must be valid";
       }],
-      // taglineRules: [
-      //   (v) => !!v || "Name is required",
-      //   (v) => (v && v.length <= 100) || "Name must be less than 10 characters",
-      // ],
-      website: "",
+      nameRules: [function (v) {
+        return !!v || "Branch name is required";
+      }],
+      phoneRules: [function (v) {
+        return !!v || "Phone number is required";
+      }, function (v) {
+        return /^\d[0-9]+$/.test(v) || "Only numbers are allowed";
+      }],
       websiteRules: [function (v) {
-        return !!v || "Name is required";
+        return !!v || "Website required";
+      }],
+      number_of_floorsRules: [function (v) {
+        return !!v || "Number of floors is required";
+      }],
+      number_of_roomsRules: [function (v) {
+        return !!v || "Number of rooms is required";
+      }],
+      map_locationRules: [function (v) {
+        return !!v || "Google Maps location is required";
+      }],
+      location_descriptionRules: [function (v) {
+        return !!v || "Location Description is required";
       }]
     };
+  },
+  computed: {
+    number_of_singleRules: function number_of_singleRules() {
+      if (this.has_single) {
+        return [function (v) {
+          return !!v || "Required";
+        }, function (v) {
+          return /^\d[0-9]+$/.test(v) || "Only numbers are allowed";
+        }];
+      } else {
+        return [];
+      }
+    },
+    number_of_doubleRules: function number_of_doubleRules() {
+      if (this.has_double) {
+        return [function (v) {
+          return !!v || "Required";
+        }, function (v) {
+          return /^\d[0-9]+$/.test(v) || "Only numbers are allowed";
+        }];
+      } else {
+        return [];
+      }
+    },
+    number_of_tribleRules: function number_of_tribleRules() {
+      if (this.has_trible) {
+        return [function (v) {
+          return !!v || "Required";
+        }, function (v) {
+          return /^\d[0-9]+$/.test(v) || "Only numbers are allowed";
+        }];
+      } else {
+        return [];
+      }
+    },
+    number_of_suitesRules: function number_of_suitesRules() {
+      if (this.has_suite) {
+        return [function (v) {
+          return !!v || "Required";
+        }, function (v) {
+          return /^\d[0-9]+$/.test(v) || "Only numbers are allowed";
+        }];
+      }
+
+      return [];
+    }
   },
   methods: {
     submit: function submit() {
       var _this = this;
 
+      this.isLoading = true;
       var data = new FormData();
       data.append("name", this.name);
       data.append("location_description", this.location_description);
@@ -358,8 +423,12 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(result.data);
         _this.ht = result.data;
         console.log(result);
+        _this.isLoading = false;
       });
-      console.log("submitted");
+    },
+    validate: function validate() {
+      console.log("validate");
+      this.$refs.form.validate();
     },
     buildingImages: function buildingImages(e) {
       this.building_img = Array.from(e.target.files);
@@ -387,6 +456,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  created: function created() {
+    var _this = this;
+
+    this.branchService.get().then(function (result) {
+      console.log(result);
+      _this.branches = result.data;
+    });
+  },
+  data: function data() {
+    return {
+      branches: null
+    };
+  },
   methods: {
     addBranch: function addBranch() {
       this.$router.push({
@@ -1112,15 +1194,14 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "General Information", -1
-/* HOISTED */
-);
+var _hoisted_4 = {
+  key: 0,
+  "class": "text-center"
+};
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
-/* HOISTED */
-);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loading...");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Rooms Details", -1
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "General Information", -1
 /* HOISTED */
 );
 
@@ -1128,61 +1209,71 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Branch Galary", -1
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Rooms Details", -1
 /* HOISTED */
 );
 
-var _hoisted_9 = {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Branch Galary", -1
+/* HOISTED */
+);
+
+var _hoisted_11 = {
   "class": "row"
 };
-var _hoisted_10 = {
-  "class": "col"
-};
-
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "col"
-}, "Preview", -1
-/* HOISTED */
-);
-
 var _hoisted_12 = {
-  "class": "row"
-};
-var _hoisted_13 = {
   "class": "col"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col"
-}, "Preview", -1
+}, "Max: 4", -1
 /* HOISTED */
 );
 
+var _hoisted_14 = {
+  "class": "row"
+};
 var _hoisted_15 = {
+  "class": "col"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col"
+}, "Max: 4", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
   "class": "row"
 };
-var _hoisted_16 = {
+var _hoisted_18 = {
   "class": "col"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col"
-}, "Preview", -1
+}, "Max: 4", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Feachers", -1
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Feachers", -1
 /* HOISTED */
 );
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Submit ");
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Submit ");
 
-var _hoisted_21 = ["innerHTML"];
+var _hoisted_23 = ["innerHTML"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_v_progress_circular = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-progress-circular");
+
   var _component_v_text_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-text-field");
 
   var _component_v_checkbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-checkbox");
@@ -1195,17 +1286,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_v_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-form");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_form, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, _hoisted_3, _ctx.isLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_progress_circular, {
+    size: 100,
+    width: 7,
+    color: "purple",
+    indeterminate: ""
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_5];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_form, {
+    key: 1,
     ref: "form",
     onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($options.submit, ["prevent"]),
     modelValue: _ctx.valid,
     "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
       return _ctx.valid = $event;
     }),
+    onInput: $options.validate,
     "lazy-validation": ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+      return [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
         modelValue: _ctx.name,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return _ctx.name = $event;
@@ -1222,41 +1327,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.map_location = $event;
         }),
         counter: 25,
+        rules: _ctx.map_locationRules,
         label: "Branch Location (Google Maps)",
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+      , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
         modelValue: _ctx.location_description,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return _ctx.location_description = $event;
         }),
-        counter: 25,
+        counter: 500,
+        rules: _ctx.location_descriptionRules,
         label: "Location Description",
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+      , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
         type: "number",
         modelValue: _ctx.number_of_floors,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return _ctx.number_of_floors = $event;
         }),
+        rules: _ctx.number_of_floorsRules,
         label: "Number of Floors",
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+      , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
         modelValue: _ctx.number_of_rooms,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
           return _ctx.number_of_rooms = $event;
         }),
         type: "number",
         label: "Number Of Rooms",
+        rules: _ctx.number_of_roomsRules,
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+      , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
         modelValue: _ctx.email,
         "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
           return _ctx.email = $event;
@@ -1277,7 +1386,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue", "rules"]), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, {
+      , ["modelValue", "rules"]), _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, {
         align: "center"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -1293,6 +1402,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* PROPS */
           , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
             disabled: !_ctx.has_single,
+            rules: $options.number_of_singleRules,
             modelValue: _ctx.number_of_single,
             "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
               return _ctx.number_of_single = $event;
@@ -1300,7 +1410,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             label: "Number Of Single Rooms"
           }, null, 8
           /* PROPS */
-          , ["disabled", "modelValue"])];
+          , ["disabled", "rules", "modelValue"])];
         }),
         _: 1
         /* STABLE */
@@ -1321,6 +1431,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* PROPS */
           , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
             disabled: !_ctx.has_double,
+            rules: $options.number_of_doubleRules,
             modelValue: _ctx.number_of_double,
             "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
               return _ctx.number_of_double = $event;
@@ -1328,7 +1439,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             label: "Number Of Double Rooms"
           }, null, 8
           /* PROPS */
-          , ["disabled", "modelValue"])];
+          , ["disabled", "rules", "modelValue"])];
         }),
         _: 1
         /* STABLE */
@@ -1353,10 +1464,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
               return _ctx.number_of_trible = $event;
             }),
+            rules: $options.number_of_tribleRules,
             label: "Number Of Trible Rooms"
           }, null, 8
           /* PROPS */
-          , ["disabled", "modelValue"])];
+          , ["disabled", "modelValue", "rules"])];
         }),
         _: 1
         /* STABLE */
@@ -1381,39 +1493,47 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
               return _ctx.number_of_suites = $event;
             }),
+            rules: $options.number_of_suitesRules,
+            type: "number",
             label: "Number Of Suites"
           }, null, 8
           /* PROPS */
-          , ["disabled", "modelValue"])];
+          , ["disabled", "modelValue", "rules"])];
         }),
         _: 1
         /* STABLE */
 
-      }), _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
+      }), _hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
         onChange: $options.buildingImages,
         label: "Hotel Photos",
         filled: "",
+        accept: "image/*",
         multiple: "",
+        required: "",
         "prepend-icon": "mdi-camera"
       }, null, 8
       /* PROPS */
-      , ["onChange"])]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
+      , ["onChange"])]), _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
         label: "View Photos",
         onChange: $options.viewsImages,
         filled: "",
+        accept: "image/*",
+        required: "",
         multiple: "",
         "prepend-icon": "mdi-camera"
       }, null, 8
       /* PROPS */
-      , ["onChange"])]), _hoisted_14]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
+      , ["onChange"])]), _hoisted_16]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
         label: "Rooms Photos",
         onChange: $options.roomsImages,
         filled: "",
+        accept: "image/*",
         multiple: "",
+        required: "",
         "prepend-icon": "mdi-camera"
       }, null, 8
       /* PROPS */
-      , ["onChange"])]), _hoisted_17]), _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+      , ["onChange"])]), _hoisted_19]), _hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
         modelValue: _ctx.smoking,
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
           return _ctx.smoking = $event;
@@ -1489,7 +1609,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "submit"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_20];
+          return [_hoisted_22];
         }),
         _: 1
         /* STABLE */
@@ -1501,11 +1621,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["onSubmit", "modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  , ["onSubmit", "modelValue", "onInput"]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     innerHTML: _ctx.ht
   }, null, 8
   /* PROPS */
-  , _hoisted_21)], 64
+  , _hoisted_23)], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -1536,39 +1656,23 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Top 10 Australian beaches");
+var _hoisted_4 = {
+  "class": "admin-branches-container"
+};
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Number 10 ");
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "Whitehaven Beach", -1
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "Whitehaven Beach", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "Whitsunday Island, Whitsunday Islands", -1
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "Whitsunday Island, Whitsunday Islands", -1
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Share ");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Share ");
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Explore ");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Explore ");
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Top 10 Australian beaches");
-
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Number 10 ");
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "Whitehaven Beach", -1
-/* HOISTED */
-);
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "Whitsunday Island, Whitsunday Islands", -1
-/* HOISTED */
-);
-
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Share ");
-
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Explore ");
-
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Branch ");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Branch ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_card_title = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-card-title");
@@ -1585,158 +1689,102 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_v_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-card");
 
-  var _component_v_divider = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-divider");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.branches, function (branch) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: branch
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
+      "class": "mx-auto",
+      "max-width": "400"
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_img, {
+          "class": "align-end text-white",
+          height: "200",
+          src: "https://cdn.vuetifyjs.com/images/cards/docks.jpg",
+          cover: ""
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_title, null, {
+              "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(branch.name), 1
+                /* TEXT */
+                )];
+              }),
+              _: 2
+              /* DYNAMIC */
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
-    "class": "mx-auto",
-    "max-width": "400"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_img, {
-        "class": "align-end text-white",
-        height: "200",
-        src: "https://cdn.vuetifyjs.com/images/cards/docks.jpg",
-        cover: ""
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_title, null, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_4];
-            }),
-            _: 1
-            /* STABLE */
+            }, 1024
+            /* DYNAMIC_SLOTS */
+            )];
+          }),
+          _: 2
+          /* DYNAMIC */
 
-          })];
-        }),
-        _: 1
-        /* STABLE */
+        }, 1024
+        /* DYNAMIC_SLOTS */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_subtitle, {
+          "class": "pt-4"
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(branch.created_at), 1
+            /* TEXT */
+            )];
+          }),
+          _: 2
+          /* DYNAMIC */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_subtitle, {
-        "class": "pt-4"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_5];
-        }),
-        _: 1
-        /* STABLE */
+        }, 1024
+        /* DYNAMIC_SLOTS */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_text, null, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [_hoisted_5, _hoisted_6];
+          }),
+          _: 1
+          /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_text, null, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_6, _hoisted_7];
-        }),
-        _: 1
-        /* STABLE */
+        }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_actions, null, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+              color: "orange"
+            }, {
+              "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                return [_hoisted_7];
+              }),
+              _: 1
+              /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_actions, null, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
-            color: "orange"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_8];
-            }),
-            _: 1
-            /* STABLE */
+            }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+              color: "orange"
+            }, {
+              "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                return [_hoisted_8];
+              }),
+              _: 1
+              /* STABLE */
 
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
-            color: "orange"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_9];
-            }),
-            _: 1
-            /* STABLE */
+            })];
+          }),
+          _: 1
+          /* STABLE */
 
-          })];
-        }),
-        _: 1
-        /* STABLE */
+        })];
+      }),
+      _: 2
+      /* DYNAMIC */
 
-      })];
-    }),
-    _: 1
-    /* STABLE */
-
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_divider, {
-    inset: ""
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
-    "class": "mx-auto",
-    "max-width": "400"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_img, {
-        "class": "align-end text-white",
-        height: "200",
-        src: "https://cdn.vuetifyjs.com/images/cards/docks.jpg",
-        cover: ""
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_title, null, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_10];
-            }),
-            _: 1
-            /* STABLE */
-
-          })];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_subtitle, {
-        "class": "pt-4"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_11];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_text, null, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_12, _hoisted_13];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_actions, null, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
-            color: "orange"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_14];
-            }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
-            color: "orange"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_15];
-            }),
-            _: 1
-            /* STABLE */
-
-          })];
-        }),
-        _: 1
-        /* STABLE */
-
-      })];
-    }),
-    _: 1
-    /* STABLE */
-
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+    }, 1024
+    /* DYNAMIC_SLOTS */
+    )]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <v-divider inset></v-divider>\r\n    <v-card class=\"mx-auto\" max-width=\"400\">\r\n      <v-img\r\n        class=\"align-end text-white\"\r\n        height=\"200\"\r\n        src=\"https://cdn.vuetifyjs.com/images/cards/docks.jpg\"\r\n        cover\r\n      >\r\n        <v-card-title>Top 10 Australian beaches</v-card-title>\r\n      </v-img>\r\n\r\n      <v-card-subtitle class=\"pt-4\"> Number 10 </v-card-subtitle>\r\n\r\n      <v-card-text>\r\n        <div>Whitehaven Beach</div>\r\n\r\n        <div>Whitsunday Island, Whitsunday Islands</div>\r\n      </v-card-text>\r\n\r\n      <v-card-actions>\r\n        <v-btn color=\"orange\"> Share </v-btn>\r\n\r\n        <v-btn color=\"orange\"> Explore </v-btn>\r\n      </v-card-actions>\r\n    </v-card> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
     size: "x-large",
     "class": "add-branch-floating-action-button",
     color: "success",
     onClick: $options.addBranch
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_16];
+      return [_hoisted_9];
     }),
     _: 1
     /* STABLE */
@@ -2264,7 +2312,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.branches-view {\r\n  padding: 10px;\n}\n.add-branch-floating-action-button {\r\n  position: fixed;\r\n  right: 10px;\r\n  bottom: 10px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.branches-view {\r\n  padding: 10px;\n}\n.admin-branches-container {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  gap: 10px;\n}\n.add-branch-floating-action-button {\r\n  position: fixed;\r\n  right: 10px;\r\n  bottom: 10px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

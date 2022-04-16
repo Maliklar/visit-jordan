@@ -2,7 +2,20 @@
   <div class="add-branch-view">
     <h1>Add Branch</h1>
     <hr />
-    <v-form ref="form" @submit.prevent="submit" v-model="valid" lazy-validation>
+
+    <div v-if="isLoading" class="text-center">
+      <v-progress-circular :size="100" :width="7" color="purple" indeterminate>
+        Loading...</v-progress-circular
+      >
+    </div>
+    <v-form
+      v-else
+      ref="form"
+      @submit.prevent="submit"
+      v-model="valid"
+      @input="validate"
+      lazy-validation
+    >
       <h6>General Information</h6>
       <v-text-field
         v-model="name"
@@ -15,18 +28,21 @@
       <v-text-field
         v-model="map_location"
         :counter="25"
+        :rules="map_locationRules"
         label="Branch Location (Google Maps)"
         required
       ></v-text-field>
       <v-text-field
         v-model="location_description"
-        :counter="25"
+        :counter="500"
+        :rules="location_descriptionRules"
         label="Location Description"
         required
       ></v-text-field>
       <v-text-field
         type="number"
         v-model="number_of_floors"
+        :rules="number_of_floorsRules"
         label="Number of Floors"
         required
       ></v-text-field>
@@ -35,6 +51,7 @@
         v-model="number_of_rooms"
         type="number"
         label="Number Of Rooms"
+        :rules="number_of_roomsRules"
         required
       ></v-text-field>
 
@@ -52,6 +69,7 @@
         required
       ></v-text-field>
       <hr />
+
       <h6>Rooms Details</h6>
       <v-row align="center">
         <v-checkbox
@@ -62,6 +80,7 @@
         ></v-checkbox>
         <v-text-field
           :disabled="!has_single"
+          :rules="number_of_singleRules"
           v-model="number_of_single"
           label="Number Of Single Rooms"
         ></v-text-field>
@@ -76,6 +95,7 @@
         ></v-checkbox>
         <v-text-field
           :disabled="!has_double"
+          :rules="number_of_doubleRules"
           v-model="number_of_double"
           label="Number Of Double Rooms"
         ></v-text-field>
@@ -91,6 +111,7 @@
         <v-text-field
           :disabled="!has_trible"
           v-model="number_of_trible"
+          :rules="number_of_tribleRules"
           label="Number Of Trible Rooms"
         ></v-text-field>
       </v-row>
@@ -105,11 +126,14 @@
         <v-text-field
           :disabled="!has_suite"
           v-model="number_of_suites"
+          :rules="number_of_suitesRules"
+          type="number"
           label="Number Of Suites"
         ></v-text-field>
       </v-row>
 
       <hr />
+
       <h6>Branch Galary</h6>
       <div class="row">
         <div class="col">
@@ -117,11 +141,13 @@
             @change="buildingImages"
             label="Hotel Photos"
             filled
+            accept="image/*"
             multiple
+            required
             prepend-icon="mdi-camera"
           ></v-file-input>
         </div>
-        <div class="col">Preview</div>
+        <div class="col">Max: 4</div>
       </div>
       <div class="row">
         <div class="col">
@@ -129,11 +155,13 @@
             label="View Photos"
             @change="viewsImages"
             filled
+            accept="image/*"
+            required
             multiple
             prepend-icon="mdi-camera"
           ></v-file-input>
         </div>
-        <div class="col">Preview</div>
+        <div class="col">Max: 4</div>
       </div>
       <div class="row">
         <div class="col">
@@ -141,11 +169,13 @@
             label="Rooms Photos"
             @change="roomsImages"
             filled
+            accept="image/*"
             multiple
+            required
             prepend-icon="mdi-camera"
           ></v-file-input>
         </div>
-        <div class="col">Preview</div>
+        <div class="col">Max: 4</div>
       </div>
 
       <hr />
@@ -209,16 +239,16 @@ export default {
     rooms_img: null,
 
     phone: null,
-    has_single: null,
+    has_single: false,
     has_double: null,
     has_trible: null,
     has_suite: null,
-    number_of_single: null,
-    number_of_double: null,
-    number_of_trible: null,
-    number_of_suites: null,
-    number_of_rooms: null,
-    number_of_floors: null,
+    number_of_single: 0,
+    number_of_double: 0,
+    number_of_trible: 0,
+    number_of_suites: 0,
+    number_of_rooms: 0,
+    number_of_floors: 0,
     smoking: null,
     pets: null,
     wi_fi: null,
@@ -229,24 +259,76 @@ export default {
     location_description: null,
     map_location: null,
     tagline: "",
+    email: "",
+    website: "",
+    isLoading: false,
 
     items: [true, false],
 
-    email: "",
+    //Rules
     emailRules: [
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     ],
-    // taglineRules: [
-    //   (v) => !!v || "Name is required",
-    //   (v) => (v && v.length <= 100) || "Name must be less than 10 characters",
-    // ],
-    website: "",
-    websiteRules: [(v) => !!v || "Name is required"],
+    nameRules: [(v) => !!v || "Branch name is required"],
+    phoneRules: [
+      (v) => !!v || "Phone number is required",
+      (v) => /^\d[0-9]+$/.test(v) || "Only numbers are allowed",
+    ],
+    websiteRules: [(v) => !!v || "Website required"],
+    number_of_floorsRules: [(v) => !!v || "Number of floors is required"],
+    number_of_roomsRules: [(v) => !!v || "Number of rooms is required"],
+    map_locationRules: [(v) => !!v || "Google Maps location is required"],
+    location_descriptionRules: [
+      (v) => !!v || "Location Description is required",
+    ],
   }),
+
+  computed: {
+    number_of_singleRules() {
+      if (this.has_single) {
+        return [
+          (v) => !!v || "Required",
+          (v) => /^\d[0-9]+$/.test(v) || "Only numbers are allowed",
+        ];
+      } else {
+        return [];
+      }
+    },
+    number_of_doubleRules() {
+      if (this.has_double) {
+        return [
+          (v) => !!v || "Required",
+          (v) => /^\d[0-9]+$/.test(v) || "Only numbers are allowed",
+        ];
+      } else {
+        return [];
+      }
+    },
+    number_of_tribleRules() {
+      if (this.has_trible) {
+        return [
+          (v) => !!v || "Required",
+          (v) => /^\d[0-9]+$/.test(v) || "Only numbers are allowed",
+        ];
+      } else {
+        return [];
+      }
+    },
+    number_of_suitesRules() {
+      if (this.has_suite) {
+        return [
+          (v) => !!v || "Required",
+          (v) => /^\d[0-9]+$/.test(v) || "Only numbers are allowed",
+        ];
+      }
+      return [];
+    },
+  },
 
   methods: {
     submit() {
+      this.isLoading = true;
       let data = new FormData();
       data.append("name", this.name);
       data.append("location_description", this.location_description);
@@ -287,9 +369,12 @@ export default {
         // console.log(result.data);
         this.ht = result.data;
         console.log(result);
+        this.isLoading = false;
       });
-
-      console.log("submitted");
+    },
+    validate() {
+      console.log("validate");
+      this.$refs.form.validate();
     },
 
     buildingImages(e) {
