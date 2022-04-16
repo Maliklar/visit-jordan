@@ -113,7 +113,7 @@ class BranchController extends Controller
         if ($user->type->type == 'hotel') {
             // $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
 
-            return Branch::where('user_id', $user->id)->get();
+            return Branch::with('buildingImages', 'roomsImages', 'viewsImages')->where('user_id', $user->id)->get();
         }
     }
 }

@@ -9,7 +9,7 @@
           <v-img
             class="align-end text-white"
             height="200"
-            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+            :src="'http://localhost:8000/' + branch.building_images[0].image"
             cover
           >
             <v-card-title>{{ branch.name }}</v-card-title>
@@ -26,9 +26,11 @@
           </v-card-text>
 
           <v-card-actions>
-            <v-btn color="orange"> Share </v-btn>
+            <v-btn color="orange" @click="openBranchDetails(branch.id)">
+              Details
+            </v-btn>
 
-            <v-btn color="orange"> Explore </v-btn>
+            <v-btn color="orange"> Edit </v-btn>
           </v-card-actions>
         </v-card>
       </div>
@@ -87,6 +89,12 @@ export default {
     addBranch() {
       this.$router.push({
         path: "/admin/hotel/dashboard/branches/add",
+      });
+    },
+
+    openBranchDetails(id) {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/branches/details/" + id,
       });
     },
   },
