@@ -9,45 +9,38 @@
         :counter="25"
         :rules="nameRules"
         label="Branch Name"
-        required
       ></v-text-field>
 
       <v-text-field
         v-model="map_location"
         :counter="25"
         label="Branch Location (Google Maps)"
-        required
       ></v-text-field>
       <v-text-field
         v-model="location_description"
         :counter="25"
         label="Location Description"
-        required
       ></v-text-field>
       <v-text-field
         v-model="number_of_floors"
         :counter="25"
         label="Number of Floors"
-        required
       ></v-text-field>
 
       <v-text-field
         v-model="number_of_rooms"
         :counter="25"
         label="Number Of Rooms"
-        required
       ></v-text-field>
       <v-text-field
         v-model="email"
         :rules="emailRules"
         label="Branch  Email"
-        required
       ></v-text-field>
       <v-text-field
         v-model="phone"
         :counter="12"
         label="Branch Phone Number"
-        required
       ></v-text-field>
       <hr />
       <h6>Rooms Details</h6>
@@ -112,8 +105,10 @@
       <div class="row">
         <div class="col">
           <v-file-input
+            @change="buildingImages"
             label="Hotel Photos"
             filled
+            multiple
             prepend-icon="mdi-camera"
           ></v-file-input>
         </div>
@@ -123,7 +118,9 @@
         <div class="col">
           <v-file-input
             label="View Photos"
+            @change="viewsImages"
             filled
+            multiple
             prepend-icon="mdi-camera"
           ></v-file-input>
         </div>
@@ -133,7 +130,9 @@
         <div class="col">
           <v-file-input
             label="Rooms Photos"
+            @change="roomsImages"
             filled
+            multiple
             prepend-icon="mdi-camera"
           ></v-file-input>
         </div>
@@ -187,6 +186,7 @@
       <v-btn color="success" class="mr-4" type="submit"> Submit </v-btn>
     </v-form>
   </div>
+  <div v-html="ht"></div>
 </template>
 
 <script>
@@ -194,6 +194,10 @@ export default {
   data: () => ({
     valid: true,
     name: "",
+    ht: null,
+    views_img: null,
+    building_img: [],
+    rooms_img: null,
 
     phone: null,
     has_single: null,
@@ -218,20 +222,20 @@ export default {
 
     items: [true, false],
 
-    nameRules: [
-      (v) => !!v || "Name is required",
-      (v) => (v && v.length <= 25) || "Name must be less than 10 characters",
-    ],
-    email: "",
-    emailRules: [
-      (v) => !!v || "E-mail is required",
-      (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-    ],
-    tagline: "",
-    taglineRules: [
-      (v) => !!v || "Name is required",
-      (v) => (v && v.length <= 100) || "Name must be less than 10 characters",
-    ],
+    // nameRules: [
+    //   (v) => !!v || "Name is required",
+    //   (v) => (v && v.length <= 25) || "Name must be less than 10 characters",
+    // ],
+    // email: "",
+    // emailRules: [
+    //   (v) => !!v || "E-mail is required",
+    //   (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+    // ],
+    // tagline: "",
+    // taglineRules: [
+    //   (v) => !!v || "Name is required",
+    //   (v) => (v && v.length <= 100) || "Name must be less than 10 characters",
+    // ],
     website: "",
     websiteRules: [(v) => !!v || "Name is required"],
   }),
@@ -261,7 +265,33 @@ export default {
       data.append("buffet", this.buffet);
       data.append("launch_included", this.launch_included);
       data.append("ac", this.ac);
+
+      for (let i = 0; i < this.building_img.length; i++) {
+        data.append("building_img[]", this.building_img[i]);
+      }
+      for (let i = 0; i < this.rooms_img.length; i++) {
+        data.append("rooms_img", this.rooms_img);
+      }
+      for (let i = 0; i < this.views_img.length; i++) {
+        data.append("views_img", this.views_img);
+      }
+
+      this.branchService.add(data).then((result) => {
+        // console.log(result.data);
+        this.ht = result.data;
+      });
+
       console.log("submitted");
+    },
+
+    buildingImages(e) {
+      this.building_img = Array.from(e.target.files);
+    },
+    viewsImages(e) {
+      this.views_img = Array.from(e.target.files);
+    },
+    roomsImages(e) {
+      this.rooms_img = Array.from(e.target.files);
     },
   },
 };

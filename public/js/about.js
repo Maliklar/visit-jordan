@@ -270,6 +270,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       valid: true,
       name: "",
+      ht: null,
+      views_img: null,
+      building_img: [],
+      rooms_img: null,
       phone: null,
       has_single: null,
       has_double: null,
@@ -291,23 +295,20 @@ __webpack_require__.r(__webpack_exports__);
       location_description: null,
       map_location: null,
       items: [true, false],
-      nameRules: [function (v) {
-        return !!v || "Name is required";
-      }, function (v) {
-        return v && v.length <= 25 || "Name must be less than 10 characters";
-      }],
-      email: "",
-      emailRules: [function (v) {
-        return !!v || "E-mail is required";
-      }, function (v) {
-        return /.+@.+\..+/.test(v) || "E-mail must be valid";
-      }],
-      tagline: "",
-      taglineRules: [function (v) {
-        return !!v || "Name is required";
-      }, function (v) {
-        return v && v.length <= 100 || "Name must be less than 10 characters";
-      }],
+      // nameRules: [
+      //   (v) => !!v || "Name is required",
+      //   (v) => (v && v.length <= 25) || "Name must be less than 10 characters",
+      // ],
+      // email: "",
+      // emailRules: [
+      //   (v) => !!v || "E-mail is required",
+      //   (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+      // ],
+      // tagline: "",
+      // taglineRules: [
+      //   (v) => !!v || "Name is required",
+      //   (v) => (v && v.length <= 100) || "Name must be less than 10 characters",
+      // ],
       website: "",
       websiteRules: [function (v) {
         return !!v || "Name is required";
@@ -316,6 +317,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
+      var _this = this;
+
       var data = new FormData();
       data.append("name", this.name);
       data.append("location_description", this.location_description);
@@ -339,7 +342,33 @@ __webpack_require__.r(__webpack_exports__);
       data.append("buffet", this.buffet);
       data.append("launch_included", this.launch_included);
       data.append("ac", this.ac);
+
+      for (var i = 0; i < this.building_img.length; i++) {
+        data.append("building_img[]", this.building_img[i]);
+      }
+
+      for (var _i = 0; _i < this.rooms_img.length; _i++) {
+        data.append("rooms_img", this.rooms_img);
+      }
+
+      for (var _i2 = 0; _i2 < this.views_img.length; _i2++) {
+        data.append("views_img", this.views_img);
+      }
+
+      this.branchService.add(data).then(function (result) {
+        // console.log(result.data);
+        _this.ht = result.data;
+      });
       console.log("submitted");
+    },
+    buildingImages: function buildingImages(e) {
+      this.building_img = Array.from(e.target.files);
+    },
+    viewsImages: function viewsImages(e) {
+      this.views_img = Array.from(e.target.files);
+    },
+    roomsImages: function roomsImages(e) {
+      this.rooms_img = Array.from(e.target.files);
     }
   }
 });
@@ -1151,6 +1180,7 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Submit ");
 
+var _hoisted_21 = ["innerHTML"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_text_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-text-field");
 
@@ -1164,7 +1194,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_v_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-form");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_form, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_form, {
     ref: "form",
     onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($options.submit, ["prevent"]),
     modelValue: _ctx.valid,
@@ -1181,8 +1211,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         counter: 25,
         rules: _ctx.nameRules,
-        label: "Branch Name",
-        required: ""
+        label: "Branch Name"
       }, null, 8
       /* PROPS */
       , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1191,8 +1220,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.map_location = $event;
         }),
         counter: 25,
-        label: "Branch Location (Google Maps)",
-        required: ""
+        label: "Branch Location (Google Maps)"
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1201,8 +1229,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.location_description = $event;
         }),
         counter: 25,
-        label: "Location Description",
-        required: ""
+        label: "Location Description"
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1211,8 +1238,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.number_of_floors = $event;
         }),
         counter: 25,
-        label: "Number of Floors",
-        required: ""
+        label: "Number of Floors"
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1221,8 +1247,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.number_of_rooms = $event;
         }),
         counter: 25,
-        label: "Number Of Rooms",
-        required: ""
+        label: "Number Of Rooms"
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1231,8 +1256,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.email = $event;
         }),
         rules: _ctx.emailRules,
-        label: "Branch  Email",
-        required: ""
+        label: "Branch  Email"
       }, null, 8
       /* PROPS */
       , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1241,8 +1265,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.phone = $event;
         }),
         counter: 12,
-        label: "Branch Phone Number",
-        required: ""
+        label: "Branch Phone Number"
       }, null, 8
       /* PROPS */
       , ["modelValue"]), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, {
@@ -1358,18 +1381,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* STABLE */
 
       }), _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
+        onChange: $options.buildingImages,
         label: "Hotel Photos",
         filled: "",
+        multiple: "",
         "prepend-icon": "mdi-camera"
-      })]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
+      }, null, 8
+      /* PROPS */
+      , ["onChange"])]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
         label: "View Photos",
+        onChange: $options.viewsImages,
         filled: "",
+        multiple: "",
         "prepend-icon": "mdi-camera"
-      })]), _hoisted_14]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
+      }, null, 8
+      /* PROPS */
+      , ["onChange"])]), _hoisted_14]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
         label: "Rooms Photos",
+        onChange: $options.roomsImages,
         filled: "",
+        multiple: "",
         "prepend-icon": "mdi-camera"
-      })]), _hoisted_17]), _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+      }, null, 8
+      /* PROPS */
+      , ["onChange"])]), _hoisted_17]), _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
         modelValue: _ctx.smoking,
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
           return _ctx.smoking = $event;
@@ -1457,7 +1492,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["onSubmit", "modelValue"])]);
+  , ["onSubmit", "modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    innerHTML: _ctx.ht
+  }, null, 8
+  /* PROPS */
+  , _hoisted_21)], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 /***/ }),

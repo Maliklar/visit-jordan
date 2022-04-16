@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('hotel_images', function (Blueprint $table) {
             $table->id();
-            $table->integer('target')->foreign()->references('hotels')->on('id');
+            $table->integer('hotel_id')->foreign()->references('hotels')->on('id');
             $table->string('image');
             $table->string('type'); // branch , rooms, views
             $table->softDeletes();
