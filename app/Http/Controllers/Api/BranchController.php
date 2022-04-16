@@ -13,11 +13,19 @@ class BranchController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-            // $validated = $request->validate([
-            //     ''
-            // ]);
+            $validated = $request->validate([
 
-            dump($request->all());
+                'views_img' => 'required|max:4',
+                'views_img.*' => 'mimes: jpg, jpeg, png',
+                'building_img' => 'required|max:4',
+                'building_img.*' => 'mimes: jpg, jpeg, png',
+                'rooms_img' => 'required|max:4',
+                'rooms_img.*' => 'mimes: jpg, jpeg, png',
+            ]);
+
+            // $views = $request->file('views_img');
+            // foreach ($views as $file) {
+            // }
         } else {
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
         }
