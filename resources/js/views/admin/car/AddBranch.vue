@@ -39,21 +39,6 @@
         label="Location Description"
         required
       ></v-text-field>
-      <v-text-field
-        type="number"
-        v-model="number_of_floors"
-        :rules="number_of_floorsRules"
-        label="Number of Floors"
-        required
-      ></v-text-field>
-
-      <v-text-field
-        v-model="number_of_rooms"
-        type="number"
-        label="Number Of Rooms"
-        :rules="number_of_roomsRules"
-        required
-      ></v-text-field>
 
       <v-text-field
         v-model="email"
@@ -70,158 +55,22 @@
       ></v-text-field>
       <hr />
 
-      <h6>Rooms Details</h6>
-      <v-row align="center">
-        <v-checkbox
-          v-model="has_single"
-          hide-details
-          label="Has Single Rooms"
-          class="shrink mr-2 mt-0"
-        ></v-checkbox>
-        <v-text-field
-          :disabled="!has_single"
-          :rules="number_of_singleRules"
-          v-model="number_of_single"
-          label="Number Of Single Rooms"
-        ></v-text-field>
-      </v-row>
-
-      <v-row align="center">
-        <v-checkbox
-          v-model="has_double"
-          hide-details
-          label="Has Double Rooms"
-          class="shrink mr-2 mt-0"
-        ></v-checkbox>
-        <v-text-field
-          :disabled="!has_double"
-          :rules="number_of_doubleRules"
-          v-model="number_of_double"
-          label="Number Of Double Rooms"
-        ></v-text-field>
-      </v-row>
-
-      <v-row align="center">
-        <v-checkbox
-          v-model="has_trible"
-          hide-details
-          label="Has Trible Rooms"
-          class="shrink mr-2 mt-0"
-        ></v-checkbox>
-        <v-text-field
-          :disabled="!has_trible"
-          v-model="number_of_trible"
-          :rules="number_of_tribleRules"
-          label="Number Of Trible Rooms"
-        ></v-text-field>
-      </v-row>
-
-      <v-row align="center">
-        <v-checkbox
-          v-model="has_suite"
-          hide-details
-          label="Has Suites"
-          class="shrink mr-2 mt-0"
-        ></v-checkbox>
-        <v-text-field
-          :disabled="!has_suite"
-          v-model="number_of_suites"
-          :rules="number_of_suitesRules"
-          type="number"
-          label="Number Of Suites"
-        ></v-text-field>
-      </v-row>
+      <h6>Cars Details</h6>
 
       <hr />
 
       <h6>Branch Galary</h6>
-      <div class="row">
-        <div class="col">
-          <v-file-input
-            @change="buildingImages"
-            label="Hotel Photos"
-            filled
-            accept="image/*"
-            multiple
-            required
-            prepend-icon="mdi-camera"
-          ></v-file-input>
-        </div>
-        <div class="col">Max: 4</div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <v-file-input
-            label="View Photos"
-            @change="viewsImages"
-            filled
-            accept="image/*"
-            required
-            multiple
-            prepend-icon="mdi-camera"
-          ></v-file-input>
-        </div>
-        <div class="col">Max: 4</div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <v-file-input
-            label="Rooms Photos"
-            @change="roomsImages"
-            filled
-            accept="image/*"
-            multiple
-            required
-            prepend-icon="mdi-camera"
-          ></v-file-input>
-        </div>
-        <div class="col">Max: 4</div>
-      </div>
+      <v-file-input
+        @change="buildingImages"
+        label="Branch Photo"
+        filled
+        accept="image/*"
+        required
+        prepend-icon="mdi-camera"
+      ></v-file-input>
 
       <hr />
-      <h6>Feachers</h6>
-      <v-checkbox
-        v-model="smoking"
-        hide-details
-        label="Smoking"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-checkbox
-        v-model="swimming_pool"
-        hide-details
-        label="Swimming Pool"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-checkbox
-        v-model="wi_fi"
-        hide-details
-        label="Wi-Fi"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-checkbox
-        v-model="pets"
-        hide-details
-        label="Pets"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-checkbox
-        v-model="buffet"
-        hide-details
-        label="Buffet"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-checkbox
-        v-model="launch_included"
-        hide-details
-        label="Launch Included"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-checkbox
-        v-model="ac"
-        hide-details
-        label="Air Conditions"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
+
       <v-btn color="success" class="mr-4" type="submit"> Submit </v-btn>
     </v-form>
   </div>
