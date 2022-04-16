@@ -32,6 +32,11 @@ class UserController extends Controller
                 'authenticated' => 'hotel',
                 'message' => $token,
             ])->withCookie($cookie);
+        } else if ($user->type->type == 'car') {
+            return response([
+                'authenticated' => 'car',
+                'message' => $token,
+            ])->withCookie($cookie);
         } else {
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
         }

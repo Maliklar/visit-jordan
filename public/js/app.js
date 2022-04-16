@@ -23718,6 +23718,8 @@ function _get() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "auth": () => (/* binding */ auth),
+/* harmony export */   "edit": () => (/* binding */ edit),
+/* harmony export */   "get": () => (/* binding */ get),
 /* harmony export */   "login": () => (/* binding */ login),
 /* harmony export */   "register": () => (/* binding */ register)
 /* harmony export */ });
@@ -23802,18 +23804,18 @@ function _register() {
   return _register.apply(this, arguments);
 }
 
-function auth() {
-  return _auth.apply(this, arguments);
+function edit(_x4) {
+  return _edit.apply(this, arguments);
 }
 
-function _auth() {
-  _auth = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+function _edit() {
+  _edit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/auth")).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/admin/cars/edit"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -23829,7 +23831,67 @@ function _auth() {
       }
     }, _callee3);
   }));
+  return _edit.apply(this, arguments);
+}
+
+function auth() {
   return _auth.apply(this, arguments);
+}
+
+function _auth() {
+  _auth = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/auth")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context4.abrupt("return", _context4.sent);
+
+          case 3:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _auth.apply(this, arguments);
+}
+
+function get() {
+  return _get.apply(this, arguments);
+}
+
+function _get() {
+  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/cars/get")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context5.abrupt("return", _context5.sent);
+
+          case 3:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _get.apply(this, arguments);
 }
 
 
@@ -24487,6 +24549,31 @@ var routes = [{
   }],
   component: function component() {
     return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Dashboard.vue */ "./resources/js/views/admin/hotel/Dashboard.vue"));
+  }
+}, {
+  path: "/admin/car/dashboard",
+  name: "Dashboard",
+  children: [{
+    path: "company_profile",
+    name: "CompnayProfile",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/car/CompanyProfile.vue */ "./resources/js/views/admin/car/CompanyProfile.vue"));
+    }
+  }, {
+    path: "branches",
+    name: "Branches",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/car/Branches.vue */ "./resources/js/views/admin/car/Branches.vue"));
+    }
+  }, {
+    path: "branches/add",
+    name: "AddBranch",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/car/AddBranch.vue */ "./resources/js/views/admin/car/AddBranch.vue"));
+    }
+  }],
+  component: function component() {
+    return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/car/Dashboard.vue */ "./resources/js/views/admin/car/Dashboard.vue"));
   }
 }];
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.createRouter)({

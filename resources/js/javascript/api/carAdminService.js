@@ -29,6 +29,14 @@ async function register(data) {
 
 }
 
+async function edit(data) {
+
+    return await axios
+        .post(`${ROOT_API}/admin/cars/edit`, data)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
 async function auth() {
     return await axios
         .get(`${ROOT_API}/admin/auth`)
@@ -37,5 +45,13 @@ async function auth() {
 }
 
 
+async function get() {
+    return await axios
+        .get(`${ROOT_API}/admin/cars/get`)
+        .then(response => response)
+        .catch(e => e.response);
+}
 
-export { auth, login, register };
+
+
+export { auth, get, login, edit, register };

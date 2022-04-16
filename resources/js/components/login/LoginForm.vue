@@ -110,6 +110,11 @@ export default {
               path: "/admin/hotel/dashboard",
             });
           }
+          if (result.data.authenticated == "car") {
+            this.$router.push({
+              path: "/admin/car/dashboard",
+            });
+          }
         }
       });
     },

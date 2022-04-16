@@ -89,8 +89,10 @@ Route::post('/hotels/register', [HotelsController::class, 'register']);
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/admin/cars/auth', [HotelsController::class, 'auth']);  // Auth
-    Route::post('/admin/hotels/edit', [HotelsController::class, 'edit']);  // Add (admin add a hotel)
+    Route::get('/admin/cars/auth', [CarController::class, 'auth']);  // Auth
+    Route::post('/admin/cars/edit', [CarController::class, 'edit']);  // Add (admin add a hotel)
+    Route::get('/admin/cars/get', [CarController::class, 'getAdmin']);  // Add (admin add a hotel)
+
 });
 
 Route::post('/admin/cars/register', [CarController::class, 'register']);
