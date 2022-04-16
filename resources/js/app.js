@@ -14,6 +14,7 @@ const bannerService = require('./javascript/api/bannerService');
 const hotelService = require('./javascript/api/hotelService');
 const userService = require('./javascript/api/userService');
 const branchService = require('./javascript/api/branchService');
+const carAdminService = require('./javascript/api/carAdminService');
 const hotelAdminService = require('./javascript/api/hotelAdminService');
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
@@ -49,6 +50,7 @@ const GLOBAL = {
             userService: userService,
             hotelAdminService: hotelAdminService,
             branchService: branchService,
+            carAdminService: carAdminService,
         };
     },
 };

@@ -29,6 +29,9 @@
 
 <script>
 export default {
+  props: {
+    type: String,
+  },
   data() {
     return {
       email: null,
@@ -41,19 +44,36 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.hotelService.register(data).then((result) => {
-        if (result.status == 200) {
-          this.hotelService.login(data).then((result) => {
-            if (result.status == 200) {
-              this.$router.push({
-                path: "/signup/hotel/finish",
-              });
-            }
-          });
-        } else {
+      if (this.type == "hotel") {
+        this.hotelService.register(data).then((result) => {
+          if (result.status == 200) {
+            this.hotelService.login(data).then((result) => {
+              if (result.status == 200) {
+                this.$router.push({
+                  path: "/signup/hotel/finish",
+                });
+              }
+            });
+          } else {
+            console.log(result);
+          }
+        });
+      } else if (this.type == "car") {
+        this.carAdminService.register(data).then((result) => {
+          if (result.status == 200) {
+            this.hotelService.login(data).then((result) => {
+              if (result.status == 200) {
+                this.$router.push({
+                  path: "/signup/hotel/finish",
+                });
+              }
+            });
+          } else {
+            console.log(result);
+          }
           console.log(result);
-        }
-      });
+        });
+      }
     },
   },
 };

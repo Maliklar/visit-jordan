@@ -23516,6 +23516,8 @@ var userService = __webpack_require__(/*! ./javascript/api/userService */ "./res
 
 var branchService = __webpack_require__(/*! ./javascript/api/branchService */ "./resources/js/javascript/api/branchService.js");
 
+var carAdminService = __webpack_require__(/*! ./javascript/api/carAdminService */ "./resources/js/javascript/api/carAdminService.js");
+
 var hotelAdminService = __webpack_require__(/*! ./javascript/api/hotelAdminService */ "./resources/js/javascript/api/hotelAdminService.js");
 
 
@@ -23542,7 +23544,8 @@ var GLOBAL = {
       hotelService: hotelService,
       userService: userService,
       hotelAdminService: hotelAdminService,
-      branchService: branchService
+      branchService: branchService,
+      carAdminService: carAdminService
     };
   }
 };
@@ -23699,6 +23702,134 @@ function _get() {
     }, _callee2);
   }));
   return _get.apply(this, arguments);
+}
+
+
+
+/***/ }),
+
+/***/ "./resources/js/javascript/api/carAdminService.js":
+/*!********************************************************!*\
+  !*** ./resources/js/javascript/api/carAdminService.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "auth": () => (/* binding */ auth),
+/* harmony export */   "login": () => (/* binding */ login),
+/* harmony export */   "register": () => (/* binding */ register)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var ROOT_API = "http://localhost:8000/api";
+
+function login(_x, _x2) {
+  return _login.apply(this, arguments);
+}
+
+function _login() {
+  _login = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(email, password) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/admin/login"), {
+              email: email,
+              password: password
+            }, {// headers:{
+              //   "Accept" : "application/json",
+              //   "Content-Type" : "application/x-www-form-urlencoded",
+              //   "X-Requested-With" : "XMLHttpRequest"
+              // }
+            }).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context.abrupt("return", _context.sent);
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _login.apply(this, arguments);
+}
+
+function register(_x3) {
+  return _register.apply(this, arguments);
+}
+
+function _register() {
+  _register = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/admin/cars/register"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _register.apply(this, arguments);
+}
+
+function auth() {
+  return _auth.apply(this, arguments);
+}
+
+function _auth() {
+  _auth = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/auth")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _auth.apply(this, arguments);
 }
 
 
@@ -24307,6 +24438,12 @@ var routes = [{
   name: "SignUpHotelFinish",
   component: function component() {
     return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/signup/SignUpHotelFinish.vue */ "./resources/js/views/signup/SignUpHotelFinish.vue"));
+  }
+}, {
+  path: "/signup/car",
+  name: "SignUpCar",
+  component: function component() {
+    return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/car/signup/SignUpCar.vue */ "./resources/js/views/admin/car/signup/SignUpCar.vue"));
   }
 }, {
   path: "/login",

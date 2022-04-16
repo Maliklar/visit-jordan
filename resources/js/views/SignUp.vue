@@ -28,7 +28,7 @@ export default {
   methods: {
     car() {
       this.$router.push({
-        path: "/",
+        path: "/signup/car",
       });
     },
     hotel() {

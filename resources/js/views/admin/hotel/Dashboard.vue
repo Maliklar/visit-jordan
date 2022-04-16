@@ -39,7 +39,7 @@
           <v-list-item
             prepend-icon="mdi-office-building-outline"
             title="Branches"
-            value="reservations"
+            value="branches"
             @click="branches"
           ></v-list-item>
 
