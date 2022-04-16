@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Hotel;
 use App\Models\HotelImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\HttpFoundation\Response;
 
 class BranchController extends Controller
@@ -27,6 +29,36 @@ class BranchController extends Controller
 
 
             $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
+
+
+            Branch::create([
+                'hotel_id' => $hotel_id,
+                'user_id' => $user->id,
+                'name' => $request->name,
+                'number_of_floors' => $request->number_of_floors,
+                'number_of_rooms' => $request->number_of_rooms,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'has_single' => $request->has_single === 'true' ? true : false,
+                'has_double' => $request->has_double === 'true' ? true : false,
+                'has_trible' => $request->has_trible === 'true' ? true : false,
+                'has_suite' => $request->has_suite === 'true' ? true : false,
+                'number_of_single' => $request->number_of_single,
+                'number_of_double' => $request->number_of_double,
+                'number_of_trible' => $request->number_of_trible,
+                'number_of_suites' => $request->number_of_suites,
+                'map_location' => $request->map_location,
+                'location_description' => $request->location_description,
+                'wi_fi' => $request->wi_fi === 'true' ? true : false,
+                'pets' => $request->pets === 'true' ? true : false,
+                'swimming_pool' => $request->swimming_pool === 'true' ? true : false,
+                'buffet' => $request->buffet === 'true' ? true : false,
+                'smoking' => $request->smoking === 'true' ? true : false,
+                'lanuch_included' => $request->lanuch_included === 'true' ? true : false,
+                'ac' => $request->ac === 'true' ? true : false,
+
+            ]);
+
 
             $views_img = $request->file('views_img');
             foreach ($views_img as $image) {
@@ -70,8 +102,6 @@ class BranchController extends Controller
                     'hotel_id' => $hotel_id,
                 ]);
             }
-
-            dump($building_img);
         } else {
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
         }

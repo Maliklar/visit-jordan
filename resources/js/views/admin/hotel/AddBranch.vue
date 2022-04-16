@@ -226,7 +226,7 @@ export default {
     //   (v) => !!v || "Name is required",
     //   (v) => (v && v.length <= 25) || "Name must be less than 10 characters",
     // ],
-    // email: "",
+    email: "",
     // emailRules: [
     //   (v) => !!v || "E-mail is required",
     //   (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
@@ -270,15 +270,18 @@ export default {
         data.append("building_img[]", this.building_img[i]);
       }
       for (let i = 0; i < this.rooms_img.length; i++) {
-        data.append("rooms_img", this.rooms_img);
+        data.append("rooms_img[]", this.rooms_img[i]);
       }
+
+      console.log(this.views_img);
       for (let i = 0; i < this.views_img.length; i++) {
-        data.append("views_img", this.views_img);
+        data.append("views_img[]", this.views_img[i]);
       }
 
       this.branchService.add(data).then((result) => {
         // console.log(result.data);
         this.ht = result.data;
+        console.log(result);
       });
 
       console.log("submitted");
@@ -289,6 +292,7 @@ export default {
     },
     viewsImages(e) {
       this.views_img = Array.from(e.target.files);
+      console.log(e.target.files);
     },
     roomsImages(e) {
       this.rooms_img = Array.from(e.target.files);

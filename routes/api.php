@@ -74,4 +74,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/hotels/edit', [HotelsController::class, 'edit']);  // Edit (admin Edit hotel info)
 });
 
+Route::post('/admin/hotels/login', [HotelsController::class, 'login']);  // Add (admin add a hotel)
+
 Route::post('/hotels/register', [HotelsController::class, 'register']);

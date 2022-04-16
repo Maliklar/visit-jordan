@@ -299,7 +299,7 @@ __webpack_require__.r(__webpack_exports__);
       //   (v) => !!v || "Name is required",
       //   (v) => (v && v.length <= 25) || "Name must be less than 10 characters",
       // ],
-      // email: "",
+      email: "",
       // emailRules: [
       //   (v) => !!v || "E-mail is required",
       //   (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
@@ -348,16 +348,19 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       for (var _i = 0; _i < this.rooms_img.length; _i++) {
-        data.append("rooms_img", this.rooms_img);
+        data.append("rooms_img[]", this.rooms_img[_i]);
       }
 
+      console.log(this.views_img);
+
       for (var _i2 = 0; _i2 < this.views_img.length; _i2++) {
-        data.append("views_img", this.views_img);
+        data.append("views_img[]", this.views_img[_i2]);
       }
 
       this.branchService.add(data).then(function (result) {
         // console.log(result.data);
         _this.ht = result.data;
+        console.log(result);
       });
       console.log("submitted");
     },
@@ -366,6 +369,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     viewsImages: function viewsImages(e) {
       this.views_img = Array.from(e.target.files);
+      console.log(e.target.files);
     },
     roomsImages: function roomsImages(e) {
       this.rooms_img = Array.from(e.target.files);
