@@ -23086,11 +23086,10 @@ var hotelAdminService = __webpack_require__(/*! ./javascript/api/hotelAdminServi
 var vuetify = (0,vuetify__WEBPACK_IMPORTED_MODULE_7__.createVuetify)({
   components: vuetify_components__WEBPACK_IMPORTED_MODULE_8__,
   directives: vuetify_directives__WEBPACK_IMPORTED_MODULE_9__,
-  // theme: {
-  //     defaultTheme: 'dark',
-  //     themes: {
-  //     }
-  // },
+  theme: {
+    defaultTheme: 'dark',
+    themes: {}
+  },
   icons: {
     defaultSet: 'mdi',
     aliases: vuetify_lib_iconsets_mdi__WEBPACK_IMPORTED_MODULE_10__.aliases,

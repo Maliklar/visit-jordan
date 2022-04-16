@@ -24,12 +24,12 @@ import * as directives from 'vuetify/directives'
 const vuetify = createVuetify({
     components,
     directives,
-    // theme: {
-    //     defaultTheme: 'dark',
-    //     themes: {
+    theme: {
+        defaultTheme: 'dark',
+        themes: {
 
-    //     }
-    // },
+        }
+    },
     icons: {
         defaultSet: 'mdi',
         aliases,

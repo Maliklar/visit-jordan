@@ -270,6 +270,27 @@ __webpack_require__.r(__webpack_exports__);
     return {
       valid: true,
       name: "",
+      phone: null,
+      has_single: null,
+      has_double: null,
+      has_trible: null,
+      has_suite: null,
+      number_of_single: null,
+      number_of_double: null,
+      number_of_trible: null,
+      number_of_suites: null,
+      number_of_rooms: null,
+      number_of_floors: null,
+      smoking: null,
+      pets: null,
+      wi_fi: null,
+      ac: null,
+      buffet: null,
+      launch_included: null,
+      swimming_pool: null,
+      location_description: null,
+      map_location: null,
+      items: [true, false],
       nameRules: [function (v) {
         return !!v || "Name is required";
       }, function (v) {
@@ -290,24 +311,35 @@ __webpack_require__.r(__webpack_exports__);
       website: "",
       websiteRules: [function (v) {
         return !!v || "Name is required";
-      }],
-      number: "",
-      numberRules: [function (v) {
-        return !!v || "Name is required";
-      }, function (v) {
-        return v && v.length <= 12 || "Name must be less than 10 characters";
       }]
     };
   },
   methods: {
-    validate: function validate() {
-      this.$refs.form.validate();
-    },
-    reset: function reset() {
-      this.$refs.form.reset();
-    },
-    resetValidation: function resetValidation() {
-      this.$refs.form.resetValidation();
+    submit: function submit() {
+      var data = new FormData();
+      data.append("name", this.name);
+      data.append("location_description", this.location_description);
+      data.append("map_location", this.map_location);
+      data.append("email", this.email);
+      data.append("number_of_floors", this.number_of_floors);
+      data.append("number_of_rooms", this.number_of_rooms);
+      data.append("phone", this.phone);
+      data.append("has_single", this.has_single);
+      data.append("has_double", this.has_double);
+      data.append("has_trible", this.has_trible);
+      data.append("has_suite", this.has_suite);
+      data.append("number_of_single", this.number_of_single);
+      data.append("number_of_double", this.number_of_double);
+      data.append("number_of_trible", this.number_of_trible);
+      data.append("number_of_suites", this.number_of_suites);
+      data.append("smoking", this.smoking);
+      data.append("wi_fi", this.wi_fi);
+      data.append("pets", this.pets);
+      data.append("swimming_pool", this.swimming_pool);
+      data.append("buffet", this.buffet);
+      data.append("launch_included", this.launch_included);
+      data.append("ac", this.ac);
+      console.log("submitted");
     }
   }
 });
@@ -1062,123 +1094,69 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_7 = {
-  "class": "row"
-};
-var _hoisted_8 = {
-  "class": "col"
-};
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "col"
-}, null, -1
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
 /* HOISTED */
 );
 
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Branch Galary", -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
+  "class": "row"
+};
 var _hoisted_10 = {
-  "class": "row"
-};
-var _hoisted_11 = {
   "class": "col"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col"
-}, null, -1
+}, "Preview", -1
 /* HOISTED */
 );
 
+var _hoisted_12 = {
+  "class": "row"
+};
 var _hoisted_13 = {
-  "class": "row"
-};
-var _hoisted_14 = {
   "class": "col"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col"
-}, null, -1
+}, "Preview", -1
 /* HOISTED */
 );
 
+var _hoisted_15 = {
+  "class": "row"
+};
 var _hoisted_16 = {
-  "class": "row"
-};
-var _hoisted_17 = {
   "class": "col"
 };
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "col"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Branch Galary", -1
-/* HOISTED */
-);
-
-var _hoisted_21 = {
-  "class": "row"
-};
-var _hoisted_22 = {
-  "class": "col"
-};
-
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col"
 }, "Preview", -1
 /* HOISTED */
 );
 
-var _hoisted_24 = {
-  "class": "row"
-};
-var _hoisted_25 = {
-  "class": "col"
-};
-
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "col"
-}, "Preview", -1
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_27 = {
-  "class": "row"
-};
-var _hoisted_28 = {
-  "class": "col"
-};
-
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "col"
-}, "Preview", -1
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Feachers", -1
 /* HOISTED */
 );
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Feachers", -1
-/* HOISTED */
-);
-
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Validate ");
-
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Reset Form ");
-
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Reset Validation ");
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Submit ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_text_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-text-field");
 
-  var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
+  var _component_v_checkbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-checkbox");
+
+  var _component_v_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-row");
 
   var _component_v_file_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-file-input");
 
@@ -1188,8 +1166,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_form, {
     ref: "form",
+    onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($options.submit, ["prevent"]),
     modelValue: _ctx.valid,
-    "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
+    "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
       return _ctx.valid = $event;
     }),
     "lazy-validation": ""
@@ -1207,41 +1186,48 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
-        modelValue: _ctx.name,
+        modelValue: _ctx.map_location,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return _ctx.name = $event;
+          return _ctx.map_location = $event;
         }),
         counter: 25,
-        rules: _ctx.nameRules,
         label: "Branch Location (Google Maps)",
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
-        modelValue: _ctx.name,
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+        modelValue: _ctx.location_description,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return _ctx.name = $event;
+          return _ctx.location_description = $event;
         }),
         counter: 25,
-        rules: _ctx.nameRules,
+        label: "Location Description",
+        required: ""
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+        modelValue: _ctx.number_of_floors,
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+          return _ctx.number_of_floors = $event;
+        }),
+        counter: 25,
         label: "Number of Floors",
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
-        modelValue: _ctx.name,
-        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return _ctx.name = $event;
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+        modelValue: _ctx.number_of_rooms,
+        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+          return _ctx.number_of_rooms = $event;
         }),
         counter: 25,
-        rules: _ctx.nameRules,
         label: "Number Of Rooms",
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
         modelValue: _ctx.email,
-        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
           return _ctx.email = $event;
         }),
         rules: _ctx.emailRules,
@@ -1250,192 +1236,228 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
-        modelValue: _ctx.number,
-        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return _ctx.number = $event;
+        modelValue: _ctx.phone,
+        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+          return _ctx.phone = $event;
         }),
         counter: 12,
-        rules: _ctx.numberRules,
         label: "Branch Phone Number",
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue", "rules"]), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
-        modelValue: _ctx.select,
-        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-          return _ctx.select = $event;
+      , ["modelValue"]), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, {
+        align: "center"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+            modelValue: _ctx.has_single,
+            "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+              return _ctx.has_single = $event;
+            }),
+            "hide-details": "",
+            label: "Has Single Rooms",
+            "class": "shrink mr-2 mt-0"
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+            disabled: !_ctx.has_single,
+            modelValue: _ctx.number_of_single,
+            "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+              return _ctx.number_of_single = $event;
+            }),
+            label: "Number Of Single Rooms"
+          }, null, 8
+          /* PROPS */
+          , ["disabled", "modelValue"])];
         }),
-        items: _ctx.items,
-        rules: [function (v) {
-          return !!v || 'Item is required';
-        }],
-        label: "Has Single Rooms",
-        required: ""
-      }, null, 8
-      /* PROPS */
-      , ["modelValue", "items", "rules"])]), _hoisted_9]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
-        modelValue: _ctx.select,
-        "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-          return _ctx.select = $event;
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, {
+        align: "center"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+            modelValue: _ctx.has_double,
+            "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+              return _ctx.has_double = $event;
+            }),
+            "hide-details": "",
+            label: "Has Double Rooms",
+            "class": "shrink mr-2 mt-0"
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+            disabled: !_ctx.has_double,
+            modelValue: _ctx.number_of_double,
+            "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+              return _ctx.number_of_double = $event;
+            }),
+            label: "Number Of Double Rooms"
+          }, null, 8
+          /* PROPS */
+          , ["disabled", "modelValue"])];
         }),
-        items: _ctx.items,
-        rules: [function (v) {
-          return !!v || 'Item is required';
-        }],
-        label: "Has Double Rooms",
-        required: ""
-      }, null, 8
-      /* PROPS */
-      , ["modelValue", "items", "rules"])]), _hoisted_12]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
-        modelValue: _ctx.select,
-        "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-          return _ctx.select = $event;
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, {
+        align: "center"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+            modelValue: _ctx.has_trible,
+            "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+              return _ctx.has_trible = $event;
+            }),
+            "hide-details": "",
+            label: "Has Trible Rooms",
+            "class": "shrink mr-2 mt-0"
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+            disabled: !_ctx.has_trible,
+            modelValue: _ctx.number_of_trible,
+            "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+              return _ctx.number_of_trible = $event;
+            }),
+            label: "Number Of Trible Rooms"
+          }, null, 8
+          /* PROPS */
+          , ["disabled", "modelValue"])];
         }),
-        items: _ctx.items,
-        rules: [function (v) {
-          return !!v || 'Item is required';
-        }],
-        label: "Has Trible Rooms",
-        required: ""
-      }, null, 8
-      /* PROPS */
-      , ["modelValue", "items", "rules"])]), _hoisted_15]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
-        modelValue: _ctx.select,
-        "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-          return _ctx.select = $event;
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, {
+        align: "center"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+            modelValue: _ctx.has_suite,
+            "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+              return _ctx.has_suite = $event;
+            }),
+            "hide-details": "",
+            label: "Has Suites",
+            "class": "shrink mr-2 mt-0"
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+            disabled: !_ctx.has_suite,
+            modelValue: _ctx.number_of_suites,
+            "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+              return _ctx.number_of_suites = $event;
+            }),
+            label: "Number Of Suites"
+          }, null, 8
+          /* PROPS */
+          , ["disabled", "modelValue"])];
         }),
-        items: _ctx.items,
-        rules: [function (v) {
-          return !!v || 'Item is required';
-        }],
-        label: "Has Suites",
-        required: ""
-      }, null, 8
-      /* PROPS */
-      , ["modelValue", "items", "rules"])]), _hoisted_18]), _hoisted_19, _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
+        _: 1
+        /* STABLE */
+
+      }), _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
         label: "Hotel Photos",
         filled: "",
         "prepend-icon": "mdi-camera"
-      })]), _hoisted_23]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
+      })]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
         label: "View Photos",
         filled: "",
         "prepend-icon": "mdi-camera"
-      })]), _hoisted_26]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
+      })]), _hoisted_14]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
         label: "Rooms Photos",
         filled: "",
         "prepend-icon": "mdi-camera"
-      })]), _hoisted_29]), _hoisted_30, _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
-        modelValue: _ctx.select,
-        "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-          return _ctx.select = $event;
+      })]), _hoisted_17]), _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+        modelValue: _ctx.smoking,
+        "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
+          return _ctx.smoking = $event;
         }),
-        items: _ctx.items,
-        rules: [function (v) {
-          return !!v || 'Item is required';
-        }],
-        label: "Smoking Allowed",
-        required: ""
+        "hide-details": "",
+        label: "Smoking",
+        "class": "shrink mr-2 mt-0"
       }, null, 8
       /* PROPS */
-      , ["modelValue", "items", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
-        modelValue: _ctx.select,
-        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-          return _ctx.select = $event;
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+        modelValue: _ctx.swimming_pool,
+        "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
+          return _ctx.swimming_pool = $event;
         }),
-        items: _ctx.items,
-        rules: [function (v) {
-          return !!v || 'Item is required';
-        }],
+        "hide-details": "",
+        label: "Swimming Pool",
+        "class": "shrink mr-2 mt-0"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+        modelValue: _ctx.wi_fi,
+        "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
+          return _ctx.wi_fi = $event;
+        }),
+        "hide-details": "",
         label: "Wi-Fi",
-        required: ""
+        "class": "shrink mr-2 mt-0"
       }, null, 8
       /* PROPS */
-      , ["modelValue", "items", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
-        modelValue: _ctx.select,
-        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-          return _ctx.select = $event;
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+        modelValue: _ctx.pets,
+        "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
+          return _ctx.pets = $event;
         }),
-        items: _ctx.items,
-        rules: [function (v) {
-          return !!v || 'Item is required';
-        }],
+        "hide-details": "",
         label: "Pets",
-        required: ""
+        "class": "shrink mr-2 mt-0"
       }, null, 8
       /* PROPS */
-      , ["modelValue", "items", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
-        modelValue: _ctx.select,
-        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-          return _ctx.select = $event;
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+        modelValue: _ctx.buffet,
+        "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
+          return _ctx.buffet = $event;
         }),
-        items: _ctx.items,
-        rules: [function (v) {
-          return !!v || 'Item is required';
-        }],
-        label: "Swiming pool",
-        required: ""
+        "hide-details": "",
+        label: "Buffet",
+        "class": "shrink mr-2 mt-0"
       }, null, 8
       /* PROPS */
-      , ["modelValue", "items", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
-        modelValue: _ctx.select,
-        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
-          return _ctx.select = $event;
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+        modelValue: _ctx.launch_included,
+        "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
+          return _ctx.launch_included = $event;
         }),
-        items: _ctx.items,
-        rules: [function (v) {
-          return !!v || 'Item is required';
-        }],
-        label: "Boofe",
-        required: ""
+        "hide-details": "",
+        label: "Launch Included",
+        "class": "shrink mr-2 mt-0"
       }, null, 8
       /* PROPS */
-      , ["modelValue", "items", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
-        disabled: !_ctx.valid,
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+        modelValue: _ctx.ac,
+        "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
+          return _ctx.ac = $event;
+        }),
+        "hide-details": "",
+        label: "Air Conditions",
+        "class": "shrink mr-2 mt-0"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
         color: "success",
         "class": "mr-4",
-        onClick: $options.validate
+        type: "submit"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_32];
+          return [_hoisted_20];
         }),
         _: 1
         /* STABLE */
 
-      }, 8
-      /* PROPS */
-      , ["disabled", "onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
-        color: "error",
-        "class": "mr-4",
-        onClick: $options.reset
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_33];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
-        color: "warning",
-        onClick: $options.resetValidation
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_34];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["onClick"])];
+      })];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["modelValue"])]);
+  , ["onSubmit", "modelValue"])]);
 }
 
 /***/ }),

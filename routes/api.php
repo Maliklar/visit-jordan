@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\Api\BranchController;
 use App\Http\Controllers\Api\HomeBannerController;
 use App\Http\Controllers\Api\HotelsController;
 use App\Http\Controllers\Api\UserController;
@@ -69,6 +70,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/hotels/add', [HotelsController::class, 'add']);  // Add (admin add a hotel)
     Route::get('/admin/hotels/get', [HotelsController::class, 'getAdmin']);  // Add (admin add a hotel)
     Route::post('/admin/hotels/edit', [HotelsController::class, 'edit']);  // Add (admin add a hotel)
+    Route::post('/admin/branches/add', [BranchController::class, 'add']);  // Add (admin add a hotel)
     Route::patch('/hotels/edit', [HotelsController::class, 'edit']);  // Edit (admin Edit hotel info)
 });
 
