@@ -7,7 +7,6 @@ import store from "./store";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { aliases, mdi } from 'vuetify/lib/iconsets/mdi'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
 import { createVuetify } from 'vuetify'
@@ -15,16 +14,22 @@ const bannerService = require('./javascript/api/bannerService');
 const hotelService = require('./javascript/api/hotelService');
 const userService = require('./javascript/api/userService');
 const hotelAdminService = require('./javascript/api/hotelAdminService');
-console.log('env:  ', process.env.MIX_PUSHER_APP_API);
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+
+
+
+
 
 const vuetify = createVuetify({
     components,
     directives,
-    theme: {
-        defaultTheme: 'dark'
-    },
+    // theme: {
+    //     defaultTheme: 'dark',
+    //     themes: {
+
+    //     }
+    // },
     icons: {
         defaultSet: 'mdi',
         aliases,
@@ -32,9 +37,6 @@ const vuetify = createVuetify({
             mdi,
         }
     },
-
-
-
 
 })
 
