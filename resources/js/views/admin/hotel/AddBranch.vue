@@ -9,38 +9,47 @@
         :counter="25"
         :rules="nameRules"
         label="Branch Name"
+        required
       ></v-text-field>
 
       <v-text-field
         v-model="map_location"
         :counter="25"
         label="Branch Location (Google Maps)"
+        required
       ></v-text-field>
       <v-text-field
         v-model="location_description"
         :counter="25"
         label="Location Description"
+        required
       ></v-text-field>
       <v-text-field
+        type="number"
         v-model="number_of_floors"
-        :counter="25"
         label="Number of Floors"
+        required
       ></v-text-field>
 
       <v-text-field
         v-model="number_of_rooms"
-        :counter="25"
+        type="number"
         label="Number Of Rooms"
+        required
       ></v-text-field>
+
       <v-text-field
         v-model="email"
         :rules="emailRules"
         label="Branch  Email"
+        required
       ></v-text-field>
       <v-text-field
         v-model="phone"
+        :rules="phoneRules"
         :counter="12"
         label="Branch Phone Number"
+        required
       ></v-text-field>
       <hr />
       <h6>Rooms Details</h6>
@@ -219,19 +228,15 @@ export default {
     swimming_pool: null,
     location_description: null,
     map_location: null,
+    tagline: "",
 
     items: [true, false],
 
-    // nameRules: [
-    //   (v) => !!v || "Name is required",
-    //   (v) => (v && v.length <= 25) || "Name must be less than 10 characters",
-    // ],
     email: "",
-    // emailRules: [
-    //   (v) => !!v || "E-mail is required",
-    //   (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-    // ],
-    // tagline: "",
+    emailRules: [
+      (v) => !!v || "E-mail is required",
+      (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+    ],
     // taglineRules: [
     //   (v) => !!v || "Name is required",
     //   (v) => (v && v.length <= 100) || "Name must be less than 10 characters",

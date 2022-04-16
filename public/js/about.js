@@ -294,17 +294,14 @@ __webpack_require__.r(__webpack_exports__);
       swimming_pool: null,
       location_description: null,
       map_location: null,
+      tagline: "",
       items: [true, false],
-      // nameRules: [
-      //   (v) => !!v || "Name is required",
-      //   (v) => (v && v.length <= 25) || "Name must be less than 10 characters",
-      // ],
       email: "",
-      // emailRules: [
-      //   (v) => !!v || "E-mail is required",
-      //   (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-      // ],
-      // tagline: "",
+      emailRules: [function (v) {
+        return !!v || "E-mail is required";
+      }, function (v) {
+        return /.+@.+\..+/.test(v) || "E-mail must be valid";
+      }],
       // taglineRules: [
       //   (v) => !!v || "Name is required",
       //   (v) => (v && v.length <= 100) || "Name must be less than 10 characters",
@@ -1215,7 +1212,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         counter: 25,
         rules: _ctx.nameRules,
-        label: "Branch Name"
+        label: "Branch Name",
+        required: ""
       }, null, 8
       /* PROPS */
       , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1224,7 +1222,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.map_location = $event;
         }),
         counter: 25,
-        label: "Branch Location (Google Maps)"
+        label: "Branch Location (Google Maps)",
+        required: ""
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1233,16 +1232,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.location_description = $event;
         }),
         counter: 25,
-        label: "Location Description"
+        label: "Location Description",
+        required: ""
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+        type: "number",
         modelValue: _ctx.number_of_floors,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return _ctx.number_of_floors = $event;
         }),
-        counter: 25,
-        label: "Number of Floors"
+        label: "Number of Floors",
+        required: ""
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1250,8 +1251,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
           return _ctx.number_of_rooms = $event;
         }),
-        counter: 25,
-        label: "Number Of Rooms"
+        type: "number",
+        label: "Number Of Rooms",
+        required: ""
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1260,7 +1262,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return _ctx.email = $event;
         }),
         rules: _ctx.emailRules,
-        label: "Branch  Email"
+        label: "Branch  Email",
+        required: ""
       }, null, 8
       /* PROPS */
       , ["modelValue", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -1268,11 +1271,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
           return _ctx.phone = $event;
         }),
+        rules: _ctx.phoneRules,
         counter: 12,
-        label: "Branch Phone Number"
+        label: "Branch Phone Number",
+        required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, {
+      , ["modelValue", "rules"]), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, {
         align: "center"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
