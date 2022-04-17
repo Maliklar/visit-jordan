@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cars_images', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->integer('hotel_id')->foreign()->references('hotels')->on('id');
+            $table->integer('branch_id')->foreign()->references('hotel_branches')->on('id');
+            $table->integer('category_id')->foreign()->references('room_categories')->on('id');
+
+            $table->boolean('available')->default(false);
             $table->softDeletes();
 
             $table->timestamps();
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cars_images');
+        Schema::dropIfExists('rooms');
     }
 };

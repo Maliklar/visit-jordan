@@ -59,18 +59,6 @@
 
       <hr />
 
-      <h6>Branch Galary</h6>
-      <v-file-input
-        @change="buildingImages"
-        label="Branch Photo"
-        filled
-        accept="image/*"
-        required
-        prepend-icon="mdi-camera"
-      ></v-file-input>
-
-      <hr />
-
       <v-btn color="success" class="mr-4" type="submit"> Submit </v-btn>
     </v-form>
   </div>
@@ -83,31 +71,9 @@ export default {
     valid: true,
     name: "",
     ht: null,
-    views_img: null,
-    building_img: [],
-    rooms_img: null,
-
-    phone: null,
-    has_single: false,
-    has_double: null,
-    has_trible: null,
-    has_suite: null,
-    number_of_single: 0,
-    number_of_double: 0,
-    number_of_trible: 0,
-    number_of_suites: 0,
-    number_of_rooms: 0,
-    number_of_floors: 0,
-    smoking: null,
-    pets: null,
-    wi_fi: null,
-    ac: null,
-    buffet: null,
-    launch_included: null,
-    swimming_pool: null,
     location_description: null,
     map_location: null,
-    tagline: "",
+    phone: null,
     email: "",
     website: "",
     isLoading: false,
@@ -133,88 +99,18 @@ export default {
     ],
   }),
 
-  computed: {
-    number_of_singleRules() {
-      if (this.has_single) {
-        return [
-          (v) => !!v || "Required",
-          (v) => /^\d[0-9]+$/.test(v) || "Only numbers are allowed",
-        ];
-      } else {
-        return [];
-      }
-    },
-    number_of_doubleRules() {
-      if (this.has_double) {
-        return [
-          (v) => !!v || "Required",
-          (v) => /^\d[0-9]+$/.test(v) || "Only numbers are allowed",
-        ];
-      } else {
-        return [];
-      }
-    },
-    number_of_tribleRules() {
-      if (this.has_trible) {
-        return [
-          (v) => !!v || "Required",
-          (v) => /^\d[0-9]+$/.test(v) || "Only numbers are allowed",
-        ];
-      } else {
-        return [];
-      }
-    },
-    number_of_suitesRules() {
-      if (this.has_suite) {
-        return [
-          (v) => !!v || "Required",
-          (v) => /^\d[0-9]+$/.test(v) || "Only numbers are allowed",
-        ];
-      }
-      return [];
-    },
-  },
-
   methods: {
     submit() {
       this.isLoading = true;
-      let data = new FormData();
-      data.append("name", this.name);
-      data.append("location_description", this.location_description);
-      data.append("map_location", this.map_location);
-      data.append("email", this.email);
-      data.append("number_of_floors", this.number_of_floors);
-      data.append("number_of_rooms", this.number_of_rooms);
-      data.append("phone", this.phone);
-      data.append("has_single", this.has_single);
-      data.append("has_double", this.has_double);
-      data.append("has_trible", this.has_trible);
-      data.append("has_suite", this.has_suite);
-      data.append("number_of_single", this.number_of_single);
-      data.append("number_of_double", this.number_of_double);
-      data.append("number_of_trible", this.number_of_trible);
-      data.append("number_of_suites", this.number_of_suites);
-      data.append("smoking", this.smoking);
-      data.append("wi_fi", this.wi_fi);
-      data.append("pets", this.pets);
-      data.append("swimming_pool", this.swimming_pool);
-      data.append("buffet", this.buffet);
-      data.append("launch_included", this.launch_included);
-      data.append("ac", this.ac);
+      let data = {
+        name: this.name,
+        map_location: this.map_location,
+        location_description: this.location_description,
+        email: this.email,
+        phone: this.phone,
+      };
 
-      for (let i = 0; i < this.building_img.length; i++) {
-        data.append("building_img[]", this.building_img[i]);
-      }
-      for (let i = 0; i < this.rooms_img.length; i++) {
-        data.append("rooms_img[]", this.rooms_img[i]);
-      }
-
-      console.log(this.views_img);
-      for (let i = 0; i < this.views_img.length; i++) {
-        data.append("views_img[]", this.views_img[i]);
-      }
-
-      this.branchService.add(data).then((result) => {
+      this.carBranchAdminService.add(data).then((result) => {
         // console.log(result.data);
         this.ht = result.data;
         console.log(result);
@@ -224,17 +120,6 @@ export default {
     validate() {
       console.log("validate");
       this.$refs.form.validate();
-    },
-
-    buildingImages(e) {
-      this.building_img = Array.from(e.target.files);
-    },
-    viewsImages(e) {
-      this.views_img = Array.from(e.target.files);
-      console.log(e.target.files);
-    },
-    roomsImages(e) {
-      this.rooms_img = Array.from(e.target.files);
     },
   },
 };

@@ -299,30 +299,9 @@ __webpack_require__.r(__webpack_exports__);
       valid: true,
       name: "",
       ht: null,
-      views_img: null,
-      building_img: [],
-      rooms_img: null,
-      phone: null,
-      has_single: false,
-      has_double: null,
-      has_trible: null,
-      has_suite: null,
-      number_of_single: 0,
-      number_of_double: 0,
-      number_of_trible: 0,
-      number_of_suites: 0,
-      number_of_rooms: 0,
-      number_of_floors: 0,
-      smoking: null,
-      pets: null,
-      wi_fi: null,
-      ac: null,
-      buffet: null,
-      launch_included: null,
-      swimming_pool: null,
       location_description: null,
       map_location: null,
-      tagline: "",
+      phone: null,
       email: "",
       website: "",
       isLoading: false,
@@ -358,96 +337,19 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  computed: {
-    number_of_singleRules: function number_of_singleRules() {
-      if (this.has_single) {
-        return [function (v) {
-          return !!v || "Required";
-        }, function (v) {
-          return /^\d[0-9]+$/.test(v) || "Only numbers are allowed";
-        }];
-      } else {
-        return [];
-      }
-    },
-    number_of_doubleRules: function number_of_doubleRules() {
-      if (this.has_double) {
-        return [function (v) {
-          return !!v || "Required";
-        }, function (v) {
-          return /^\d[0-9]+$/.test(v) || "Only numbers are allowed";
-        }];
-      } else {
-        return [];
-      }
-    },
-    number_of_tribleRules: function number_of_tribleRules() {
-      if (this.has_trible) {
-        return [function (v) {
-          return !!v || "Required";
-        }, function (v) {
-          return /^\d[0-9]+$/.test(v) || "Only numbers are allowed";
-        }];
-      } else {
-        return [];
-      }
-    },
-    number_of_suitesRules: function number_of_suitesRules() {
-      if (this.has_suite) {
-        return [function (v) {
-          return !!v || "Required";
-        }, function (v) {
-          return /^\d[0-9]+$/.test(v) || "Only numbers are allowed";
-        }];
-      }
-
-      return [];
-    }
-  },
   methods: {
     submit: function submit() {
       var _this = this;
 
       this.isLoading = true;
-      var data = new FormData();
-      data.append("name", this.name);
-      data.append("location_description", this.location_description);
-      data.append("map_location", this.map_location);
-      data.append("email", this.email);
-      data.append("number_of_floors", this.number_of_floors);
-      data.append("number_of_rooms", this.number_of_rooms);
-      data.append("phone", this.phone);
-      data.append("has_single", this.has_single);
-      data.append("has_double", this.has_double);
-      data.append("has_trible", this.has_trible);
-      data.append("has_suite", this.has_suite);
-      data.append("number_of_single", this.number_of_single);
-      data.append("number_of_double", this.number_of_double);
-      data.append("number_of_trible", this.number_of_trible);
-      data.append("number_of_suites", this.number_of_suites);
-      data.append("smoking", this.smoking);
-      data.append("wi_fi", this.wi_fi);
-      data.append("pets", this.pets);
-      data.append("swimming_pool", this.swimming_pool);
-      data.append("buffet", this.buffet);
-      data.append("launch_included", this.launch_included);
-      data.append("ac", this.ac);
-
-      for (var i = 0; i < this.building_img.length; i++) {
-        data.append("building_img[]", this.building_img[i]);
-      }
-
-      for (var _i = 0; _i < this.rooms_img.length; _i++) {
-        data.append("rooms_img[]", this.rooms_img[_i]);
-      }
-
-      console.log(this.views_img);
-
-      for (var _i2 = 0; _i2 < this.views_img.length; _i2++) {
-        data.append("views_img[]", this.views_img[_i2]);
-      }
-
-      this.branchService.add(data).then(function (result) {
+      var data = {
+        name: this.name,
+        map_location: this.map_location,
+        location_description: this.location_description,
+        email: this.email,
+        phone: this.phone
+      };
+      this.carBranchAdminService.add(data).then(function (result) {
         // console.log(result.data);
         _this.ht = result.data;
         console.log(result);
@@ -457,16 +359,6 @@ __webpack_require__.r(__webpack_exports__);
     validate: function validate() {
       console.log("validate");
       this.$refs.form.validate();
-    },
-    buildingImages: function buildingImages(e) {
-      this.building_img = Array.from(e.target.files);
-    },
-    viewsImages: function viewsImages(e) {
-      this.views_img = Array.from(e.target.files);
-      console.log(e.target.files);
-    },
-    roomsImages: function roomsImages(e) {
-      this.rooms_img = Array.from(e.target.files);
     }
   }
 });
@@ -1668,23 +1560,13 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Branch Galary", -1
-/* HOISTED */
-);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Submit ");
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Submit ");
-
-var _hoisted_13 = ["innerHTML"];
+var _hoisted_11 = ["innerHTML"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_progress_circular = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-progress-circular");
 
   var _component_v_text_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-text-field");
-
-  var _component_v_file_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-file-input");
 
   var _component_v_btn = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-btn");
 
@@ -1768,22 +1650,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         required: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue", "rules"]), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_file_input, {
-        onChange: $options.buildingImages,
-        label: "Branch Photo",
-        filled: "",
-        accept: "image/*",
-        required: "",
-        "prepend-icon": "mdi-camera"
-      }, null, 8
-      /* PROPS */
-      , ["onChange"]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+      , ["modelValue", "rules"]), _hoisted_7, _hoisted_8, _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
         color: "success",
         "class": "mr-4",
         type: "submit"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_12];
+          return [_hoisted_10];
         }),
         _: 1
         /* STABLE */
@@ -1799,7 +1672,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     innerHTML: _ctx.ht
   }, null, 8
   /* PROPS */
-  , _hoisted_13)], 64
+  , _hoisted_11)], 64
   /* STABLE_FRAGMENT */
   );
 }

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class CarCompanyImage extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'tagline',
+        'website',
+        'email',
+        'phone',
+        'logo',
+        'user',
+        'user_id'
+    ];
 }

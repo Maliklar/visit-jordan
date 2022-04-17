@@ -12,18 +12,24 @@ use Symfony\Component\HttpFoundation\Response;
 
 class HotelsController extends Controller
 {
+
+    /**
+     * __________________________________________________________________________________________________
+     * Admin Methods
+     * __________________________________________________________________________________________________
+     */
+
     public function register(Request $request)
     {
         $validated = $request->validate(
             [
-                // 'name' => 'required|max:50|min:3',
+                'name' => 'required|max:50|min:3',
                 'email' => 'required|unique:users|email:rfc,dns',
                 'password' => 'required|min:8',
             ]
         );
-
         $insert = User::create([
-            'name' => "some name",
+            'name' => $request->name,
             'email' => $request->email,
             'user_type' => 3, // hotel
             'password' => Hash::make($request->password),
@@ -32,31 +38,10 @@ class HotelsController extends Controller
         Hotel::create([
             'user_id' => $insert->id
         ]);
-
-        return response("Normal user created successfully");
+        return response("Hotel Admin User Created");
     }
 
-    public function login(Request $request)
-    {
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
-        }
 
-        $user = Auth::user();
-        $token = $user->createToken('token')->plainTextToken;
-        //sending a cookie that contains token
-        $cookie = cookie('jwt', $token, 60 * 24); //1 day
-
-
-        if ($user->type->type == 'hotel') {
-            return response([
-                'authenticated' => 'as hotel',
-                'message' => $token,
-            ])->withCookie($cookie);
-        } else {
-            return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
-        }
-    }
 
     public function adminUpdate(Request $request)
     {
@@ -95,7 +80,7 @@ class HotelsController extends Controller
         }
     }
 
-    public function edit(Request $request)
+    public function update(Request $request)
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -127,6 +112,7 @@ class HotelsController extends Controller
                 'logo' => $last_img,
                 'user_id' => $user->id,
             ]);
+            return response(['message' => 'Hotel Updated Successfully']);;
         } else {
             return response(['message' => 'You are not an hotel'], Response::HTTP_UNAUTHORIZED);;
         }

@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        //Done
-        Schema::create('hotels', function (Blueprint $table) {
+        Schema::create('cars_in_branch', function (Blueprint $table) {
             $table->id();
+            $table->integer('company_id')->foreign()->references('car_companies')->on('id');
             $table->integer('user_id')->foreign()->references('users')->on('id');
-            $table->string('name')->nullable();
-            $table->string('tagline')->nullable();
-            $table->string('website')->nullable();
-            $table->string('email')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('phone')->nullable();
+            $table->integer('branch_id')->foreign()->references('car_branches')->on('id');
+            $table->string('name');
+            $table->string('image');
+            $table->integer('year');
+            $table->boolean('available')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -35,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotels');
+        Schema::dropIfExists('cars_in_branch');
     }
 };

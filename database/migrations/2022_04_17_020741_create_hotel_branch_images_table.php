@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cars_images', function (Blueprint $table) {
+        Schema::create('hotel_branch_images', function (Blueprint $table) {
             $table->id();
-            $table->softDeletes();
-
+            $table->integer('branch_id')->foreign()->references('hotel_branches')->on('id');
+            $table->string('type');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cars_images');
+        Schema::dropIfExists('hotel_branch_images');
     }
 };

@@ -23520,6 +23520,8 @@ var carAdminService = __webpack_require__(/*! ./javascript/api/carAdminService *
 
 var hotelAdminService = __webpack_require__(/*! ./javascript/api/hotelAdminService */ "./resources/js/javascript/api/hotelAdminService.js");
 
+var carBranchAdminService = __webpack_require__(/*! ./javascript/api/carBranchAdminService */ "./resources/js/javascript/api/carBranchAdminService.js");
+
 
 
 var vuetify = (0,vuetify__WEBPACK_IMPORTED_MODULE_7__.createVuetify)({
@@ -23545,7 +23547,8 @@ var GLOBAL = {
       userService: userService,
       hotelAdminService: hotelAdminService,
       branchService: branchService,
-      carAdminService: carAdminService
+      carAdminService: carAdminService,
+      carBranchAdminService: carBranchAdminService
     };
   }
 };
@@ -23892,6 +23895,64 @@ function _get() {
     }, _callee5);
   }));
   return _get.apply(this, arguments);
+}
+
+
+
+/***/ }),
+
+/***/ "./resources/js/javascript/api/carBranchAdminService.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/javascript/api/carBranchAdminService.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "add": () => (/* binding */ add)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var ROOT_API = "http://localhost:8000/api";
+
+function add(_x) {
+  return _add.apply(this, arguments);
+}
+
+function _add() {
+  _add = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/admin/cars/branches/add"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context.abrupt("return", _context.sent);
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _add.apply(this, arguments);
 }
 
 

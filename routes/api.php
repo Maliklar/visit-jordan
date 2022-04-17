@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\BranchController;
+use App\Http\Controllers\Api\CarBranchController;
 use App\Http\Controllers\Api\CarController;
 use App\Http\Controllers\Api\HomeBannerController;
 use App\Http\Controllers\Api\HotelsController;
 use App\Http\Controllers\Api\UserController;
+use App\Models\CarBranch;
 use App\Models\CarCompany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,10 +41,10 @@ Route::post('/users/login', [UserController::class, 'login']);
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
 
-Route::post('/admin/login', [AdminController::class, 'login']);
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/admin/auth', [AdminController::class, 'auth']);
-});
+// Route::post('/admin/login', [AdminController::class, 'login']);
+// Route::middleware('auth:sanctum')->group(function () {
+//     Route::get('/admin/auth', [AdminController::class, 'auth']);
+// });
 
 
 
@@ -52,11 +54,11 @@ Route::middleware('auth:sanctum')->group(function () {
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/homebanners/add', [HomeBannerController::class, 'add']);
-});
+// Route::middleware('auth:sanctum')->group(function () {
+//     Route::post('/homebanners/add', [HomeBannerController::class, 'add']);
+// });
 
-Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
+// Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
 
 
 
@@ -67,19 +69,30 @@ Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
 | Hotel API
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
+
+// Admin
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/hotels/auth', [HotelsController::class, 'auth']);  // Auth
-    Route::post('/hotels/add', [HotelsController::class, 'add']);  // Add (admin add a hotel)
-    Route::get('/admin/hotels/get', [HotelsController::class, 'getAdmin']);  // Add (admin add a hotel)
-    Route::post('/admin/hotels/edit', [HotelsController::class, 'edit']);  // Add (admin add a hotel)
-    Route::post('/admin/branches/add', [BranchController::class, 'add']);  // Add (admin add a hotel)
-    Route::get('/admin/branches/get', [BranchController::class, 'get']);  // Add (admin add a hotel)
-    Route::patch('/hotels/edit', [HotelsController::class, 'edit']);  // Edit (admin Edit hotel info)
+    Route::get('/admin/hotels/auth', [HotelsController::class, 'auth']); //Auth
+    Route::post('/admin/hotels/update', [HotelsController::class, 'update']); // Update Hotel Data
+    Route::get('/admin/hotels/get', [HotelsController::class, 'getAdmin']);
+    Route::post('/admin/hotels/edit', [HotelsController::class, 'edit']);
 });
 
-Route::post('/admin/hotels/login', [HotelsController::class, 'login']);  // Add (admin add a hotel)
+Route::post('/admin/hotels/register', [HotelsController::class, 'register']);
 
-Route::post('/hotels/register', [HotelsController::class, 'register']);
+
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+| Hotel Branch API
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/admin/hotels/branches/add', [BranchController::class, 'add']);
+    Route::get('/admin/hotels/branches/get', [BranchController::class, 'get']);
+});
+
+
 
 
 /*
@@ -88,12 +101,12 @@ Route::post('/hotels/register', [HotelsController::class, 'register']);
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/admin/cars/auth', [CarController::class, 'auth']);  // Auth
-    Route::post('/admin/cars/edit', [CarController::class, 'edit']);  // Add (admin add a hotel)
-    Route::get('/admin/cars/get', [CarController::class, 'getAdmin']);  // Add (admin add a hotel)
-    Route::get('/admin/cars/branches/add', [CarController::class, 'getAdmin']);  // Add (admin add a hotel)
+// Route::middleware('auth:sanctum')->group(function () {
+//     Route::get('/admin/cars/auth', [CarController::class, 'auth']);  // Auth
+//     Route::post('/admin/cars/edit', [CarController::class, 'edit']);  // Add (admin add a hotel)
+//     Route::get('/admin/cars/get', [CarController::class, 'getAdmin']);  // Add (admin add a hotel)
+//     Route::post('/admin/cars/branches/add', [CarBranchController::class, 'add']);  // Add (admin add a hotel)
 
-});
+// });
 
-Route::post('/admin/cars/register', [CarController::class, 'register']);
+// Route::post('/admin/cars/register', [CarController::class, 'register']);
