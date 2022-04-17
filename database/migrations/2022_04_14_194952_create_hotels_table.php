@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('logo')->nullable();
             $table->string('phone')->nullable();
+
+            $table->boolean('active')->default(false);
+
             $table->softDeletes();
             $table->timestamps();
         });

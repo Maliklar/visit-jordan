@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
+            $table->string('rank');
             $table->string('name');
+            $table->string('arabic_name');
+            $table->string('governorate');
             $table->timestamps();
         });
     }

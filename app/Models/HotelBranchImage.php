@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Models\Hotel;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class HotelBranchImage extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'hotel_id',
+        'image',
+        'type',
         'branch_id',
-        'category_id',
-        'available',
     ];
 }

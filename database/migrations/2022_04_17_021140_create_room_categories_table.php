@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('room_categories', function (Blueprint $table) {
             $table->id();
             $table->integer('hotel_id')->foreign()->references('hotels')->on('id');
+            $table->integer('branch_id')->foreign()->references('hotel_branches')->on('id');
             $table->integer('user_id')->foreign()->references('users')->on('id');
 
             $table->string('name');
@@ -32,7 +33,7 @@ return new class extends Migration
             $table->boolean('tv');
             $table->boolean('lunch');
 
-
+            $table->boolean('active')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

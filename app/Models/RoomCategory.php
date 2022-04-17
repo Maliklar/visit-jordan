@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Hotel;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,10 +10,10 @@ class RoomCategory extends Model
     use HasFactory;
     protected $fillable = [
         'hotel_id',
+        'branch_id',
         'user_id',
         'name',
         'description',
-        'price',
         'capacity',
         'single_beds',
         'double_beds',
@@ -21,7 +21,9 @@ class RoomCategory extends Model
         'bathrooms',
         'wifi',
         'balcony',
+        'price',
         'tv',
         'lunch',
+        'active'
     ];
 }

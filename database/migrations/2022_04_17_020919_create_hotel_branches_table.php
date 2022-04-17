@@ -29,6 +29,7 @@ return new class extends Migration
             $table->boolean('gym');
             $table->boolean('laundry');
 
+            $table->boolean('active')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
