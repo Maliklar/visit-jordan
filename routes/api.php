@@ -1,16 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\AdminController;
-use App\Http\Controllers\Api\BranchController;
-use App\Http\Controllers\Api\CarBranchController;
-use App\Http\Controllers\Api\CarController;
-use App\Http\Controllers\Api\HomeBannerController;
 use App\Http\Controllers\Api\Hotel\HotelBranchController;
 use App\Http\Controllers\Api\Hotel\HotelController;
+use App\Http\Controllers\Api\Hotel\RoomCategoryController;
 use App\Http\Controllers\Api\UserController;
-use App\Models\CarBranch;
-use App\Models\CarCompany;
-use App\Models\Hotel\HotelBranch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -118,11 +111,11 @@ Route::middleware('auth:sanctum')->group(function () {
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/admin/hotels/branches/room_categories', [HotelBranchController::class, 'add']);
-    Route::get('/admin/hotels/branches/get', [HotelBranchController::class, 'getAdmin']);
-    Route::post('/admin/hotels/branches/images/interior/add', [HotelBranchController::class, 'addInteriorImages']);
-    Route::post('/admin/hotels/branches/images/building/add', [HotelBranchController::class, 'addBuildingImages']);
-    Route::post('/admin/hotels/branches/images/view/add', [HotelBranchController::class, 'addViewImages']);
+    Route::post('/admin/hotels/branches/room_categories/add', [RoomCategoryController::class, 'add']);
+    Route::post('/admin/hotels/branches/room_categories/images/room/add', [RoomCategoryController::class, 'addRoomImages']);
+    Route::post('/admin/hotels/branches/room_categories/images/view/add', [RoomCategoryController::class, 'addViewImages']);
+    Route::get('/admin/hotels/branches/room_categories/get/{branch_id}', [RoomCategoryController::class, 'getAll']);
+    Route::get('/admin/hotels/branches/room_categories/get/{branch_id}/{category_id}', [RoomCategoryController::class, 'getSingle']);
 });
 
 

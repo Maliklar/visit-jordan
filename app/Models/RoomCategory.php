@@ -26,4 +26,14 @@ class RoomCategory extends Model
         'lunch',
         'active'
     ];
+
+    public function room()
+    {
+        return $this->hasMany(RoomCategoryImage::class, 'category_id', 'id')->where('type', 'room');
+    }
+
+    public function view()
+    {
+        return $this->hasMany(RoomCategoryImage::class, 'category_id', 'id')->where('type', 'view');
+    }
 }

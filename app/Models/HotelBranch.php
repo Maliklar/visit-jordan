@@ -26,16 +26,16 @@ class HotelBranch extends Model
 
     public function building()
     {
-        return $this->hasMany(HotelBranchImage::class, 'id', 'branch_id')->where('type', 'building');
+        return $this->hasMany(HotelBranchImage::class, 'branch_id', 'id')->where('type', 'building');
     }
 
     public function interior()
     {
-        return $this->hasMany(HotelBranchImage::class, 'id', 'branch_id')->where('type', 'interior');
+        return $this->hasMany(HotelBranchImage::class, 'branch_id', 'id')->where('type', 'interior');
     }
 
     public function views()
     {
-        return $this->hasMany(HotelBranchImage::class, 'id', 'branch_id')->where('type', 'views');
+        return $this->hasMany(HotelBranchImage::class, 'branch_id', 'id')->where('type', 'view');
     }
 }
