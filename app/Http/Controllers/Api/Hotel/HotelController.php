@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
+use function PHPUnit\Framework\isEmpty;
+
 class HotelController extends Controller
 {
 
@@ -53,34 +55,55 @@ class HotelController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-            $validated = $request->validate(
+            $request->validate(
                 [
                     'name' => 'required|max:50|min:3',
                     'tagline' => 'required|max:5000|min:3',
-                    'logo' => 'required',
                     'website' => 'required',
                     'email' => 'required',
                     'phone' => 'required',
                 ]
             );
 
-            $image = $request->file('logo');
-            $name_gen = hexdec(uniqid());
-            $img_ext = strtolower($image->getClientOriginalExtension());
-            $imgName = $name_gen . '.' . $img_ext;
-            $upload_location = 'images/hotles/logo/';
-            $last_img = $upload_location . $imgName;
-            $image->move($upload_location, $imgName);
+            // Check if logo is added previously
+            $hotel = Hotel::where('user_id', $user->id)->first();
+            if ($hotel->logo === null && ($request->logo == "null")) {
+                return response(['message' => "Hotel logo is required"], Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
+            // Update all data except for the logo
+            if ($hotel->logo !== null && $request->logo == "null") {
+                Hotel::where('user_id', $user->id)->update([
+                    'name' => $request->name,
+                    'tagline' => $request->tagline,
+                    'website' => $request->website,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'user_id' => $user->id,
+                ]);
+            }
+            // update everything
+            else {
+                dump('here');
+                $image = $request->file('logo');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/logo/';
+                $last_img = $upload_location . $imgName;
+                $image->move($upload_location, $imgName);
 
-            Hotel::where('user_id', $user->id)->update([
-                'name' => $request->name,
-                'tagline' => $request->tagline,
-                'website' => $request->website,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'logo' => $last_img,
-                'user_id' => $user->id,
-            ]);
+                Hotel::where('user_id', $user->id)->update([
+                    'name' => $request->name,
+                    'tagline' => $request->tagline,
+                    'website' => $request->website,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'logo' => $last_img,
+                    'user_id' => $user->id,
+                ]);
+            }
+
+
             return response(['message' => 'Hotel data updated successfully']);
         } else {
             return response(['message' => 'You are not an hotel'], Response::HTTP_UNAUTHORIZED);;

@@ -23968,8 +23968,9 @@ function _add() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "edit": () => (/* binding */ edit),
-/* harmony export */   "get": () => (/* binding */ get)
+/* harmony export */   "get": () => (/* binding */ get),
+/* harmony export */   "register": () => (/* binding */ register),
+/* harmony export */   "update": () => (/* binding */ update)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -23983,6 +23984,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var ROOT_API = "http://localhost:8000/api";
+var API_POINT = 'admin/hotels';
 
 function get() {
   return _get.apply(this, arguments);
@@ -23995,7 +23997,7 @@ function _get() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/hotels/get")).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -24014,34 +24016,65 @@ function _get() {
   return _get.apply(this, arguments);
 }
 
-function edit(_x) {
-  return _edit.apply(this, arguments);
+function register(_x) {
+  return _register.apply(this, arguments);
 }
 
-function _edit() {
-  _edit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
+function _register() {
+  _register = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/admin/hotels/edit"), data).then(function (response) {
+            console.log(data);
+            _context2.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/register"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
             });
 
-          case 2:
+          case 3:
             return _context2.abrupt("return", _context2.sent);
 
-          case 3:
+          case 4:
           case "end":
             return _context2.stop();
         }
       }
     }, _callee2);
   }));
-  return _edit.apply(this, arguments);
+  return _register.apply(this, arguments);
+}
+
+function update(_x2) {
+  return _update.apply(this, arguments);
+}
+
+function _update() {
+  _update = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/update"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _update.apply(this, arguments);
 }
 
 
@@ -24611,32 +24644,31 @@ var routes = [{
   component: function component() {
     return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Dashboard.vue */ "./resources/js/views/admin/hotel/Dashboard.vue"));
   }
-}, {
-  path: "/admin/car/dashboard",
-  name: "Dashboard",
-  children: [{
-    path: "company_profile",
-    name: "CompnayProfile",
-    component: function component() {
-      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/car/CompanyProfile.vue */ "./resources/js/views/admin/car/CompanyProfile.vue"));
-    }
-  }, {
-    path: "branches",
-    name: "Branches",
-    component: function component() {
-      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/car/Branches.vue */ "./resources/js/views/admin/car/Branches.vue"));
-    }
-  }, {
-    path: "branches/add",
-    name: "AddBranch",
-    component: function component() {
-      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/car/AddBranch.vue */ "./resources/js/views/admin/car/AddBranch.vue"));
-    }
-  }],
-  component: function component() {
-    return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/car/Dashboard.vue */ "./resources/js/views/admin/car/Dashboard.vue"));
-  }
-}];
+} // {
+//     path: "/admin/car/dashboard",
+//     name: "Dashboards",
+//     children: [{
+//             path: "company_profile",
+//             name: "CompnayProfile",
+//             component: () =>
+//                 import ( /* webpackChunkName: "about" */ "../views/admin/car/CompanyProfile.vue"),
+//         },
+//         {
+//             path: "branches",
+//             name: "Branches",
+//             component: () =>
+//                 import ( /* webpackChunkName: "about" */ "../views/admin/car/Branches.vue"),
+//         }, {
+//             path: "branches/add",
+//             name: "AddBranch",
+//             component: () =>
+//                 import ( /* webpackChunkName: "about" */ "../views/admin/car/AddBranch.vue"),
+//         },
+//     ],
+//     component: () =>
+//         import ( /* webpackChunkName: "about" */ "../views/admin/car/Dashboard.vue"),
+// },
+];
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.createRouter)({
   history: (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.createWebHistory)(process.env.BASE_URL),
   routes: routes

@@ -1,6 +1,10 @@
 <template>
   <form @submit.prevent="submit" class="sign-up-form text-dark">
     <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input type="text" class="form-control" v-model="name" />
+    </div>
+    <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
       <input
         type="email"
@@ -35,25 +39,22 @@ export default {
   data() {
     return {
       email: null,
-      passwrod: null,
+      password: null,
+      name: null,
     };
   },
   methods: {
     submit() {
+      console.log("here", this.type);
       let data = {
         email: this.email,
         password: this.password,
+        name: this.name,
       };
       if (this.type == "hotel") {
-        this.hotelService.register(data).then((result) => {
+        this.hotelAdminService.register(data).then((result) => {
           if (result.status == 200) {
-            this.hotelService.login(data).then((result) => {
-              if (result.status == 200) {
-                this.$router.push({
-                  path: "/signup/hotel/finish",
-                });
-              }
-            });
+            console.log(result);
           } else {
             console.log(result);
           }

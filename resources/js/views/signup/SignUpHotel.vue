@@ -4,7 +4,7 @@
     <hr />
   </div>
   <div class="hotel-sign-up-form-container">
-    <sign-up-form />
+    <sign-up-form :type="'hotel'" />
   </div>
 </template>
 

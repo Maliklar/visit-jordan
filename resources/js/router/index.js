@@ -76,30 +76,30 @@ const routes = [{
             import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Dashboard.vue"),
     },
 
-    {
-        path: "/admin/car/dashboard",
-        name: "Dashboard",
-        children: [{
-                path: "company_profile",
-                name: "CompnayProfile",
-                component: () =>
-                    import ( /* webpackChunkName: "about" */ "../views/admin/car/CompanyProfile.vue"),
-            },
-            {
-                path: "branches",
-                name: "Branches",
-                component: () =>
-                    import ( /* webpackChunkName: "about" */ "../views/admin/car/Branches.vue"),
-            }, {
-                path: "branches/add",
-                name: "AddBranch",
-                component: () =>
-                    import ( /* webpackChunkName: "about" */ "../views/admin/car/AddBranch.vue"),
-            },
-        ],
-        component: () =>
-            import ( /* webpackChunkName: "about" */ "../views/admin/car/Dashboard.vue"),
-    },
+    // {
+    //     path: "/admin/car/dashboard",
+    //     name: "Dashboards",
+    //     children: [{
+    //             path: "company_profile",
+    //             name: "CompnayProfile",
+    //             component: () =>
+    //                 import ( /* webpackChunkName: "about" */ "../views/admin/car/CompanyProfile.vue"),
+    //         },
+    //         {
+    //             path: "branches",
+    //             name: "Branches",
+    //             component: () =>
+    //                 import ( /* webpackChunkName: "about" */ "../views/admin/car/Branches.vue"),
+    //         }, {
+    //             path: "branches/add",
+    //             name: "AddBranch",
+    //             component: () =>
+    //                 import ( /* webpackChunkName: "about" */ "../views/admin/car/AddBranch.vue"),
+    //         },
+    //     ],
+    //     component: () =>
+    //         import ( /* webpackChunkName: "about" */ "../views/admin/car/Dashboard.vue"),
+    // },
 
 
 

@@ -33,9 +33,9 @@
         required
       ></v-text-field>
       <v-text-field
-        v-model="number"
+        v-model="photo"
         :counter="12"
-        :rules="numberRules"
+        :rules="photoRules"
         label="Central Phone Number"
         required
       ></v-text-field>
@@ -54,6 +54,30 @@
           <img :src="previewImage" alt="" height="60" />
         </div>
       </div>
+      <div>
+        <v-alert
+          v-if="submitionResult == true"
+          class="slide-left"
+          type="success"
+        >
+          Hotel Information Updated Successfully
+          <template v-slot:append>
+            <v-btn size="small" variant="text" @click="closeAlert">Close</v-btn>
+          </template>
+        </v-alert>
+
+        <v-alert
+          v-else-if="submitionResult == false"
+          class="slide-left"
+          type="error"
+        >
+          {{ actionMessage }}
+          <template v-slot:append>
+            <v-btn size="small" variant="text" @click="closeAlert">Close</v-btn>
+          </template></v-alert
+        >
+      </div>
+      <br />
 
       <v-btn color="success" class="mr-4" type="submit"> Update </v-btn>
     </v-form>
@@ -67,7 +91,7 @@ export default {
     actionMessage: null,
     previewImage: null,
     hotelLogo: null,
-
+    submitionResult: null,
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => (v && v.length <= 25) || "Name must be less than 10 characters",
@@ -84,24 +108,36 @@ export default {
     ],
     website: "",
     websiteRules: [(v) => !!v || "Name is required"],
-    number: "",
-    numberRules: [
+    photo: "",
+    photoRules: [
       (v) => !!v || "Name is required",
-      (v) => (v && v.length <= 12) || "Name must be less than 10 characters",
+      (v) => (v && v.length <= 16) || "Name must be less than 16 characters",
     ],
+    ht: null,
   }),
 
   methods: {
+    closeAlert() {
+      this.submitionResult = null;
+    },
     submit() {
       let data = new FormData();
       data.append("name", this.name);
       data.append("tagline", this.tagline);
       data.append("website", this.website);
       data.append("email", this.email);
-      data.append("phone", this.number);
+      data.append("phone", this.photo);
       data.append("logo", this.hotelLogo);
-      this.hotelAdminService.edit(data).then((result) => {
-        console.log(result);
+      this.hotelAdminService.update(data).then((result) => {
+        if (result.status == 422) {
+          console.log(result.data);
+          this.actionMessage = result.data.message;
+          this.submitionResult = false;
+        }
+        if (result.status == 200) {
+          this.submitionResult = true;
+        }
+        this.ht = result.data;
       });
     },
     uploadLogo(e) {
@@ -116,20 +152,35 @@ export default {
         this.actionMessage = result.data.message;
       }
 
-      this.name = result.data.name;
-      this.tagline = result.data.tagline;
-      this.website = result.data.website;
-      this.email = result.data.email;
-      this.previewImage = result.data.logo;
-      this.number = result.data.phone;
-      console.log(result.data);
+      if (result.data.name) {
+        this.name = result.data.name;
+        this.tagline = result.data.tagline;
+        this.website = result.data.website;
+        this.email = result.data.email;
+        this.photo = result.data.phone;
+        this.previewImage = "http://localhost:8000/" + result.data.logo;
+      }
     });
   },
 };
 </script>
 
-<style>
+<style scoped>
 .hotel-profile-view {
   padding: 10px;
+}
+
+.slide-left {
+  animation: slide-left 1s;
+}
+@keyframes slide-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
 }
 </style>
