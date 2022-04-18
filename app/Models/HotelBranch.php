@@ -38,4 +38,9 @@ class HotelBranch extends Model
     {
         return $this->hasMany(HotelBranchImage::class, 'branch_id', 'id')->where('type', 'view');
     }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id', 'id');
+    }
 }

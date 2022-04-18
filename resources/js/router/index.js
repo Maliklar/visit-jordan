@@ -70,6 +70,12 @@ const routes = [{
                 name: "BranchDetails",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/BranchDetails.vue"),
+            },
+            {
+                path: "branches/photos/:id",
+                name: "BranchPhotos",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/BranchPhotos.vue"),
             }
         ],
         component: () =>
