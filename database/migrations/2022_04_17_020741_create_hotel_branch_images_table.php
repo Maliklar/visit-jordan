@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('branch_id')->foreign()->references('hotel_branches')->on('id');
             $table->string('type');
             $table->string('image');
+            $table->integer('number');
             $table->timestamps();
         });
     }

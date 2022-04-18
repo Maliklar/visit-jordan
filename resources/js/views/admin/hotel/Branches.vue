@@ -76,15 +76,17 @@
                 >
               </v-col>
               <v-col cols="5">
-                <v-img
+                <div v-html="branch.map_location"></div>
+                <!-- <v-img
                   class="align-end text-white h-100"
                   src="https://s1.cdn.autoevolution.com/images-webp/news/how-google-s-new-killer-google-maps-feature-knows-you-re-braking-hard-162191-7.jpg.webp"
                   cover
-                ></v-img>
+                ></v-img> -->
               </v-col>
             </v-row>
           </v-card>
         </v-hover>
+        <br />
       </div>
     </div>
   </div>

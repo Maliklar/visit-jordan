@@ -12,5 +12,6 @@ class RoomCategoryImage extends Model
         'image',
         'type',
         'category_id',
+        'number',
     ];
 }

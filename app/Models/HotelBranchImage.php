@@ -12,5 +12,6 @@ class HotelBranchImage extends Model
         'image',
         'type',
         'branch_id',
+        'number',
     ];
 }

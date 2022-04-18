@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('hotel_id')->foreign()->references('hotels')->on('id');
             $table->integer('user_id')->foreign()->references('users')->on('id');
             $table->integer('city_id')->foreign()->references('cities')->on('id');
-            $table->string('map_location');
-            $table->string('location_description')->nullable();
+            $table->longText('map_location');
+            $table->longText('location_description')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();

@@ -103,7 +103,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/admin/hotels/branches/images/interior/add', [HotelBranchController::class, 'addInteriorImages']);
     Route::post('/admin/hotels/branches/images/building/add', [HotelBranchController::class, 'addBuildingImages']);
     Route::post('/admin/hotels/branches/images/view/add', [HotelBranchController::class, 'addViewImages']);
+
+    Route::get('/admin/hotels/branches/images/interior/get/{branch_id}', [HotelBranchController::class, 'getInteriorImages']);
 });
+
 
 
 /*

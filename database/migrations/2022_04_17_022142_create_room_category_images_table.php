@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('category_id')->foreign()->references('room_categories')->on('id');
             $table->string('type');
             $table->string('image');
+            $table->integer('number');
             $table->softDeletes();
             $table->timestamps();
         });

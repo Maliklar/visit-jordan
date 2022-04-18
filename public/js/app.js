@@ -24071,7 +24071,9 @@ function _update() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "add": () => (/* binding */ add),
-/* harmony export */   "getAll": () => (/* binding */ getAll)
+/* harmony export */   "addInteriorImages": () => (/* binding */ addInteriorImages),
+/* harmony export */   "getAll": () => (/* binding */ getAll),
+/* harmony export */   "getInteriorImages": () => (/* binding */ getInteriorImages)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -24117,18 +24119,18 @@ function _add() {
   return _add.apply(this, arguments);
 }
 
-function getAll() {
-  return _getAll.apply(this, arguments);
+function addInteriorImages(_x2) {
+  return _addInteriorImages.apply(this, arguments);
 }
 
-function _getAll() {
-  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+function _addInteriorImages() {
+  _addInteriorImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/interior/add"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -24143,6 +24145,66 @@ function _getAll() {
         }
       }
     }, _callee2);
+  }));
+  return _addInteriorImages.apply(this, arguments);
+}
+
+function getInteriorImages(_x3) {
+  return _getInteriorImages.apply(this, arguments);
+}
+
+function _getInteriorImages() {
+  _getInteriorImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(branch_id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/interior/get/").concat(branch_id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _getInteriorImages.apply(this, arguments);
+}
+
+function getAll() {
+  return _getAll.apply(this, arguments);
+}
+
+function _getAll() {
+  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context4.abrupt("return", _context4.sent);
+
+          case 3:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
   }));
   return _getAll.apply(this, arguments);
 }
