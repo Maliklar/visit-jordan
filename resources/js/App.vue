@@ -1,8 +1,8 @@
 <template  >
-  <div class="background-temp">
+  <v-app class="background-temp">
     <NavBar />
     <router-view />
-  </div>
+  </v-app>
 </template>
 <script>
 import NavBar from "./components/NavBar.vue";

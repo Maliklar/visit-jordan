@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Hotel\HotelBranchController;
 use App\Http\Controllers\Api\Hotel\HotelController;
 use App\Http\Controllers\Api\Hotel\RoomCategoryController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\CityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -118,6 +119,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/hotels/branches/room_categories/get/{branch_id}/{category_id}', [RoomCategoryController::class, 'getSingle']);
 });
 
+
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+| City API
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+Route::get('/cities/get', [CityController::class, 'get']);
 
 
 

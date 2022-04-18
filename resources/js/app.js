@@ -13,10 +13,11 @@ import { createVuetify } from 'vuetify'
 const bannerService = require('./javascript/api/bannerService');
 const hotelService = require('./javascript/api/hotelService');
 const userService = require('./javascript/api/userService');
-const branchService = require('./javascript/api/branchService');
+const hotelBranchAdminService = require('./javascript/api/hotelBranchAdminService');
 const carAdminService = require('./javascript/api/carAdminService');
 const hotelAdminService = require('./javascript/api/hotelAdminService');
 const carBranchAdminService = require('./javascript/api/carBranchAdminService');
+const cityService = require('./javascript/api/cityService');
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
@@ -50,9 +51,10 @@ const GLOBAL = {
             hotelService: hotelService,
             userService: userService,
             hotelAdminService: hotelAdminService,
-            branchService: branchService,
+            hotelBranchAdminService: hotelBranchAdminService,
             carAdminService: carAdminService,
             carBranchAdminService: carBranchAdminService,
+            cityService: cityService,
         };
     },
 };
