@@ -37,44 +37,37 @@
           ></v-list-item>
 
           <v-list-item
-            prepend-icon="mdi-office-building-outline"
+            prepend-icon="mdi-home-group"
             title="Branches"
             value="branches"
             @click="branches"
           ></v-list-item>
 
-          <v-list-group>
-            <template v-slot:activator="{ props }">
-              <v-list-item
-                v-bind="props"
-                prepend-icon="mdi-bed"
-                title="Rooms"
-                value="rooms"
-                @click="room_categories"
-              >
-              </v-list-item>
-            </template>
-            <v-list-item
-              title="Categories"
-              value="categories"
-              @click="room_categories"
-            ></v-list-item
-            ><v-list-item
-              title="Empty Rooms"
-              value="empty_rooms"
-              @click="branches"
-            ></v-list-item
-            ><v-list-item
-              title="All Rooms"
-              value="all_rooms"
-              @click="branches"
-            ></v-list-item>
-          </v-list-group>
+          <v-list-item
+            prepend-icon="mdi-chart-tree"
+            title="Rooms Category"
+            value="rooms_category"
+            @click="room_categories"
+          ></v-list-item>
+
+          <v-list-item
+            prepend-icon="mdi-bed"
+            title="Rooms"
+            value="rooms"
+            @click="rooms"
+          ></v-list-item>
 
           <v-list-item
             prepend-icon="mdi-account-group-outline"
             title="Reservations"
             value="reservations"
+          ></v-list-item>
+
+          <v-divider></v-divider>
+          <v-list-item
+            prepend-icon="mdi-cash-multiple"
+            title="Revenue"
+            value="revenue"
           ></v-list-item>
         </v-list>
       </v-navigation-drawer>
@@ -113,6 +106,11 @@ export default {
     room_categories() {
       this.$router.push({
         path: "/admin/hotel/dashboard/room_categories",
+      });
+    },
+    rooms() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/rooms",
       });
     },
   },

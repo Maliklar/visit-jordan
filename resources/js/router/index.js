@@ -100,6 +100,11 @@ const routes = [{
                 name: "AddRoom",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/AddRoom.vue"),
+            }, {
+                path: "rooms",
+                name: "Rooms",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Rooms.vue"),
             }
         ],
         component: () =>

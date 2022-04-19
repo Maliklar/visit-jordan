@@ -14,4 +14,9 @@ class Room extends Model
         'category_id',
         'available'
     ];
+
+    public function category()
+    {
+        return $this->hasOne(RoomCategory::class, 'id', 'category_id');
+    }
 }
