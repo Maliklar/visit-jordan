@@ -18,6 +18,7 @@ const carAdminService = require('./javascript/api/carAdminService');
 const hotelAdminService = require('./javascript/api/hotelAdminService');
 const carBranchAdminService = require('./javascript/api/carBranchAdminService');
 const roomCategoryAdminService = require('./javascript/api/roomCategoryAdminService');
+const hotelRoomAdminService = require('./javascript/api/hotelRoomAdminService');
 const cityService = require('./javascript/api/cityService');
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
@@ -57,6 +58,7 @@ const GLOBAL = {
             carBranchAdminService: carBranchAdminService,
             cityService: cityService,
             roomCategoryAdminService: roomCategoryAdminService,
+            hotelRoomAdminService: hotelRoomAdminService,
         };
     },
 };

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Hotel\HotelBranchController;
 use App\Http\Controllers\Api\Hotel\HotelController;
 use App\Http\Controllers\Api\Hotel\RoomCategoryController;
+use App\Http\Controllers\Api\Hotel\RoomController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\CityController;
 use Illuminate\Http\Request;
@@ -131,6 +132,14 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
+/*
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+| Hotel >> Branch >> Room Category >> Roms API
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/admin/hotels/rooms/add', [RoomController::class, 'add']);
+});
 
 /*
 |----------------------------------------------------------------------------------------------------------------------------------------------------

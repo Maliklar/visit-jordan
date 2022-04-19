@@ -9,25 +9,11 @@
       indeterminate
     ></v-progress-linear>
     <v-row no-gutters>
-      <v-col cols="12" sm="4">
-        <v-img
-          height="250"
-          src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-          cover
-          outlined
-        ></v-img> </v-col
-      ><v-col cols="12" sm="4">
-        <v-img
-          height="250"
-          src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-          cover
-        ></v-img> </v-col
-      ><v-col cols="12" sm="4">
-        <v-img
-          height="250"
-          src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-          cover
-        ></v-img>
+      <v-col cols="12" sm="6">
+        <v-img height="250" :src="view_img" cover outlined> </v-img>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <v-img height="250" :src="room_img" cover> </v-img>
       </v-col>
     </v-row>
 
@@ -86,7 +72,20 @@ export default {
   data: () => ({
     loading: false,
     selection: 1,
+    room_img: "https://cdn.vuetifyjs.com/images/cards/cooking.png",
+    view_img: "https://cdn.vuetifyjs.com/images/cards/cooking.png",
   }),
+
+  async created() {
+    for (let i = 0; i < this.category.room.length; i++) {
+      this.room_img = "http://localhost:8000/" + this.category.room[0].image;
+      break;
+    }
+    for (let i = 0; i < this.category.view.length; i++) {
+      this.view_img = "http://localhost:8000/" + this.category.view[0].image;
+      break;
+    }
+  },
 
   methods: {
     reserve() {
