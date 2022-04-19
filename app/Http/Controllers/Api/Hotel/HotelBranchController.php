@@ -49,87 +49,7 @@ class HotelBranchController extends Controller
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
         }
     }
-    // public function add(Request $request)
-    // {
-    //     $user = Auth::user();
-    //     if ($user->type->type == 'hotel') {
-    //         $validated = $request->validate([
-    //             'views_img' => 'required|max:4',
-    //             'views_img.*' => 'mimes:jpg,jpeg,png,bmp',
-    //             'building_img' => 'required|max:4',
-    //             'building_img.*' => 'mimes:jpg,jpeg,png,bmp',
-    //             'interior_img' => 'required|max:4',
-    //             'interior_img.*' => 'mimes:jpg,jpeg,png,bmp',
-    //             'city_id' => 'required',
-    //         ]);
 
-
-
-    //         $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
-
-
-    //         HotelBranch::create([
-    //             'hotel_id' => $hotel_id,
-    //             'user_id' => $user->id,
-    //             'city_id' => $request->city_id,
-    //             'name' => $request->name,
-    //             'email' => $request->email,
-    //             'phone' => $request->phone,
-    //             'map_location' => $request->map_location,
-    //             'location_description' => $request->location_description,
-    //             'swimming_pool' => $request->swimming_pool,
-    //             'resturant' => $request->resturant,
-    //             'gym' => $request->gym,
-    //             'laundry' => $request->laundry,
-    //         ]);
-
-
-    //         $views_img = $request->file('views_img');
-    //         foreach ($views_img as $image) {
-    //             $name_gen = hexdec(uniqid());
-    //             $img_ext = strtolower($image->getClientOriginalExtension());
-    //             $imgName = $name_gen . '.' . $img_ext;
-    //             $upload_location = 'images/hotles/';
-    //             $last_img = $upload_location . $imgName;
-    //             $image->move($upload_location, $imgName);
-    //             HotelBranchImage::create([
-    //                 'image' => $last_img,
-    //                 'type' => 'views',
-    //                 'hotel_id' => $hotel_id,
-    //             ]);
-    //         }
-    //         $rooms_img = $request->file('rooms_img');
-    //         foreach ($rooms_img as $image) {
-    //             $name_gen = hexdec(uniqid());
-    //             $img_ext = strtolower($image->getClientOriginalExtension());
-    //             $imgName = $name_gen . '.' . $img_ext;
-    //             $upload_location = 'images/hotles/';
-    //             $last_img = $upload_location . $imgName;
-    //             $image->move($upload_location, $imgName);
-    //             HotelBranchImage::create([
-    //                 'image' => $last_img,
-    //                 'type' => 'rooms',
-    //                 'hotel_id' => $hotel_id,
-    //             ]);
-    //         }
-    //         $building_img = $request->file('building_img');
-    //         foreach ($building_img as $image) {
-    //             $name_gen = hexdec(uniqid());
-    //             $img_ext = strtolower($image->getClientOriginalExtension());
-    //             $imgName = $name_gen . '.' . $img_ext;
-    //             $upload_location = 'images/hotles/';
-    //             $last_img = $upload_location . $imgName;
-    //             $image->move($upload_location, $imgName);
-    //             HotelBranchImage::create([
-    //                 'image' => $last_img,
-    //                 'type' => 'building',
-    //                 'hotel_id' => $hotel_id,
-    //             ]);
-    //         }
-    //     } else {
-    //         return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
-    //     }
-    // }
 
     public function getAdmin()
     {
@@ -147,12 +67,7 @@ class HotelBranchController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-
             $request->validate([
-                // 'image_1' => 'mimes:jpg,jpeg,png,bmp',
-                // 'image_2' => 'mimes:jpg,jpeg,png,bmp',
-                // 'image_3' => 'mimes:jpg,jpeg,png,bmp',
-                // 'image_4' => 'mimes:jpg,jpeg,png,bmp',
                 'branch_id' => 'required',
             ]);
 
@@ -240,28 +155,72 @@ class HotelBranchController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-
             $request->validate([
-                'building_img' => 'required|max:4',
-                'building_img.*' => 'mimes:jpg,jpeg,png,bmp',
                 'branch_id' => 'required',
             ]);
 
-            $interior_img = $request->file('building_img');
-            foreach ($interior_img as $image) {
+            if ($request->file('image_1')) {
+                $image_1 = $request->file('image_1');
                 $name_gen = hexdec(uniqid());
-                $img_ext = strtolower($image->getClientOriginalExtension());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
                 $upload_location = 'images/hotles/';
                 $last_img = $upload_location . $imgName;
-                $image->move($upload_location, $imgName);
+                $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
                     'image' => $last_img,
                     'type' => 'building',
+                    'number' => 1,
                     'branch_id' => $request->branch_id,
                 ]);
             }
-            return response(['message' => 'Building Images Added Successfully']);
+            if ($request->file('image_2')) {
+                $image_1 = $request->file('image_2');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                HotelBranchImage::create([
+                    'image' => $last_img,
+                    'type' => 'building',
+                    'number' => 2,
+                    'branch_id' => $request->branch_id,
+                ]);
+            }
+            if ($request->file('image_3')) {
+                $image_1 = $request->file('image_3');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                HotelBranchImage::create([
+                    'image' => $last_img,
+                    'type' => 'building',
+                    'number' => 3,
+                    'branch_id' => $request->branch_id,
+                ]);
+            }
+            if ($request->file('image_4')) {
+                $image_1 = $request->file('image_4');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                HotelBranchImage::create([
+                    'image' => $last_img,
+                    'type' => 'building',
+                    'number' => 4,
+                    'branch_id' => $request->branch_id,
+                ]);
+            }
+
+            return response(['message' => 'building Images Added Successfully']);
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }
@@ -271,34 +230,102 @@ class HotelBranchController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-
             $request->validate([
-                'view_img' => 'required|max:4',
-                'view_img.*' => 'mimes:jpg,jpeg,png,bmp',
                 'branch_id' => 'required',
             ]);
 
-            $interior_img = $request->file('view_img');
-            foreach ($interior_img as $image) {
+            if ($request->file('image_1')) {
+                $image_1 = $request->file('image_1');
                 $name_gen = hexdec(uniqid());
-                $img_ext = strtolower($image->getClientOriginalExtension());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
                 $upload_location = 'images/hotles/';
                 $last_img = $upload_location . $imgName;
-                $image->move($upload_location, $imgName);
+                $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
                     'image' => $last_img,
                     'type' => 'view',
+                    'number' => 1,
                     'branch_id' => $request->branch_id,
                 ]);
             }
-            return response(['message' => 'Views Images Added Successfully']);
+            if ($request->file('image_2')) {
+                $image_1 = $request->file('image_2');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                HotelBranchImage::create([
+                    'image' => $last_img,
+                    'type' => 'view',
+                    'number' => 2,
+                    'branch_id' => $request->branch_id,
+                ]);
+            }
+            if ($request->file('image_3')) {
+                $image_1 = $request->file('image_3');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                HotelBranchImage::create([
+                    'image' => $last_img,
+                    'type' => 'view',
+                    'number' => 3,
+                    'branch_id' => $request->branch_id,
+                ]);
+            }
+            if ($request->file('image_4')) {
+                $image_1 = $request->file('image_4');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                HotelBranchImage::create([
+                    'image' => $last_img,
+                    'type' => 'view',
+                    'number' => 4,
+                    'branch_id' => $request->branch_id,
+                ]);
+            }
+
+            return response(['message' => 'view Images Added Successfully']);
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }
     }
 
     public function getInteriorImages()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+
+            return HotelBranchImage::where('branch_id', request()->branch_id)
+                ->where('type', 'interior')->get();
+            //  response(['mess age' => 'Views Images Added Successfully']);
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+    public function getBuildingImages()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+
+            return HotelBranchImage::where('branch_id', request()->branch_id)
+                ->where('type', 'building')->get();
+            //  response(['mess age' => 'Views Images Added Successfully']);
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+    public function getViewImages()
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {

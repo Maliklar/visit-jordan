@@ -23,6 +23,34 @@ async function getInteriorImages(branch_id) {
         .catch(e => e.response);
 }
 
+async function addBuildingImages(data) {
+    return await axios
+        .post(`${ROOT_API}/${API_POINT}/images/building/add`, data)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
+async function getBuildingImages(branch_id) {
+    return await axios
+        .get(`${ROOT_API}/${API_POINT}/images/building/get/${branch_id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
+async function addViewImages(data) {
+    return await axios
+        .post(`${ROOT_API}/${API_POINT}/images/view/add`, data)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
+async function getViewImages(branch_id) {
+    return await axios
+        .get(`${ROOT_API}/${API_POINT}/images/view/get/${branch_id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
 async function deleteImage(id) {
     return await axios
         .delete(`${ROOT_API}/${API_POINT}/images/delete/${id}`)
@@ -41,4 +69,14 @@ async function getAll() {
 
 
 
-export { add, getAll, addInteriorImages, deleteImage, getInteriorImages };
+export {
+    add,
+    getAll,
+    addInteriorImages,
+    addBuildingImages,
+    getViewImages,
+    addViewImages,
+    getBuildingImages,
+    deleteImage,
+    getInteriorImages
+};

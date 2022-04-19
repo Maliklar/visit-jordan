@@ -10,21 +10,27 @@
 
     <v-card-text>
       <v-window v-model="tab">
-        <v-window-item value="interior"> <InteriorPhotos /> </v-window-item>
+        <v-window-item value="interior">
+          <BranchPhotosEditor :type="'interior'" />
+        </v-window-item>
 
-        <v-window-item value="building"> Two </v-window-item>
+        <v-window-item value="building">
+          <BranchPhotosEditor :type="'building'" />
+        </v-window-item>
 
-        <v-window-item value="views"> Three </v-window-item>
+        <v-window-item value="views">
+          <BranchPhotosEditor :type="'views'" />
+        </v-window-item>
       </v-window>
     </v-card-text>
   </div>
 </template>
 
 <script>
-import InteriorPhotos from "../../../components/hotel_admin/InteriorPhotos.vue";
+import BranchPhotosEditor from "../../../components/hotel_admin/BranchPhotosEditor.vue";
 export default {
   components: {
-    InteriorPhotos,
+    BranchPhotosEditor,
   },
   data() {
     return {
