@@ -35,8 +35,18 @@
       </v-container>
     </v-form>
     <hr />
-    <RoomCard v-for="room in rooms" :key="room" :room="room" />
+    <div v-for="room in rooms" :key="room">
+      <RoomCard :room="room" />
+      <br />
+    </div>
   </div>
+  <v-btn
+    @click="addRoom"
+    class="add-room-floating-action-button"
+    color="success"
+    icon="mdi-plus"
+    size="x-large"
+  ></v-btn>
 </template>
 
 <script>
@@ -85,6 +95,11 @@ export default {
         this.isLoading = false;
       });
     },
+    addRoom() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/rooms/add",
+      });
+    },
     validate() {
       console.log("validate");
       this.$refs.form.validate();
@@ -117,5 +132,17 @@ export default {
 <style>
 .rooms-view {
   padding: 10px;
+}
+
+.add-room-floating-action-button {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}
+
+.rooms-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 </style>

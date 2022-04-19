@@ -92,14 +92,14 @@
       </div>
     </div>
   </div>
+
   <v-btn
-    size="x-large"
+    @click="addBranch"
     class="add-branch-floating-action-button"
     color="success"
-    @click="addBranch"
-  >
-    Add Branch
-  </v-btn>
+    icon="mdi-plus"
+    size="x-large"
+  ></v-btn>
 </template>
 
 <script>

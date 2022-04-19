@@ -9,6 +9,13 @@
       :category="category"
     />
   </div>
+  <v-btn
+    @click="addCategory"
+    class="add-category-floating-action-button"
+    color="success"
+    icon="mdi-plus"
+    size="x-large"
+  ></v-btn>
 </template>
 
 <script>
@@ -25,11 +32,24 @@ export default {
       this.categoriesArray = result.data;
     });
   },
+  methods: {
+    addCategory() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/room_categories/add",
+      });
+    },
+  },
 };
 </script>
 
 <style>
 .room-categories-view {
   padding: 10px;
+}
+
+.add-category-floating-action-button {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
 }
 </style>
