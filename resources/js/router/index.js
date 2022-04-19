@@ -78,6 +78,12 @@ const routes = [{
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/BranchPhotos.vue"),
             },
             {
+                path: "room_categories/photos/:id",
+                name: "RoomCategoryPhotos",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/RoomCategoryPhotos.vue"),
+            },
+            {
                 path: "room_categories",
                 name: "RoomCategories",
                 component: () =>

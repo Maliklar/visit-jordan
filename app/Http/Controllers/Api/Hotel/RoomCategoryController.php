@@ -47,28 +47,73 @@ class RoomCategoryController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-
             $request->validate([
-                'images' => 'required|max:4',
-                'images.*' => 'mimes:jpg,jpeg,png,bmp',
                 'category_id' => 'required',
             ]);
 
-            $images = $request->file('images');
-            foreach ($images as $image) {
+            if ($request->file('image_1')) {
+                $image_1 = $request->file('image_1');
                 $name_gen = hexdec(uniqid());
-                $img_ext = strtolower($image->getClientOriginalExtension());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
                 $upload_location = 'images/hotles/';
                 $last_img = $upload_location . $imgName;
-                $image->move($upload_location, $imgName);
+                $image_1->move($upload_location, $imgName);
                 RoomCategoryImage::create([
                     'image' => $last_img,
                     'type' => 'view',
+                    'number' => 1,
                     'category_id' => $request->category_id,
                 ]);
             }
-            return response(['message' => 'Views Images Added Successfully']);
+            if ($request->file('image_2')) {
+                $image_1 = $request->file('image_2');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                RoomCategoryImage::create([
+                    'image' => $last_img,
+                    'type' => 'view',
+                    'number' => 2,
+                    'category_id' => $request->category_id,
+
+                ]);
+            }
+            if ($request->file('image_3')) {
+                $image_1 = $request->file('image_3');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                RoomCategoryImage::create([
+                    'image' => $last_img,
+                    'type' => 'view',
+                    'number' => 3,
+                    'category_id' => $request->category_id,
+                ]);
+            }
+            if ($request->file('image_4')) {
+                $image_1 = $request->file('image_4');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                RoomCategoryImage::create([
+                    'image' => $last_img,
+                    'type' => 'view',
+                    'number' => 4,
+                    'category_id' => $request->category_id,
+                ]);
+            }
+
+            return response(['message' => 'view Images Added Successfully']);
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }
@@ -78,28 +123,73 @@ class RoomCategoryController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-
             $request->validate([
-                'images' => 'required|max:4',
-                'images.*' => 'mimes:jpg,jpeg,png,bmp',
                 'category_id' => 'required',
             ]);
 
-            $images = $request->file('images');
-            foreach ($images as $image) {
+            if ($request->file('image_1')) {
+                $image_1 = $request->file('image_1');
                 $name_gen = hexdec(uniqid());
-                $img_ext = strtolower($image->getClientOriginalExtension());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
                 $upload_location = 'images/hotles/';
                 $last_img = $upload_location . $imgName;
-                $image->move($upload_location, $imgName);
+                $image_1->move($upload_location, $imgName);
                 RoomCategoryImage::create([
                     'image' => $last_img,
                     'type' => 'room',
+                    'number' => 1,
                     'category_id' => $request->category_id,
                 ]);
             }
-            return response(['message' => 'Views Images Added Successfully']);
+            if ($request->file('image_2')) {
+                $image_1 = $request->file('image_2');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                RoomCategoryImage::create([
+                    'image' => $last_img,
+                    'type' => 'room',
+                    'number' => 2,
+                    'category_id' => $request->category_id,
+
+                ]);
+            }
+            if ($request->file('image_3')) {
+                $image_1 = $request->file('image_3');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                RoomCategoryImage::create([
+                    'image' => $last_img,
+                    'type' => 'room',
+                    'number' => 3,
+                    'category_id' => $request->category_id,
+                ]);
+            }
+            if ($request->file('image_4')) {
+                $image_1 = $request->file('image_4');
+                $name_gen = hexdec(uniqid());
+                $img_ext = strtolower($image_1->getClientOriginalExtension());
+                $imgName = $name_gen . '.' . $img_ext;
+                $upload_location = 'images/hotles/';
+                $last_img = $upload_location . $imgName;
+                $image_1->move($upload_location, $imgName);
+                RoomCategoryImage::create([
+                    'image' => $last_img,
+                    'type' => 'room',
+                    'number' => 4,
+                    'category_id' => $request->category_id,
+                ]);
+            }
+
+            return response(['message' => 'view Images Added Successfully']);
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }
@@ -115,6 +205,32 @@ class RoomCategoryController extends Controller
         }
     }
 
+    public function getViewImages()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+
+            return RoomCategoryImage::where('category_id', request()->category_id)
+                ->where('type', 'view')->get();
+
+            //  response(['mess age' => 'Views Images Added Successfully']);
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+    public function getRoomImages()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+
+            return RoomCategoryImage::where('category_id', request()->category_id)
+                ->where('type', 'view')->get();
+
+            //  response(['mess age' => 'Views Images Added Successfully']);
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
     public function getAll()
     {
         $user = Auth::user();

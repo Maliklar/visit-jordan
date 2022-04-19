@@ -25244,6 +25244,12 @@ var routes = [{
       return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/BranchPhotos.vue */ "./resources/js/views/admin/hotel/BranchPhotos.vue"));
     }
   }, {
+    path: "room_categories/photos/:id",
+    name: "RoomCategoryPhotos",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/RoomCategoryPhotos.vue */ "./resources/js/views/admin/hotel/RoomCategoryPhotos.vue"));
+    }
+  }, {
     path: "room_categories",
     name: "RoomCategories",
     component: function component() {

@@ -60,9 +60,9 @@
 
     <div class="px-4">
       <v-chip-group v-model="selection">
-        <v-chip>5:30PM</v-chip>
+        <v-chip>Edit</v-chip>
 
-        <v-chip>7:30PM</v-chip>
+        <v-chip @click="photos(category.id)">Photos</v-chip>
 
         <v-chip>8:00PM</v-chip>
 
@@ -93,6 +93,11 @@ export default {
       this.loading = true;
 
       setTimeout(() => (this.loading = false), 2000);
+    },
+    photos(id) {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/room_categories/photos/" + id,
+      });
     },
   },
 };
