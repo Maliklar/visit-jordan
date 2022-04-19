@@ -23,6 +23,13 @@ async function getInteriorImages(branch_id) {
         .catch(e => e.response);
 }
 
+async function deleteImage(id) {
+    return await axios
+        .delete(`${ROOT_API}/${API_POINT}/images/delete/${id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
 async function getAll() {
     return await axios
         .get(`${ROOT_API}/${API_POINT}/get`)
@@ -33,4 +40,5 @@ async function getAll() {
 
 
 
-export { add, getAll, addInteriorImages, getInteriorImages };
+
+export { add, getAll, addInteriorImages, deleteImage, getInteriorImages };

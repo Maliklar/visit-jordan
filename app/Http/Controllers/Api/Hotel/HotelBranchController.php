@@ -223,6 +223,19 @@ class HotelBranchController extends Controller
         }
     }
 
+
+    public function deleteImage()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            HotelBranchImage::where('id', request()->id)->delete();
+
+            return response(['message' => 'Image Deleted Successfully']);
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
     public function addBuildingImages(Request $request)
     {
         $user = Auth::user();

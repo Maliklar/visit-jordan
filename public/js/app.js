@@ -24072,6 +24072,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "add": () => (/* binding */ add),
 /* harmony export */   "addInteriorImages": () => (/* binding */ addInteriorImages),
+/* harmony export */   "deleteImage": () => (/* binding */ deleteImage),
 /* harmony export */   "getAll": () => (/* binding */ getAll),
 /* harmony export */   "getInteriorImages": () => (/* binding */ getInteriorImages)
 /* harmony export */ });
@@ -24179,18 +24180,18 @@ function _getInteriorImages() {
   return _getInteriorImages.apply(this, arguments);
 }
 
-function getAll() {
-  return _getAll.apply(this, arguments);
+function deleteImage(_x4) {
+  return _deleteImage.apply(this, arguments);
 }
 
-function _getAll() {
-  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+function _deleteImage() {
+  _deleteImage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/images/delete/").concat(id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -24205,6 +24206,36 @@ function _getAll() {
         }
       }
     }, _callee4);
+  }));
+  return _deleteImage.apply(this, arguments);
+}
+
+function getAll() {
+  return _getAll.apply(this, arguments);
+}
+
+function _getAll() {
+  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context5.abrupt("return", _context5.sent);
+
+          case 3:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
   }));
   return _getAll.apply(this, arguments);
 }

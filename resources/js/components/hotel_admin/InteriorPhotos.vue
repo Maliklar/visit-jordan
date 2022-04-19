@@ -3,21 +3,8 @@
     <v-form ref="form" @submit.prevent="submit">
       <v-row>
         <v-col cols="6">
-          <v-img
-            :src="image_1_url"
-            aspect-ratio="1"
-            cover
-            class="bg-grey-lighten-2"
-          >
-            <template v-slot:placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular
-                  indeterminate
-                  color="grey-lighten-5"
-                ></v-progress-circular>
-              </v-row>
-            </template>
-          </v-img>
+          <ImageContainer :src="image_1_url" :id="image_1_id" />
+
           <v-file-input
             @change="handleImage1"
             accept="image/png, image/jpeg, image/bmp"
@@ -27,22 +14,7 @@
           ></v-file-input>
         </v-col>
         <v-col cols="6">
-          <v-img
-            :src="image_2_url"
-            :lazy-src="`https://picsum.photos/10/6?image=${1 * 5 + 10}`"
-            aspect-ratio="1"
-            cover
-            class="bg-grey-lighten-2"
-          >
-            <template v-slot:placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular
-                  indeterminate
-                  color="grey-lighten-5"
-                ></v-progress-circular>
-              </v-row>
-            </template>
-          </v-img>
+          <ImageContainer :src="image_2_url" :id="image_2_id" />
           <v-file-input
             accept="image/png, image/jpeg, image/bmp"
             placeholder="Pick an avatar"
@@ -52,22 +24,8 @@
           ></v-file-input>
         </v-col>
         <v-col cols="6">
-          <v-img
-            :src="image_3_url"
-            :lazy-src="`https://picsum.photos/10/6?image=${1 * 5 + 10}`"
-            aspect-ratio="1"
-            cover
-            class="bg-grey-lighten-2"
-          >
-            <template v-slot:placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular
-                  indeterminate
-                  color="grey-lighten-5"
-                ></v-progress-circular>
-              </v-row>
-            </template>
-          </v-img>
+          <ImageContainer :src="image_3_url" :id="image_3_id" />
+
           <v-file-input
             accept="imag
             e/png, image/jpeg, image/bmp"
@@ -78,22 +36,8 @@
           ></v-file-input>
         </v-col>
         <v-col cols="6">
-          <v-img
-            :src="image_4_url"
-            :lazy-src="`https://picsum.photos/10/6?image=${1 * 5 + 10}`"
-            aspect-ratio="1"
-            cover
-            class="bg-grey-lighten-2"
-          >
-            <template v-slot:placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular
-                  indeterminate
-                  color="grey-lighten-5"
-                ></v-progress-circular>
-              </v-row>
-            </template>
-          </v-img>
+          <ImageContainer :src="image_4_url" :id="image_4_id" />
+
           <v-file-input
             @change="handleImage4"
             accept="image/png, image/jpeg, image/bmp"
@@ -101,7 +45,6 @@
             prepend-icon="mdi-camera"
             label="Image 4"
           ></v-file-input>
-          sds
         </v-col>
       </v-row>
       <v-btn color="success" type="submit" size="large"> Submit </v-btn>
@@ -110,7 +53,11 @@
 </template>
 
 <script>
+import ImageContainer from "../../components/hotel_admin/ImageContainer.vue";
 export default {
+  components: {
+    ImageContainer,
+  },
   created() {
     console.log(this.$route.params.id);
     this.hotelBranchAdminService
@@ -119,15 +66,19 @@ export default {
         for (let i = 0; i < result.data.length; i++) {
           if (result.data[i].number == 1) {
             this.image_1_url = "http://localhost:8000/" + result.data[i].image;
+            this.image_1_id = result.data[i].id;
           }
           if (result.data[i].number == 2) {
             this.image_2_url = "http://localhost:8000/" + result.data[i].image;
+            this.image_2_id = result.data[i].id;
           }
           if (result.data[i].number == 3) {
             this.image_3_url = "http://localhost:8000/" + result.data[i].image;
+            this.image_3_id = result.data[i].id;
           }
           if (result.data[i].number == 4) {
             this.image_4_url = "http://localhost:8000/" + result.data[i].image;
+            this.image_4_id = result.data[i].id;
           }
         }
       });
@@ -138,6 +89,12 @@ export default {
       image_2: null,
       image_3: null,
       image_4: null,
+
+      image_1_id: null,
+      image_2_id: null,
+      image_3_id: null,
+      image_4_id: null,
+
       image_1_url: `https://picsum.photos/500/300?image=${1 * 5 + 10}`,
       image_2_url: `https://picsum.photos/500/300?image=${1 * 5 + 10}`,
       image_3_url: `https://picsum.photos/500/300?image=${1 * 5 + 10}`,
@@ -181,4 +138,8 @@ export default {
 </script>
 
 <style>
+.dialog-bottom-transition-enter-active,
+.dialog-bottom-transition-leave-active {
+  transition: transform 0.2s ease-in-out;
+}
 </style>
