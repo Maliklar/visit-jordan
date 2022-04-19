@@ -78,12 +78,12 @@ const routes = [{
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/BranchPhotos.vue"),
             },
             {
-                path: "branches/room_categories/:id",
+                path: "room_categories",
                 name: "RoomCategories",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/RoomCategories.vue"),
             }, {
-                path: "branches/room_categories/add",
+                path: "room_categories/add",
                 name: "AddRoomCategory",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/AddRoomCategory.vue"),

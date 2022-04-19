@@ -105,11 +105,21 @@ class RoomCategoryController extends Controller
         }
     }
 
-    public function getAll()
+    public function getAllSingleBranch()
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
             return RoomCategory::where('branch_id', request()->branch_id)->with('room', 'view')->get();
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    public function getAll()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            return RoomCategory::where('user_id', $user->id)->with('room', 'view')->get();
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }

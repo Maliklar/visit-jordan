@@ -119,9 +119,9 @@
 <script>
 export default {
   async created() {
-    this.cityService.get().then((result) => {
+    this.hotelBranchAdminService.getAll().then((result) => {
       for (let i = 0; i < result.data.length; i++) {
-        this.cities.push(result.data[i].id);
+        this.branches.push(result.data[i].id);
       }
     });
   },
@@ -154,20 +154,23 @@ export default {
       this.isLoading = true;
       let data = {
         name: this.name,
-        location_description: this.location_description,
-        map_location: this.map_location,
-        phone: this.phone,
-        email: this.email,
-        gym: this.gym,
-        swimming_pool: this.swimming_pool,
-        resturant: this.resturant,
-        laundry: this.laundry,
-        city_id: this.city_id,
+        branch_id: this.branch_id,
+        description: this.description,
+        price: this.price,
+        rooms: this.rooms,
+        bathrooms: this.bathrooms,
+        single_beds: this.single_beds,
+        double_beds: this.double_beds,
+        capacity: this.capacity,
+        wifi: this.wifi,
+        balcony: this.balcony,
+        lunch: this.lunch,
+        tv: this.tv,
       };
 
       console.log(data);
 
-      this.hotelBranchAdminService.add(data).then((result) => {
+      this.roomCategoryAdminService.add(data).then((result) => {
         // console.log(result.data);
         this.ht = result.data;
         console.log(result);

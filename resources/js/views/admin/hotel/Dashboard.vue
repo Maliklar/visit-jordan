@@ -43,6 +43,34 @@
             @click="branches"
           ></v-list-item>
 
+          <v-list-group>
+            <template v-slot:activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                prepend-icon="mdi-bed"
+                title="Rooms"
+                value="rooms"
+                @click="room_categories"
+              >
+              </v-list-item>
+            </template>
+            <v-list-item
+              title="Categories"
+              value="categories"
+              @click="room_categories"
+            ></v-list-item
+            ><v-list-item
+              title="Empty Rooms"
+              value="empty_rooms"
+              @click="branches"
+            ></v-list-item
+            ><v-list-item
+              title="All Rooms"
+              value="all_rooms"
+              @click="branches"
+            ></v-list-item>
+          </v-list-group>
+
           <v-list-item
             prepend-icon="mdi-account-group-outline"
             title="Reservations"
@@ -65,6 +93,7 @@ export default {
         { title: "Account", icon: "mdi-account" },
         { title: "Hotel Profile", icon: "mdi-home-city" },
         { title: "Users", icon: "mdi-account-group-outline" },
+        { title: "Rooms", icon: "mdi-account-group-outline" },
       ],
       rail: true,
     };
@@ -79,6 +108,11 @@ export default {
     branches() {
       this.$router.push({
         path: "/admin/hotel/dashboard/branches",
+      });
+    },
+    room_categories() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/room_categories",
       });
     },
   },
