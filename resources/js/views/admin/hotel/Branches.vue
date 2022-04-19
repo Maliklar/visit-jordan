@@ -64,7 +64,9 @@
                 <v-card-actions>
                   <v-btn color="orange"> Details </v-btn>
                   <v-btn color="orange"> Edit </v-btn>
-                  <v-btn color="orange"> Categories </v-btn>
+                  <v-btn color="orange" @click="openRoomCategories(branch.id)">
+                    Categories
+                  </v-btn>
                   <v-btn color="orange"> Rooms </v-btn>
                   <v-btn color="orange" @click="openBranchPhotos(branch.id)">
                     Photos
@@ -132,9 +134,9 @@ export default {
       });
     },
 
-    openBranchDetails(id) {
+    openRoomCategories(id) {
       this.$router.push({
-        path: "/admin/hotel/dashboard/branches/details/" + id,
+        path: "/admin/hotel/dashboard/branches/room_categories/" + id,
       });
     },
   },

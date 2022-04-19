@@ -24933,6 +24933,18 @@ var routes = [{
     component: function component() {
       return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/BranchPhotos.vue */ "./resources/js/views/admin/hotel/BranchPhotos.vue"));
     }
+  }, {
+    path: "branches/room_categories/:id",
+    name: "RoomCategories",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/RoomCategories.vue */ "./resources/js/views/admin/hotel/RoomCategories.vue"));
+    }
+  }, {
+    path: "branches/room_categories/add",
+    name: "AddRoomCategory",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/AddRoomCategory.vue */ "./resources/js/views/admin/hotel/AddRoomCategory.vue"));
+    }
   }],
   component: function component() {
     return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Dashboard.vue */ "./resources/js/views/admin/hotel/Dashboard.vue"));

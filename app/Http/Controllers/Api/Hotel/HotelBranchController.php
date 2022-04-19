@@ -330,7 +330,9 @@ class HotelBranchController extends Controller
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
 
-            return HotelBranchImage::where('branch_id', request()->branch_id)->get();
+            return HotelBranchImage::where('branch_id', request()->branch_id)
+                ->where('type', 'view')->get();
+
             //  response(['mess age' => 'Views Images Added Successfully']);
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
