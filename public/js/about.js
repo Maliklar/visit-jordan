@@ -2308,6 +2308,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {
     var _this = this;
@@ -10436,7 +10452,7 @@ var render = function () {
             : _vm._l(_vm.branches, function (branch) {
                 return _c(
                   "div",
-                  { key: branch },
+                  { key: branch.id },
                   [
                     _c("v-hover", {
                       attrs: { "open-delay": "200" },
@@ -10468,6 +10484,49 @@ var render = function () {
                                           "v-col",
                                           { attrs: { cols: "7" } },
                                           [
+                                            _c(
+                                              "v-img",
+                                              {
+                                                attrs: {
+                                                  src: "https://picsum.photos/510/300?random",
+                                                },
+                                              },
+                                              [
+                                                _c(
+                                                  "v-card-title",
+                                                  [
+                                                    _c("v-icon", {
+                                                      attrs: {
+                                                        icon: "mdi-office-building-outline",
+                                                      },
+                                                    }),
+                                                    _vm._v(
+                                                      "\n                  " +
+                                                        _vm._s(branch.name)
+                                                    ),
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-card-title",
+                                                  [
+                                                    _c("v-icon", {
+                                                      attrs: {
+                                                        icon: "mdi-map-marker",
+                                                      },
+                                                    }),
+                                                    _vm._v(
+                                                      "\n                  " +
+                                                        _vm._s(branch.city.name)
+                                                    ),
+                                                  ],
+                                                  1
+                                                ),
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
                                             branch.building.length > 0
                                               ? _c(
                                                   "v-img",
@@ -10716,11 +10775,23 @@ var render = function () {
         2
       ),
       _vm._v(" "),
-      _c("v-btn", {
-        staticClass: "add-branch-floating-action-button",
-        attrs: { color: "success", icon: "mdi-plus", size: "x-large" },
-        on: { click: _vm.addBranch },
-      }),
+      _c(
+        "v-btn",
+        {
+          attrs: {
+            color: "success",
+            fab: "",
+            dark: "",
+            size: "x-large",
+            fixed: "",
+            bottom: "",
+            right: "",
+          },
+          on: { click: _vm.addBranch },
+        },
+        [_c("v-icon", [_vm._v("mdi-plus")])],
+        1
+      ),
     ],
     1
   )

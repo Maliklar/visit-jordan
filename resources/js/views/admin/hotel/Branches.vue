@@ -7,7 +7,7 @@
       <div v-if="branches == null">
         <img width="100" src="../../../assets/images/no_results_found.png" />
       </div>
-      <div v-else v-for="branch in branches" :key="branch">
+      <div v-else v-for="branch in branches" :key="branch.id">
         <v-hover v-slot="{ isHovering, props }" open-delay="200">
           <v-card
             class="mx-auto w-100"
@@ -17,6 +17,16 @@
           >
             <v-row>
               <v-col cols="7">
+                <v-img src="https://picsum.photos/510/300?random">
+                  <v-card-title>
+                    <v-icon icon="mdi-office-building-outline"></v-icon>
+                    {{ branch.name }}</v-card-title
+                  >
+                  <v-card-title>
+                    <v-icon icon="mdi-map-marker"></v-icon>
+                    {{ branch.city.name }}</v-card-title
+                  ></v-img
+                >
                 <v-img
                   v-if="branch.building.length > 0"
                   class="align-end text-white"
@@ -33,6 +43,7 @@
                     {{ branch.city.name }}</v-card-title
                   >
                 </v-img>
+
                 <!-- mdi-office-building-outline -->
                 <v-img
                   v-else
@@ -92,12 +103,17 @@
       </div>
     </div>
     <v-btn
-      @click="addBranch"
-      class="add-branch-floating-action-button"
       color="success"
-      icon="mdi-plus"
+      @click="addBranch"
+      fab
+      dark
       size="x-large"
-    ></v-btn>
+      fixed
+      bottom
+      right
+    >
+      <v-icon>mdi-plus</v-icon>
+    </v-btn>
   </div>
 </template>
 
