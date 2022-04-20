@@ -2,7 +2,7 @@
   <div>
     <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <template v-for="(banner, index) in banners" :key="banner">
+        <div v-for="(banner, index) in banners" :key="banner">
           <div
             v-if="index == 0"
             class="carousel-item active home-carousel-content"
@@ -28,7 +28,7 @@
               muted
             ></video>
           </div>
-        </template>
+        </div>
       </div>
       <button
         class="carousel-control-prev"

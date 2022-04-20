@@ -8,14 +8,14 @@
       :key="category"
       :category="category"
     />
+    <v-btn
+      @click="addCategory"
+      class="add-category-floating-action-button"
+      color="success"
+      icon="mdi-plus"
+      size="x-large"
+    ></v-btn>
   </div>
-  <v-btn
-    @click="addCategory"
-    class="add-category-floating-action-button"
-    color="success"
-    icon="mdi-plus"
-    size="x-large"
-  ></v-btn>
 </template>
 
 <script>

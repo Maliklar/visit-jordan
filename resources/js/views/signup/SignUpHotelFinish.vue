@@ -2,9 +2,9 @@
   <div class="hotel-sign-up">
     <h1>Hotel Details</h1>
     <hr />
-  </div>
-  <div class="hotel-sign-up-form-container">
-    <HotelDetailsForm />
+    <div class="hotel-sign-up-form-container">
+      <HotelDetailsForm />
+    </div>
   </div>
 </template>
 

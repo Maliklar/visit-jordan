@@ -39,14 +39,14 @@
       <RoomCard :room="room" />
       <br />
     </div>
+    <v-btn
+      @click="addRoom"
+      class="add-room-floating-action-button"
+      color="success"
+      icon="mdi-plus"
+      size="x-large"
+    ></v-btn>
   </div>
-  <v-btn
-    @click="addRoom"
-    class="add-room-floating-action-button"
-    color="success"
-    icon="mdi-plus"
-    size="x-large"
-  ></v-btn>
 </template>
 
 <script>

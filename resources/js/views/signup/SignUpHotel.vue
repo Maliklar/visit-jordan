@@ -2,9 +2,9 @@
   <div class="hotel-sign-up">
     <h1>Sign up as a hotel</h1>
     <hr />
-  </div>
-  <div class="hotel-sign-up-form-container">
-    <sign-up-form :type="'hotel'" />
+    <div class="hotel-sign-up-form-container">
+      <sign-up-form :type="'hotel'" />
+    </div>
   </div>
 </template>
 

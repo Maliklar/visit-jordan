@@ -62,14 +62,14 @@
       </v-card-actions>
     </v-card> -->
   </div>
-  <v-btn
+  <!-- <v-btn
     size="x-large"
     class="add-branch-floating-action-button"
     color="success"
     @click="addBranch"
   >
     Add Branch
-  </v-btn>
+  </v-btn> -->
 </template>
 
 <script>

@@ -1,15 +1,11 @@
 // require('./bootstrap')
 
-import { createApp } from 'vue'
 import App from './App.vue'
 import router from "./router";
 import store from "./store";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap";
-import { aliases, mdi } from 'vuetify/lib/iconsets/mdi'
-import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap";
 
-import { createVuetify } from 'vuetify'
 const bannerService = require('./javascript/api/bannerService');
 const hotelService = require('./javascript/api/hotelService');
 const userService = require('./javascript/api/userService');
@@ -20,34 +16,19 @@ const carBranchAdminService = require('./javascript/api/carBranchAdminService');
 const roomCategoryAdminService = require('./javascript/api/roomCategoryAdminService');
 const hotelRoomAdminService = require('./javascript/api/hotelRoomAdminService');
 const cityService = require('./javascript/api/cityService');
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+
+
+import Vue from 'vue'
 
 
 
 
 
-const vuetify = createVuetify({
-    components,
-    directives,
-    theme: {
-        defaultTheme: 'dark',
-        themes: {
 
-        }
-    },
-    icons: {
-        defaultSet: 'mdi',
-        aliases,
-        sets: {
-            mdi,
-        }
-    },
 
-})
-
+import vuetify from './plugins/vuetify'
 const GLOBAL = {
-    data() {
+    data: () => {
         return {
             bannerService: bannerService,
             hotelService: hotelService,
@@ -62,12 +43,12 @@ const GLOBAL = {
         };
     },
 };
+Vue.config.productionTip = false
 
-const app = createApp(App);
-app.use(router);
-app.use(store);
-app.use(vuetify)
-app.mixin(GLOBAL);
-
-
-app.mount('#app');
+new Vue({
+    vuetify,
+    router,
+    store,
+    mixins: [GLOBAL],
+    render: h => h(App)
+}).$mount('#app')

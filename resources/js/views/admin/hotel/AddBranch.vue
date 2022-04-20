@@ -98,7 +98,7 @@
       <v-btn color="success" class="mr-4" type="submit"> Submit </v-btn>
     </v-form>
   </div>
-  <div v-html="ht"></div>
+  <!-- <div v-html="ht"></div> -->
 </template>
 
 <script>

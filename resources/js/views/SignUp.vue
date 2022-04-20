@@ -3,12 +3,12 @@
     <div>
       <h1>Sign Up</h1>
       <hr />
-    </div>
-    <div class="sign-up-options-container">
-      <CarCard class="sign-up-option-card" @click="car" />
-      <HotelCard class="sign-up-option-card" @click="hotel" />
-      <UserCard class="sign-up-option-card" @click="user" />
-      <GuideCard class="sign-up-option-card" @click="guide" />
+      <div class="sign-up-options-container">
+        <CarCard class="sign-up-option-card" @click="car" />
+        <HotelCard class="sign-up-option-card" @click="hotel" />
+        <UserCard class="sign-up-option-card" @click="user" />
+        <GuideCard class="sign-up-option-card" @click="guide" />
+      </div>
     </div>
   </div>
 </template>
