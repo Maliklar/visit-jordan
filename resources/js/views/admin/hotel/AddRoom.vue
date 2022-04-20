@@ -58,7 +58,7 @@
 <script>
 export default {
   async created() {
-    this.hotelBranchAdminService.getAll().then((result) => {
+    this.$hotelBranchAdminService.getAll().then((result) => {
       for (let i = 0; i < result.data.length; i++) {
         this.branches.push(result.data[i].id);
       }
@@ -87,7 +87,7 @@ export default {
 
       console.log(data);
 
-      this.hotelRoomAdminService.add(data).then((result) => {
+      this.$hotelRoomAdminService.add(data).then((result) => {
         // console.log(result.data);
         this.ht = result.data;
         console.log(result);
@@ -101,7 +101,7 @@ export default {
 
     branchSelected() {
       console.log(this.branch_id);
-      this.roomCategoryAdminService
+      this.$roomCategoryAdminService
         .getSingleBranch(this.branch_id)
         .then((result) => {
           this.categories = [];

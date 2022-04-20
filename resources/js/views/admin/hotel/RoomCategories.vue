@@ -28,7 +28,7 @@ export default {
   },
   components: { RoomCategoryCard },
   async created() {
-    this.roomCategoryAdminService.getAll().then((result) => {
+    this.$roomCategoryAdminService.getAll().then((result) => {
       this.categoriesArray = result.data;
     });
   },

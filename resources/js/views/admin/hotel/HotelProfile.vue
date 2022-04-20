@@ -128,7 +128,7 @@ export default {
       data.append("email", this.email);
       data.append("phone", this.photo);
       data.append("logo", this.hotelLogo);
-      this.hotelAdminService.update(data).then((result) => {
+      this.$hotelAdminService.update(data).then((result) => {
         if (result.status == 422) {
           console.log(result.data);
           this.actionMessage = result.data.message;
@@ -147,7 +147,9 @@ export default {
   },
 
   async created() {
-    this.hotelAdminService.get().then((result) => {
+    console.log(this.$appName);
+
+    this.$hotelAdminService.get().then((result) => {
       if (result.status == 404) {
         this.actionMessage = result.data.message;
       }
@@ -168,6 +170,7 @@ export default {
 <style scoped>
 .hotel-profile-view {
   padding: 10px;
+  /* background-color: black; */
 }
 
 .slide-left {

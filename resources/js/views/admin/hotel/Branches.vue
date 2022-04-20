@@ -104,7 +104,7 @@
 <script>
 export default {
   created() {
-    this.hotelBranchAdminService.getAll().then((result) => {
+    this.$hotelBranchAdminService.getAll().then((result) => {
       console.log(result.data);
       if (result.status == 200) {
         if (result.data.length == 0) {

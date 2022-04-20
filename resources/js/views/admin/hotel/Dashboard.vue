@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant.sync="mini"
@@ -83,7 +83,7 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-  </v-card>
+  </v-app>
 </template>
 <script>
 export default {

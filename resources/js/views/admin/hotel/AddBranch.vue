@@ -104,7 +104,7 @@
 <script>
 export default {
   async created() {
-    this.cityService.get().then((result) => {
+    this.$cityService.get().then((result) => {
       for (let i = 0; i < result.data.length; i++) {
         this.cities.push(result.data[i].id);
       }

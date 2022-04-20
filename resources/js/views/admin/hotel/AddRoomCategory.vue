@@ -119,7 +119,7 @@
 <script>
 export default {
   async created() {
-    this.hotelBranchAdminService.getAll().then((result) => {
+    this.$hotelBranchAdminService.getAll().then((result) => {
       for (let i = 0; i < result.data.length; i++) {
         this.branches.push(result.data[i].id);
       }
@@ -170,7 +170,7 @@ export default {
 
       console.log(data);
 
-      this.roomCategoryAdminService.add(data).then((result) => {
+      this.$roomCategoryAdminService.add(data).then((result) => {
         // console.log(result.data);
         this.ht = result.data;
         console.log(result);

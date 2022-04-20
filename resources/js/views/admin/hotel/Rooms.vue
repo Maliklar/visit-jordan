@@ -56,12 +56,12 @@ export default {
     RoomCard,
   },
   async created() {
-    this.hotelBranchAdminService.getAll().then((result) => {
+    this.$hotelBranchAdminService.getAll().then((result) => {
       for (let i = 0; i < result.data.length; i++) {
         this.branches.push(result.data[i].id);
       }
     });
-    this.hotelRoomAdminService.getAll().then((result) => {
+    this.$hotelRoomAdminService.getAll().then((result) => {
       this.rooms = result.data;
     });
   },
