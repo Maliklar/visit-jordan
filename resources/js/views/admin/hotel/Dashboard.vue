@@ -1,80 +1,88 @@
 <template>
   <v-card>
-    <v-layout>
-      <v-navigation-drawer
-        v-model="drawer"
-        :rail="rail"
-        permanent
-        @click="rail = false"
-      >
-        <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-          title="John Leider"
-        >
-          <template v-slot:append>
-            <v-btn
-              variant="text"
-              icon="mdi-chevron-left"
-              @click.stop="rail = !rail"
-            ></v-btn>
-          </template>
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant.sync="mini"
+      permanent
+      app
+    >
+      <v-list-item class="px-2">
+        <v-list-item-avatar>
+          <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-title>Malik Elbadri</v-list-item-title>
+
+        <v-btn icon @click.stop="mini = !mini">
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-account</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Account</v-list-item-title>
+          </v-list-item-content>
         </v-list-item>
 
-        <v-divider></v-divider>
+        <v-list-item @click="hotelProfile" link>
+          <v-list-item-icon>
+            <v-icon>mdi-home-city</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Hotel Profile</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-        <v-list density="compact" nav>
-          <v-list-item
-            prepend-icon="mdi-account"
-            title="Account"
-            value="account"
-          ></v-list-item>
+        <v-list-item @click="branches" link>
+          <v-list-item-icon>
+            <v-icon>mdi-home-group</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Branches</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-          <v-list-item
-            prepend-icon="mdi-home-city"
-            title="Hotel Profile"
-            value="hotel_profile"
-            @click="hotelProfile"
-          ></v-list-item>
+        <v-list-item @click="room_categories" link>
+          <v-list-item-icon>
+            <v-icon>mdi-chart-tree</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Rooms Category</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-          <v-list-item
-            prepend-icon="mdi-home-group"
-            title="Branches"
-            value="branches"
-            @click="branches"
-          ></v-list-item>
+        <v-list-item @click="rooms" link>
+          <v-list-item-icon>
+            <v-icon>mdi-chart-tree</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Rooms</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-          <v-list-item
-            prepend-icon="mdi-chart-tree"
-            title="Rooms Category"
-            value="rooms_category"
-            @click="room_categories"
-          ></v-list-item>
-
-          <v-list-item
-            prepend-icon="mdi-bed"
-            title="Rooms"
-            value="rooms"
-            @click="rooms"
-          ></v-list-item>
-
-          <v-list-item
-            prepend-icon="mdi-account-group-outline"
-            title="Reservations"
-            value="reservations"
-          ></v-list-item>
-
-          <v-divider></v-divider>
-          <v-list-item
-            prepend-icon="mdi-cash-multiple"
-            title="Revenue"
-            value="revenue"
-          ></v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-      <v-main class="dashbaord-background" style="min-height: 100vh">
-        <router-view />
-      </v-main>
-    </v-layout>
+        <v-list-item @click="room_categories" link>
+          <v-list-item-icon>
+            <v-icon>mdi-bed</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Rooms Category</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-main>
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid>
+        <!-- If using vue-router -->
+        <router-view></router-view>
+      </v-container>
+    </v-main>
   </v-card>
 </template>
 <script>
@@ -83,12 +91,11 @@ export default {
     return {
       drawer: true,
       items: [
-        { title: "Account", icon: "mdi-account" },
-        { title: "Hotel Profile", icon: "mdi-home-city" },
+        { title: "Home", icon: "mdi-home-city" },
+        { title: "My Account", icon: "mdi-account" },
         { title: "Users", icon: "mdi-account-group-outline" },
-        { title: "Rooms", icon: "mdi-account-group-outline" },
       ],
-      rail: true,
+      mini: true,
     };
   },
 

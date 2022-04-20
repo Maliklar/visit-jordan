@@ -2439,24 +2439,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       drawer: true,
       items: [{
-        title: "Account",
-        icon: "mdi-account"
-      }, {
-        title: "Hotel Profile",
+        title: "Home",
         icon: "mdi-home-city"
+      }, {
+        title: "My Account",
+        icon: "mdi-account"
       }, {
         title: "Users",
         icon: "mdi-account-group-outline"
-      }, {
-        title: "Rooms",
-        icon: "mdi-account-group-outline"
       }],
-      rail: true
+      mini: true
     };
   },
   methods: {
@@ -10588,137 +10593,191 @@ var render = function () {
     "v-card",
     [
       _c(
-        "v-layout",
+        "v-navigation-drawer",
+        {
+          attrs: { "mini-variant": _vm.mini, permanent: "", app: "" },
+          on: {
+            "update:miniVariant": function ($event) {
+              _vm.mini = $event
+            },
+            "update:mini-variant": function ($event) {
+              _vm.mini = $event
+            },
+          },
+          model: {
+            value: _vm.drawer,
+            callback: function ($$v) {
+              _vm.drawer = $$v
+            },
+            expression: "drawer",
+          },
+        },
         [
           _c(
-            "v-navigation-drawer",
-            {
-              attrs: { rail: _vm.rail, permanent: "" },
-              on: {
-                click: function ($event) {
-                  _vm.rail = false
-                },
-              },
-              model: {
-                value: _vm.drawer,
-                callback: function ($$v) {
-                  _vm.drawer = $$v
-                },
-                expression: "drawer",
-              },
-            },
+            "v-list-item",
+            { staticClass: "px-2" },
             [
-              _c("v-list-item", {
-                attrs: {
-                  "prepend-avatar":
-                    "https://randomuser.me/api/portraits/men/85.jpg",
-                  title: "John Leider",
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "append",
-                    fn: function () {
-                      return [
-                        _c("v-btn", {
-                          attrs: { variant: "text", icon: "mdi-chevron-left" },
-                          on: {
-                            click: function ($event) {
-                              $event.stopPropagation()
-                              _vm.rail = !_vm.rail
-                            },
-                          },
-                        }),
-                      ]
-                    },
-                    proxy: true,
-                  },
-                ]),
-              }),
-              _vm._v(" "),
-              _c("v-divider"),
-              _vm._v(" "),
               _c(
-                "v-list",
-                { attrs: { density: "compact", nav: "" } },
+                "v-list-item-avatar",
                 [
-                  _c("v-list-item", {
+                  _c("v-img", {
                     attrs: {
-                      "prepend-icon": "mdi-account",
-                      title: "Account",
-                      value: "account",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("v-list-item", {
-                    attrs: {
-                      "prepend-icon": "mdi-home-city",
-                      title: "Hotel Profile",
-                      value: "hotel_profile",
-                    },
-                    on: { click: _vm.hotelProfile },
-                  }),
-                  _vm._v(" "),
-                  _c("v-list-item", {
-                    attrs: {
-                      "prepend-icon": "mdi-home-group",
-                      title: "Branches",
-                      value: "branches",
-                    },
-                    on: { click: _vm.branches },
-                  }),
-                  _vm._v(" "),
-                  _c("v-list-item", {
-                    attrs: {
-                      "prepend-icon": "mdi-chart-tree",
-                      title: "Rooms Category",
-                      value: "rooms_category",
-                    },
-                    on: { click: _vm.room_categories },
-                  }),
-                  _vm._v(" "),
-                  _c("v-list-item", {
-                    attrs: {
-                      "prepend-icon": "mdi-bed",
-                      title: "Rooms",
-                      value: "rooms",
-                    },
-                    on: { click: _vm.rooms },
-                  }),
-                  _vm._v(" "),
-                  _c("v-list-item", {
-                    attrs: {
-                      "prepend-icon": "mdi-account-group-outline",
-                      title: "Reservations",
-                      value: "reservations",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("v-divider"),
-                  _vm._v(" "),
-                  _c("v-list-item", {
-                    attrs: {
-                      "prepend-icon": "mdi-cash-multiple",
-                      title: "Revenue",
-                      value: "revenue",
+                      src: "https://randomuser.me/api/portraits/men/85.jpg",
                     },
                   }),
                 ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-list-item-title", [_vm._v("Malik Elbadri")]),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { icon: "" },
+                  on: {
+                    click: function ($event) {
+                      $event.stopPropagation()
+                      _vm.mini = !_vm.mini
+                    },
+                  },
+                },
+                [_c("v-icon", [_vm._v("mdi-chevron-left")])],
                 1
               ),
             ],
             1
           ),
           _vm._v(" "),
+          _c("v-divider"),
+          _vm._v(" "),
           _c(
-            "v-main",
-            {
-              staticClass: "dashbaord-background",
-              staticStyle: { "min-height": "100vh" },
-            },
-            [_c("router-view")],
+            "v-list",
+            { attrs: { dense: "" } },
+            [
+              _c(
+                "v-list-item",
+                { attrs: { link: "" } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-account")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Account")])],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" }, on: { click: _vm.hotelProfile } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-home-city")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Hotel Profile")])],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" }, on: { click: _vm.branches } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-home-group")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Branches")])],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" }, on: { click: _vm.room_categories } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-chart-tree")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Rooms Category")])],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" }, on: { click: _vm.rooms } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-chart-tree")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Rooms")])],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" }, on: { click: _vm.room_categories } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-bed")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Rooms Category")])],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ],
             1
           ),
         ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-main",
+        [_c("v-container", { attrs: { fluid: "" } }, [_c("router-view")], 1)],
         1
       ),
     ],
@@ -12534,12 +12593,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/VBtn.js");
 /* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/VCard.js");
-/* harmony import */ var vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VDivider */ "./node_modules/vuetify/lib/components/VDivider/VDivider.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VLayout.js");
-/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VList.js");
-/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItem.js");
-/* harmony import */ var vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VMain */ "./node_modules/vuetify/lib/components/VMain/VMain.js");
-/* harmony import */ var vuetify_lib_components_VNavigationDrawer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuetify/lib/components/VNavigationDrawer */ "./node_modules/vuetify/lib/components/VNavigationDrawer/VNavigationDrawer.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VContainer.js");
+/* harmony import */ var vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VDivider */ "./node_modules/vuetify/lib/components/VDivider/VDivider.js");
+/* harmony import */ var vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VIcon */ "./node_modules/vuetify/lib/components/VIcon/VIcon.js");
+/* harmony import */ var vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VImg */ "./node_modules/vuetify/lib/components/VImg/VImg.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VList.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItem.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItemAvatar.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/index.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItemIcon.js");
+/* harmony import */ var vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! vuetify/lib/components/VMain */ "./node_modules/vuetify/lib/components/VMain/VMain.js");
+/* harmony import */ var vuetify_lib_components_VNavigationDrawer__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! vuetify/lib/components/VNavigationDrawer */ "./node_modules/vuetify/lib/components/VNavigationDrawer/VNavigationDrawer.js");
 
 
 
@@ -12569,7 +12633,13 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__["default"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["default"],VDivider: vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_7__["default"],VLayout: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["default"],VList: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_9__["default"],VListItem: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_10__["default"],VMain: vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_11__["default"],VNavigationDrawer: vuetify_lib_components_VNavigationDrawer__WEBPACK_IMPORTED_MODULE_12__["default"]})
+
+
+
+
+
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__["default"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["default"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__["default"],VDivider: vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_8__["default"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_9__["default"],VImg: vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_10__["default"],VList: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_11__["default"],VListItem: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_12__["default"],VListItemAvatar: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__["default"],VListItemContent: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemContent,VListItemIcon: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_15__["default"],VListItemTitle: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemTitle,VMain: vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_16__["default"],VNavigationDrawer: vuetify_lib_components_VNavigationDrawer__WEBPACK_IMPORTED_MODULE_17__["default"]})
 
 
 /* hot reload */
@@ -15656,25 +15726,6 @@ const cache = new Map();
 
 }));
 //# sourceMappingURL=VCol.js.map
-
-/***/ }),
-
-/***/ "./node_modules/vuetify/lib/components/VGrid/VLayout.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/vuetify/lib/components/VGrid/VLayout.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _src_components_VGrid_grid_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../src/components/VGrid/_grid.sass */ "./node_modules/vuetify/src/components/VGrid/_grid.sass");
-/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./grid */ "./node_modules/vuetify/lib/components/VGrid/grid.js");
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_grid__WEBPACK_IMPORTED_MODULE_1__["default"])('layout'));
-//# sourceMappingURL=VLayout.js.map
 
 /***/ }),
 
