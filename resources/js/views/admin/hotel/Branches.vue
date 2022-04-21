@@ -7,11 +7,12 @@
       <div v-if="branches == null">
         <img width="100" src="../../../assets/images/no_results_found.png" />
       </div>
-      <div v-else v-for="branch in branches" :key="branch.id">
-        <BranchCard :branch="branch" />
-
-        <br />
-      </div>
+      <BranchCard
+        v-else
+        v-for="branch in branches"
+        :key="branch.id"
+        :branch="branch"
+      />
     </div>
     <v-btn
       color="success"
@@ -71,6 +72,13 @@ export default {
     },
   },
 };
+// .admin-branches-container {
+//   display: flex;
+//   /* flex-wrap: wrap; */
+//   flex-direction: column;
+
+//   gap: 10px;
+// }
 </script>
 
 <style>
@@ -78,13 +86,6 @@ export default {
   padding: 10px;
 }
 
-.admin-branches-container {
-  display: flex;
-  /* flex-wrap: wrap; */
-  flex-direction: column;
-
-  gap: 10px;
-}
 .add-branch-floating-action-button {
   position: fixed;
   right: 10px;

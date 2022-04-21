@@ -167,7 +167,7 @@ export default {
 
       console.log(data);
 
-      this.hotelBranchAdminService.add(data).then((result) => {
+      this.$hotelBranchAdminService.add(data).then((result) => {
         // console.log(result.data);
         this.ht = result.data;
         console.log(result);

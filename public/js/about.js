@@ -411,20 +411,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     branch: Object
+  },
+  methods: {
+    openPublicProfile: function openPublicProfile() {},
+    openDetails: function openDetails() {},
+    openPhotos: function openPhotos() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/branches/photos/" + this.branch.id
+      });
+    },
+    openEdit: function openEdit() {}
   }
-}); // <v-container>
-//   <iframe
-//     class="w-100"
-//     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13535.959527558934!2d35.88251364999999!3d31.988289749999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca0317eda425b%3A0x5bfe932d997924f!2zSmFicmkgUmVzdGF1cmFudCAoQ2VudHJhbCBCcmFuY2gpINmF2LfYudmFINis2KjYsdmKINin2YTZhdix2YPYstmK!5e0!3m2!1sen!2sjo!4v1650447821413!5m2!1sen!2sjo"
-//     style="border: 0"
-//     allowfullscreen=""
-//     loading="lazy"
-//     referrerpolicy="no-referrer-when-downgrade"
-//   ></iframe>
-// </v-container>;
+});
 
 /***/ }),
 
@@ -1231,7 +1240,7 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         password: this.password
       };
-      this.userService.login(data).then(function (result) {
+      this.$userService.login(data).then(function (result) {
         console.log(result);
 
         if (result.status == 200) {
@@ -1929,7 +1938,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         city_id: this.city_id
       };
       console.log(data);
-      this.hotelBranchAdminService.add(data).then(function (result) {
+      this.$hotelBranchAdminService.add(data).then(function (result) {
         // console.log(result.data);
         _this2.ht = result.data;
         console.log(result);
@@ -2428,6 +2437,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2470,7 +2480,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   }
-});
+}); // .admin-branches-container {
+//   display: flex;
+//   /* flex-wrap: wrap; */
+//   flex-direction: column;
+//   gap: 10px;
+// }
 
 /***/ }),
 
@@ -4191,7 +4206,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.map {\r\n  width: 100%;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.map {\r\n  width: 100%;\n}\n.admin-branch-card {\r\n  padding: 10px;\r\n  margin: 10px;\n}\n.admin-hotel-card-images {\r\n  cursor: pointer;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4536,30 +4551,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.branches-view {\r\n  padding: 10px;\n}\n.admin-branches-container {\r\n  display: flex;\r\n  /* flex-wrap: wrap; */\r\n  flex-direction: column;\r\n\r\n  gap: 10px;\n}\n.add-branch-floating-action-button {\r\n  position: fixed;\r\n  right: 10px;\r\n  bottom: 10px;\n}\r\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/hotel/Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/hotel/Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.dashbaord-background[data-v-b88bfdac] {\r\n  background-color: rgb(53, 53, 53);\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.branches-view {\r\n  padding: 10px;\n}\n.add-branch-floating-action-button {\r\n  position: fixed;\r\n  right: 10px;\r\n  bottom: 10px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6421,35 +6413,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/hotel/Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/hotel/Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_style_index_0_id_b88bfdac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/hotel/Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_style_index_0_id_b88bfdac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_style_index_0_id_b88bfdac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/hotel/HotelProfile.vue?vue&type=style&index=0&id=414456af&scoped=true&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/hotel/HotelProfile.vue?vue&type=style&index=0&id=414456af&scoped=true&lang=css& ***!
@@ -7348,18 +7311,6 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Branches_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader/dist/cjs.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Branches.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/hotel/Branches.vue?vue&type=style&index=0&lang=css&");
-
-
-/***/ }),
-
-/***/ "./resources/js/views/admin/hotel/Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css&":
-/*!***************************************************************************************************************!*\
-  !*** ./resources/js/views/admin/hotel/Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css& ***!
-  \***************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_style_index_0_id_b88bfdac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader/dist/cjs.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/admin/hotel/Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css&");
 
 
 /***/ }),
@@ -8332,131 +8283,41 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "v-card",
+    { staticClass: "admin-branch-card" },
     [
       _c(
-        "v-container",
+        "v-row",
         [
           _c(
-            "v-row",
+            "v-col",
+            { attrs: { cols: "6", md: "6" } },
             [
               _c(
-                "v-col",
-                { attrs: { cols: "6", md: "6" } },
+                "v-img",
+                {
+                  staticClass: "admin-hotel-card-images",
+                  attrs: { src: "https://picsum.photos/510/300?random" },
+                },
                 [
                   _c(
-                    "v-img",
-                    { attrs: { src: "https://picsum.photos/510/300?random" } },
+                    "v-card-title",
                     [
-                      _c(
-                        "v-card-title",
-                        [
-                          _c("v-icon", [_vm._v("mdi-office-building-outline")]),
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(_vm.branch.name) +
-                              "\n          "
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-title",
-                        [
-                          _c("v-icon", [_vm._v("mdi-map-marker")]),
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(_vm.branch.city.name) +
-                              "\n          "
-                          ),
-                        ],
-                        1
+                      _c("v-icon", [_vm._v("mdi-office-building-outline")]),
+                      _vm._v(
+                        "\n          " + _vm._s(_vm.branch.name) + "\n        "
                       ),
                     ],
                     1
                   ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-col",
-                { attrs: { cols: "3", md: "3" } },
-                [
+                  _vm._v(" "),
                   _c(
-                    "v-img",
-                    {
-                      staticClass: "h-100",
-                      attrs: { src: "https://picsum.photos/510/300?random" },
-                    },
+                    "v-card-title",
                     [
-                      _c(
-                        "v-card-title",
-                        [
-                          _c("v-icon", [_vm._v("mdi-office-building-outline")]),
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(_vm.branch.name) +
-                              "\n          "
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-title",
-                        [
-                          _c("v-icon", [_vm._v("mdi-map-marker")]),
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(_vm.branch.city.name) +
-                              "\n          "
-                          ),
-                        ],
-                        1
-                      ),
-                    ],
-                    1
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-col",
-                { attrs: { cols: "3", md: "3", sm: "0" } },
-                [
-                  _c(
-                    "v-img",
-                    {
-                      staticClass: "h-100",
-                      attrs: { src: "https://picsum.photos/510/300?random" },
-                    },
-                    [
-                      _c(
-                        "v-card-title",
-                        [
-                          _c("v-icon", [_vm._v("mdi-office-building-outline")]),
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(_vm.branch.name) +
-                              "\n          "
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-title",
-                        [
-                          _c("v-icon", [_vm._v("mdi-map-marker")]),
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(_vm.branch.city.name) +
-                              "\n          "
-                          ),
-                        ],
-                        1
+                      _c("v-icon", [_vm._v("mdi-map-marker")]),
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.branch.city.name) +
+                          "\n        "
                       ),
                     ],
                     1
@@ -8469,82 +8330,36 @@ var render = function () {
           ),
           _vm._v(" "),
           _c(
-            "v-row",
+            "v-col",
+            { attrs: { cols: "3", md: "3" } },
             [
               _c(
-                "v-col",
-                { attrs: { cols: "5" } },
+                "v-img",
+                {
+                  staticClass: "admin-hotel-card-images",
+                  staticStyle: { height: "100%" },
+                  attrs: { src: "https://picsum.photos/510/300?random" },
+                },
                 [
                   _c(
-                    "v-list-item",
-                    { attrs: { "two-line": "" } },
+                    "v-card-title",
                     [
-                      _c(
-                        "v-list-item-icon",
-                        [_c("v-icon", [_vm._v("mdi-email")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item-content",
-                        [
-                          _c("v-list-item-title", [_vm._v("Email Address")]),
-                          _vm._v(" "),
-                          _c("v-list-item-subtitle", [
-                            _vm._v(_vm._s(_vm.branch.email)),
-                          ]),
-                        ],
-                        1
+                      _c("v-icon", [_vm._v("mdi-office-building-outline")]),
+                      _vm._v(
+                        "\n          " + _vm._s(_vm.branch.name) + "\n        "
                       ),
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
-                    "v-list-item",
-                    { attrs: { "two-line": "" } },
+                    "v-card-title",
                     [
-                      _c(
-                        "v-list-item-icon",
-                        [_c("v-icon", [_vm._v("mdi-phone")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item-content",
-                        [
-                          _c("v-list-item-title", [_vm._v("Phone Number")]),
-                          _vm._v(" "),
-                          _c("v-list-item-subtitle", [
-                            _vm._v(_vm._s(_vm.branch.phone)),
-                          ]),
-                        ],
-                        1
-                      ),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-list-item",
-                    { attrs: { "two-line": "" } },
-                    [
-                      _c(
-                        "v-list-item-icon",
-                        [_c("v-icon", [_vm._v("mdi-bed")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item-content",
-                        [
-                          _c("v-list-item-title", [_vm._v("Number Of Rooms")]),
-                          _vm._v(" "),
-                          _c("v-list-item-subtitle", [
-                            _vm._v(_vm._s(_vm.branch.phone)),
-                          ]),
-                        ],
-                        1
+                      _c("v-icon", [_vm._v("mdi-map-marker")]),
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.branch.city.name) +
+                          "\n        "
                       ),
                     ],
                     1
@@ -8552,181 +8367,360 @@ var render = function () {
                 ],
                 1
               ),
-              _vm._v(" "),
-              _c(
-                "v-col",
-                { attrs: { cols: "3" } },
-                [
-                  _vm.branch.swimming_pool
-                    ? _c(
-                        "v-list-item",
-                        [
-                          _c(
-                            "v-list-item-icon",
-                            [_c("v-icon", [_vm._v("mdi-pool")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-item-content",
-                            [
-                              _c(
-                                "v-list-item-title",
-                                [
-                                  _vm._v("Swimming Pool\n              "),
-                                  _c("v-icon", { attrs: { color: "green" } }, [
-                                    _vm._v("mdi-check-circle"),
-                                  ]),
-                                ],
-                                1
-                              ),
-                            ],
-                            1
-                          ),
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.branch.resturant
-                    ? _c(
-                        "v-list-item",
-                        [
-                          _c(
-                            "v-list-item-icon",
-                            [_c("v-icon", [_vm._v("mdi-food")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-item-content",
-                            [
-                              _c(
-                                "v-list-item-title",
-                                [
-                                  _vm._v("Resturant\n              "),
-                                  _c("v-icon", { attrs: { color: "green" } }, [
-                                    _vm._v("mdi-check-circle"),
-                                  ]),
-                                ],
-                                1
-                              ),
-                            ],
-                            1
-                          ),
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.branch.gym
-                    ? _c(
-                        "v-list-item",
-                        [
-                          _c(
-                            "v-list-item-icon",
-                            [_c("v-icon", [_vm._v("mdi-weight-lifter")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-item-content",
-                            [
-                              _c(
-                                "v-list-item-title",
-                                [
-                                  _vm._v("Hotel Gym\n              "),
-                                  _c("v-icon", { attrs: { color: "green" } }, [
-                                    _vm._v("mdi-check-circle"),
-                                  ]),
-                                ],
-                                1
-                              ),
-                            ],
-                            1
-                          ),
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.branch.laundry
-                    ? _c(
-                        "v-list-item",
-                        [
-                          _c(
-                            "v-list-item-icon",
-                            [_c("v-icon", [_vm._v("mdi-tumble-dryer")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-item-content",
-                            [
-                              _c(
-                                "v-list-item-title",
-                                [
-                                  _vm._v("Laundry Service\n              "),
-                                  _c("v-icon", { attrs: { color: "green" } }, [
-                                    _vm._v("mdi-check-circle"),
-                                  ]),
-                                ],
-                                1
-                              ),
-                            ],
-                            1
-                          ),
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-col", { attrs: { cols: "4" } }, [
-                _c("iframe", {
-                  staticClass: "w-100 h-100",
-                  staticStyle: { border: "0" },
-                  attrs: {
-                    src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13535.959527558934!2d35.88251364999999!3d31.988289749999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca0317eda425b%3A0x5bfe932d997924f!2zSmFicmkgUmVzdGF1cmFudCAoQ2VudHJhbCBCcmFuY2gpINmF2LfYudmFINis2KjYsdmKINin2YTZhdix2YPYstmK!5e0!3m2!1sen!2sjo!4v1650447821413!5m2!1sen!2sjo",
-                    allowfullscreen: "",
-                    loading: "lazy",
-                    referrerpolicy: "no-referrer-when-downgrade",
-                  },
-                }),
-              ]),
             ],
             1
           ),
           _vm._v(" "),
           _c(
-            "v-row",
+            "v-col",
+            { attrs: { cols: "3", md: "3", sm: "0" } },
             [
               _c(
-                "v-container",
+                "v-img",
+                {
+                  staticClass: "h-100 admin-hotel-card-images",
+                  staticStyle: { height: "100%" },
+                  attrs: { src: "https://picsum.photos/510/300?random" },
+                },
                 [
                   _c(
-                    "v-alert",
-                    { attrs: { prominent: "", type: "error" } },
+                    "v-card-title",
+                    [
+                      _c("v-icon", [_vm._v("mdi-office-building-outline")]),
+                      _vm._v(
+                        "\n          " + _vm._s(_vm.branch.name) + "\n        "
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-title",
+                    [
+                      _c("v-icon", [_vm._v("mdi-map-marker")]),
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.branch.city.name) +
+                          "\n        "
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "8" } },
+            [
+              _c(
+                "v-row",
+                [
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "4" } },
                     [
                       _c(
-                        "v-row",
-                        { attrs: { align: "center" } },
+                        "v-list-item",
+                        { attrs: { "two-line": "" } },
                         [
-                          _c("v-col", { staticClass: "grow" }, [
-                            _vm._v(
-                              "\n              Nunc nonummy metus. Nunc interdum lacus sit amet orci. Nullam\n              dictum felis eu pede mollis pretium. Cras id dui.\n            "
-                            ),
-                          ]),
+                          _c(
+                            "v-list-item-icon",
+                            [_c("v-icon", [_vm._v("mdi-email")])],
+                            1
+                          ),
                           _vm._v(" "),
                           _c(
-                            "v-col",
-                            { staticClass: "shrink" },
-                            [_c("v-btn", [_vm._v("Take action")])],
+                            "v-list-item-content",
+                            [
+                              _c("v-list-item-title", [
+                                _vm._v("Email Address"),
+                              ]),
+                              _vm._v(" "),
+                              _c("v-list-item-subtitle", [
+                                _vm._v(_vm._s(_vm.branch.email)),
+                              ]),
+                            ],
                             1
                           ),
                         ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { "two-line": "" } },
+                        [
+                          _c(
+                            "v-list-item-icon",
+                            [_c("v-icon", [_vm._v("mdi-phone")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-item-content",
+                            [
+                              _c("v-list-item-title", [_vm._v("Phone Number")]),
+                              _vm._v(" "),
+                              _c("v-list-item-subtitle", [
+                                _vm._v(_vm._s(_vm.branch.phone)),
+                              ]),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        { attrs: { "two-line": "" } },
+                        [
+                          _c(
+                            "v-list-item-icon",
+                            [_c("v-icon", [_vm._v("mdi-bed")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-item-content",
+                            [
+                              _c("v-list-item-title", [
+                                _vm._v("Number Of Rooms"),
+                              ]),
+                              _vm._v(" "),
+                              _c("v-list-item-subtitle", [
+                                _vm._v(_vm._s(_vm.branch.phone)),
+                              ]),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    { attrs: { cols: "4" } },
+                    [
+                      _vm.branch.swimming_pool
+                        ? _c(
+                            "v-list-item",
+                            [
+                              _c(
+                                "v-list-item-icon",
+                                [_c("v-icon", [_vm._v("mdi-pool")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-content",
+                                [
+                                  _c(
+                                    "v-list-item-title",
+                                    [
+                                      _vm._v("Swimming Pool\n                "),
+                                      _c(
+                                        "v-icon",
+                                        { attrs: { color: "green" } },
+                                        [_vm._v("mdi-check-circle")]
+                                      ),
+                                    ],
+                                    1
+                                  ),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.branch.resturant
+                        ? _c(
+                            "v-list-item",
+                            [
+                              _c(
+                                "v-list-item-icon",
+                                [_c("v-icon", [_vm._v("mdi-food")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-content",
+                                [
+                                  _c(
+                                    "v-list-item-title",
+                                    [
+                                      _vm._v("Resturant\n                "),
+                                      _c(
+                                        "v-icon",
+                                        { attrs: { color: "green" } },
+                                        [_vm._v("mdi-check-circle")]
+                                      ),
+                                    ],
+                                    1
+                                  ),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.branch.gym
+                        ? _c(
+                            "v-list-item",
+                            [
+                              _c(
+                                "v-list-item-icon",
+                                [_c("v-icon", [_vm._v("mdi-weight-lifter")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-content",
+                                [
+                                  _c(
+                                    "v-list-item-title",
+                                    [
+                                      _vm._v("Hotel Gym\n                "),
+                                      _c(
+                                        "v-icon",
+                                        { attrs: { color: "green" } },
+                                        [_vm._v("mdi-check-circle")]
+                                      ),
+                                    ],
+                                    1
+                                  ),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.branch.laundry
+                        ? _c(
+                            "v-list-item",
+                            [
+                              _c(
+                                "v-list-item-icon",
+                                [_c("v-icon", [_vm._v("mdi-tumble-dryer")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-content",
+                                [
+                                  _c(
+                                    "v-list-item-title",
+                                    [
+                                      _vm._v(
+                                        "Laundry Service\n                "
+                                      ),
+                                      _c(
+                                        "v-icon",
+                                        { attrs: { color: "green" } },
+                                        [_vm._v("mdi-check-circle")]
+                                      ),
+                                    ],
+                                    1
+                                  ),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-row",
+                { attrs: { align: "center", justify: "space-around" } },
+                [
+                  _c("v-btn", { on: { click: _vm.openPublicProfile } }, [
+                    _vm._v("Public Profile"),
+                  ]),
+                  _vm._v(" "),
+                  _c("v-btn", { on: { click: _vm.openDetails } }, [
+                    _vm._v("Details"),
+                  ]),
+                  _vm._v(" "),
+                  _c("v-btn", { on: { click: _vm.openPhotos } }, [
+                    _vm._v("Photos"),
+                  ]),
+                  _vm._v(" "),
+                  _c("v-btn", { on: { click: _vm.openEdit } }, [
+                    _vm._v("Edit"),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-col", { attrs: { cols: "4" } }, [
+            _c("iframe", {
+              staticStyle: { border: "0", height: "100%", width: "100%" },
+              attrs: {
+                src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13535.959527558934!2d35.88251364999999!3d31.988289749999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca0317eda425b%3A0x5bfe932d997924f!2zSmFicmkgUmVzdGF1cmFudCAoQ2VudHJhbCBCcmFuY2gpINmF2LfYudmFINis2KjYsdmKINin2YTZhdix2YPYstmK!5e0!3m2!1sen!2sjo!4v1650447821413!5m2!1sen!2sjo",
+                allowfullscreen: "",
+                loading: "lazy",
+                referrerpolicy: "no-referrer-when-downgrade",
+              },
+            }),
+          ]),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-container",
+            [
+              _c(
+                "v-alert",
+                { attrs: { prominent: "", type: "error" } },
+                [
+                  _c(
+                    "v-row",
+                    { attrs: { align: "center" } },
+                    [
+                      _c("v-col", { staticClass: "grow" }, [
+                        _vm._v(
+                          "\n            Nunc nonummy metus. Nunc interdum lacus sit amet orci. Nullam\n            dictum felis eu pede mollis pretium. Cras id dui.\n          "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-col",
+                        { staticClass: "shrink" },
+                        [_c("v-btn", [_vm._v("Take action")])],
                         1
                       ),
                     ],
@@ -11090,16 +11084,10 @@ var render = function () {
                 }),
               ])
             : _vm._l(_vm.branches, function (branch) {
-                return _c(
-                  "div",
-                  { key: branch.id },
-                  [
-                    _c("BranchCard", { attrs: { branch: branch } }),
-                    _vm._v(" "),
-                    _c("br"),
-                  ],
-                  1
-                )
+                return _c("BranchCard", {
+                  key: branch.id,
+                  attrs: { branch: branch },
+                })
               }),
         ],
         2
@@ -13202,32 +13190,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Dashboard_vue_vue_type_template_id_b88bfdac_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=template&id=b88bfdac&scoped=true& */ "./resources/js/views/admin/hotel/Dashboard.vue?vue&type=template&id=b88bfdac&scoped=true&");
 /* harmony import */ var _Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=script&lang=js& */ "./resources/js/views/admin/hotel/Dashboard.vue?vue&type=script&lang=js&");
-/* harmony import */ var _Dashboard_vue_vue_type_style_index_0_id_b88bfdac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css& */ "./resources/js/views/admin/hotel/Dashboard.vue?vue&type=style&index=0&id=b88bfdac&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
-/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vuetify_lib_components_VApp__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VApp */ "./node_modules/vuetify/lib/components/VApp/VApp.js");
-/* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/VBtn.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VContainer.js");
-/* harmony import */ var vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VDivider */ "./node_modules/vuetify/lib/components/VDivider/VDivider.js");
-/* harmony import */ var vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VIcon */ "./node_modules/vuetify/lib/components/VIcon/VIcon.js");
-/* harmony import */ var vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VImg */ "./node_modules/vuetify/lib/components/VImg/VImg.js");
-/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VList.js");
-/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItem.js");
-/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItemAvatar.js");
-/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/index.js");
-/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItemIcon.js");
-/* harmony import */ var vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! vuetify/lib/components/VMain */ "./node_modules/vuetify/lib/components/VMain/VMain.js");
-/* harmony import */ var vuetify_lib_components_VNavigationDrawer__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! vuetify/lib/components/VNavigationDrawer */ "./node_modules/vuetify/lib/components/VNavigationDrawer/VNavigationDrawer.js");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vuetify_lib_components_VApp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VApp */ "./node_modules/vuetify/lib/components/VApp/VApp.js");
+/* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/VBtn.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VContainer.js");
+/* harmony import */ var vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VDivider */ "./node_modules/vuetify/lib/components/VDivider/VDivider.js");
+/* harmony import */ var vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VIcon */ "./node_modules/vuetify/lib/components/VIcon/VIcon.js");
+/* harmony import */ var vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VImg */ "./node_modules/vuetify/lib/components/VImg/VImg.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VList.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItem.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItemAvatar.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/index.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItemIcon.js");
+/* harmony import */ var vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! vuetify/lib/components/VMain */ "./node_modules/vuetify/lib/components/VMain/VMain.js");
+/* harmony import */ var vuetify_lib_components_VNavigationDrawer__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! vuetify/lib/components/VNavigationDrawer */ "./node_modules/vuetify/lib/components/VNavigationDrawer/VNavigationDrawer.js");
 
 
 
-;
 
 
 /* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Dashboard_vue_vue_type_template_id_b88bfdac_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
   _Dashboard_vue_vue_type_template_id_b88bfdac_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -13254,7 +13240,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VApp: vuetify_lib_components_VApp__WEBPACK_IMPORTED_MODULE_5__["default"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_6__["default"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_7__["default"],VDivider: vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_8__["default"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_9__["default"],VImg: vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_10__["default"],VList: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_11__["default"],VListItem: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_12__["default"],VListItemAvatar: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__["default"],VListItemContent: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemContent,VListItemIcon: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_15__["default"],VListItemTitle: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemTitle,VMain: vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_16__["default"],VNavigationDrawer: vuetify_lib_components_VNavigationDrawer__WEBPACK_IMPORTED_MODULE_17__["default"]})
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VApp: vuetify_lib_components_VApp__WEBPACK_IMPORTED_MODULE_4__["default"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__["default"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_6__["default"],VDivider: vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_7__["default"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_8__["default"],VImg: vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_9__["default"],VList: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_10__["default"],VListItem: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_11__["default"],VListItemAvatar: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_12__["default"],VListItemContent: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__.VListItemContent,VListItemIcon: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__["default"],VListItemTitle: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__.VListItemTitle,VMain: vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_15__["default"],VNavigationDrawer: vuetify_lib_components_VNavigationDrawer__WEBPACK_IMPORTED_MODULE_16__["default"]})
 
 
 /* hot reload */

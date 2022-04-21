@@ -102,7 +102,7 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.userService.login(data).then((result) => {
+      this.$userService.login(data).then((result) => {
         console.log(result);
         if (result.status == 200) {
           if (result.data.authenticated == "hotel") {

@@ -125,7 +125,4 @@ export default {
 </script>
 
 <style scoped>
-.dashbaord-background {
-  background-color: rgb(53, 53, 53);
-}
 </style>
