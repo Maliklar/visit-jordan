@@ -1,5 +1,16 @@
 <template>
-  <div>
+  <div v-if="isLoading" class="text-center">
+    <v-progress-circular :size="100" :width="7" color="purple" indeterminate>
+      Loading...</v-progress-circular
+    >
+  </div>
+  <div v-else>
+    <SubmitionResultsAlert
+      v-if="resultMessage"
+      :message="resultMessage"
+      :status="resultStatus"
+    />
+
     <v-form ref="form" @submit.prevent="submit">
       <v-row>
         <v-col cols="6">
@@ -47,23 +58,25 @@
           ></v-file-input>
         </v-col>
       </v-row>
-      <v-btn color="success" type="submit" size="large"> Submit </v-btn>
+      <v-btn color="success" type="submit" size="large"> Update Photos </v-btn>
     </v-form>
   </div>
 </template>
 
 <script>
+import SubmitionResultsAlert from "../SubmitionResultsAlert.vue";
 import ImageContainer from "./ImageContainer.vue";
 export default {
   components: {
     ImageContainer,
+    SubmitionResultsAlert,
   },
   props: {
     type: String,
   },
   created() {
     if (this.type == "interior") {
-      this.hotelBranchAdminService
+      this.$hotelBranchAdminService
         .getInteriorImages(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
@@ -91,7 +104,7 @@ export default {
         });
     }
     if (this.type == "building") {
-      this.hotelBranchAdminService
+      this.$hotelBranchAdminService
         .getBuildingImages(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
@@ -99,6 +112,7 @@ export default {
               this.image_1_url =
                 "http://localhost:8000/" + result.data[i].image;
               this.image_1_id = result.data[i].id;
+              console.log(this.image_1_url);
             }
             if (result.data[i].number == 2) {
               this.image_2_url =
@@ -119,7 +133,7 @@ export default {
         });
     }
     if (this.type == "views") {
-      this.hotelBranchAdminService
+      this.$hotelBranchAdminService
         .getViewImages(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
@@ -164,28 +178,34 @@ export default {
       image_3_url: `https://picsum.photos/500/300?image=${1 * 5 + 10}`,
       image_4_url: `https://picsum.photos/500/300?image=${1 * 5 + 10}`,
       valid: null,
+
+      isLoading: false,
+      resultMessage: null,
+      resultStatus: null,
     };
   },
   methods: {
     handleImage1(e) {
       console.log(e);
-      this.image_1 = e.target.files[0];
+
+      this.image_1 = e;
       this.image_1_url = URL.createObjectURL(this.image_1);
     },
     handleImage2(e) {
-      this.image_2 = e.target.files[0];
+      this.image_2 = e;
       this.image_2_url = URL.createObjectURL(this.image_2);
     },
     handleImage3(e) {
-      this.image_3 = e.target.files[0];
+      this.image_3 = e;
       this.image_3_url = URL.createObjectURL(this.image_3);
     },
     handleImage4(e) {
-      this.image_4 = e.target.files[0];
+      this.image_4 = e;
       this.image_4_url = URL.createObjectURL(this.image_4);
     },
 
     submit() {
+      this.isLoading = true;
       let data = new FormData();
       data.append("image_1", this.image_1);
       data.append("image_2", this.image_2);
@@ -194,18 +214,24 @@ export default {
       data.append("branch_id", this.$route.params.id);
 
       if (this.type == "interior") {
-        this.hotelBranchAdminService.addInteriorImages(data).then((result) => {
-          console.log(result.data);
+        this.$hotelBranchAdminService.addInteriorImages(data).then((result) => {
+          this.isLoading = false;
+          this.resultStatus = result.status;
+          this.resultMessage = result.data;
         });
       }
       if (this.type == "building") {
-        this.hotelBranchAdminService.addBuildingImages(data).then((result) => {
-          console.log(result.data);
+        this.$hotelBranchAdminService.addBuildingImages(data).then((result) => {
+          this.resultStatus = result.status;
+          this.resultMessage = result.data;
+          this.isLoading = false;
         });
       }
       if (this.type == "views") {
-        this.hotelBranchAdminService.addViewImages(data).then((result) => {
-          console.log(result.data);
+        this.$hotelBranchAdminService.addViewImages(data).then((result) => {
+          this.isLoading = false;
+          this.resultStatus = result.status;
+          this.resultMessage = result.data;
         });
       }
     },

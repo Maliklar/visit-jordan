@@ -8,21 +8,17 @@
       <v-tab value="views">Views</v-tab>
     </v-tabs>
 
-    <v-card-text>
-      <v-window v-model="tab">
-        <v-window-item value="interior">
-          <BranchPhotosEditor :type="'interior'" />
-        </v-window-item>
-
-        <v-window-item value="building">
-          <BranchPhotosEditor :type="'building'" />
-        </v-window-item>
-
-        <v-window-item value="views">
-          <BranchPhotosEditor :type="'views'" />
-        </v-window-item>
-      </v-window>
-    </v-card-text>
+    <v-tabs-items v-model="tab">
+      <v-tab-item class="admin-branch-photos-tab">
+        <BranchPhotosEditor :type="'interior'" />
+      </v-tab-item>
+      <v-tab-item class="admin-branch-photos-tab">
+        <BranchPhotosEditor :type="'building'" />
+      </v-tab-item>
+      <v-tab-item class="admin-branch-photos-tab">
+        <BranchPhotosEditor :type="'views'" />
+      </v-tab-item>
+    </v-tabs-items>
   </div>
 </template>
 
@@ -34,14 +30,14 @@ export default {
   },
   data() {
     return {
-      tab: null,
+      tab: "interior",
     };
   },
 };
 </script>
 
 <style>
-.branch-photos-view {
+.admin-branch-photos-tab {
   padding: 10px;
 }
 </style>

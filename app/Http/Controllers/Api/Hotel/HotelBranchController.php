@@ -76,7 +76,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -91,7 +91,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -106,7 +106,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -121,7 +121,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -164,7 +164,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -179,7 +179,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -194,7 +194,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -209,7 +209,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -239,7 +239,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -254,7 +254,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -269,7 +269,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
@@ -284,7 +284,7 @@ class HotelBranchController extends Controller
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image_1->getClientOriginalExtension());
                 $imgName = $name_gen . '.' . $img_ext;
-                $upload_location = 'images/hotles/';
+                $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
                 HotelBranchImage::create([
