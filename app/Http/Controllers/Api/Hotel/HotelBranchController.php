@@ -79,12 +79,15 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'interior',
-                    'number' => 1,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'interior',
+                        'number' => 1,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+
+                );
             }
             if ($request->file('image_2')) {
                 $image_1 = $request->file('image_2');
@@ -94,12 +97,14 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'interior',
-                    'number' => 2,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'interior',
+                        'number' => 2,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+                );
             }
             if ($request->file('image_3')) {
                 $image_1 = $request->file('image_3');
@@ -109,12 +114,14 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'interior',
-                    'number' => 3,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'interior',
+                        'number' => 3,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+                );
             }
             if ($request->file('image_4')) {
                 $image_1 = $request->file('image_4');
@@ -124,12 +131,14 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'interior',
-                    'number' => 4,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'interior',
+                        'number' => 4,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+                );
             }
 
             return response(['message' => 'Interior Images Added Successfully']);
@@ -167,12 +176,15 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'building',
-                    'number' => 1,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'building',
+                        'number' => 1,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+
+                );
             }
             if ($request->file('image_2')) {
                 $image_1 = $request->file('image_2');
@@ -182,12 +194,14 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'building',
-                    'number' => 2,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'building',
+                        'number' => 2,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+                );
             }
             if ($request->file('image_3')) {
                 $image_1 = $request->file('image_3');
@@ -197,12 +211,14 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'building',
-                    'number' => 3,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'building',
+                        'number' => 3,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+                );
             }
             if ($request->file('image_4')) {
                 $image_1 = $request->file('image_4');
@@ -212,12 +228,14 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'building',
-                    'number' => 4,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'building',
+                        'number' => 4,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+                );
             }
 
             return response(['message' => 'building Images Added Successfully']);
@@ -242,12 +260,15 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'view',
-                    'number' => 1,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'view',
+                        'number' => 1,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+
+                );
             }
             if ($request->file('image_2')) {
                 $image_1 = $request->file('image_2');
@@ -257,12 +278,14 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'view',
-                    'number' => 2,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'view',
+                        'number' => 2,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+                );
             }
             if ($request->file('image_3')) {
                 $image_1 = $request->file('image_3');
@@ -272,12 +295,14 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'view',
-                    'number' => 3,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'view',
+                        'number' => 3,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+                );
             }
             if ($request->file('image_4')) {
                 $image_1 = $request->file('image_4');
@@ -287,12 +312,14 @@ class HotelBranchController extends Controller
                 $upload_location = 'images/';
                 $last_img = $upload_location . $imgName;
                 $image_1->move($upload_location, $imgName);
-                HotelBranchImage::create([
-                    'image' => $last_img,
-                    'type' => 'view',
-                    'number' => 4,
-                    'branch_id' => $request->branch_id,
-                ]);
+                HotelBranchImage::updateOrCreate(
+                    [
+                        'type' => 'view',
+                        'number' => 4,
+                        'branch_id' => $request->branch_id,
+                    ],
+                    ['image' => $last_img,],
+                );
             }
 
             return response(['message' => 'view Images Added Successfully']);

@@ -557,6 +557,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -671,7 +678,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     handleImage1: function handleImage1(e) {
-      console.log(e);
       this.image_1 = e;
       this.image_1_url = URL.createObjectURL(this.image_1);
     },
@@ -737,6 +743,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _SubmitionResultsAlert_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../SubmitionResultsAlert.vue */ "./resources/js/components/SubmitionResultsAlert.vue");
 //
 //
 //
@@ -779,23 +786,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     src: String,
     id: Number
+  },
+  components: {
+    SubmitionResultsAlert: _SubmitionResultsAlert_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
       dialog: false,
       notifications: false,
       sound: true,
-      widgets: false
+      widgets: false,
+      resultMessage: null,
+      resultStatus: null
     };
   },
   methods: {
     deleteImage: function deleteImage(id) {
-      this.hotelBranchAdminService.deleteImage(id).then(function (result) {
-        console.log(result);
+      var _this = this;
+
+      this.$hotelBranchAdminService.deleteImage(id).then(function (result) {
+        _this.dialog = false;
+        _this.resultMessage = result.data;
+        _this.resultStatus = result.status;
       });
     }
   }
@@ -4295,7 +4332,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.dialog-bottom-transition-enter-active,\r\n.dialog-bottom-transition-leave-active {\r\n  transition: transform 0.2s ease-in-out;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.dialog-bottom-transition-enter-active,\r\n.dialog-bottom-transition-leave-active {\r\n  transition: transform 0.2s ease-in-out;\n}\n.submittion-button {\r\n  position: fixed;\r\n  z-index: 10;\r\n  right: 0;\r\n  bottom: 0;\r\n  margin: 10px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9104,8 +9141,11 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { color: "success", type: "submit", size: "large" } },
-                [_vm._v(" Update Photos ")]
+                {
+                  staticClass: "submittion-button",
+                  attrs: { color: "success", type: "submit", size: "large" },
+                },
+                [_vm._v("\n      Update Photos\n    ")]
               ),
             ],
             1
@@ -9148,54 +9188,76 @@ var render = function () {
         {
           key: "activator",
           fn: function (ref) {
-            var props = ref.props
+            var on = ref.on
+            var attrs = ref.attrs
             return [
               _c(
-                "v-img",
-                _vm._b(
-                  {
-                    staticClass: "bg-grey-lighten-2",
-                    attrs: {
-                      src: _vm.src,
-                      "lazy-src": _vm.src,
-                      "aspect-ratio": "1",
-                      cover: "",
-                    },
-                    scopedSlots: _vm._u(
-                      [
-                        {
-                          key: "placeholder",
-                          fn: function () {
-                            return [
-                              _c(
-                                "v-row",
-                                {
-                                  staticClass: "fill-height ma-0",
-                                  attrs: { align: "center", justify: "center" },
-                                },
-                                [
-                                  _c("v-progress-circular", {
-                                    attrs: {
-                                      indeterminate: "",
-                                      color: "grey-lighten-5",
-                                    },
-                                  }),
-                                ],
-                                1
-                              ),
-                            ]
-                          },
-                          proxy: true,
+                "div",
+                [
+                  _vm.resultMessage
+                    ? _c("SubmitionResultsAlert", {
+                        attrs: {
+                          message: _vm.resultMessage,
+                          status: _vm.resultStatus,
                         },
-                      ],
-                      null,
-                      true
-                    ),
-                  },
-                  "v-img",
-                  props,
-                  false
-                )
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "v-img",
+                    _vm._g(
+                      _vm._b(
+                        {
+                          staticClass: "bg-grey-lighten-2",
+                          attrs: {
+                            src: _vm.src,
+                            "lazy-src": _vm.src,
+                            "aspect-ratio": "1",
+                            cover: "",
+                          },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "placeholder",
+                                fn: function () {
+                                  return [
+                                    _c(
+                                      "v-row",
+                                      {
+                                        staticClass: "fill-height ma-0",
+                                        attrs: {
+                                          align: "center",
+                                          justify: "center",
+                                        },
+                                      },
+                                      [
+                                        _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "grey-lighten-5",
+                                          },
+                                        }),
+                                      ],
+                                      1
+                                    ),
+                                  ]
+                                },
+                                proxy: true,
+                              },
+                            ],
+                            null,
+                            true
+                          ),
+                        },
+                        "v-img",
+                        attrs,
+                        false
+                      ),
+                      on
+                    )
+                  ),
+                ],
+                1
               ),
             ]
           },
@@ -9239,20 +9301,36 @@ var render = function () {
               _c(
                 "v-btn",
                 {
-                  attrs: { color: "error", plain: "" },
+                  attrs: { color: "error", depressed: "" },
                   on: {
                     click: function ($event) {
                       return _vm.deleteImage(_vm.id)
                     },
                   },
                 },
-                [_vm._v(" Delete ")]
+                [
+                  _c("v-icon", { attrs: { left: "" } }, [
+                    _vm._v(" mdi-delete "),
+                  ]),
+                  _vm._v("\n        Delete\n      "),
+                ],
+                1
               ),
             ],
             1
           ),
           _vm._v(" "),
-          _c("img", { attrs: { src: _vm.src, alt: "" } }),
+          _c("img", {
+            staticStyle: { "max-width": "100%" },
+            attrs: {
+              src: _vm.src,
+              contain: "",
+              "lazy-src": _vm.src,
+              "aspect-ratio": "1",
+              cover: "",
+              alt: "",
+            },
+          }),
         ],
         1
       ),

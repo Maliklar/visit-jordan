@@ -58,7 +58,14 @@
           ></v-file-input>
         </v-col>
       </v-row>
-      <v-btn color="success" type="submit" size="large"> Update Photos </v-btn>
+      <v-btn
+        color="success"
+        class="submittion-button"
+        type="submit"
+        size="large"
+      >
+        Update Photos
+      </v-btn>
     </v-form>
   </div>
 </template>
@@ -186,8 +193,6 @@ export default {
   },
   methods: {
     handleImage1(e) {
-      console.log(e);
-
       this.image_1 = e;
       this.image_1_url = URL.createObjectURL(this.image_1);
     },
@@ -243,5 +248,13 @@ export default {
 .dialog-bottom-transition-enter-active,
 .dialog-bottom-transition-leave-active {
   transition: transform 0.2s ease-in-out;
+}
+
+.submittion-button {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  margin: 10px;
 }
 </style>
