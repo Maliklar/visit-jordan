@@ -2,10 +2,7 @@
   <v-card class="admin-branch-card">
     <v-row>
       <v-col cols="6" md="6">
-        <v-img
-          class="admin-hotel-card-images"
-          src="https://picsum.photos/510/300?random"
-        >
+        <v-img class="admin-hotel-card-images" :src="building_url">
           <v-card-title>
             <v-icon>mdi-office-building-outline</v-icon>
             {{ branch.name }}
@@ -14,38 +11,25 @@
             <v-icon>mdi-map-marker</v-icon>
             {{ branch.city.name }}
           </v-card-title>
+          <v-card-title> Building </v-card-title>
         </v-img>
       </v-col>
       <v-col cols="3" md="3">
         <v-img
           style="height: 100%"
           class="admin-hotel-card-images"
-          src="https://picsum.photos/510/300?random"
+          :src="interior_url"
         >
-          <v-card-title>
-            <v-icon>mdi-office-building-outline</v-icon>
-            {{ branch.name }}
-          </v-card-title>
-          <v-card-title>
-            <v-icon>mdi-map-marker</v-icon>
-            {{ branch.city.name }}
-          </v-card-title>
+          <v-card-title> Interior </v-card-title>
         </v-img>
       </v-col>
       <v-col cols="3" md="3" sm="0">
         <v-img
           style="height: 100%"
           class="h-100 admin-hotel-card-images"
-          src="https://picsum.photos/510/300?random"
+          :src="view_url"
         >
-          <v-card-title>
-            <v-icon>mdi-office-building-outline</v-icon>
-            {{ branch.name }}
-          </v-card-title>
-          <v-card-title>
-            <v-icon>mdi-map-marker</v-icon>
-            {{ branch.city.name }}
-          </v-card-title>
+          <v-card-title> Views </v-card-title>
         </v-img>
       </v-col>
     </v-row>
@@ -173,10 +157,32 @@
 
 <script>
 export default {
+  async created() {
+    console.log('brancho",', this.branch);
+    if (this.branch.interior.length > 0) {
+      this.interior_url =
+        "http://localhost:8000/" + this.branch.interior[0].image;
+    }
+    if (this.branch.building.length > 0) {
+      this.building_url =
+        "http://localhost:8000/" + this.branch.building[0].image;
+    }
+    if (this.branch.views.length > 0) {
+      this.view_url = "http://localhost:8000/" + this.branch.views[0].image;
+    }
+  },
   props: {
     branch: Object,
   },
+  components: {},
 
+  data() {
+    return {
+      interior_url: "https://picsum.photos/510/300?random",
+      building_url: "https://picsum.photos/510/300?random",
+      view_url: "https://picsum.photos/510/300?random",
+    };
+  },
   methods: {
     openPublicProfile() {},
     openDetails() {},
@@ -185,7 +191,11 @@ export default {
         path: "/admin/hotel/dashboard/branches/photos/" + this.branch.id,
       });
     },
-    openEdit() {},
+    openEdit() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/branches/edit/" + this.branch.id,
+      });
+    },
   },
 };
 </script>

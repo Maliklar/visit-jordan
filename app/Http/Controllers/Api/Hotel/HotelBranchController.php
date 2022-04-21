@@ -63,6 +63,60 @@ class HotelBranchController extends Controller
         }
     }
 
+    public function get()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            // $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
+
+            return HotelBranch::with('building', 'interior', 'views', 'city')
+                ->where('user_id', $user->id)
+                ->where('user_id', request()->id)
+                ->first();
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            $request->validate([
+                'map_location' => 'required',
+                'location_description' => 'required',
+                'name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'swimming_pool' => 'required',
+                'gym' => 'required',
+                'city_id' => 'required',
+                'resturant' => 'required',
+                'laundry' => 'required',
+                'branch_id' => 'required',
+            ]);
+            $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
+            HotelBranch::where('user_id', $user->id)
+                ->where('hotel_id', $hotel_id)
+                ->where('id', $request->branch_id)
+                ->update([
+                    'city_id' => $request->city_id,
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'map_location' => $request->map_location,
+                    'location_description' => $request->location_description,
+                    'swimming_pool' => $request->swimming_pool,
+                    'resturant' => $request->resturant,
+                    'gym' => $request->gym,
+                    'laundry' => $request->laundry,
+                ]);
+            return response(['message' => 'hotel updated']);
+        } else {
+            return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
     public function addInteriorImages(Request $request)
     {
         $user = Auth::user();

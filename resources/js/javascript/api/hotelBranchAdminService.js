@@ -9,6 +9,13 @@ async function add(data) {
         .catch(e => e.response);
 }
 
+async function update(data) {
+    return await axios
+        .patch(`${ROOT_API}/${API_POINT}/update`, data)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
 async function addInteriorImages(data) {
     return await axios
         .post(`${ROOT_API}/${API_POINT}/images/interior/add`, data)
@@ -65,6 +72,13 @@ async function getAll() {
         .catch(e => e.response);
 }
 
+async function get(id) {
+    return await axios
+        .get(`${ROOT_API}/${API_POINT}/get/${id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
 
 
 
@@ -72,6 +86,8 @@ async function getAll() {
 export {
     add,
     getAll,
+    get,
+    update,
     addInteriorImages,
     addBuildingImages,
     getViewImages,
