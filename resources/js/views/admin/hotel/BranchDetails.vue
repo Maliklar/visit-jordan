@@ -176,14 +176,20 @@
     <br />
     <h1>Rooms</h1>
     <v-data-table
-      :headers="headers"
-      :items="ht"
+      :headers="roomsHeaders"
+      :items="roomsData"
       :items-per-page="5"
       class="elevation-1"
     ></v-data-table>
     <br />
-    <div v-html="ht"></div>
     <h1>Rooms Types</h1>
+    <v-data-table
+      :headers="categoryHeaders"
+      :items="roomCategoryData"
+      :items-per-page="5"
+      class="elevation-1"
+    ></v-data-table>
+    <br />
     <br />
   </div>
 </template>
@@ -202,7 +208,14 @@ export default {
       .getBranchRoomsTable(this.$route.params.id)
       .then((result) => {
         console.log(result.data);
-        this.ht = result.data;
+        this.roomsData = result.data;
+      });
+
+    await this.$roomCategoryAdminService
+      .getSingleBranch(this.$route.params.id)
+      .then((result) => {
+        console.log(result.data);
+        this.roomCategoryData = result.data;
       });
     this.isLoading = false;
   },
@@ -210,9 +223,22 @@ export default {
     return {
       isLoading: true,
       branch: null,
-      ht: null,
+      roomsData: null,
+      roomCategoryData: null,
 
-      headers: [
+      categoryHeaders: [
+        { text: "Category", value: "name" },
+        { text: "Price", value: "price" },
+        { text: "Description", value: "description" },
+        { text: "Capacity", value: "capacity" },
+        { text: "Single Beds", value: "single_beds" },
+        { text: "Double Beds", value: "double_beds" },
+        { text: "# Rooms", value: "rooms" },
+        { text: "# BathRooms", value: "bathrooms" },
+        { text: "State", value: "active" },
+      ],
+
+      roomsHeaders: [
         {
           text: "Room Type",
           align: "start",

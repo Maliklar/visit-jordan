@@ -2675,6 +2675,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {
     var _this = this;
@@ -2694,13 +2700,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               _context.next = 4;
               return _this.$hotelRoomAdminService.getBranchRoomsTable(_this.$route.params.id).then(function (result) {
                 console.log(result.data);
-                _this.ht = result.data;
+                _this.roomsData = result.data;
               });
 
             case 4:
+              _context.next = 6;
+              return _this.$roomCategoryAdminService.getSingleBranch(_this.$route.params.id).then(function (result) {
+                console.log(result.data);
+                _this.roomCategoryData = result.data;
+              });
+
+            case 6:
               _this.isLoading = false;
 
-            case 5:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -2712,8 +2725,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       isLoading: true,
       branch: null,
-      ht: null,
-      headers: [{
+      roomsData: null,
+      roomCategoryData: null,
+      categoryHeaders: [{
+        text: "Category",
+        value: "name"
+      }, {
+        text: "Price",
+        value: "price"
+      }, {
+        text: "Description",
+        value: "description"
+      }, {
+        text: "Capacity",
+        value: "capacity"
+      }, {
+        text: "Single Beds",
+        value: "single_beds"
+      }, {
+        text: "Double Beds",
+        value: "double_beds"
+      }, {
+        text: "# Rooms",
+        value: "rooms"
+      }, {
+        text: "# BathRooms",
+        value: "bathrooms"
+      }, {
+        text: "State",
+        value: "active"
+      }],
+      roomsHeaders: [{
         text: "Room Type",
         align: "start",
         sortable: false,
@@ -12431,14 +12473,27 @@ var render = function () {
           _vm._v(" "),
           _c("v-data-table", {
             staticClass: "elevation-1",
-            attrs: { headers: _vm.headers, items: _vm.ht, "items-per-page": 5 },
+            attrs: {
+              headers: _vm.roomsHeaders,
+              items: _vm.roomsData,
+              "items-per-page": 5,
+            },
           }),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c("div", { domProps: { innerHTML: _vm._s(_vm.ht) } }),
-          _vm._v(" "),
           _c("h1", [_vm._v("Rooms Types")]),
+          _vm._v(" "),
+          _c("v-data-table", {
+            staticClass: "elevation-1",
+            attrs: {
+              headers: _vm.categoryHeaders,
+              items: _vm.roomCategoryData,
+              "items-per-page": 5,
+            },
+          }),
+          _vm._v(" "),
+          _c("br"),
           _vm._v(" "),
           _c("br"),
         ],
