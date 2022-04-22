@@ -81,8 +81,8 @@ class RoomController extends Controller
                  count(case active when 0 then 1 else null end) as active'))
                 ->groupBy('category_id')
                 ->get();
-            dump($data);
-            // return response('ok');
+            // dump($data);
+            return $data;
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }

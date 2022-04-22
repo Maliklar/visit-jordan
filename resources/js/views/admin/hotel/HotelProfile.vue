@@ -141,8 +141,8 @@ export default {
       });
     },
     uploadLogo(e) {
-      this.previewImage = URL.createObjectURL(e.target.files[0]);
-      this.hotelLogo = e.target.files[0];
+      this.previewImage = URL.createObjectURL(e);
+      this.hotelLogo = e;
     },
   },
 

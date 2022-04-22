@@ -175,6 +175,12 @@
 
     <br />
     <h1>Rooms</h1>
+    <v-data-table
+      :headers="headers"
+      :items="ht"
+      :items-per-page="5"
+      class="elevation-1"
+    ></v-data-table>
     <br />
     <div v-html="ht"></div>
     <h1>Rooms Types</h1>
@@ -205,6 +211,20 @@ export default {
       isLoading: true,
       branch: null,
       ht: null,
+
+      headers: [
+        {
+          text: "Room Type",
+          align: "start",
+          sortable: false,
+          value: "category_id",
+        },
+        { text: "Booked", value: "booked" },
+        { text: "Free", value: "free" },
+        { text: "Inactive", value: "Inactive" },
+        { text: "Active", value: "active" },
+        { text: "Total", value: "total" },
+      ],
     };
   },
   methods: {
