@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Hotel;
 use App\Models\HotelBranchImage;
 use App\Models\HotelBranch;
+use App\Models\Room;
+use App\Models\RoomCategory;
+use App\Models\RoomCategoryImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -415,6 +418,60 @@ class HotelBranchController extends Controller
                 ->where('type', 'view')->get();
 
             //  response(['mess age' => 'Views Images Added Successfully']);
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    public function activate(Request $request)
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+
+            $request->validate([
+                'branch_id' => 'required',
+            ]);
+
+            //condition
+            $hasBranchImages = false;
+            $hasCategory = false;
+            $hasCategoryImages = false;
+            $hasRoomsCategory = false;
+
+            $branchPhotos = HotelBranchImage::where('branch_id', $request->branch_id)->get();
+            if (sizeof($branchPhotos) >= 6) {
+                $hasBranchImages = true;
+            }
+            $categories = RoomCategory::where('branch_id', $request->branch_id)->get();
+            dump(sizeof($categories));
+            if (sizeof($categories) >= 1) {
+                $hasCategory = true;
+            }
+            foreach ($categories as $category) {
+                //Check for rooms
+                $id = $category->id;
+                $rooms = Room::where('category_id', $id)->get();
+                if (sizeof($rooms) >= 1) {
+                    $hasRoomsCategory = true;
+                } else {
+                    $hasRoomsCategory = false;
+                    break;
+                }
+
+                //check Category Images
+                $catImg = RoomCategoryImage::where('category_id', $id)->get();
+                if (sizeof($catImg) >= 3) {
+                    $hasCategoryImages = true;
+                } else {
+                    $hasCategoryImages = false;
+                    break;
+                }
+            }
+            if ($hasBranchImages && $hasCategory && $hasCategoryImages && $hasRoomsCategory) {
+                return response(['message' => 'Branch Activated successfully']);
+            } else {
+                return response(['message' => 'Some Information are missing'], Response::HTTP_FORBIDDEN);
+            }
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }

@@ -1,6 +1,9 @@
 <template>
   <div class="add-branch-view">
-    <h1>Edit Branch</h1>
+    <h1>
+      <GoBackButton />
+      Edit Branch
+    </h1>
     <hr />
 
     <div v-if="isLoading" class="text-center">
@@ -101,7 +104,11 @@
 </template>
 
 <script>
+import GoBackButton from "../../../components/GoBackButton.vue";
 export default {
+  components: {
+    GoBackButton,
+  },
   async created() {
     this.$cityService.get().then((result) => {
       for (let i = 0; i < result.data.length; i++) {

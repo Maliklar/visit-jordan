@@ -90,6 +90,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/admin/hotels/branches/images/interior/add', [HotelBranchController::class, 'addInteriorImages']);
     Route::post('/admin/hotels/branches/images/building/add', [HotelBranchController::class, 'addBuildingImages']);
     Route::post('/admin/hotels/branches/images/view/add', [HotelBranchController::class, 'addViewImages']);
+    Route::post('/admin/hotels/branches/activate', [HotelBranchController::class, 'activate']);
 });
 
 

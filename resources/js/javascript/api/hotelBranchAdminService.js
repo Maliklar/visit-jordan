@@ -79,6 +79,13 @@ async function get(id) {
         .catch(e => e.response);
 }
 
+async function activate(data) {
+    return await axios
+        .post(`${ROOT_API}/${API_POINT}/activate/`, data)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
 
 
 
@@ -87,6 +94,7 @@ export {
     add,
     getAll,
     get,
+    activate,
     update,
     addInteriorImages,
     addBuildingImages,

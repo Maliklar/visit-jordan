@@ -5,7 +5,10 @@
     >
   </div>
   <div v-else class="branch-details-view">
-    <h1>Branch Details</h1>
+    <h1>
+      <GoBackButton />
+      Branch Details
+    </h1>
     <br />
     <h3>General Information</h3>
     <hr />
@@ -190,12 +193,21 @@
       class="elevation-1"
     ></v-data-table>
     <br />
+
+    <h1>Add Features about payments and revenu</h1>
+    <hr />
+    <v-btn @click="activate">Activate</v-btn>
     <br />
+    <div v-html="ht"></div>
   </div>
 </template>
 
 <script>
+import GoBackButton from "../../../components/GoBackButton.vue";
 export default {
+  components: {
+    GoBackButton,
+  },
   async created() {
     await this.$hotelBranchAdminService
       .get(this.$route.params.id)
@@ -225,7 +237,7 @@ export default {
       branch: null,
       roomsData: null,
       roomCategoryData: null,
-
+      ht: null,
       categoryHeaders: [
         { text: "Category", value: "name" },
         { text: "Price", value: "price" },
@@ -259,6 +271,13 @@ export default {
         return "Yes";
       }
       return "No";
+    },
+    activate() {
+      this.$hotelBranchAdminService
+        .activate({ branch_id: this.$route.params.id })
+        .then((result) => {
+          this.ht = result.data;
+        });
     },
   },
 };

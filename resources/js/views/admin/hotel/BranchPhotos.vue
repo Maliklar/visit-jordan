@@ -1,6 +1,9 @@
 <template>
   <div class="branch-photos-view">
-    <h1>Branch Photos</h1>
+    <h1>
+      <GoBackButton />
+      Branch Photos
+    </h1>
     <hr />
     <v-tabs v-model="tab" background-color="primary">
       <v-tab value="interior">Interior</v-tab>
@@ -24,9 +27,11 @@
 
 <script>
 import BranchPhotosEditor from "../../../components/hotel_admin/BranchPhotosEditor.vue";
+import GoBackButton from "../../../components/GoBackButton.vue";
 export default {
   components: {
     BranchPhotosEditor,
+    GoBackButton,
   },
   data() {
     return {

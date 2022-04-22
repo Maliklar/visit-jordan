@@ -2745,6 +2745,7 @@ function _update() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "activate": () => (/* binding */ activate),
 /* harmony export */   "add": () => (/* binding */ add),
 /* harmony export */   "addBuildingImages": () => (/* binding */ addBuildingImages),
 /* harmony export */   "addInteriorImages": () => (/* binding */ addInteriorImages),
@@ -3099,6 +3100,36 @@ function _get() {
     }, _callee11);
   }));
   return _get.apply(this, arguments);
+}
+
+function activate(_x11) {
+  return _activate.apply(this, arguments);
+}
+
+function _activate() {
+  _activate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+      while (1) {
+        switch (_context12.prev = _context12.next) {
+          case 0:
+            _context12.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/activate/"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context12.abrupt("return", _context12.sent);
+
+          case 3:
+          case "end":
+            return _context12.stop();
+        }
+      }
+    }, _callee12);
+  }));
+  return _activate.apply(this, arguments);
 }
 
 
