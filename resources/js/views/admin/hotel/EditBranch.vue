@@ -5,7 +5,6 @@
       Edit Branch
     </h1>
     <hr />
-
     <div v-if="isLoading" class="text-center">
       <v-progress-circular :size="100" :width="7" color="purple" indeterminate>
         Loading...</v-progress-circular
@@ -98,6 +97,41 @@
         class="shrink mr-2 mt-0"
       ></v-checkbox>
       <v-btn color="success" class="mr-4" type="submit"> Submit </v-btn>
+      <v-dialog v-model="dialog" width="500">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="error" dark v-bind="attrs" v-on="on">
+            Delete Branch
+          </v-btn>
+        </template>
+
+        <v-card>
+          <v-card-title class="text-h5 grey lighten-2">
+            Delete Branch
+          </v-card-title>
+
+          <v-card-text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </v-card-text>
+
+          <v-divider></v-divider>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="error" text @click="deleteBranch">
+              Delete Branch
+            </v-btn>
+            <v-btn color="warning" text @click="deactivateBranch">
+              Deactivate Branch
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-form>
   </div>
   <!-- <div v-html="ht"></div> -->
@@ -154,6 +188,8 @@ export default {
     swimming_pool: false,
     laundry: false,
 
+    dialog: false,
+
     //Rules
     emailRules: [
       (v) => !!v || "E-mail is required",
@@ -197,10 +233,28 @@ export default {
         this.isLoading = false;
       });
     },
-    // validate() {
-    //   console.log("validate");
-    //   this.$refs.form.validate();
-    // },
+    deleteBranch() {
+      this.isLoading = true;
+
+      this.$hotelBranchAdminService
+        .deleteBranch(this.$route.params.id)
+        .then((result) => {
+          console.log(result);
+          this.isLoading = false;
+        });
+      this.dialog = false;
+    },
+    deactivateBranch() {
+      this.isLoading = true;
+      this.$hotelBranchAdminService
+        .deactivate(this.$route.params.id)
+        .then((result) => {
+          console.log(result);
+          this.isLoading = false;
+          this.$router.go(-1);
+        });
+      this.dialog = false;
+    },
   },
 };
 </script>

@@ -196,17 +196,24 @@
 
     <h1>Add Features about payments and revenu</h1>
     <hr />
-    <v-btn @click="activate">Activate</v-btn>
+    <v-btn color="success" @click="activate">Activate</v-btn>
     <br />
-    <div v-html="ht"></div>
+
+    <SubmitionResultsAlert
+      v-if="resultMessage"
+      :status="resultStatus"
+      :message="resultMessage"
+    />
   </div>
 </template>
 
 <script>
 import GoBackButton from "../../../components/GoBackButton.vue";
+import SubmitionResultsAlert from "../../../components/SubmitionResultsAlert.vue";
 export default {
   components: {
     GoBackButton,
+    SubmitionResultsAlert,
   },
   async created() {
     await this.$hotelBranchAdminService
@@ -237,7 +244,8 @@ export default {
       branch: null,
       roomsData: null,
       roomCategoryData: null,
-      ht: null,
+      resultStatus: null,
+      resultMessage: null,
       categoryHeaders: [
         { text: "Category", value: "name" },
         { text: "Price", value: "price" },
@@ -276,7 +284,12 @@ export default {
       this.$hotelBranchAdminService
         .activate({ branch_id: this.$route.params.id })
         .then((result) => {
-          this.ht = result.data;
+          this.resultStatus = result.status;
+          if (result.status == 200) {
+            this.resultMessage = "Branch Activated Successfully";
+          } else {
+            this.resultMessage = "Branch Cannot be activated add the rols";
+          }
         });
     },
   },

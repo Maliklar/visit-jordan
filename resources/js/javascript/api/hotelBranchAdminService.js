@@ -86,6 +86,21 @@ async function activate(data) {
         .catch(e => e.response);
 }
 
+async function deactivate(id) {
+    return await axios
+        .patch(`${ROOT_API}/${API_POINT}/deactivate/${id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
+async function deleteBranch(id) {
+    return await axios
+        .delete(`${ROOT_API}/${API_POINT}/delete/${id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
+
 
 
 
@@ -95,6 +110,10 @@ export {
     getAll,
     get,
     activate,
+    deactivate,
+
+    deleteBranch,
+
     update,
     addInteriorImages,
     addBuildingImages,

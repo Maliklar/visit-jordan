@@ -2750,6 +2750,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "addBuildingImages": () => (/* binding */ addBuildingImages),
 /* harmony export */   "addInteriorImages": () => (/* binding */ addInteriorImages),
 /* harmony export */   "addViewImages": () => (/* binding */ addViewImages),
+/* harmony export */   "deactivate": () => (/* binding */ deactivate),
+/* harmony export */   "deleteBranch": () => (/* binding */ deleteBranch),
 /* harmony export */   "deleteImage": () => (/* binding */ deleteImage),
 /* harmony export */   "get": () => (/* binding */ get),
 /* harmony export */   "getAll": () => (/* binding */ getAll),
@@ -3130,6 +3132,66 @@ function _activate() {
     }, _callee12);
   }));
   return _activate.apply(this, arguments);
+}
+
+function deactivate(_x12) {
+  return _deactivate.apply(this, arguments);
+}
+
+function _deactivate() {
+  _deactivate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
+      while (1) {
+        switch (_context13.prev = _context13.next) {
+          case 0:
+            _context13.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/deactivate/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context13.abrupt("return", _context13.sent);
+
+          case 3:
+          case "end":
+            return _context13.stop();
+        }
+      }
+    }, _callee13);
+  }));
+  return _deactivate.apply(this, arguments);
+}
+
+function deleteBranch(_x13) {
+  return _deleteBranch.apply(this, arguments);
+}
+
+function _deleteBranch() {
+  _deleteBranch = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee14(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee14$(_context14) {
+      while (1) {
+        switch (_context14.prev = _context14.next) {
+          case 0:
+            _context14.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/delete/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context14.abrupt("return", _context14.sent);
+
+          case 3:
+          case "end":
+            return _context14.stop();
+        }
+      }
+    }, _callee14);
+  }));
+  return _deleteBranch.apply(this, arguments);
 }
 
 

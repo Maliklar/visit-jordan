@@ -443,7 +443,6 @@ class HotelBranchController extends Controller
                 $hasBranchImages = true;
             }
             $categories = RoomCategory::where('branch_id', $request->branch_id)->get();
-            dump(sizeof($categories));
             if (sizeof($categories) >= 1) {
                 $hasCategory = true;
             }
@@ -475,5 +474,19 @@ class HotelBranchController extends Controller
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }
+    }
+
+    public function deactivate()
+    {
+        $id = request()->id;
+        HotelBranch::where('id', $id)->update(['active' => 0]);
+        return response(['message' => 'Branch Deactivated Successfully']);
+    }
+
+    public function deleteBranch()
+    {
+        $id = request()->id;
+        HotelBranch::where('id', $id)->delete();
+        return response(['message' => 'Branch Deleted Successfully']);
     }
 }
