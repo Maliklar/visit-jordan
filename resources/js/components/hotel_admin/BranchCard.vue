@@ -185,7 +185,11 @@ export default {
   },
   methods: {
     openPublicProfile() {},
-    openDetails() {},
+    openDetails() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/branches/details/" + this.branch.id,
+      });
+    },
     openPhotos() {
       this.$router.push({
         path: "/admin/hotel/dashboard/branches/photos/" + this.branch.id,

@@ -16,6 +16,7 @@ Vue.prototype.$hotelAdminService = require('./javascript/api/hotelAdminService')
 Vue.prototype.$carBranchAdminService = require('./javascript/api/carBranchAdminService');
 Vue.prototype.$roomCategoryAdminService = require('./javascript/api/roomCategoryAdminService');
 Vue.prototype.$cityService = require('./javascript/api/cityService');
+Vue.prototype.$hotelRoomAdminService = require('./javascript/api/hotelRoomAdminService');
 
 
 import Vue from 'vue'

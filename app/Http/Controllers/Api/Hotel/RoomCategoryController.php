@@ -195,6 +195,9 @@ class RoomCategoryController extends Controller
         }
     }
 
+
+
+
     public function getAllSingleBranch()
     {
         $user = Auth::user();

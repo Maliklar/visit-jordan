@@ -17,9 +17,17 @@ async function getAll() {
         .catch(e => e.response);
 }
 
-async function getByCategoryId(id) {
+async function getBranchRoomsTable(id) {
     return await axios
-        .get(`${ROOT_API}/${API_POINT}/get/${id}`)
+        .get(`${ROOT_API}/${API_POINT}/get/branch_rooms_table/${id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
+async function getByCategoryId(id) {
+    console.log(id);
+    return await axios
+        .get(`${ROOT_API}/${API_POINT}/get/branch_rooms_table/${id}`)
         .then(response => response)
         .catch(e => e.response);
 }
@@ -31,6 +39,7 @@ async function getByCategoryId(id) {
 
 export {
     add,
+    getBranchRoomsTable,
     getAll,
     getByCategoryId,
 };

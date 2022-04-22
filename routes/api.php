@@ -142,6 +142,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/admin/hotels/rooms/add', [RoomController::class, 'add']);
     Route::get('/admin/hotels/rooms/get', [RoomController::class, 'getAll']);
+    Route::get('/admin/hotels/rooms/get/{id}', [RoomController::class, 'get']);
+    Route::get('/admin/hotels/rooms/get/branch_rooms_table/{branch_id}', [RoomController::class, 'getBranchRoomsTable']);
     Route::get('/admin/hotels/rooms/get/{category_id}', [RoomController::class, 'getByCategoryId']);
 });
 

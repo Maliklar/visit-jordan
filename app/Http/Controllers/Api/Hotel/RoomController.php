@@ -7,6 +7,7 @@ use App\Models\Hotel;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class RoomController extends Controller
@@ -64,6 +65,26 @@ class RoomController extends Controller
                 ->get();
         } else {
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    public function getBranchRoomsTable()
+    {
+        $user = Auth::user();
+
+        if ($user->type->type == 'hotel') {
+            $data = DB::table('rooms')
+                ->select(DB::raw('count(*) as total, category_id ,
+                 count(case available when 0 then 1 else null end) as booked,
+                 count(case available when 1 then 1 else null end) as free,
+                 count(case active when 1 then 1 else null end) as Inactive,
+                 count(case active when 0 then 1 else null end) as active'))
+                ->groupBy('category_id')
+                ->get();
+            dump($data);
+            // return response('ok');
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }
     }
 }

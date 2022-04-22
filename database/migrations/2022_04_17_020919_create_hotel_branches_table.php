@@ -30,6 +30,7 @@ return new class extends Migration
             $table->boolean('laundry');
 
             $table->boolean('active')->default(false);
+            $table->longText('active_description')->default('not set');
             $table->softDeletes();
             $table->timestamps();
         });

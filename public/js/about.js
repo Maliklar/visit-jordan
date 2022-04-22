@@ -498,7 +498,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     openPublicProfile: function openPublicProfile() {},
-    openDetails: function openDetails() {},
+    openDetails: function openDetails() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/branches/details/" + this.branch.id
+      });
+    },
     openPhotos: function openPhotos() {
       this.$router.push({
         path: "/admin/hotel/dashboard/branches/photos/" + this.branch.id
@@ -2473,6 +2477,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2480,7 +2492,233 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  created: function created() {
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this.$hotelBranchAdminService.get(_this.$route.params.id).then(function (result) {
+                _this.branch = result.data;
+                console.log(_this.branch);
+              });
+
+            case 2:
+              _context.next = 4;
+              return _this.$hotelRoomAdminService.getBranchRoomsTable(_this.$route.params.id).then(function (result) {
+                console.log(result.data);
+                _this.ht = result.data;
+              });
+
+            case 4:
+              _this.isLoading = false;
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  data: function data() {
+    return {
+      isLoading: true,
+      branch: null,
+      ht: null
+    };
+  },
+  methods: {
+    interruptTrueFalse: function interruptTrueFalse(bool) {
+      if (bool) {
+        return "Yes";
+      }
+
+      return "No";
+    }
+  }
+});
 
 /***/ }),
 
@@ -11566,20 +11804,408 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _vm.isLoading
+    ? _c(
+        "div",
+        { staticClass: "text-center" },
+        [
+          _c(
+            "v-progress-circular",
+            {
+              attrs: {
+                size: 100,
+                width: 7,
+                color: "purple",
+                indeterminate: "",
+              },
+            },
+            [_vm._v("\n    Loading...")]
+          ),
+        ],
+        1
+      )
+    : _c(
+        "div",
+        { staticClass: "branch-details-view" },
+        [
+          _c("h1", [_vm._v("Branch Details")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h3", [_vm._v("General Information")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("Branch ID")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [_vm._v(_vm._s(_vm.branch.id))]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("Branch Name")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [_vm._v(_vm._s(_vm.branch.name))]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [
+                    _vm._v("Branch Location Description"),
+                  ]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v(_vm._s(_vm.branch.location_description)),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("Map Location")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v(_vm._s(_vm.branch.map_location)),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("City")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v(_vm._s(_vm.branch.city.name)),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h3", [_vm._v("Contact Information")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("Phone Number")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v(_vm._s(_vm.branch.phone)),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("Email")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v(_vm._s(_vm.branch.email)),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h3", [_vm._v("Feature Information")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("Swimming Pool")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v(
+                      _vm._s(_vm.interruptTrueFalse(_vm.branch.swimming_pool))
+                    ),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("Resturant")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v(
+                      _vm._s(_vm.interruptTrueFalse(_vm.branch.resturant))
+                    ),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("Gym")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v(_vm._s(_vm.interruptTrueFalse(_vm.branch.gym))),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c(
+            "v-list-item",
+            [
+              _c("v-list-item-action"),
+              _vm._v(" "),
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", [_vm._v("Laundry Services")]),
+                  _vm._v(" "),
+                  _c("v-list-item-subtitle", [
+                    _vm._v(_vm._s(_vm.interruptTrueFalse(_vm.branch.laundry))),
+                  ]),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider", { attrs: { inset: "" } }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h1", [_vm._v("Photos")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h3", [_vm._v("Interior")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "v-container",
+            { attrs: { fluid: "" } },
+            [
+              _c(
+                "v-row",
+                { attrs: { align: "center", justify: "space-around" } },
+                _vm._l(_vm.branch.interior, function (image) {
+                  return _c("v-img", {
+                    key: image.id,
+                    attrs: {
+                      "lazy-src": "https://picsum.photos/id/11/10/6",
+                      height: "250",
+                      width: "300",
+                      src: "http://localhost:8000/" + image.image,
+                    },
+                  })
+                }),
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("h3", [_vm._v("Building")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "v-container",
+            { attrs: { fluid: "" } },
+            [
+              _c(
+                "v-row",
+                { attrs: { align: "center", justify: "space-around" } },
+                _vm._l(_vm.branch.building, function (image) {
+                  return _c("v-img", {
+                    key: image.id,
+                    attrs: {
+                      "lazy-src": "https://picsum.photos/id/11/10/6",
+                      height: "250",
+                      width: "300",
+                      src: "http://localhost:8000/" + image.image,
+                    },
+                  })
+                }),
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("h3", [_vm._v("Views")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "v-container",
+            { attrs: { fluid: "" } },
+            [
+              _c(
+                "v-row",
+                { attrs: { align: "center", justify: "space-around" } },
+                _vm._l(_vm.branch.views, function (image) {
+                  return _c("v-img", {
+                    key: image.id,
+                    attrs: {
+                      "lazy-src": "https://picsum.photos/id/11/10/6",
+                      height: "250",
+                      width: "300",
+                      src: "http://localhost:8000/" + image.image,
+                    },
+                  })
+                }),
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h1", [_vm._v("Rooms")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { domProps: { innerHTML: _vm._s(_vm.ht) } }),
+          _vm._v(" "),
+          _c("h1", [_vm._v("Rooms Types")]),
+          _vm._v(" "),
+          _c("br"),
+        ],
+        1
+      )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "branch-details-view" }, [
-      _c("h1", [_vm._v("Branch Details")]),
-      _vm._v(" "),
-      _c("hr"),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -13971,6 +14597,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BranchDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BranchDetails.vue?vue&type=script&lang=js& */ "./resources/js/views/admin/hotel/BranchDetails.vue?vue&type=script&lang=js&");
 /* harmony import */ var _BranchDetails_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BranchDetails.vue?vue&type=style&index=0&lang=css& */ "./resources/js/views/admin/hotel/BranchDetails.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VContainer.js");
+/* harmony import */ var vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VDivider */ "./node_modules/vuetify/lib/components/VDivider/VDivider.js");
+/* harmony import */ var vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VImg */ "./node_modules/vuetify/lib/components/VImg/VImg.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItem.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItemAction.js");
+/* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/index.js");
+/* harmony import */ var vuetify_lib_components_VProgressCircular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VProgressCircular */ "./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VRow.js");
 
 
 
@@ -13989,6 +14625,21 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
   null
   
 )
+
+/* vuetify-loader */
+;
+
+
+
+
+
+
+
+
+
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["default"],VDivider: vuetify_lib_components_VDivider__WEBPACK_IMPORTED_MODULE_6__["default"],VImg: vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_7__["default"],VListItem: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_8__["default"],VListItemAction: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_9__["default"],VListItemContent: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_10__.VListItemContent,VListItemSubtitle: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_10__.VListItemSubtitle,VListItemTitle: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_10__.VListItemTitle,VProgressCircular: vuetify_lib_components_VProgressCircular__WEBPACK_IMPORTED_MODULE_11__["default"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_12__["default"]})
+
 
 /* hot reload */
 if (false) { var api; }
