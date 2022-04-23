@@ -13,19 +13,15 @@
         ref="form"
         @submit.prevent="submit"
         v-model="valid"
-        @input="validate"
         lazy-validation
       >
         <h6>General Information</h6>
 
-        <validation-provider
-          v-slot="{ errors }"
-          name="Name"
-          rules="required|max:10"
-        >
+        <validation-provider v-slot="{ errors }" name="Branch" rules="required">
           <v-autocomplete
             v-model="branch_id"
             :items="branches"
+            @change="changed"
             item-text="name"
             item-value="id"
             :error-messages="errors"
@@ -37,13 +33,13 @@
 
         <validation-provider
           v-slot="{ errors }"
-          name="Name"
-          rules="required|max:10"
+          name="Branch Name"
+          rules="required|max:50"
         >
           <v-text-field
             v-model="name"
             :error-messages="errors"
-            :counter="25"
+            :counter="50"
             label="Category Name (e.g. Single Room)"
             required
           ></v-text-field>
@@ -51,12 +47,13 @@
 
         <validation-provider
           v-slot="{ errors }"
-          name="Name"
-          rules="required|max:10"
+          name="Category Description"
+          rules="required|max:1000"
         >
           <v-text-field
             v-model="description"
-            label="Description (e.g. single room with a greate view...)"
+            :counter="1000"
+            label="Category Description (e.g. single room with a greate view...)"
             :error-messages="errors"
             required
           ></v-text-field>
@@ -64,23 +61,25 @@
 
         <validation-provider
           v-slot="{ errors }"
-          name="Name"
+          name="Rooms Price"
           rules="required|max:10"
         >
           <v-text-field
             v-model="price"
+            type="number"
             :error-messages="errors"
-            label="Price (USD)"
+            label="Rooms Price (USD)"
             required
           ></v-text-field>
         </validation-provider>
 
         <validation-provider
           v-slot="{ errors }"
-          name="Name"
+          name="Number Of Rooms"
           rules="required|max:10"
         >
           <v-text-field
+            type="number"
             v-model="rooms"
             :error-messages="errors"
             label="Number Of Rooms"
@@ -90,10 +89,11 @@
 
         <validation-provider
           v-slot="{ errors }"
-          name="Name"
+          name="Number Of Bathrooms"
           rules="required|max:10"
         >
           <v-text-field
+            type="number"
             v-model="bathrooms"
             label="Number Of Bathrooms"
             :error-messages="errors"
@@ -103,10 +103,11 @@
 
         <validation-provider
           v-slot="{ errors }"
-          name="Name"
+          name="Capacity"
           rules="required|max:10"
         >
           <v-text-field
+            type="number"
             :error-messages="errors"
             v-model="capacity"
             label="Capacity (Number of people allowed)"
@@ -116,7 +117,7 @@
 
         <validation-provider
           v-slot="{ errors }"
-          name="Name"
+          name="Single Beds"
           rules="required|max:10"
         >
           <v-text-field
@@ -130,7 +131,7 @@
 
         <validation-provider
           v-slot="{ errors }"
-          name="Name"
+          name="Double Beds"
           rules="required|max:10"
         >
           <v-text-field
@@ -144,6 +145,7 @@
         <hr />
 
         <h6>Feachers</h6>
+
         <v-checkbox
           v-model="wifi"
           hide-details
@@ -175,13 +177,20 @@
           label="Is Lunch Included"
           class="shrink mr-2 mt-0"
         ></v-checkbox>
+        <br />
         <v-btn color="success" :disabled="invalid" class="mr-4" type="submit">
           Submit
         </v-btn>
+        <br />
+        <br />
+        <submition-results-alert
+          v-if="resultMessage"
+          :message="resultMessage"
+          :status="resultStatus"
+        />
       </v-form>
     </validation-observer>
   </div>
-  <!-- <div v-html="ht"></div> -->
 </template>
 
 <script>
@@ -192,6 +201,7 @@ import {
   setInteractionMode,
 } from "vee-validate";
 import { required, digits, email, max, regex } from "vee-validate/dist/rules";
+import SubmitionResultsAlert from "../../../components/SubmitionResultsAlert.vue";
 setInteractionMode("eager");
 
 extend("digits", {
@@ -222,6 +232,7 @@ export default {
   components: {
     ValidationProvider,
     ValidationObserver,
+    SubmitionResultsAlert,
   },
   async created() {
     this.$hotelBranchAdminService.getAll().then((result) => {
@@ -232,7 +243,6 @@ export default {
   },
   data: () => ({
     valid: true,
-    ht: null,
     isLoading: false,
 
     branch_id: "",
@@ -246,6 +256,8 @@ export default {
     rooms: "",
     bathrooms: 1,
 
+    resultMessage: null,
+    resultStatus: null,
     //Check boxes
     tv: false,
     balcony: false,
@@ -275,18 +287,20 @@ export default {
         tv: this.tv,
       };
 
-      console.log(data);
-
       this.$roomCategoryAdminService.add(data).then((result) => {
         // console.log(result.data);
-        this.ht = result.data;
         console.log(result);
+        this.resultMessage = result.data;
+        this.resultStatus = result.status;
         this.isLoading = false;
       });
     },
     validate() {
       console.log("validate");
       this.$refs.form.validate();
+    },
+    changed() {
+      console.log(this.branch_id);
     },
   },
 };

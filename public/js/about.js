@@ -2286,8 +2286,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
-/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
+/* harmony import */ var _components_SubmitionResultsAlert_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/SubmitionResultsAlert.vue */ "./resources/js/components/SubmitionResultsAlert.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2486,28 +2487,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
-(0,vee_validate__WEBPACK_IMPORTED_MODULE_1__.setInteractionMode)("eager");
-(0,vee_validate__WEBPACK_IMPORTED_MODULE_1__.extend)("digits", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__.digits), {}, {
+
+(0,vee_validate__WEBPACK_IMPORTED_MODULE_2__.setInteractionMode)("eager");
+(0,vee_validate__WEBPACK_IMPORTED_MODULE_2__.extend)("digits", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__.digits), {}, {
   message: "{_field_} needs to be {length} digits. ({_value_})"
 }));
-(0,vee_validate__WEBPACK_IMPORTED_MODULE_1__.extend)("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__.required), {}, {
+(0,vee_validate__WEBPACK_IMPORTED_MODULE_2__.extend)("required", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__.required), {}, {
   message: "{_field_} can not be empty"
 }));
-(0,vee_validate__WEBPACK_IMPORTED_MODULE_1__.extend)("max", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__.max), {}, {
+(0,vee_validate__WEBPACK_IMPORTED_MODULE_2__.extend)("max", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__.max), {}, {
   message: "{_field_} may not be greater than {length} characters"
 }));
-(0,vee_validate__WEBPACK_IMPORTED_MODULE_1__.extend)("regex", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__.regex), {}, {
+(0,vee_validate__WEBPACK_IMPORTED_MODULE_2__.extend)("regex", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__.regex), {}, {
   message: "{_field_} {_value_} does not match {regex}"
 }));
-(0,vee_validate__WEBPACK_IMPORTED_MODULE_1__.extend)("email", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__.email), {}, {
+(0,vee_validate__WEBPACK_IMPORTED_MODULE_2__.extend)("email", _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_3__.email), {}, {
   message: "Email must be valid"
 }));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_1__.ValidationProvider,
-    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_1__.ValidationObserver
+    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_2__.ValidationProvider,
+    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_2__.ValidationObserver,
+    SubmitionResultsAlert: _components_SubmitionResultsAlert_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   created: function created() {
     var _this = this;
@@ -2534,7 +2546,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       valid: true,
-      ht: null,
       isLoading: false,
       branch_id: "",
       branches: [],
@@ -2546,6 +2557,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       double_beds: "",
       rooms: "",
       bathrooms: 1,
+      resultMessage: null,
+      resultStatus: null,
       //Check boxes
       tv: false,
       balcony: false,
@@ -2575,17 +2588,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         lunch: this.lunch,
         tv: this.tv
       };
-      console.log(data);
       this.$roomCategoryAdminService.add(data).then(function (result) {
         // console.log(result.data);
-        _this2.ht = result.data;
         console.log(result);
+        _this2.resultMessage = result.data;
+        _this2.resultStatus = result.status;
         _this2.isLoading = false;
       });
     },
     validate: function validate() {
       console.log("validate");
       this.$refs.form.validate();
+    },
+    changed: function changed() {
+      console.log(this.branch_id);
     }
   }
 });
@@ -14974,7 +14990,6 @@ var render = function () {
                             $event.preventDefault()
                             return _vm.submit.apply(null, arguments)
                           },
-                          input: _vm.validate,
                         },
                         model: {
                           value: _vm.valid,
@@ -14988,7 +15003,7 @@ var render = function () {
                         _c("h6", [_vm._v("General Information")]),
                         _vm._v(" "),
                         _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
+                          attrs: { name: "Branch", rules: "required" },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -15006,6 +15021,7 @@ var render = function () {
                                         filled: "",
                                         label: "Branch",
                                       },
+                                      on: { change: _vm.changed },
                                       model: {
                                         value: _vm.branch_id,
                                         callback: function ($$v) {
@@ -15024,7 +15040,10 @@ var render = function () {
                         }),
                         _vm._v(" "),
                         _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
+                          attrs: {
+                            name: "Branch Name",
+                            rules: "required|max:50",
+                          },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -15035,7 +15054,7 @@ var render = function () {
                                     _c("v-text-field", {
                                       attrs: {
                                         "error-messages": errors,
-                                        counter: 25,
+                                        counter: 50,
                                         label:
                                           "Category Name (e.g. Single Room)",
                                         required: "",
@@ -15058,7 +15077,10 @@ var render = function () {
                         }),
                         _vm._v(" "),
                         _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
+                          attrs: {
+                            name: "Category Description",
+                            rules: "required|max:1000",
+                          },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -15068,8 +15090,9 @@ var render = function () {
                                   return [
                                     _c("v-text-field", {
                                       attrs: {
+                                        counter: 1000,
                                         label:
-                                          "Description (e.g. single room with a greate view...)",
+                                          "Category Description (e.g. single room with a greate view...)",
                                         "error-messages": errors,
                                         required: "",
                                       },
@@ -15091,7 +15114,10 @@ var render = function () {
                         }),
                         _vm._v(" "),
                         _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
+                          attrs: {
+                            name: "Rooms Price",
+                            rules: "required|max:10",
+                          },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -15101,8 +15127,9 @@ var render = function () {
                                   return [
                                     _c("v-text-field", {
                                       attrs: {
+                                        type: "number",
                                         "error-messages": errors,
-                                        label: "Price (USD)",
+                                        label: "Rooms Price (USD)",
                                         required: "",
                                       },
                                       model: {
@@ -15123,7 +15150,10 @@ var render = function () {
                         }),
                         _vm._v(" "),
                         _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
+                          attrs: {
+                            name: "Number Of Rooms",
+                            rules: "required|max:10",
+                          },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -15133,6 +15163,7 @@ var render = function () {
                                   return [
                                     _c("v-text-field", {
                                       attrs: {
+                                        type: "number",
                                         "error-messages": errors,
                                         label: "Number Of Rooms",
                                         required: "",
@@ -15155,7 +15186,10 @@ var render = function () {
                         }),
                         _vm._v(" "),
                         _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
+                          attrs: {
+                            name: "Number Of Bathrooms",
+                            rules: "required|max:10",
+                          },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -15165,6 +15199,7 @@ var render = function () {
                                   return [
                                     _c("v-text-field", {
                                       attrs: {
+                                        type: "number",
                                         label: "Number Of Bathrooms",
                                         "error-messages": errors,
                                         required: "",
@@ -15187,7 +15222,7 @@ var render = function () {
                         }),
                         _vm._v(" "),
                         _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
+                          attrs: { name: "Capacity", rules: "required|max:10" },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -15197,6 +15232,7 @@ var render = function () {
                                   return [
                                     _c("v-text-field", {
                                       attrs: {
+                                        type: "number",
                                         "error-messages": errors,
                                         label:
                                           "Capacity (Number of people allowed)",
@@ -15220,7 +15256,10 @@ var render = function () {
                         }),
                         _vm._v(" "),
                         _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
+                          attrs: {
+                            name: "Single Beds",
+                            rules: "required|max:10",
+                          },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -15254,7 +15293,10 @@ var render = function () {
                         }),
                         _vm._v(" "),
                         _c("validation-provider", {
-                          attrs: { name: "Name", rules: "required|max:10" },
+                          attrs: {
+                            name: "Double Beds",
+                            rules: "required|max:10",
+                          },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -15354,6 +15396,8 @@ var render = function () {
                           },
                         }),
                         _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
                         _c(
                           "v-btn",
                           {
@@ -15366,6 +15410,19 @@ var render = function () {
                           },
                           [_vm._v("\n        Submit\n      ")]
                         ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _vm.resultMessage
+                          ? _c("submition-results-alert", {
+                              attrs: {
+                                message: _vm.resultMessage,
+                                status: _vm.resultStatus,
+                              },
+                            })
+                          : _vm._e(),
                       ],
                       1
                     ),
