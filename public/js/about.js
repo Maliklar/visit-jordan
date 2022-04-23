@@ -13536,7 +13536,7 @@ var render = function () {
                 [
                   _c(
                     "v-img",
-                    { attrs: { src: _vm.room_img } },
+                    { attrs: { height: "200", src: _vm.room_img } },
                     [
                       _c("v-card-title", [
                         _vm._v(
@@ -13560,7 +13560,7 @@ var render = function () {
                 [
                   _c(
                     "v-img",
-                    { attrs: { src: _vm.view_img } },
+                    { attrs: { height: "200", src: _vm.view_img } },
                     [_c("v-card-title", [_vm._v(" Views ")])],
                     1
                   ),
@@ -13573,11 +13573,14 @@ var render = function () {
           _vm._v(" "),
           _c(
             "v-row",
-            { attrs: { align: "center", justify: "space-around" } },
+            { attrs: { justify: "space-around" } },
             [
               _c(
                 "v-list-item",
-                { attrs: { "two-line": "" } },
+                {
+                  staticStyle: { "background-color": "red", width: "10px" },
+                  attrs: { "two-line": "" },
+                },
                 [
                   _c(
                     "v-list-item-icon",

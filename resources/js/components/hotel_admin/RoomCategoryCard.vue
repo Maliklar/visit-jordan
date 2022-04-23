@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col cols="6" md="6">
-          <v-img :src="room_img">
+          <v-img height="200" :src="room_img">
             <v-card-title>
               {{ category.name }}
             </v-card-title>
@@ -11,13 +11,13 @@
           </v-img>
         </v-col>
         <v-col cols="6" md="6">
-          <v-img :src="view_img">
+          <v-img height="200" :src="view_img">
             <v-card-title> Views </v-card-title>
           </v-img>
         </v-col>
       </v-row>
-      <v-row align="center" justify="space-around">
-        <v-list-item two-line>
+      <v-row justify="space-around">
+        <v-list-item style="background-color: red; width: 10px" two-line>
           <v-list-item-icon>
             <v-icon>mdi-bed-king</v-icon>
           </v-list-item-icon>
