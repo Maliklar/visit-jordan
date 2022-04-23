@@ -125,12 +125,14 @@ Route::middleware('auth:sanctum')->group(function () {
 */
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/admin/hotels/room_categories/add', [RoomCategoryController::class, 'add']);
+    Route::patch('/admin/hotels/room_categories/edit', [RoomCategoryController::class, 'edit']);
     Route::post('/admin/hotels/room_categories/images/room/add', [RoomCategoryController::class, 'addRoomImages']);
     Route::post('/admin/hotels/room_categories/images/view/add', [RoomCategoryController::class, 'addViewImages']);
 
     Route::get('/admin/hotels/room_categories/images/room/get/{category_id}', [RoomCategoryController::class, 'getRoomImages']);
     Route::get('/admin/hotels/room_categories/images/view/get/{category_id}', [RoomCategoryController::class, 'getViewImages']);
 
+    Route::get('/admin/hotels/room_categories/get/id/{category_id}', [RoomCategoryController::class, 'get']);
     Route::get('/admin/hotels/room_categories/get/{branch_id}', [RoomCategoryController::class, 'getAllSingleBranch']);
     Route::get('/admin/hotels/room_categories/get', [RoomCategoryController::class, 'getAll']);
     Route::get('/admin/hotels/room_categories/get/{branch_id}/{category_id}', [RoomCategoryController::class, 'getSingle']);

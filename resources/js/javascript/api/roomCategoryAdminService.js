@@ -9,6 +9,34 @@ async function add(data) {
         .catch(e => e.response);
 }
 
+async function edit(data) {
+    return await axios
+        .patch(`${ROOT_API}/${API_POINT}/edit`, data)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
+async function deactivate(id) {
+    return await axios
+        .patch(`${ROOT_API}/${API_POINT}/deactivate/${id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
+
+async function get(id) {
+    return await axios
+        .get(`${ROOT_API}/${API_POINT}/get/id/${id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+async function deleteCategory(id) {
+    return await axios
+        .delete(`${ROOT_API}/${API_POINT}/delete/${id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
 
 async function addViewImages(data) {
     return await axios
@@ -66,7 +94,11 @@ async function getSingleBranch(branch_id) {
 export {
     add,
     getAll,
+    get,
+    edit,
+    deactivate,
     getSingleBranch,
+    deleteCategory,
     getRoomImages,
     addRoomImages,
     getViewImages,

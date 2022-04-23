@@ -146,6 +146,11 @@ export default {
           "/admin/hotel/dashboard/room_categories/photos/" + this.category.id,
       });
     },
+    openEdit() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/room_categories/edit/" + this.category.id,
+      });
+    },
   },
 };
 </script>

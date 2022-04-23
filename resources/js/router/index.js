@@ -101,6 +101,11 @@ const routes = [{
                 name: "AddRoomCategory",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/AddRoomCategory.vue"),
+            }, {
+                path: "room_categories/edit/:id",
+                name: "EditRoomCategory",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/EditRoomCategory.vue"),
             }
 
             , {

@@ -43,6 +43,35 @@ class RoomCategoryController extends Controller
         }
     }
 
+    public function edit(Request $request)
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            $request->validate([
+                'id' => 'required',
+                'branch_id' => 'required',
+                'name' => 'required',
+                'description' => 'required',
+                'capacity' => 'required',
+                'single_beds' => 'required',
+                'double_beds' => 'required',
+                'rooms' => 'required',
+                'bathrooms' => 'required',
+                'wifi' => 'required',
+                'balcony' => 'required',
+                'price' => 'required',
+                'tv' => 'required',
+                'lunch' => 'required',
+            ]);
+
+            RoomCategory::where('id', $request->id)
+                ->update($request->all());
+            return response(['message' => 'Category updated successfully']);
+        } else {
+            return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
     public function addViewImages(Request $request)
     {
         $user = Auth::user();
@@ -196,7 +225,15 @@ class RoomCategoryController extends Controller
     }
 
 
-
+    public function get()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            return RoomCategory::where('id', request()->category_id)->with('room', 'branch', 'view')->first();
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
 
     public function getAllSingleBranch()
     {

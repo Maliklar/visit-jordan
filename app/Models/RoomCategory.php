@@ -18,6 +18,7 @@ class RoomCategory extends Model
         'single_beds',
         'double_beds',
         'rooms',
+        'branch',
         'bathrooms',
         'wifi',
         'balcony',
@@ -35,5 +36,10 @@ class RoomCategory extends Model
     public function view()
     {
         return $this->hasMany(RoomCategoryImage::class, 'category_id', 'id')->where('type', 'view');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(HotelBranch::class, 'branch_id', 'id');
     }
 }

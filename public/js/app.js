@@ -3646,7 +3646,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "add": () => (/* binding */ add),
 /* harmony export */   "addRoomImages": () => (/* binding */ addRoomImages),
 /* harmony export */   "addViewImages": () => (/* binding */ addViewImages),
+/* harmony export */   "deactivate": () => (/* binding */ deactivate),
+/* harmony export */   "deleteCategory": () => (/* binding */ deleteCategory),
 /* harmony export */   "deleteImage": () => (/* binding */ deleteImage),
+/* harmony export */   "edit": () => (/* binding */ edit),
+/* harmony export */   "get": () => (/* binding */ get),
 /* harmony export */   "getAll": () => (/* binding */ getAll),
 /* harmony export */   "getRoomImages": () => (/* binding */ getRoomImages),
 /* harmony export */   "getSingleBranch": () => (/* binding */ getSingleBranch),
@@ -3696,18 +3700,18 @@ function _add() {
   return _add.apply(this, arguments);
 }
 
-function addViewImages(_x2) {
-  return _addViewImages.apply(this, arguments);
+function edit(_x2) {
+  return _edit.apply(this, arguments);
 }
 
-function _addViewImages() {
-  _addViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
+function _edit() {
+  _edit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/add"), data).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/edit"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -3723,21 +3727,21 @@ function _addViewImages() {
       }
     }, _callee2);
   }));
-  return _addViewImages.apply(this, arguments);
+  return _edit.apply(this, arguments);
 }
 
-function getViewImages(_x3) {
-  return _getViewImages.apply(this, arguments);
+function deactivate(_x3) {
+  return _deactivate.apply(this, arguments);
 }
 
-function _getViewImages() {
-  _getViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(branch_id) {
+function _deactivate() {
+  _deactivate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/get/").concat(branch_id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/deactivate/").concat(id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -3753,21 +3757,21 @@ function _getViewImages() {
       }
     }, _callee3);
   }));
-  return _getViewImages.apply(this, arguments);
+  return _deactivate.apply(this, arguments);
 }
 
-function addRoomImages(_x4) {
-  return _addRoomImages.apply(this, arguments);
+function get(_x4) {
+  return _get.apply(this, arguments);
 }
 
-function _addRoomImages() {
-  _addRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(data) {
+function _get() {
+  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/add"), data).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/id/").concat(id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -3783,21 +3787,21 @@ function _addRoomImages() {
       }
     }, _callee4);
   }));
-  return _addRoomImages.apply(this, arguments);
+  return _get.apply(this, arguments);
 }
 
-function getRoomImages(_x5) {
-  return _getRoomImages.apply(this, arguments);
+function deleteCategory(_x5) {
+  return _deleteCategory.apply(this, arguments);
 }
 
-function _getRoomImages() {
-  _getRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(branch_id) {
+function _deleteCategory() {
+  _deleteCategory = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/get/").concat(branch_id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/delete/").concat(id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -3813,21 +3817,21 @@ function _getRoomImages() {
       }
     }, _callee5);
   }));
-  return _getRoomImages.apply(this, arguments);
+  return _deleteCategory.apply(this, arguments);
 }
 
-function deleteImage(_x6) {
-  return _deleteImage.apply(this, arguments);
+function addViewImages(_x6) {
+  return _addViewImages.apply(this, arguments);
 }
 
-function _deleteImage() {
-  _deleteImage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(id) {
+function _addViewImages() {
+  _addViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(data) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
             _context6.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/images/delete/").concat(id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/add"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -3843,21 +3847,21 @@ function _deleteImage() {
       }
     }, _callee6);
   }));
-  return _deleteImage.apply(this, arguments);
+  return _addViewImages.apply(this, arguments);
 }
 
-function getAll() {
-  return _getAll.apply(this, arguments);
+function getViewImages(_x7) {
+  return _getViewImages.apply(this, arguments);
 }
 
-function _getAll() {
-  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
+function _getViewImages() {
+  _getViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(branch_id) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
       while (1) {
         switch (_context7.prev = _context7.next) {
           case 0:
             _context7.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/get/").concat(branch_id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -3873,21 +3877,21 @@ function _getAll() {
       }
     }, _callee7);
   }));
-  return _getAll.apply(this, arguments);
+  return _getViewImages.apply(this, arguments);
 }
 
-function getSingleBranch(_x7) {
-  return _getSingleBranch.apply(this, arguments);
+function addRoomImages(_x8) {
+  return _addRoomImages.apply(this, arguments);
 }
 
-function _getSingleBranch() {
-  _getSingleBranch = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(branch_id) {
+function _addRoomImages() {
+  _addRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(data) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
       while (1) {
         switch (_context8.prev = _context8.next) {
           case 0:
             _context8.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/").concat(branch_id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/add"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -3902,6 +3906,126 @@ function _getSingleBranch() {
         }
       }
     }, _callee8);
+  }));
+  return _addRoomImages.apply(this, arguments);
+}
+
+function getRoomImages(_x9) {
+  return _getRoomImages.apply(this, arguments);
+}
+
+function _getRoomImages() {
+  _getRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(branch_id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
+      while (1) {
+        switch (_context9.prev = _context9.next) {
+          case 0:
+            _context9.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/get/").concat(branch_id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context9.abrupt("return", _context9.sent);
+
+          case 3:
+          case "end":
+            return _context9.stop();
+        }
+      }
+    }, _callee9);
+  }));
+  return _getRoomImages.apply(this, arguments);
+}
+
+function deleteImage(_x10) {
+  return _deleteImage.apply(this, arguments);
+}
+
+function _deleteImage() {
+  _deleteImage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
+      while (1) {
+        switch (_context10.prev = _context10.next) {
+          case 0:
+            _context10.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/images/delete/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context10.abrupt("return", _context10.sent);
+
+          case 3:
+          case "end":
+            return _context10.stop();
+        }
+      }
+    }, _callee10);
+  }));
+  return _deleteImage.apply(this, arguments);
+}
+
+function getAll() {
+  return _getAll.apply(this, arguments);
+}
+
+function _getAll() {
+  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+      while (1) {
+        switch (_context11.prev = _context11.next) {
+          case 0:
+            _context11.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context11.abrupt("return", _context11.sent);
+
+          case 3:
+          case "end":
+            return _context11.stop();
+        }
+      }
+    }, _callee11);
+  }));
+  return _getAll.apply(this, arguments);
+}
+
+function getSingleBranch(_x11) {
+  return _getSingleBranch.apply(this, arguments);
+}
+
+function _getSingleBranch() {
+  _getSingleBranch = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(branch_id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+      while (1) {
+        switch (_context12.prev = _context12.next) {
+          case 0:
+            _context12.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/").concat(branch_id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context12.abrupt("return", _context12.sent);
+
+          case 3:
+          case "end":
+            return _context12.stop();
+        }
+      }
+    }, _callee12);
   }));
   return _getSingleBranch.apply(this, arguments);
 }
@@ -4247,6 +4371,12 @@ var routes = [{
     name: "AddRoomCategory",
     component: function component() {
       return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/AddRoomCategory.vue */ "./resources/js/views/admin/hotel/AddRoomCategory.vue"));
+    }
+  }, {
+    path: "room_categories/edit/:id",
+    name: "EditRoomCategory",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/EditRoomCategory.vue */ "./resources/js/views/admin/hotel/EditRoomCategory.vue"));
     }
   }, {
     path: "rooms/add",
