@@ -70,11 +70,9 @@ class HotelBranchController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-            // $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
-
             return HotelBranch::with('building', 'interior', 'views', 'city')
                 ->where('user_id', $user->id)
-                ->where('user_id', request()->id)
+                ->where('id', request()->id)
                 ->first();
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);

@@ -220,7 +220,7 @@ export default {
       .get(this.$route.params.id)
       .then((result) => {
         this.branch = result.data;
-        console.log(this.branch);
+        console.log("branch data:  ", this.branch);
       });
 
     await this.$hotelRoomAdminService

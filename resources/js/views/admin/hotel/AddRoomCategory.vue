@@ -8,120 +8,225 @@
         Loading...</v-progress-circular
       >
     </div>
-    <v-form
-      v-else
-      ref="form"
-      @submit.prevent="submit"
-      v-model="valid"
-      @input="validate"
-      lazy-validation
-    >
-      <h6>General Information</h6>
-      <v-alert type="error">
-        Only Numbers can be displayed : It is an internal Vueitry 3 error Looked
-        everywhere : github, stackoverflow any everywhere no answer
-      </v-alert>
-      <v-autocomplete
-        v-model="branch_id"
-        :items="branches"
-        item-text="name"
-        item-value="id"
-        dense
-        filled
-        label="Branch"
-      ></v-autocomplete>
+    <validation-observer v-else ref="observer" v-slot="{ invalid }">
+      <v-form
+        ref="form"
+        @submit.prevent="submit"
+        v-model="valid"
+        @input="validate"
+        lazy-validation
+      >
+        <h6>General Information</h6>
 
-      <v-text-field
-        v-model="name"
-        :counter="25"
-        label="Category Name (e.g. Single Room)"
-        required
-      ></v-text-field>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Name"
+          rules="required|max:10"
+        >
+          <v-autocomplete
+            v-model="branch_id"
+            :items="branches"
+            item-text="name"
+            item-value="id"
+            :error-messages="errors"
+            dense
+            filled
+            label="Branch"
+          ></v-autocomplete>
+        </validation-provider>
 
-      <v-text-field
-        v-model="description"
-        label="Description (e.g. single room with a greate view...)"
-        required
-      ></v-text-field>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Name"
+          rules="required|max:10"
+        >
+          <v-text-field
+            v-model="name"
+            :error-messages="errors"
+            :counter="25"
+            label="Category Name (e.g. Single Room)"
+            required
+          ></v-text-field>
+        </validation-provider>
 
-      <v-text-field v-model="price" label="Price (USD)" required></v-text-field>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Name"
+          rules="required|max:10"
+        >
+          <v-text-field
+            v-model="description"
+            label="Description (e.g. single room with a greate view...)"
+            :error-messages="errors"
+            required
+          ></v-text-field>
+        </validation-provider>
 
-      <v-text-field
-        v-model="rooms"
-        label="Number Of Rooms"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="bathrooms"
-        label="Number Of Bathrooms"
-        required
-      ></v-text-field>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Name"
+          rules="required|max:10"
+        >
+          <v-text-field
+            v-model="price"
+            :error-messages="errors"
+            label="Price (USD)"
+            required
+          ></v-text-field>
+        </validation-provider>
 
-      <v-text-field
-        v-model="capacity"
-        label="Capacity (Number of people allowed)"
-        required
-      ></v-text-field>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Name"
+          rules="required|max:10"
+        >
+          <v-text-field
+            v-model="rooms"
+            :error-messages="errors"
+            label="Number Of Rooms"
+            required
+          ></v-text-field>
+        </validation-provider>
 
-      <v-text-field
-        v-model="single_beds"
-        label="Single Beds (Number of single beds)"
-        type="number"
-        required
-      ></v-text-field>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Name"
+          rules="required|max:10"
+        >
+          <v-text-field
+            v-model="bathrooms"
+            label="Number Of Bathrooms"
+            :error-messages="errors"
+            required
+          ></v-text-field>
+        </validation-provider>
 
-      <v-text-field
-        v-model="double_beds"
-        label="Double Beds (Number of Double Beds)"
-        type="number"
-        required
-      ></v-text-field>
-      <hr />
+        <validation-provider
+          v-slot="{ errors }"
+          name="Name"
+          rules="required|max:10"
+        >
+          <v-text-field
+            :error-messages="errors"
+            v-model="capacity"
+            label="Capacity (Number of people allowed)"
+            required
+          ></v-text-field>
+        </validation-provider>
 
-      <h6>Feachers</h6>
-      <v-checkbox
-        v-model="wifi"
-        hide-details
-        label="Wi-Fi"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-checkbox
-        v-model="balcony"
-        hide-details
-        label="Balcony"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-checkbox
-        v-model="tv"
-        hide-details
-        label="TV"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-checkbox
-        v-model="ac"
-        hide-details
-        label="Air Condition"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Name"
+          rules="required|max:10"
+        >
+          <v-text-field
+            v-model="single_beds"
+            label="Single Beds (Number of single beds)"
+            :error-messages="errors"
+            type="number"
+            required
+          ></v-text-field>
+        </validation-provider>
 
-      <v-checkbox
-        v-model="lunch"
-        hide-details
-        label="Is Lunch Included"
-        class="shrink mr-2 mt-0"
-      ></v-checkbox>
-      <v-btn color="success" class="mr-4" type="submit"> Submit </v-btn>
-    </v-form>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Name"
+          rules="required|max:10"
+        >
+          <v-text-field
+            v-model="double_beds"
+            label="Double Beds (Number of Double Beds)"
+            :error-messages="errors"
+            type="number"
+            required
+          ></v-text-field>
+        </validation-provider>
+        <hr />
+
+        <h6>Feachers</h6>
+        <v-checkbox
+          v-model="wifi"
+          hide-details
+          label="Wi-Fi"
+          class="shrink mr-2 mt-0"
+        ></v-checkbox>
+        <v-checkbox
+          v-model="balcony"
+          hide-details
+          label="Balcony"
+          class="shrink mr-2 mt-0"
+        ></v-checkbox>
+        <v-checkbox
+          v-model="tv"
+          hide-details
+          label="TV"
+          class="shrink mr-2 mt-0"
+        ></v-checkbox>
+        <v-checkbox
+          v-model="ac"
+          hide-details
+          label="Air Condition"
+          class="shrink mr-2 mt-0"
+        ></v-checkbox>
+
+        <v-checkbox
+          v-model="lunch"
+          hide-details
+          label="Is Lunch Included"
+          class="shrink mr-2 mt-0"
+        ></v-checkbox>
+        <v-btn color="success" :disabled="invalid" class="mr-4" type="submit">
+          Submit
+        </v-btn>
+      </v-form>
+    </validation-observer>
   </div>
   <!-- <div v-html="ht"></div> -->
 </template>
 
 <script>
+import {
+  extend,
+  ValidationObserver,
+  ValidationProvider,
+  setInteractionMode,
+} from "vee-validate";
+import { required, digits, email, max, regex } from "vee-validate/dist/rules";
+setInteractionMode("eager");
+
+extend("digits", {
+  ...digits,
+  message: "{_field_} needs to be {length} digits. ({_value_})",
+});
+
+extend("required", {
+  ...required,
+  message: "{_field_} can not be empty",
+});
+
+extend("max", {
+  ...max,
+  message: "{_field_} may not be greater than {length} characters",
+});
+
+extend("regex", {
+  ...regex,
+  message: "{_field_} {_value_} does not match {regex}",
+});
+
+extend("email", {
+  ...email,
+  message: "Email must be valid",
+});
 export default {
+  components: {
+    ValidationProvider,
+    ValidationObserver,
+  },
   async created() {
     this.$hotelBranchAdminService.getAll().then((result) => {
       for (let i = 0; i < result.data.length; i++) {
-        this.branches.push(result.data[i].id);
+        this.branches = result.data;
       }
     });
   },
@@ -151,6 +256,8 @@ export default {
 
   methods: {
     submit() {
+      this.$refs.observer.validate();
+
       this.isLoading = true;
       let data = {
         name: this.name,

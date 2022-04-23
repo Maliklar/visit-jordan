@@ -12,9 +12,9 @@
       @click="addCategory"
       class="add-category-floating-action-button"
       color="success"
-      icon="mdi-plus"
       size="x-large"
-    ></v-btn>
+      >Add Category</v-btn
+    >
   </div>
 </template>
 
@@ -49,6 +49,7 @@ export default {
 
 .add-category-floating-action-button {
   position: fixed;
+  z-index: 10;
   right: 10px;
   bottom: 10px;
 }
