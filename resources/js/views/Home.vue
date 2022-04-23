@@ -22,6 +22,9 @@
         </v-list-item-content>
       </v-list-item>
       <SlideGroup />
+      <hr />
+
+      <JordanMap />
     </div>
   </div>
 </template>
@@ -29,8 +32,13 @@
 <script>
 import HomeCarousel from "../components/HomeCarousel.vue";
 import SlideGroup from "../components/SlideGroup.vue";
+import JordanMap from "../components/JordanMap.vue";
 export default {
-  components: { HomeCarousel, SlideGroup },
+  components: {
+    HomeCarousel,
+    SlideGroup,
+    JordanMap,
+  },
 };
 </script>
 
