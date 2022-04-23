@@ -4,16 +4,33 @@
       <HomeCarousel />
     </div>
     <div style="padding: 10px">
-      <h1>Hotels</h1>
-      <hr />
+      <v-list-item two-line>
+        <v-list-item-content>
+          <v-list-item-title> <h2>Explore Jordan</h2></v-list-item-title>
+          <v-list-item-subtitle
+            >Most popular destinations by turests</v-list-item-subtitle
+          >
+        </v-list-item-content>
+      </v-list-item>
+      <SlideGroup />
+      <v-list-item two-line>
+        <v-list-item-content>
+          <v-list-item-title> <h2>Explore Jordan</h2></v-list-item-title>
+          <v-list-item-subtitle
+            >Most popular destinations by turests</v-list-item-subtitle
+          >
+        </v-list-item-content>
+      </v-list-item>
+      <SlideGroup />
     </div>
   </div>
 </template>
 
 <script>
 import HomeCarousel from "../components/HomeCarousel.vue";
+import SlideGroup from "../components/SlideGroup.vue";
 export default {
-  components: { HomeCarousel },
+  components: { HomeCarousel, SlideGroup },
 };
 </script>
 

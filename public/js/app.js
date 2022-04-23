@@ -7109,6 +7109,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "v-toolbar-items",
+            { staticClass: "hidden-sm-and-down" },
             [
               _c(
                 "v-btn",

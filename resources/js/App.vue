@@ -10,7 +10,7 @@
         <v-btn text>Visit Jordan</v-btn>
       </v-toolbar-items>
 
-      <v-toolbar-items>
+      <v-toolbar-items class="hidden-sm-and-down">
         <v-btn text>
           <v-icon dark left> mdi-bed </v-icon>
           Stays
