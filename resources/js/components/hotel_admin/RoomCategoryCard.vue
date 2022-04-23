@@ -1,69 +1,116 @@
 <template>
-  <v-card :loading="loading" class="mx-auto my-12 w-75">
-    <v-progress-linear
-      v-if="loading"
-      class="position-absolute"
-      style="z-index: 1"
-      color="deep-purple"
-      height="10"
-      indeterminate
-    ></v-progress-linear>
-    <v-row no-gutters>
-      <v-col cols="12" sm="6">
-        <v-img height="250" :src="view_img" cover outlined> </v-img>
-      </v-col>
-      <v-col cols="12" sm="6">
-        <v-img height="250" :src="room_img" cover> </v-img>
-      </v-col>
-    </v-row>
+  <v-card class="admin-branch-category-card">
+    <v-container>
+      <v-row>
+        <v-col cols="6" md="6">
+          <v-img :src="room_img">
+            <v-card-title>
+              {{ category.name }}
+            </v-card-title>
+            <v-card-title> Room </v-card-title>
+          </v-img>
+        </v-col>
+        <v-col cols="6" md="6">
+          <v-img :src="view_img">
+            <v-card-title> Views </v-card-title>
+          </v-img>
+        </v-col>
+      </v-row>
+      <v-row align="center" justify="space-around">
+        <v-list-item two-line>
+          <v-list-item-icon>
+            <v-icon>mdi-bed-king</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Double Beds</v-list-item-title>
+            <v-list-item-subtitle>{{
+              category.double_beds
+            }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
 
-    <v-card-header>
-      <v-card-header-text>
-        <v-card-title>{{ category.name }}</v-card-title>
-        <v-card-title>{{ category.description }}</v-card-title>
-      </v-card-header-text>
-    </v-card-header>
+        <v-list-item two-line>
+          <v-list-item-icon>
+            <v-icon>mdi-bed-double</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Single Beds</v-list-item-title>
+            <v-list-item-subtitle>{{
+              category.single_beds
+            }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
 
-    <v-card-text>
-      <v-row align="center" class="mx-0">
-        <v-rating
-          :model-value="4.5"
-          color="amber"
-          dense
-          half-increments
-          readonly
-          size="14"
-        ></v-rating>
-        <div class="text-grey ms-4">4.5 (413)</div>
+        <v-list-item two-line>
+          <v-list-item-icon>
+            <v-icon>mdi-cash</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Price</v-list-item-title>
+            <v-list-item-subtitle>{{ category.price }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item two-line>
+          <v-list-item-icon>
+            <v-icon>mdi-home-floor-a</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Rooms</v-list-item-title>
+            <v-list-item-subtitle>{{ category.rooms }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item two-line>
+          <v-list-item-icon>
+            <v-icon>mdi-shower</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Bathrooms</v-list-item-title>
+            <v-list-item-subtitle>{{
+              category.bathrooms
+            }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item two-line>
+          <v-list-item-icon>
+            <v-icon>mdi-card-text-outline</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Description</v-list-item-title>
+            <v-list-item-subtitle>{{
+              category.description
+            }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
       </v-row>
 
-      <div class="my-4 text-subtitle-1">$ • {{ category.price }}</div>
-    </v-card-text>
+      <v-row align="center" justify="space-around">
+        <v-btn @click="openPublicProfile">Public Profile</v-btn>
+        <v-btn @click="openDetails">Details</v-btn>
+        <v-btn @click="openPhotos">Photos</v-btn>
+        <v-btn @click="openEdit">Edit</v-btn>
+      </v-row>
 
-    <v-divider class="mx-4 mb-1"></v-divider>
-
-    <v-card-title>Features</v-card-title>
-
-    <div class="px-4">
-      <v-chip-group v-model="selection">
-        <v-chip>Edit</v-chip>
-
-        <v-chip @click="photos(category.id)">Photos</v-chip>
-
-        <v-chip>8:00PM</v-chip>
-
-        <v-chip>9:00PM</v-chip>
-      </v-chip-group>
-    </div>
-
-    <v-card-actions>
-      <v-btn color="deep-purple-lighten-2" text @click="reserve">
-        Reserve
-      </v-btn>
-    </v-card-actions>
+      <v-row>
+        <v-container>
+          <v-alert prominent type="error">
+            <v-row align="center">
+              <v-col class="grow">
+                Nunc nonummy metus. Nunc interdum lacus sit amet orci. Nullam
+                dictum felis eu pede mollis pretium. Cras id dui.
+              </v-col>
+              <v-col class="shrink">
+                <v-btn>Take action</v-btn>
+              </v-col>
+            </v-row>
+          </v-alert>
+        </v-container>
+      </v-row>
+    </v-container>
   </v-card>
 </template>
-
 <script>
 export default {
   props: {
@@ -101,3 +148,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.admin-branch-category-card {
+  margin: 15px;
+}
+</style>
