@@ -126,6 +126,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/admin/hotels/room_categories/add', [RoomCategoryController::class, 'add']);
     Route::patch('/admin/hotels/room_categories/edit', [RoomCategoryController::class, 'edit']);
+    Route::delete('/admin/hotels/room_categories/delete/{category_id}', [RoomCategoryController::class, 'delete']);
+    Route::patch('/admin/hotels/room_categories/deactivate/{category_id}', [RoomCategoryController::class, 'deactivate']);
     Route::post('/admin/hotels/room_categories/images/room/add', [RoomCategoryController::class, 'addRoomImages']);
     Route::post('/admin/hotels/room_categories/images/view/add', [RoomCategoryController::class, 'addViewImages']);
 

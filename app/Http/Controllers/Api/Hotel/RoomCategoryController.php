@@ -235,6 +235,26 @@ class RoomCategoryController extends Controller
         }
     }
 
+    public function delete()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            return RoomCategory::where('id', request()->category_id)->delete();
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    public function deactivate()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            return RoomCategory::where('id', request()->category_id)->update(['active' => true]);
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
     public function getAllSingleBranch()
     {
         $user = Auth::user();

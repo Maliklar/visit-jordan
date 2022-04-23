@@ -3861,8 +3861,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 
@@ -3956,7 +3954,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       wifi: false,
       ac: false,
       //ID
-      id: null
+      id: null,
+      //Dialog
+      dialog: false
     };
   },
   methods: {
@@ -17869,11 +17869,7 @@ var render = function () {
                                           ),
                                           on
                                         ),
-                                        [
-                                          _vm._v(
-                                            "\n            Delete Branch\n          "
-                                          ),
-                                        ]
+                                        [_vm._v(" Delete ")]
                                       ),
                                     ]
                                   },

@@ -183,9 +183,7 @@
         </v-btn>
         <v-dialog v-model="dialog" width="500">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="error" dark v-bind="attrs" v-on="on">
-              Delete Branch
-            </v-btn>
+            <v-btn color="error" dark v-bind="attrs" v-on="on"> Delete </v-btn>
           </template>
 
           <v-card>
@@ -319,6 +317,9 @@ export default {
 
     //ID
     id: null,
+
+    //Dialog
+    dialog: false,
   }),
 
   methods: {
