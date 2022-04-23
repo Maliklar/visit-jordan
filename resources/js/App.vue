@@ -1,12 +1,15 @@
 <template>
   <v-app>
-    <v-app-bar class="app-bar" app>
-      <v-app-bar-nav-icon>
-        <v-avatar :tile="true">
-          <img :src="'images/app.jpg'" />
-        </v-avatar>
-      </v-app-bar-nav-icon>
-      <v-toolbar-title>Visit Jordan</v-toolbar-title>
+    <v-app-bar class="app-bar" color="transparent" app>
+      <v-toolbar-items @click="goToHome">
+        <v-app-bar-nav-icon>
+          <v-avatar :tile="true">
+            <img :src="'images/app.jpg'" />
+          </v-avatar>
+        </v-app-bar-nav-icon>
+        <v-btn text>Visit Jordan</v-btn>
+      </v-toolbar-items>
+
       <v-toolbar-items>
         <v-btn text>
           <v-icon dark left> mdi-bed </v-icon>
@@ -27,10 +30,10 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn text> Login </v-btn>
+        <v-btn @click="goToLogin" text> Login </v-btn>
       </v-toolbar-items>
       <v-toolbar-items>
-        <v-btn text> Sign up </v-btn>
+        <v-btn @click="goToSignup" text> Sign up </v-btn>
       </v-toolbar-items>
       <v-toolbar-items>
         <v-icon dark> mdi-translate </v-icon>
@@ -38,13 +41,13 @@
     </v-app-bar>
 
     <!-- Sizes your content based upon application components -->
-    <!-- <v-main> -->
-    <!-- Provides the application the proper gutter -->
-    <!-- <v-container fluid> -->
-    <!-- If using vue-router -->
-    <router-view></router-view>
-    <!-- </v-container> -->
-    <!-- </v-main> -->
+    <v-main>
+      <!-- Provides the application the proper gutter -->
+      <!-- <v-container fluid> -->
+      <!-- If using vue-router -->
+      <router-view></router-view>
+      <!-- </v-container> -->
+    </v-main>
 
     <v-footer app> This is My Footer: Malik </v-footer>
   </v-app>
@@ -55,6 +58,23 @@
 // import NavBar from "./components/NavBar.vue";
 export default {
   // components: { NavBar },
+  methods: {
+    goToLogin() {
+      this.$router.push({
+        path: "/login",
+      });
+    },
+    goToSignup() {
+      this.$router.push({
+        path: "/signup",
+      });
+    },
+    goToHome() {
+      this.$router.push({
+        path: "/",
+      });
+    },
+  },
 };
 </script>
 

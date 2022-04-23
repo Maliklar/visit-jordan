@@ -1,7 +1,9 @@
 <template>
   <div class="home-page">
-    <HomeCarousel />
     <div>
+      <HomeCarousel />
+    </div>
+    <div style="padding: 10px">
       <h1>Hotels</h1>
       <hr />
     </div>

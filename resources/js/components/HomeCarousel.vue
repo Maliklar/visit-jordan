@@ -1,13 +1,17 @@
 <template>
-  <v-carousel>
-    <v-carousel-item
-      v-for="(item, i) in items"
-      :key="i"
-      :src="item.src"
-      reverse-transition="fade-transition"
-      transition="fade-transition"
-    ></v-carousel-item>
-  </v-carousel>
+  <div style="height: 100%">
+    <v-carousel id="carousel">
+      <v-carousel-item
+        v-for="(item, i) in items"
+        :key="i"
+        :src="item.src"
+        reverse-transition="fade-transition"
+        transition="fade-transition"
+      >
+        adsfads</v-carousel-item
+      >
+    </v-carousel>
+  </div>
 </template>
 <script>
 export default {
@@ -31,3 +35,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+#carousel {
+  min-height: 100%;
+}
+</style>
