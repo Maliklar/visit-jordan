@@ -17,7 +17,7 @@
         </v-col>
       </v-row>
       <v-row justify="space-around">
-        <v-list-item style="background-color: red; width: 10px" two-line>
+        <v-list-item class="room-category-card-details" two-line>
           <v-list-item-icon>
             <v-icon>mdi-bed-king</v-icon>
           </v-list-item-icon>
@@ -29,7 +29,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item two-line>
+        <v-list-item class="room-category-card-details" two-line>
           <v-list-item-icon>
             <v-icon>mdi-bed-double</v-icon>
           </v-list-item-icon>
@@ -41,7 +41,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item two-line>
+        <v-list-item class="room-category-card-details" two-line>
           <v-list-item-icon>
             <v-icon>mdi-cash</v-icon>
           </v-list-item-icon>
@@ -51,7 +51,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item two-line>
+        <v-list-item class="room-category-card-details" two-line>
           <v-list-item-icon>
             <v-icon>mdi-home-floor-a</v-icon>
           </v-list-item-icon>
@@ -61,7 +61,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item two-line>
+        <v-list-item class="room-category-card-details" two-line>
           <v-list-item-icon>
             <v-icon>mdi-shower</v-icon>
           </v-list-item-icon>
@@ -73,7 +73,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item two-line>
+        <v-list-item class="room-category-card-details" two-line>
           <v-list-item-icon>
             <v-icon>mdi-card-text-outline</v-icon>
           </v-list-item-icon>
@@ -140,9 +140,10 @@ export default {
 
       setTimeout(() => (this.loading = false), 2000);
     },
-    photos(id) {
+    openPhotos() {
       this.$router.push({
-        path: "/admin/hotel/dashboard/room_categories/photos/" + id,
+        path:
+          "/admin/hotel/dashboard/room_categories/photos/" + this.category.id,
       });
     },
   },
@@ -152,5 +153,10 @@ export default {
 <style scoped>
 .admin-branch-category-card {
   margin: 15px;
+}
+
+.room-category-card-details {
+  max-width: 200px;
+  min-width: 150px;
 }
 </style>

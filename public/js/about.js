@@ -1144,9 +1144,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _this2.loading = false;
       }, 2000);
     },
-    photos: function photos(id) {
+    openPhotos: function openPhotos() {
       this.$router.push({
-        path: "/admin/hotel/dashboard/room_categories/photos/" + id
+        path: "/admin/hotel/dashboard/room_categories/photos/" + this.category.id
       });
     }
   }
@@ -1231,7 +1231,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     if (this.type == "room") {
-      this.roomCategoryAdminService.getBuildingImages(this.$route.params.id).then(function (result) {
+      this.$roomCategoryAdminService.getRoomImages(this.$route.params.id).then(function (result) {
         for (var i = 0; i < result.data.length; i++) {
           if (result.data[i].number == 1) {
             _this.image_1_url = "http://localhost:8000/" + result.data[i].image;
@@ -1257,7 +1257,7 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     if (this.type == "view") {
-      this.roomCategoryAdminService.getViewImages(this.$route.params.id).then(function (result) {
+      this.$roomCategoryAdminService.getViewImages(this.$route.params.id).then(function (result) {
         for (var i = 0; i < result.data.length; i++) {
           if (result.data[i].number == 1) {
             _this.image_1_url = "http://localhost:8000/" + result.data[i].image;
@@ -1302,19 +1302,19 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     handleImage1: function handleImage1(e) {
       console.log(e);
-      this.image_1 = e.target.files[0];
+      this.image_1 = e;
       this.image_1_url = URL.createObjectURL(this.image_1);
     },
     handleImage2: function handleImage2(e) {
-      this.image_2 = e.target.files[0];
+      this.image_2 = e;
       this.image_2_url = URL.createObjectURL(this.image_2);
     },
     handleImage3: function handleImage3(e) {
-      this.image_3 = e.target.files[0];
+      this.image_3 = e;
       this.image_3_url = URL.createObjectURL(this.image_3);
     },
     handleImage4: function handleImage4(e) {
-      this.image_4 = e.target.files[0];
+      this.image_4 = e;
       this.image_4_url = URL.createObjectURL(this.image_4);
     },
     submit: function submit() {
@@ -1326,13 +1326,13 @@ __webpack_require__.r(__webpack_exports__);
       data.append("category_id", this.$route.params.id);
 
       if (this.type == "room") {
-        this.roomCategoryAdminService.addRoomImages(data).then(function (result) {
+        this.$roomCategoryAdminService.addRoomImages(data).then(function (result) {
           console.log(result.data);
         });
       }
 
       if (this.type == "view") {
-        this.roomCategoryAdminService.addViewImages(data).then(function (result) {
+        this.$roomCategoryAdminService.addViewImages(data).then(function (result) {
           console.log(result.data);
         });
       }
@@ -3946,9 +3946,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -5343,7 +5340,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.admin-branch-category-card[data-v-7d718f3f] {\r\n  margin: 15px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.admin-branch-category-card[data-v-7d718f3f] {\r\n  margin: 15px;\n}\n.room-category-card-details[data-v-7d718f3f] {\r\n  max-width: 200px;\r\n  min-width: 150px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12767,7 +12764,7 @@ var render = function () {
                 [
                   _c(
                     "v-col",
-                    { attrs: { cols: "4" } },
+                    { attrs: { cols: "6" } },
                     [
                       _c(
                         "v-list-item",
@@ -12853,7 +12850,7 @@ var render = function () {
                   _vm._v(" "),
                   _c(
                     "v-col",
-                    { attrs: { cols: "4" } },
+                    { attrs: { cols: "6" } },
                     [
                       _vm.branch.swimming_pool
                         ? _c(
@@ -13578,7 +13575,7 @@ var render = function () {
               _c(
                 "v-list-item",
                 {
-                  staticStyle: { "background-color": "red", width: "10px" },
+                  staticClass: "room-category-card-details",
                   attrs: { "two-line": "" },
                 },
                 [
@@ -13605,7 +13602,10 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { "two-line": "" } },
+                {
+                  staticClass: "room-category-card-details",
+                  attrs: { "two-line": "" },
+                },
                 [
                   _c(
                     "v-list-item-icon",
@@ -13630,7 +13630,10 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { "two-line": "" } },
+                {
+                  staticClass: "room-category-card-details",
+                  attrs: { "two-line": "" },
+                },
                 [
                   _c(
                     "v-list-item-icon",
@@ -13655,7 +13658,10 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { "two-line": "" } },
+                {
+                  staticClass: "room-category-card-details",
+                  attrs: { "two-line": "" },
+                },
                 [
                   _c(
                     "v-list-item-icon",
@@ -13680,7 +13686,10 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { "two-line": "" } },
+                {
+                  staticClass: "room-category-card-details",
+                  attrs: { "two-line": "" },
+                },
                 [
                   _c(
                     "v-list-item-icon",
@@ -13705,7 +13714,10 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { "two-line": "" } },
+                {
+                  staticClass: "room-category-card-details",
+                  attrs: { "two-line": "" },
+                },
                 [
                   _c(
                     "v-list-item-icon",
@@ -17202,34 +17214,28 @@ var render = function () {
       ),
       _vm._v(" "),
       _c(
-        "v-card-text",
+        "v-tabs-items",
+        {
+          model: {
+            value: _vm.tab,
+            callback: function ($$v) {
+              _vm.tab = $$v
+            },
+            expression: "tab",
+          },
+        },
         [
           _c(
-            "v-window",
-            {
-              model: {
-                value: _vm.tab,
-                callback: function ($$v) {
-                  _vm.tab = $$v
-                },
-                expression: "tab",
-              },
-            },
-            [
-              _c(
-                "v-window-item",
-                { attrs: { value: "view" } },
-                [_c("RoomCategoryPhotoEditor", { attrs: { type: "view" } })],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-window-item",
-                { attrs: { value: "room" } },
-                [_c("RoomCategoryPhotoEditor", { attrs: { type: "room" } })],
-                1
-              ),
-            ],
+            "v-tab-item",
+            { staticClass: "admin-branch-photos-tab" },
+            [_c("RoomCategoryPhotoEditor", { attrs: { type: "room" } })],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-tab-item",
+            { staticClass: "admin-branch-photos-tab" },
+            [_c("RoomCategoryPhotoEditor", { attrs: { type: "view" } })],
             1
           ),
         ],
@@ -19128,11 +19134,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 /* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
 /* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
-/* harmony import */ var vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VTabs */ "./node_modules/vuetify/lib/components/VTabs/VTab.js");
+/* harmony import */ var vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VTabs */ "./node_modules/vuetify/lib/components/VTabs/VTab.js");
+/* harmony import */ var vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VTabs */ "./node_modules/vuetify/lib/components/VTabs/VTabItem.js");
 /* harmony import */ var vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VTabs */ "./node_modules/vuetify/lib/components/VTabs/VTabs.js");
-/* harmony import */ var vuetify_lib_components_VWindow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VWindow */ "./node_modules/vuetify/lib/components/VWindow/VWindow.js");
-/* harmony import */ var vuetify_lib_components_VWindow__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VWindow */ "./node_modules/vuetify/lib/components/VWindow/VWindowItem.js");
+/* harmony import */ var vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VTabs */ "./node_modules/vuetify/lib/components/VTabs/VTabsItems.js");
 
 
 
@@ -19158,8 +19163,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 
 
-
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VCardText: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_5__.VCardText,VTab: vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_6__["default"],VTabs: vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_7__["default"],VWindow: vuetify_lib_components_VWindow__WEBPACK_IMPORTED_MODULE_8__["default"],VWindowItem: vuetify_lib_components_VWindow__WEBPACK_IMPORTED_MODULE_9__["default"]})
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VTab: vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_5__["default"],VTabItem: vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_6__["default"],VTabs: vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_7__["default"],VTabsItems: vuetify_lib_components_VTabs__WEBPACK_IMPORTED_MODULE_8__["default"]})
 
 
 /* hot reload */

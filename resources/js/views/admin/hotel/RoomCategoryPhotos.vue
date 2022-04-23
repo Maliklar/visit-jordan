@@ -7,17 +7,14 @@
       <v-tab value="room">Room</v-tab>
     </v-tabs>
 
-    <v-card-text>
-      <v-window v-model="tab">
-        <v-window-item value="view">
-          <RoomCategoryPhotoEditor :type="'view'" />
-        </v-window-item>
-
-        <v-window-item value="room">
-          <RoomCategoryPhotoEditor :type="'room'" />
-        </v-window-item>
-      </v-window>
-    </v-card-text>
+    <v-tabs-items v-model="tab">
+      <v-tab-item class="admin-branch-photos-tab">
+        <RoomCategoryPhotoEditor :type="'room'" />
+      </v-tab-item>
+      <v-tab-item class="admin-branch-photos-tab">
+        <RoomCategoryPhotoEditor :type="'view'" />
+      </v-tab-item>
+    </v-tabs-items>
   </div>
 </template>
 

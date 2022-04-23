@@ -63,8 +63,8 @@ export default {
   },
   created() {
     if (this.type == "room") {
-      this.roomCategoryAdminService
-        .getBuildingImages(this.$route.params.id)
+      this.$roomCategoryAdminService
+        .getRoomImages(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
             if (result.data[i].number == 1) {
@@ -91,7 +91,7 @@ export default {
         });
     }
     if (this.type == "view") {
-      this.roomCategoryAdminService
+      this.$roomCategoryAdminService
         .getViewImages(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
@@ -141,19 +141,19 @@ export default {
   methods: {
     handleImage1(e) {
       console.log(e);
-      this.image_1 = e.target.files[0];
+      this.image_1 = e;
       this.image_1_url = URL.createObjectURL(this.image_1);
     },
     handleImage2(e) {
-      this.image_2 = e.target.files[0];
+      this.image_2 = e;
       this.image_2_url = URL.createObjectURL(this.image_2);
     },
     handleImage3(e) {
-      this.image_3 = e.target.files[0];
+      this.image_3 = e;
       this.image_3_url = URL.createObjectURL(this.image_3);
     },
     handleImage4(e) {
-      this.image_4 = e.target.files[0];
+      this.image_4 = e;
       this.image_4_url = URL.createObjectURL(this.image_4);
     },
 
@@ -166,12 +166,12 @@ export default {
       data.append("category_id", this.$route.params.id);
 
       if (this.type == "room") {
-        this.roomCategoryAdminService.addRoomImages(data).then((result) => {
+        this.$roomCategoryAdminService.addRoomImages(data).then((result) => {
           console.log(result.data);
         });
       }
       if (this.type == "view") {
-        this.roomCategoryAdminService.addViewImages(data).then((result) => {
+        this.$roomCategoryAdminService.addViewImages(data).then((result) => {
           console.log(result.data);
         });
       }
