@@ -72,6 +72,17 @@ class RoomController extends Controller
         }
     }
 
+    public function getReservations()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            return RoomReservation::where('room_id', request()->id)
+                ->get();
+        } else {
+            return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
     public function reserve(Request $request)
     {
         $user = Auth::user();

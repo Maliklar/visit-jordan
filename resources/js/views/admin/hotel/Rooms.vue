@@ -65,11 +65,8 @@
 </template>
 
 <script>
-import RoomCard from "../../../components/hotel_admin/RoomCard.vue";
 export default {
-  components: {
-    RoomCard,
-  },
+  components: {},
   async created() {
     this.$hotelBranchAdminService.getAll().then((result) => {
       this.branches = result.data;

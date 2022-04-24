@@ -114,7 +114,13 @@ const routes = [{
                 name: "AddRoom",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/AddRoom.vue"),
-            }, {
+            }, , {
+                path: "rooms/:id",
+                name: "RoomDetails",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/RoomDetails.vue"),
+            },
+            {
                 path: "rooms",
                 name: "Rooms",
                 component: () =>
