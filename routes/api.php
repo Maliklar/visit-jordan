@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Hotel\HotelBranchController;
 use App\Http\Controllers\Api\Hotel\HotelController;
 use App\Http\Controllers\Api\Hotel\RoomCategoryController;
 use App\Http\Controllers\Api\Hotel\RoomController;
+use App\Http\Controllers\Api\User\PublicUserController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\CityController;
 use Illuminate\Http\Request;
@@ -161,6 +162,18 @@ Route::middleware('auth:sanctum')->group(function () {
 */
 
 Route::get('/cities/get', [CityController::class, 'get']);
+
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+| Public Users API
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/users/register', [RoomController::class, 'register']);
+});
+Route::post('/users/register', [PublicUserController::class, 'register']);
+
 
 
 

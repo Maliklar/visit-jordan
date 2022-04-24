@@ -18,7 +18,6 @@
       baseprofile="tiny"
       fill="#7c7c7c"
       height="1127"
-      stroke="#ffffff"
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="2"
@@ -52,9 +51,7 @@
         id="JOR851"
         name="Amman"
       ></path>
-      <svg height="30" width="200">
-        <text x="0" y="15" fill="red">I love SVG!</text>
-      </svg>
+
       <path
         @mouseover="elevate"
         @mouseleave="restore"
@@ -131,6 +128,12 @@
       <circle cx="150.9" cy="286.2" id="0"></circle>
       <circle cx="258.7" cy="339.7" id="1"></circle>
       <circle cx="268.7" cy="548" id="2"></circle>
+
+      <text style="font-size: 24px">
+        <textPath xlink:href="#JOR851" startOffset="50%" text-anchor="center">
+          1test text
+        </textPath>
+      </text>
     </svg>
   </div>
 </template>
@@ -167,6 +170,7 @@ export default {
 .places-icons:hover {
   background-color: red;
   transform-origin: center;
+  border-width: 1px;
 
   transform: scale(1.2);
   transition: all 1s;
@@ -179,6 +183,7 @@ export default {
 
   border-style: solid;
   border-color: white;
+  border-width: 5px;
   transition: all 300ms;
   cursor: pointer;
 }

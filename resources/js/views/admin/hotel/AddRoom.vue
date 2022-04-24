@@ -8,61 +8,108 @@
         Loading...</v-progress-circular
       >
     </div>
-    <v-form
-      v-else
-      ref="form"
-      @submit.prevent="submit"
-      v-model="valid"
-      @input="validate"
-      lazy-validation
-    >
-      <h6>General Information</h6>
-      <v-alert type="error">
-        Only Numbers can be displayed : It is an internal Vueitry 3 error Looked
-        everywhere : github, stackoverflow any everywhere no answer
-      </v-alert>
-      <v-autocomplete
-        v-model="branch_id"
-        :items="branches"
-        @select="branchSelected"
-        item-text="name"
-        item-value="id"
-        dense
-        filled
-        label="Branch"
-      ></v-autocomplete>
+    <validation-observer ref="observer" v-else v-slot="{ invalid }">
+      <v-form ref="form" @submit.prevent="submit" lazy-validation>
+        <h6>General Information</h6>
 
-      <v-autocomplete
-        v-model="category_id"
-        :items="categories"
-        item-text="name"
-        item-value="id"
-        dense
-        filled
-        label="Category"
-      ></v-autocomplete>
+        <validation-provider v-slot="{ errors }" name="Branch">
+          <v-autocomplete
+            @change="branchSelected"
+            v-model="branch_id"
+            :items="branches"
+            :error-messages="errors"
+            item-text="name"
+            item-value="id"
+            dense
+            filled
+            label="Branch"
+          ></v-autocomplete>
+        </validation-provider>
 
-      <v-text-field
-        v-model="count"
-        :counter="25"
-        label="Number Of Rooms"
-        required
-      ></v-text-field>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Room Category"
+          rules="required|max:10"
+        >
+          <v-autocomplete
+            v-model="category_id"
+            :error-messages="errors"
+            :items="categories"
+            item-text="name"
+            item-value="id"
+            dense
+            label="Room Category"
+          ></v-autocomplete>
+        </validation-provider>
 
-      <v-btn color="success" class="mr-4" type="submit"> Submit </v-btn>
-    </v-form>
+        <validation-provider
+          v-slot="{ errors }"
+          name="Number Of Rooms"
+          rules="required|max:10"
+        >
+          <v-text-field
+            v-model="count"
+            :error-messages="errors"
+            :counter="25"
+            label="Number Of Rooms"
+            required
+          ></v-text-field>
+        </validation-provider>
+
+        <v-btn color="success" class="mr-4" :disabled="invalid" type="submit">
+          Submit
+        </v-btn>
+      </v-form>
+    </validation-observer>
   </div>
   <!-- <div v-html="ht"></div> -->
 </template>
 
 <script>
+import { required, digits, email, max, regex } from "vee-validate/dist/rules";
+import {
+  extend,
+  ValidationObserver,
+  ValidationProvider,
+  setInteractionMode,
+} from "vee-validate";
+
+setInteractionMode("eager");
+
+extend("digits", {
+  ...digits,
+  message: "{_field_} needs to be {length} digits. ({_value_})",
+});
+
+extend("required", {
+  ...required,
+  message: "{_field_} can not be empty",
+});
+
+extend("max", {
+  ...max,
+  message: "{_field_} may not be greater than {length} characters",
+});
+
+extend("regex", {
+  ...regex,
+  message: "{_field_} {_value_} does not match {regex}",
+});
+
+extend("email", {
+  ...email,
+  message: "Email must be valid",
+});
+
 export default {
   async created() {
     this.$hotelBranchAdminService.getAll().then((result) => {
-      for (let i = 0; i < result.data.length; i++) {
-        this.branches.push(result.data[i].id);
-      }
+      this.branches = result.data;
     });
+  },
+  components: {
+    ValidationProvider,
+    ValidationObserver,
   },
   data: () => ({
     valid: true,
@@ -105,9 +152,7 @@ export default {
         .getSingleBranch(this.branch_id)
         .then((result) => {
           this.categories = [];
-          for (let i = 0; i < result.data.length; i++) {
-            this.categories.push(result.data[i].id);
-          }
+          this.categories = result.data;
         });
     },
   },

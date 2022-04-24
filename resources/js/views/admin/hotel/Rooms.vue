@@ -4,13 +4,13 @@
     <hr />
     <v-form>
       <v-container>
-        filters
+        Filter
         <v-row>
           <v-col cols="12" md="6">
             <v-autocomplete
               v-model="branch_id"
               :items="branches"
-              @select="branchSelected"
+              @change="branchSelected"
               item-text="name"
               item-value="id"
               dense
@@ -23,7 +23,7 @@
             <v-autocomplete
               v-model="category_id"
               :items="categories"
-              @select="categorySelected"
+              @change="categorySelected"
               item-text="name"
               item-value="id"
               dense
@@ -35,10 +35,13 @@
       </v-container>
     </v-form>
     <hr />
-    <div v-for="room in rooms" :key="room">
-      <RoomCard :room="room" />
-      <br />
-    </div>
+    <v-data-table
+      dense
+      :headers="tableHeaders"
+      :items="rooms"
+      item-key="name"
+      class="elevation-1"
+    ></v-data-table>
     <v-btn
       @click="addRoom"
       class="add-room-floating-action-button"
@@ -46,6 +49,18 @@
       icon="mdi-plus"
       size="x-large"
     ></v-btn>
+    <v-btn
+      color="success"
+      @click="addRoom"
+      fab
+      dark
+      size="x-large"
+      fixed
+      bottom
+      right
+    >
+      <v-icon>mdi-plus</v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -57,9 +72,7 @@ export default {
   },
   async created() {
     this.$hotelBranchAdminService.getAll().then((result) => {
-      for (let i = 0; i < result.data.length; i++) {
-        this.branches.push(result.data[i].id);
-      }
+      this.branches = result.data;
     });
     this.$hotelRoomAdminService.getAll().then((result) => {
       this.rooms = result.data;
@@ -75,50 +88,34 @@ export default {
     category_id: "",
     categories: [],
     count: 0,
+
+    tableHeaders: [
+      { text: "Room ID", value: "id" },
+      { text: "Branch", value: "branch" },
+      { text: "Status", value: "active" },
+      { text: "available", value: "available" },
+    ],
   }),
 
   methods: {
-    submit() {
-      this.isLoading = true;
-      let data = {
-        branch_id: this.branch_id,
-        category_id: this.category_id,
-        count: this.count,
-      };
-
-      console.log(data);
-
-      this.hotelRoomAdminService.add(data).then((result) => {
-        // console.log(result.data);
-        this.ht = result.data;
-        console.log(result);
-        this.isLoading = false;
-      });
-    },
     addRoom() {
       this.$router.push({
         path: "/admin/hotel/dashboard/rooms/add",
       });
     },
-    validate() {
-      console.log("validate");
-      this.$refs.form.validate();
-    },
 
     branchSelected() {
       console.log(this.branch_id);
-      this.roomCategoryAdminService
+      this.$roomCategoryAdminService
         .getSingleBranch(this.branch_id)
         .then((result) => {
           this.categories = [];
-          for (let i = 0; i < result.data.length; i++) {
-            this.categories.push(result.data[i].id);
-          }
+          this.categories = result.data;
         });
     },
 
     categorySelected() {
-      this.hotelRoomAdminService
+      this.$hotelRoomAdminService
         .getByCategoryId(this.category_id)
         .then((result) => {
           this.rooms = result.data;

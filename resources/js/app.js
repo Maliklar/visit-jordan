@@ -9,7 +9,6 @@ import store from "./store";
 
 Vue.prototype.$bannerService = require('./javascript/api/bannerService');
 Vue.prototype.$hotelService = require('./javascript/api/hotelService');
-Vue.prototype.$userService = require('./javascript/api/userService');
 Vue.prototype.$hotelBranchAdminService = require('./javascript/api/hotelBranchAdminService');
 Vue.prototype.$carAdminService = require('./javascript/api/carAdminService');
 Vue.prototype.$hotelAdminService = require('./javascript/api/hotelAdminService');
@@ -17,6 +16,9 @@ Vue.prototype.$carBranchAdminService = require('./javascript/api/carBranchAdminS
 Vue.prototype.$roomCategoryAdminService = require('./javascript/api/roomCategoryAdminService');
 Vue.prototype.$cityService = require('./javascript/api/cityService');
 Vue.prototype.$hotelRoomAdminService = require('./javascript/api/hotelRoomAdminService');
+
+// Public 
+Vue.prototype.$userService = require('./javascript/api/userService');
 
 
 import Vue from 'vue'
