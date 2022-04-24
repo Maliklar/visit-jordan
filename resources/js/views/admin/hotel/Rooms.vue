@@ -76,6 +76,7 @@ export default {
     });
     this.$hotelRoomAdminService.getAll().then((result) => {
       this.rooms = result.data;
+      console.log("llll", this.rooms);
     });
   },
   data: () => ({
@@ -91,7 +92,10 @@ export default {
 
     tableHeaders: [
       { text: "Room ID", value: "id" },
-      { text: "Branch", value: "branch" },
+      { text: "Branch", value: "branch.name" },
+      { text: "Category", value: "category.name" },
+      { text: "Price", value: "category.price" },
+      { text: "Room Description", value: "category.description" },
       { text: "Status", value: "active" },
       { text: "available", value: "available" },
     ],

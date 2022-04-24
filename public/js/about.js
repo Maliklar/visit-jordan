@@ -4523,6 +4523,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               _this.$hotelRoomAdminService.getAll().then(function (result) {
                 _this.rooms = result.data;
+                console.log("llll", _this.rooms);
               });
 
             case 2:
@@ -4549,7 +4550,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         value: "id"
       }, {
         text: "Branch",
-        value: "branch"
+        value: "branch.name"
+      }, {
+        text: "Category",
+        value: "category.name"
+      }, {
+        text: "Price",
+        value: "category.price"
+      }, {
+        text: "Room Description",
+        value: "category.description"
       }, {
         text: "Status",
         value: "active"

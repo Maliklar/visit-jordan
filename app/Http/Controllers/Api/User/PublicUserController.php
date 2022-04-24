@@ -21,7 +21,7 @@ class PublicUserController extends Controller
         $insert = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'user_type' => 2, // hotel
+            'user_type' => 2, // Normal User
             'password' => Hash::make($request->password),
         ]);
 

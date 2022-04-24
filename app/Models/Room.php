@@ -17,6 +17,10 @@ class Room extends Model
 
     public function category()
     {
-        return $this->hasOne(RoomCategory::class, 'id', 'category_id');
+        return $this->belongsTo(RoomCategory::class, 'category_id', 'id');
+    }
+    public function branch()
+    {
+        return $this->belongsTo(HotelBranch::class, 'branch_id', 'id');
     }
 }
