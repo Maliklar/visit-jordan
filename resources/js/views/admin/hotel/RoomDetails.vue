@@ -6,15 +6,21 @@
     <v-tabs v-model="tab" align-with-title>
       <v-tabs-slider color="yellow"></v-tabs-slider>
 
-      <v-tab v-for="item in items" :key="item">
-        {{ item }}
-      </v-tab>
+      <v-tab> Reservations </v-tab>
+      <v-tab> Calendar </v-tab>
+      <v-tab> Revenue </v-tab>
     </v-tabs>
     <v-tabs-items v-model="tab">
-      <v-tab-item v-for="item in items" :key="item">
+      <v-tab-item>
+        <v-card flat> <ReservationTab /> </v-card>
+      </v-tab-item>
+      <v-tab-item>
         <v-card flat>
           <ReservationCalendar />
         </v-card>
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat> <ReservationsRevenue /> </v-card>
       </v-tab-item>
     </v-tabs-items>
   </div>
@@ -22,8 +28,14 @@
 
 <script>
 import ReservationCalendar from "../../../components/hotel_admin/ReservationCalendar.vue";
+import ReservationTab from "../../../components/hotel_admin/ReservationsTab.vue";
+import ReservationsRevenue from "../../../components/hotel_admin/ReservationsRevenue.vue";
 export default {
-  components: { ReservationCalendar },
+  components: {
+    ReservationCalendar,
+    ReservationTab,
+    ReservationsRevenue,
+  },
   data() {
     return {
       tab: null,
