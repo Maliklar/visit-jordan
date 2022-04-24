@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('hotel_id')->foreign()->references('hotels')->on('id');
             $table->integer('branch_id')->foreign()->references('hotel_branches')->on('id');
             $table->integer('category_id')->foreign()->references('room_categories')->on('id');
+            $table->integer('reservation_id')->foreign()->references('room_reservations')->on('id')->nullable();
+
             $table->boolean('active')->default(false);
             $table->boolean('available')->default(false);
             $table->softDeletes();

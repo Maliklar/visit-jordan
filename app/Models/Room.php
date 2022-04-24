@@ -12,6 +12,7 @@ class Room extends Model
         'hotel_id',
         'branch_id',
         'category_id',
+        'reservation_id',
         'available'
     ];
 

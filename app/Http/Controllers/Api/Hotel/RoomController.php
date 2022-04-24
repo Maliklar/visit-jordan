@@ -32,6 +32,7 @@ class RoomController extends Controller
             for ($i = 0; $i < $request->count; $i++) {
                 Room::create([
                     'hotel_id' => $hotel_id,
+                    'reservation_id' => '0',
                     'branch_id' => $request->branch_id,
                     'category_id' => $request->category_id,
                 ]);
@@ -79,9 +80,16 @@ class RoomController extends Controller
             // First Make Payment API Here
             // If payment is successful insert to payment table and then make reservation table
 
+            //find empty room
+
+            $room = Room::where('category_id', $request->category_id)
+                ->where('available', true)
+                ->where('active', true)
+                ->where('reservation_id', 0)->first();
+
             $payment = HotelPayment::create([
                 'user_id' => $user->id,
-                'room_id' => $request->room_id,
+                'room_id' => $room->id,
                 'amount' => $request->amount,
             ]);
             $check_in = Carbon::createFromDate($request->check_in);
@@ -94,11 +102,13 @@ class RoomController extends Controller
             RoomReservation::create([
                 'user_id' => $user->id,
                 'payment_id' => $payment->id,
-                'room_id' => $request->room_id,
+                'room_id' => $room->id,
                 'check_in' => $check_in,
                 'check_out' => $check_out,
                 'days' => $difference,
             ]);
+
+
             return response(['message' => 'Good']);
         } else {
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
