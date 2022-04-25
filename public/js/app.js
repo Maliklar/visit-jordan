@@ -3112,6 +3112,7 @@ function _getByCategoryId() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "activate": () => (/* binding */ activate),
 /* harmony export */   "add": () => (/* binding */ add),
 /* harmony export */   "deactivate": () => (/* binding */ deactivate),
 /* harmony export */   "deleteCategory": () => (/* binding */ deleteCategory),
@@ -3375,6 +3376,36 @@ function _deactivate() {
   return _deactivate.apply(this, arguments);
 }
 
+function activate(_x9) {
+  return _activate.apply(this, arguments);
+}
+
+function _activate() {
+  _activate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
+      while (1) {
+        switch (_context9.prev = _context9.next) {
+          case 0:
+            _context9.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/activate/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context9.abrupt("return", _context9.sent);
+
+          case 3:
+          case "end":
+            return _context9.stop();
+        }
+      }
+    }, _callee9);
+  }));
+  return _activate.apply(this, arguments);
+}
+
 
 
 /***/ }),
@@ -3388,11 +3419,11 @@ function _deactivate() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "addRoomImages": () => (/* binding */ addRoomImages),
-/* harmony export */   "addViewImages": () => (/* binding */ addViewImages),
+/* harmony export */   "addRoom": () => (/* binding */ addRoom),
+/* harmony export */   "addView": () => (/* binding */ addView),
 /* harmony export */   "deleteImage": () => (/* binding */ deleteImage),
-/* harmony export */   "getRoomImages": () => (/* binding */ getRoomImages),
-/* harmony export */   "getViewImages": () => (/* binding */ getViewImages)
+/* harmony export */   "getRoom": () => (/* binding */ getRoom),
+/* harmony export */   "getView": () => (/* binding */ getView)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -3408,12 +3439,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var ROOT_API = "http://localhost:8000/api";
 var API_POINT = "admin/hotels/rooms/categories/images";
 
-function addViewImages(_x) {
-  return _addViewImages.apply(this, arguments);
+function addView(_x) {
+  return _addView.apply(this, arguments);
 }
 
-function _addViewImages() {
-  _addViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
+function _addView() {
+  _addView = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -3435,15 +3466,15 @@ function _addViewImages() {
       }
     }, _callee);
   }));
-  return _addViewImages.apply(this, arguments);
+  return _addView.apply(this, arguments);
 }
 
-function getViewImages(_x2) {
-  return _getViewImages.apply(this, arguments);
+function getView(_x2) {
+  return _getView.apply(this, arguments);
 }
 
-function _getViewImages() {
-  _getViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(category_id) {
+function _getView() {
+  _getView = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(category_id) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -3465,15 +3496,15 @@ function _getViewImages() {
       }
     }, _callee2);
   }));
-  return _getViewImages.apply(this, arguments);
+  return _getView.apply(this, arguments);
 }
 
-function addRoomImages(_x3) {
-  return _addRoomImages.apply(this, arguments);
+function addRoom(_x3) {
+  return _addRoom.apply(this, arguments);
 }
 
-function _addRoomImages() {
-  _addRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
+function _addRoom() {
+  _addRoom = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
@@ -3495,15 +3526,15 @@ function _addRoomImages() {
       }
     }, _callee3);
   }));
-  return _addRoomImages.apply(this, arguments);
+  return _addRoom.apply(this, arguments);
 }
 
-function getRoomImages(_x4) {
-  return _getRoomImages.apply(this, arguments);
+function getRoom(_x4) {
+  return _getRoom.apply(this, arguments);
 }
 
-function _getRoomImages() {
-  _getRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(category_id) {
+function _getRoom() {
+  _getRoom = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(category_id) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
@@ -3525,7 +3556,7 @@ function _getRoomImages() {
       }
     }, _callee4);
   }));
-  return _getRoomImages.apply(this, arguments);
+  return _getRoom.apply(this, arguments);
 }
 
 function deleteImage(_x5) {

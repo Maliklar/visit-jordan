@@ -66,6 +66,14 @@ async function deactivate(id) {
 }
 
 
+async function activate(id) {
+    return await axios
+        .patch(`${ROOT_API}/${API_POINT}/activate/${id}`)
+        .then(response => response)
+        .catch(e => e.response);
+}
+
+
 
 
 
@@ -78,5 +86,6 @@ export {
     getByBranchAndCategoryId,
     update,
     deactivate,
+    activate,
     deleteCategory,
 };

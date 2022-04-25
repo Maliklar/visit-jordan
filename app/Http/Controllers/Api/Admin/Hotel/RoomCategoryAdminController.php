@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Admin\Hotel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hotel;
+use App\Models\Room;
 use App\Models\RoomCategory;
 use App\Models\RoomCategoryImage;
 use Illuminate\Http\Request;
@@ -122,7 +123,37 @@ class RoomCategoryAdminController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-            return RoomCategory::where('id', request()->category_id)->update(['active' => true]);
+            $category_id = request()->category_id;
+            $roomsNumber = Room::where('category_id', $category_id)->count();
+            $hasRooms = false;
+            if ($roomsNumber >= 1) {
+                $hasRooms = true;
+            }
+            $hasImages = false;
+
+            $imagesNumber = RoomCategoryImage::where('category_id', $category_id)->count();
+
+            if ($imagesNumber >= 3) {
+                $hasImages = true;
+            }
+            if ($hasImages && $hasRooms) {
+                return RoomCategory::where('id', request()->category_id)->update(['active' => true]);
+            } else {
+                $errors = [];
+
+                if ($hasImages == false) {
+                    array_push($errors, 'A branch must have at least 3 Category Images ');
+                }
+                if ($hasRooms == false) {
+                    array_push($errors, 'A branch must have at least 1 Room Category ');
+                }
+
+                $errorMessage = [
+                    'message' => 'Branch cannot be activated due to the following',
+                    'errors' => $errors,
+                ];
+                return response($errorMessage, Response::HTTP_FORBIDDEN);
+            }
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }

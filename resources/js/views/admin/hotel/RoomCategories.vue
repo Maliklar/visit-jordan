@@ -5,7 +5,7 @@
 
     <RoomCategoryCard
       v-for="category in categoriesArray"
-      :key="category"
+      :key="category.id"
       :category="category"
     />
     <v-btn

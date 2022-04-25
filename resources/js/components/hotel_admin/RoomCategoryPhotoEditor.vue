@@ -63,8 +63,8 @@ export default {
   },
   created() {
     if (this.type == "room") {
-      this.$roomCategoryAdminService
-        .getRoomImages(this.$route.params.id)
+      this.$roomCategoryImagesAdminService
+        .getRoom(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
             if (result.data[i].number == 1) {
@@ -91,8 +91,8 @@ export default {
         });
     }
     if (this.type == "view") {
-      this.$roomCategoryAdminService
-        .getViewImages(this.$route.params.id)
+      this.$roomCategoryImagesAdminService
+        .getView(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
             if (result.data[i].number == 1) {
@@ -166,12 +166,12 @@ export default {
       data.append("category_id", this.$route.params.id);
 
       if (this.type == "room") {
-        this.$roomCategoryAdminService.addRoomImages(data).then((result) => {
+        this.$roomCategoryImagesAdminService.addRoom(data).then((result) => {
           console.log(result.data);
         });
       }
       if (this.type == "view") {
-        this.$roomCategoryAdminService.addViewImages(data).then((result) => {
+        this.$roomCategoryImagesAdminService.addView(data).then((result) => {
           console.log(result.data);
         });
       }

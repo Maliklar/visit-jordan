@@ -86,33 +86,44 @@
         </v-list-item>
       </v-row>
 
-      <v-row align="center" justify="space-around">
-        <v-btn @click="openPublicProfile">Public Profile</v-btn>
-        <v-btn @click="openDetails">Details</v-btn>
-        <v-btn @click="openPhotos">Photos</v-btn>
-        <v-btn @click="openEdit">Edit</v-btn>
-      </v-row>
-
       <v-row>
         <v-container>
-          <v-alert prominent type="error">
-            <v-row align="center">
-              <v-col class="grow">
-                Nunc nonummy metus. Nunc interdum lacus sit amet orci. Nullam
-                dictum felis eu pede mollis pretium. Cras id dui.
-              </v-col>
-              <v-col class="shrink">
-                <v-btn>Take action</v-btn>
-              </v-col>
-            </v-row>
-          </v-alert>
+          <v-tabs>
+            <v-tab @click="openPublicProfile">
+              <v-icon dark left> mdi-earth </v-icon> Public Profile</v-tab
+            >
+            <v-tab @click="openDetails">
+              <v-icon dark left> mdi-card-account-details </v-icon>
+              Details</v-tab
+            >
+            <v-tab @click="openPhotos">
+              <v-icon dark left> mdi-image-multiple </v-icon> Photos</v-tab
+            >
+            <v-tab @click="openEdit">
+              <v-icon dark left> mdi-pencil </v-icon> Edit</v-tab
+            >
+            <v-spacer></v-spacer>
+          </v-tabs>
+        </v-container>
+      </v-row>
+      <v-row>
+        <v-container>
+          <CategoryActivationAlert
+            :active="category.active"
+            :id="category.id"
+          />
         </v-container>
       </v-row>
     </v-container>
   </v-card>
 </template>
 <script>
+import CategoryActivationAlert from "./CategoryActivationAlert.vue";
+
 export default {
+  components: {
+    CategoryActivationAlert,
+  },
   props: {
     category: Object,
   },
@@ -151,6 +162,10 @@ export default {
         path: "/admin/hotel/dashboard/room_categories/edit/" + this.category.id,
       });
     },
+
+    openDetails() {},
+
+    openPublicProfile() {},
   },
 };
 </script>
