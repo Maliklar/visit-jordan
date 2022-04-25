@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Api\Hotel;
+namespace App\Http\Controllers\Api\Admin\Hotel;
 
 use App\Http\Controllers\Controller;
-use App\Models\Hotel;
-use App\Models\HotelPayment;
-use App\Models\HotelReservation;
+use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\RoomReservation;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\Hotel;
+use App\Models\HotelPayment;
 
-class RoomController extends Controller
+class RoomAdminController extends Controller
 {
     public function add(Request $request)
     {

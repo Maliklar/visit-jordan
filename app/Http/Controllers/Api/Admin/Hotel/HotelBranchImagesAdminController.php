@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class HotelBranchImagesAdminController extends Controller
 {
-    public function addInteriorImages(Request $request)
+    public function addInterior(Request $request)
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -94,19 +94,7 @@ class HotelBranchImagesAdminController extends Controller
         }
     }
 
-    public function deleteImage()
-    {
-        $user = Auth::user();
-        if ($user->type->type == 'hotel') {
-            HotelBranchImage::where('id', request()->id)->delete();
-
-            return response(['message' => 'Image Deleted Successfully']);
-        } else {
-            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
-        }
-    }
-
-    public function addBuildingImages(Request $request)
+    public function addBuilding(Request $request)
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -190,7 +178,7 @@ class HotelBranchImagesAdminController extends Controller
         }
     }
 
-    public function addViewImages(Request $request)
+    public function addView(Request $request)
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -274,7 +262,7 @@ class HotelBranchImagesAdminController extends Controller
         }
     }
 
-    public function getInteriorImages()
+    public function getInterior()
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -286,7 +274,7 @@ class HotelBranchImagesAdminController extends Controller
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }
     }
-    public function getBuildingImages()
+    public function getBuilding()
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -298,7 +286,7 @@ class HotelBranchImagesAdminController extends Controller
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }
     }
-    public function getViewImages()
+    public function getView()
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -307,6 +295,18 @@ class HotelBranchImagesAdminController extends Controller
                 ->where('type', 'view')->get();
 
             //  response(['mess age' => 'Views Images Added Successfully']);
+        } else {
+            return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    public function delete()
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+            HotelBranchImage::where('id', request()->id)->delete();
+
+            return response(['message' => 'Image Deleted Successfully']);
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);
         }
