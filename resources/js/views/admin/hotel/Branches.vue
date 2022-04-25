@@ -36,7 +36,7 @@ export default {
     BranchCard,
   },
   created() {
-    this.$hotelBranchAdminService.getAll().then((result) => {
+    this.$hotelBranchAdminService.get().then((result) => {
       console.log(result.data);
       if (result.status == 200) {
         if (result.data.length == 0) {

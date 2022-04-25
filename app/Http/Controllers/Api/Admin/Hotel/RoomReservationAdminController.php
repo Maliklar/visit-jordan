@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api\Hotel;
+namespace App\Http\Controllers\Api\Admin\Hotel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hotel;
-use App\Models\HotelBranch;
-use App\Models\HotelReservation;
 use App\Models\RoomReservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class HoteReservationController extends Controller
+class RoomReservationAdminController extends Controller
 {
     public function get()
     {

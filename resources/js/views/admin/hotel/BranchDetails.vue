@@ -217,21 +217,21 @@ export default {
   },
   async created() {
     await this.$hotelBranchAdminService
-      .get(this.$route.params.id)
+      .getById(this.$route.params.id)
       .then((result) => {
         this.branch = result.data;
         console.log("branch data:  ", this.branch);
       });
 
-    await this.$hotelRoomAdminService
-      .getBranchRoomsTable(this.$route.params.id)
-      .then((result) => {
-        console.log(result.data);
-        this.roomsData = result.data;
-      });
+    // await this.$hotelRoomAdminService
+    //   .getBranchRoomsTable(this.$route.params.id)
+    //   .then((result) => {
+    //     console.log(result.data);
+    //     this.roomsData = result.data;
+    //   });
 
     await this.$roomCategoryAdminService
-      .getSingleBranch(this.$route.params.id)
+      .getByBranchId(this.$route.params.id)
       .then((result) => {
         console.log(result.data);
         this.roomCategoryData = result.data;

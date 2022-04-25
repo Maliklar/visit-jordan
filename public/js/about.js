@@ -3292,29 +3292,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return _this.$hotelBranchAdminService.get(_this.$route.params.id).then(function (result) {
+              return _this.$hotelBranchAdminService.getById(_this.$route.params.id).then(function (result) {
                 _this.branch = result.data;
                 console.log("branch data:  ", _this.branch);
               });
 
             case 2:
               _context.next = 4;
-              return _this.$hotelRoomAdminService.getBranchRoomsTable(_this.$route.params.id).then(function (result) {
-                console.log(result.data);
-                _this.roomsData = result.data;
-              });
-
-            case 4:
-              _context.next = 6;
-              return _this.$roomCategoryAdminService.getSingleBranch(_this.$route.params.id).then(function (result) {
+              return _this.$roomCategoryAdminService.getByBranchId(_this.$route.params.id).then(function (result) {
                 console.log(result.data);
                 _this.roomCategoryData = result.data;
               });
 
-            case 6:
+            case 4:
               _this.isLoading = false;
 
-            case 7:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -3514,7 +3507,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$hotelBranchAdminService.getAll().then(function (result) {
+    this.$hotelBranchAdminService.get().then(function (result) {
       console.log(result.data);
 
       if (result.status == 200) {
