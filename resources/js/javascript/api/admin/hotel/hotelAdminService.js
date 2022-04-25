@@ -9,6 +9,13 @@ async function get() {
         .then(response => response)
         .catch(e => e.response);
 }
+
+async function auth() {
+    return await axios
+        .get(`${ROOT_API}/${API_POINT}/auth`)
+        .then(response => response)
+        .catch(e => e.response);
+}
 async function register(data) {
     console.log(data);
     return await axios
@@ -16,8 +23,8 @@ async function register(data) {
         .then(response => response)
         .catch(e => e.response);
 }
-async function update(data) {
 
+async function update(data) {
     return await axios
         .post(`${ROOT_API}/${API_POINT}/update`, data)
         .then(response => response)
@@ -28,4 +35,9 @@ async function update(data) {
 
 
 
-export {get, update, register };
+export {
+    get,
+    update,
+    register,
+    auth,
+};

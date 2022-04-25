@@ -9,14 +9,18 @@ import store from "./store";
 
 Vue.prototype.$bannerService = require('./javascript/api/bannerService');
 Vue.prototype.$hotelService = require('./javascript/api/hotelService');
-Vue.prototype.$hotelBranchAdminService = require('./javascript/api/hotelBranchAdminService');
 Vue.prototype.$carAdminService = require('./javascript/api/carAdminService');
-Vue.prototype.$hotelAdminService = require('./javascript/api/hotelAdminService');
 Vue.prototype.$carBranchAdminService = require('./javascript/api/carBranchAdminService');
-Vue.prototype.$roomCategoryAdminService = require('./javascript/api/roomCategoryAdminService');
 Vue.prototype.$cityService = require('./javascript/api/cityService');
-Vue.prototype.$hotelRoomAdminService = require('./javascript/api/hotelRoomAdminService');
-Vue.prototype.$adminRoomReservations = require('./javascript/api/admin/hotel/adminRoomReservations');
+
+// DONE
+Vue.prototype.$hotelAdminService = require('./javascript/api/admin/hotel/hotelAdminService');
+Vue.prototype.$hotelBranchAdminService = require('./javascript/api/admin/hotel/hotelBranchAdminService');
+Vue.prototype.$hotelBranchImagesAdminService = require('./javascript/api/admin/hotel/hotelBranchImagesAdminService');
+Vue.prototype.$roomCategoryAdminService = require('./javascript/api/admin/hotel/roomCategoryAdminService');
+Vue.prototype.$roomCategoryImagesAdminService = require('./javascript/api/admin/hotel/roomCategoryImagesAdminService');
+Vue.prototype.$roomAdminService = require('./javascript/api/admin/hotel/roomAdminService');
+
 
 // Public 
 Vue.prototype.$userService = require('./javascript/api/userService');

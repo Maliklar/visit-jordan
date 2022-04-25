@@ -43,7 +43,7 @@ class RoomAdminController extends Controller
         }
     }
 
-    public function getAll(Request $request)
+    public function get(Request $request)
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -52,6 +52,21 @@ class RoomAdminController extends Controller
             return Room::where('hotel_id', $hotel_id)
                 ->with('category', 'branch')
                 ->get();
+        } else {
+            return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    public function getById(Request $request)
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+
+            $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
+            return Room::where('id', request()->room_id)
+                ->where('hotel_id', $hotel_id)
+                ->with('category', 'branch')
+                ->first();
         } else {
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
         }
@@ -70,6 +85,22 @@ class RoomAdminController extends Controller
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
         }
     }
+
+    public function getByBranchId(Request $request)
+    {
+        $user = Auth::user();
+        if ($user->type->type == 'hotel') {
+
+            $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
+            return Room::where('hotel_id', $hotel_id)
+                ->where('branch_id', request()->branch_id)
+                ->with('category', 'branch')
+                ->get();
+        } else {
+            return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
+        }
+    }
+
 
     public function getReservations()
     {

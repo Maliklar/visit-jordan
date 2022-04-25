@@ -2281,14 +2281,16 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$bannerService = __webpack_require__(/*! ./javascript/api/bannerService */ "./resources/js/javascript/api/bannerService.js");
 vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$hotelService = __webpack_require__(/*! ./javascript/api/hotelService */ "./resources/js/javascript/api/hotelService.js");
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$hotelBranchAdminService = __webpack_require__(/*! ./javascript/api/hotelBranchAdminService */ "./resources/js/javascript/api/hotelBranchAdminService.js");
 vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$carAdminService = __webpack_require__(/*! ./javascript/api/carAdminService */ "./resources/js/javascript/api/carAdminService.js");
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$hotelAdminService = __webpack_require__(/*! ./javascript/api/hotelAdminService */ "./resources/js/javascript/api/hotelAdminService.js");
 vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$carBranchAdminService = __webpack_require__(/*! ./javascript/api/carBranchAdminService */ "./resources/js/javascript/api/carBranchAdminService.js");
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$roomCategoryAdminService = __webpack_require__(/*! ./javascript/api/roomCategoryAdminService */ "./resources/js/javascript/api/roomCategoryAdminService.js");
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$cityService = __webpack_require__(/*! ./javascript/api/cityService */ "./resources/js/javascript/api/cityService.js");
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$hotelRoomAdminService = __webpack_require__(/*! ./javascript/api/hotelRoomAdminService */ "./resources/js/javascript/api/hotelRoomAdminService.js");
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$adminRoomReservations = __webpack_require__(/*! ./javascript/api/admin/hotel/adminRoomReservations */ "./resources/js/javascript/api/admin/hotel/adminRoomReservations.js"); // Public 
+vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$cityService = __webpack_require__(/*! ./javascript/api/cityService */ "./resources/js/javascript/api/cityService.js"); // DONE
+
+vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$hotelAdminService = __webpack_require__(/*! ./javascript/api/admin/hotel/hotelAdminService */ "./resources/js/javascript/api/admin/hotel/hotelAdminService.js");
+vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$hotelBranchAdminService = __webpack_require__(/*! ./javascript/api/admin/hotel/hotelBranchAdminService */ "./resources/js/javascript/api/admin/hotel/hotelBranchAdminService.js");
+vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$hotelBranchImagesAdminService = __webpack_require__(/*! ./javascript/api/admin/hotel/hotelBranchImagesAdminService */ "./resources/js/javascript/api/admin/hotel/hotelBranchImagesAdminService.js");
+vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$roomCategoryAdminService = __webpack_require__(/*! ./javascript/api/admin/hotel/roomCategoryAdminService */ "./resources/js/javascript/api/admin/hotel/roomCategoryAdminService.js");
+vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$roomCategoryImagesAdminService = __webpack_require__(/*! ./javascript/api/admin/hotel/roomCategoryImagesAdminService */ "./resources/js/javascript/api/admin/hotel/roomCategoryImagesAdminService.js");
+vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$roomAdminService = __webpack_require__(/*! ./javascript/api/admin/hotel/roomAdminService */ "./resources/js/javascript/api/admin/hotel/roomAdminService.js"); // Public 
 
 vue__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.$userService = __webpack_require__(/*! ./javascript/api/userService */ "./resources/js/javascript/api/userService.js");
 
@@ -2305,17 +2307,19 @@ new vue__WEBPACK_IMPORTED_MODULE_4__["default"]({
 
 /***/ }),
 
-/***/ "./resources/js/javascript/api/admin/hotel/adminRoomReservations.js":
-/*!**************************************************************************!*\
-  !*** ./resources/js/javascript/api/admin/hotel/adminRoomReservations.js ***!
-  \**************************************************************************/
+/***/ "./resources/js/javascript/api/admin/hotel/hotelAdminService.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/javascript/api/admin/hotel/hotelAdminService.js ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "auth": () => (/* binding */ auth),
 /* harmony export */   "get": () => (/* binding */ get),
-/* harmony export */   "getAll": () => (/* binding */ getAll)
+/* harmony export */   "register": () => (/* binding */ register),
+/* harmony export */   "update": () => (/* binding */ update)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -2329,20 +2333,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var ROOT_API = "http://localhost:8000/api";
-var API_POINT = "admin/hotels/rooms/reservations";
+var API_POINT = 'admin/hotels';
 
-function get(_x) {
+function get() {
   return _get.apply(this, arguments);
 }
 
 function _get() {
-  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(id) {
+  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/").concat(id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2361,6 +2365,649 @@ function _get() {
   return _get.apply(this, arguments);
 }
 
+function auth() {
+  return _auth.apply(this, arguments);
+}
+
+function _auth() {
+  _auth = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/auth")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _auth.apply(this, arguments);
+}
+
+function register(_x) {
+  return _register.apply(this, arguments);
+}
+
+function _register() {
+  _register = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            console.log(data);
+            _context3.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/register"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 3:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 4:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _register.apply(this, arguments);
+}
+
+function update(_x2) {
+  return _update.apply(this, arguments);
+}
+
+function _update() {
+  _update = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/update"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context4.abrupt("return", _context4.sent);
+
+          case 3:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _update.apply(this, arguments);
+}
+
+
+
+/***/ }),
+
+/***/ "./resources/js/javascript/api/admin/hotel/hotelBranchAdminService.js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/javascript/api/admin/hotel/hotelBranchAdminService.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "activate": () => (/* binding */ activate),
+/* harmony export */   "add": () => (/* binding */ add),
+/* harmony export */   "deactivate": () => (/* binding */ deactivate),
+/* harmony export */   "deleteBranch": () => (/* binding */ deleteBranch),
+/* harmony export */   "get": () => (/* binding */ get),
+/* harmony export */   "getById": () => (/* binding */ getById),
+/* harmony export */   "update": () => (/* binding */ update)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var ROOT_API = "http://localhost:8000/api";
+var API_POINT = "admin/hotels/branches";
+
+function add(_x) {
+  return _add.apply(this, arguments);
+}
+
+function _add() {
+  _add = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/add"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context.abrupt("return", _context.sent);
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _add.apply(this, arguments);
+}
+
+function update(_x2) {
+  return _update.apply(this, arguments);
+}
+
+function _update() {
+  _update = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/update"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _update.apply(this, arguments);
+}
+
+function get() {
+  return _get.apply(this, arguments);
+}
+
+function _get() {
+  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _get.apply(this, arguments);
+}
+
+function getById(_x3) {
+  return _getById.apply(this, arguments);
+}
+
+function _getById() {
+  _getById = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context4.abrupt("return", _context4.sent);
+
+          case 3:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _getById.apply(this, arguments);
+}
+
+function activate(_x4) {
+  return _activate.apply(this, arguments);
+}
+
+function _activate() {
+  _activate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/activate/"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context5.abrupt("return", _context5.sent);
+
+          case 3:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _activate.apply(this, arguments);
+}
+
+function deactivate(_x5) {
+  return _deactivate.apply(this, arguments);
+}
+
+function _deactivate() {
+  _deactivate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/deactivate/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context6.abrupt("return", _context6.sent);
+
+          case 3:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+  return _deactivate.apply(this, arguments);
+}
+
+function deleteBranch(_x6) {
+  return _deleteBranch.apply(this, arguments);
+}
+
+function _deleteBranch() {
+  _deleteBranch = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/delete/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context7.abrupt("return", _context7.sent);
+
+          case 3:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+  return _deleteBranch.apply(this, arguments);
+}
+
+
+
+/***/ }),
+
+/***/ "./resources/js/javascript/api/admin/hotel/hotelBranchImagesAdminService.js":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/javascript/api/admin/hotel/hotelBranchImagesAdminService.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addBuilding": () => (/* binding */ addBuilding),
+/* harmony export */   "addInterior": () => (/* binding */ addInterior),
+/* harmony export */   "addView": () => (/* binding */ addView),
+/* harmony export */   "deleteImage": () => (/* binding */ deleteImage),
+/* harmony export */   "getBuilding": () => (/* binding */ getBuilding),
+/* harmony export */   "getInterior": () => (/* binding */ getInterior),
+/* harmony export */   "getView": () => (/* binding */ getView)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var ROOT_API = "http://localhost:8000/api";
+var API_POINT = "admin/hotels/branches/images";
+
+function addInterior(_x) {
+  return _addInterior.apply(this, arguments);
+}
+
+function _addInterior() {
+  _addInterior = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/interior/add"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context.abrupt("return", _context.sent);
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _addInterior.apply(this, arguments);
+}
+
+function getInterior(_x2) {
+  return _getInterior.apply(this, arguments);
+}
+
+function _getInterior() {
+  _getInterior = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(branch_id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/interior/get/").concat(branch_id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _getInterior.apply(this, arguments);
+}
+
+function addBuilding(_x3) {
+  return _addBuilding.apply(this, arguments);
+}
+
+function _addBuilding() {
+  _addBuilding = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/building/add"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _addBuilding.apply(this, arguments);
+}
+
+function getBuilding(_x4) {
+  return _getBuilding.apply(this, arguments);
+}
+
+function _getBuilding() {
+  _getBuilding = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(branch_id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/building/get/").concat(branch_id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context4.abrupt("return", _context4.sent);
+
+          case 3:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _getBuilding.apply(this, arguments);
+}
+
+function addView(_x5) {
+  return _addView.apply(this, arguments);
+}
+
+function _addView() {
+  _addView = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/add"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context5.abrupt("return", _context5.sent);
+
+          case 3:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _addView.apply(this, arguments);
+}
+
+function getView(_x6) {
+  return _getView.apply(this, arguments);
+}
+
+function _getView() {
+  _getView = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(branch_id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/get/").concat(branch_id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context6.abrupt("return", _context6.sent);
+
+          case 3:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+  return _getView.apply(this, arguments);
+}
+
+function deleteImage(_x7) {
+  return _deleteImage.apply(this, arguments);
+}
+
+function _deleteImage() {
+  _deleteImage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/images/delete/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context7.abrupt("return", _context7.sent);
+
+          case 3:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+  return _deleteImage.apply(this, arguments);
+}
+
+
+
+/***/ }),
+
+/***/ "./resources/js/javascript/api/admin/hotel/roomAdminService.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/javascript/api/admin/hotel/roomAdminService.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "add": () => (/* binding */ add),
+/* harmony export */   "getAll": () => (/* binding */ getAll),
+/* harmony export */   "getBranchRoomsTable": () => (/* binding */ getBranchRoomsTable),
+/* harmony export */   "getByCategoryId": () => (/* binding */ getByCategoryId)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var ROOT_API = "http://localhost:8000/api";
+var API_POINT = "admin/hotels/rooms";
+
+function add(_x) {
+  return _add.apply(this, arguments);
+}
+
+function _add() {
+  _add = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/add"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context.abrupt("return", _context.sent);
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _add.apply(this, arguments);
+}
+
 function getAll() {
   return _getAll.apply(this, arguments);
 }
@@ -2372,7 +3019,7 @@ function _getAll() {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/hotels/reservations/get")).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2389,6 +3036,526 @@ function _getAll() {
     }, _callee2);
   }));
   return _getAll.apply(this, arguments);
+}
+
+function getBranchRoomsTable(_x2) {
+  return _getBranchRoomsTable.apply(this, arguments);
+}
+
+function _getBranchRoomsTable() {
+  _getBranchRoomsTable = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/branch_rooms_table/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _getBranchRoomsTable.apply(this, arguments);
+}
+
+function getByCategoryId(_x3) {
+  return _getByCategoryId.apply(this, arguments);
+}
+
+function _getByCategoryId() {
+  _getByCategoryId = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            console.log(id);
+            _context4.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/branch_rooms_table/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 3:
+            return _context4.abrupt("return", _context4.sent);
+
+          case 4:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _getByCategoryId.apply(this, arguments);
+}
+
+
+
+/***/ }),
+
+/***/ "./resources/js/javascript/api/admin/hotel/roomCategoryAdminService.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/javascript/api/admin/hotel/roomCategoryAdminService.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "add": () => (/* binding */ add),
+/* harmony export */   "deactivate": () => (/* binding */ deactivate),
+/* harmony export */   "deleteCategory": () => (/* binding */ deleteCategory),
+/* harmony export */   "get": () => (/* binding */ get),
+/* harmony export */   "getByBranchAndCategoryId": () => (/* binding */ getByBranchAndCategoryId),
+/* harmony export */   "getByBranchId": () => (/* binding */ getByBranchId),
+/* harmony export */   "getById": () => (/* binding */ getById),
+/* harmony export */   "update": () => (/* binding */ update)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var ROOT_API = "http://localhost:8000/api";
+var API_POINT = "admin/hotels/rooms/categories";
+
+function add(_x) {
+  return _add.apply(this, arguments);
+}
+
+function _add() {
+  _add = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/add"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context.abrupt("return", _context.sent);
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _add.apply(this, arguments);
+}
+
+function get() {
+  return _get.apply(this, arguments);
+}
+
+function _get() {
+  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _get.apply(this, arguments);
+}
+
+function getById(_x2) {
+  return _getById.apply(this, arguments);
+}
+
+function _getById() {
+  _getById = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _getById.apply(this, arguments);
+}
+
+function getByBranchId(_x3) {
+  return _getByBranchId.apply(this, arguments);
+}
+
+function _getByBranchId() {
+  _getByBranchId = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/branch/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context4.abrupt("return", _context4.sent);
+
+          case 3:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _getByBranchId.apply(this, arguments);
+}
+
+function getByBranchAndCategoryId(_x4, _x5) {
+  return _getByBranchAndCategoryId.apply(this, arguments);
+}
+
+function _getByBranchAndCategoryId() {
+  _getByBranchAndCategoryId = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(branch_id, category_id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/").concat(branch_id, "/").concat(category_id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context5.abrupt("return", _context5.sent);
+
+          case 3:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _getByBranchAndCategoryId.apply(this, arguments);
+}
+
+function update(_x6) {
+  return _update.apply(this, arguments);
+}
+
+function _update() {
+  _update = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/update"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context6.abrupt("return", _context6.sent);
+
+          case 3:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+  return _update.apply(this, arguments);
+}
+
+function deleteCategory(_x7) {
+  return _deleteCategory.apply(this, arguments);
+}
+
+function _deleteCategory() {
+  _deleteCategory = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/delete/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context7.abrupt("return", _context7.sent);
+
+          case 3:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+  return _deleteCategory.apply(this, arguments);
+}
+
+function deactivate(_x8) {
+  return _deactivate.apply(this, arguments);
+}
+
+function _deactivate() {
+  _deactivate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            _context8.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/deactivate/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context8.abrupt("return", _context8.sent);
+
+          case 3:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee8);
+  }));
+  return _deactivate.apply(this, arguments);
+}
+
+
+
+/***/ }),
+
+/***/ "./resources/js/javascript/api/admin/hotel/roomCategoryImagesAdminService.js":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/javascript/api/admin/hotel/roomCategoryImagesAdminService.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addRoomImages": () => (/* binding */ addRoomImages),
+/* harmony export */   "addViewImages": () => (/* binding */ addViewImages),
+/* harmony export */   "deleteImage": () => (/* binding */ deleteImage),
+/* harmony export */   "getRoomImages": () => (/* binding */ getRoomImages),
+/* harmony export */   "getViewImages": () => (/* binding */ getViewImages)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var ROOT_API = "http://localhost:8000/api";
+var API_POINT = "admin/hotels/rooms/categories/images";
+
+function addViewImages(_x) {
+  return _addViewImages.apply(this, arguments);
+}
+
+function _addViewImages() {
+  _addViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/view/add"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context.abrupt("return", _context.sent);
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _addViewImages.apply(this, arguments);
+}
+
+function getViewImages(_x2) {
+  return _getViewImages.apply(this, arguments);
+}
+
+function _getViewImages() {
+  _getViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(category_id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/view/get/").concat(category_id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _getViewImages.apply(this, arguments);
+}
+
+function addRoomImages(_x3) {
+  return _addRoomImages.apply(this, arguments);
+}
+
+function _addRoomImages() {
+  _addRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/view/add"), data).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _addRoomImages.apply(this, arguments);
+}
+
+function getRoomImages(_x4) {
+  return _getRoomImages.apply(this, arguments);
+}
+
+function _getRoomImages() {
+  _getRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(category_id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/view/get/").concat(category_id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context4.abrupt("return", _context4.sent);
+
+          case 3:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _getRoomImages.apply(this, arguments);
+}
+
+function deleteImage(_x5) {
+  return _deleteImage.apply(this, arguments);
+}
+
+function _deleteImage() {
+  _deleteImage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/delete/").concat(id)).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context5.abrupt("return", _context5.sent);
+
+          case 3:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _deleteImage.apply(this, arguments);
 }
 
 
@@ -2762,743 +3929,6 @@ function _get() {
 
 /***/ }),
 
-/***/ "./resources/js/javascript/api/hotelAdminService.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/javascript/api/hotelAdminService.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "get": () => (/* binding */ get),
-/* harmony export */   "register": () => (/* binding */ register),
-/* harmony export */   "update": () => (/* binding */ update)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-var ROOT_API = "http://localhost:8000/api";
-var API_POINT = 'admin/hotels';
-
-function get() {
-  return _get.apply(this, arguments);
-}
-
-function _get() {
-  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context.abrupt("return", _context.sent);
-
-          case 3:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _get.apply(this, arguments);
-}
-
-function register(_x) {
-  return _register.apply(this, arguments);
-}
-
-function _register() {
-  _register = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            console.log(data);
-            _context2.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/register"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 3:
-            return _context2.abrupt("return", _context2.sent);
-
-          case 4:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _register.apply(this, arguments);
-}
-
-function update(_x2) {
-  return _update.apply(this, arguments);
-}
-
-function _update() {
-  _update = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/update"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context3.abrupt("return", _context3.sent);
-
-          case 3:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _update.apply(this, arguments);
-}
-
-
-
-/***/ }),
-
-/***/ "./resources/js/javascript/api/hotelBranchAdminService.js":
-/*!****************************************************************!*\
-  !*** ./resources/js/javascript/api/hotelBranchAdminService.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "activate": () => (/* binding */ activate),
-/* harmony export */   "add": () => (/* binding */ add),
-/* harmony export */   "addBuildingImages": () => (/* binding */ addBuildingImages),
-/* harmony export */   "addInteriorImages": () => (/* binding */ addInteriorImages),
-/* harmony export */   "addViewImages": () => (/* binding */ addViewImages),
-/* harmony export */   "deactivate": () => (/* binding */ deactivate),
-/* harmony export */   "deleteBranch": () => (/* binding */ deleteBranch),
-/* harmony export */   "deleteImage": () => (/* binding */ deleteImage),
-/* harmony export */   "get": () => (/* binding */ get),
-/* harmony export */   "getAll": () => (/* binding */ getAll),
-/* harmony export */   "getBuildingImages": () => (/* binding */ getBuildingImages),
-/* harmony export */   "getInteriorImages": () => (/* binding */ getInteriorImages),
-/* harmony export */   "getViewImages": () => (/* binding */ getViewImages),
-/* harmony export */   "update": () => (/* binding */ update)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-var ROOT_API = "http://localhost:8000/api";
-var API_POINT = "admin/hotels/branches";
-
-function add(_x) {
-  return _add.apply(this, arguments);
-}
-
-function _add() {
-  _add = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/add"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context.abrupt("return", _context.sent);
-
-          case 3:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _add.apply(this, arguments);
-}
-
-function update(_x2) {
-  return _update.apply(this, arguments);
-}
-
-function _update() {
-  _update = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/update"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context2.abrupt("return", _context2.sent);
-
-          case 3:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _update.apply(this, arguments);
-}
-
-function addInteriorImages(_x3) {
-  return _addInteriorImages.apply(this, arguments);
-}
-
-function _addInteriorImages() {
-  _addInteriorImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/interior/add"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context3.abrupt("return", _context3.sent);
-
-          case 3:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _addInteriorImages.apply(this, arguments);
-}
-
-function getInteriorImages(_x4) {
-  return _getInteriorImages.apply(this, arguments);
-}
-
-function _getInteriorImages() {
-  _getInteriorImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(branch_id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/interior/get/").concat(branch_id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context4.abrupt("return", _context4.sent);
-
-          case 3:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee4);
-  }));
-  return _getInteriorImages.apply(this, arguments);
-}
-
-function addBuildingImages(_x5) {
-  return _addBuildingImages.apply(this, arguments);
-}
-
-function _addBuildingImages() {
-  _addBuildingImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            _context5.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/building/add"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context5.abrupt("return", _context5.sent);
-
-          case 3:
-          case "end":
-            return _context5.stop();
-        }
-      }
-    }, _callee5);
-  }));
-  return _addBuildingImages.apply(this, arguments);
-}
-
-function getBuildingImages(_x6) {
-  return _getBuildingImages.apply(this, arguments);
-}
-
-function _getBuildingImages() {
-  _getBuildingImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(branch_id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
-      while (1) {
-        switch (_context6.prev = _context6.next) {
-          case 0:
-            _context6.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/building/get/").concat(branch_id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context6.abrupt("return", _context6.sent);
-
-          case 3:
-          case "end":
-            return _context6.stop();
-        }
-      }
-    }, _callee6);
-  }));
-  return _getBuildingImages.apply(this, arguments);
-}
-
-function addViewImages(_x7) {
-  return _addViewImages.apply(this, arguments);
-}
-
-function _addViewImages() {
-  _addViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
-      while (1) {
-        switch (_context7.prev = _context7.next) {
-          case 0:
-            _context7.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/add"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context7.abrupt("return", _context7.sent);
-
-          case 3:
-          case "end":
-            return _context7.stop();
-        }
-      }
-    }, _callee7);
-  }));
-  return _addViewImages.apply(this, arguments);
-}
-
-function getViewImages(_x8) {
-  return _getViewImages.apply(this, arguments);
-}
-
-function _getViewImages() {
-  _getViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(branch_id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
-      while (1) {
-        switch (_context8.prev = _context8.next) {
-          case 0:
-            _context8.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/get/").concat(branch_id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context8.abrupt("return", _context8.sent);
-
-          case 3:
-          case "end":
-            return _context8.stop();
-        }
-      }
-    }, _callee8);
-  }));
-  return _getViewImages.apply(this, arguments);
-}
-
-function deleteImage(_x9) {
-  return _deleteImage.apply(this, arguments);
-}
-
-function _deleteImage() {
-  _deleteImage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
-      while (1) {
-        switch (_context9.prev = _context9.next) {
-          case 0:
-            _context9.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/images/delete/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context9.abrupt("return", _context9.sent);
-
-          case 3:
-          case "end":
-            return _context9.stop();
-        }
-      }
-    }, _callee9);
-  }));
-  return _deleteImage.apply(this, arguments);
-}
-
-function getAll() {
-  return _getAll.apply(this, arguments);
-}
-
-function _getAll() {
-  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10() {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
-      while (1) {
-        switch (_context10.prev = _context10.next) {
-          case 0:
-            _context10.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context10.abrupt("return", _context10.sent);
-
-          case 3:
-          case "end":
-            return _context10.stop();
-        }
-      }
-    }, _callee10);
-  }));
-  return _getAll.apply(this, arguments);
-}
-
-function get(_x10) {
-  return _get.apply(this, arguments);
-}
-
-function _get() {
-  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
-      while (1) {
-        switch (_context11.prev = _context11.next) {
-          case 0:
-            _context11.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context11.abrupt("return", _context11.sent);
-
-          case 3:
-          case "end":
-            return _context11.stop();
-        }
-      }
-    }, _callee11);
-  }));
-  return _get.apply(this, arguments);
-}
-
-function activate(_x11) {
-  return _activate.apply(this, arguments);
-}
-
-function _activate() {
-  _activate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
-      while (1) {
-        switch (_context12.prev = _context12.next) {
-          case 0:
-            _context12.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/activate/"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context12.abrupt("return", _context12.sent);
-
-          case 3:
-          case "end":
-            return _context12.stop();
-        }
-      }
-    }, _callee12);
-  }));
-  return _activate.apply(this, arguments);
-}
-
-function deactivate(_x12) {
-  return _deactivate.apply(this, arguments);
-}
-
-function _deactivate() {
-  _deactivate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee13(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee13$(_context13) {
-      while (1) {
-        switch (_context13.prev = _context13.next) {
-          case 0:
-            _context13.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/deactivate/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context13.abrupt("return", _context13.sent);
-
-          case 3:
-          case "end":
-            return _context13.stop();
-        }
-      }
-    }, _callee13);
-  }));
-  return _deactivate.apply(this, arguments);
-}
-
-function deleteBranch(_x13) {
-  return _deleteBranch.apply(this, arguments);
-}
-
-function _deleteBranch() {
-  _deleteBranch = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee14(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee14$(_context14) {
-      while (1) {
-        switch (_context14.prev = _context14.next) {
-          case 0:
-            _context14.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/delete/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context14.abrupt("return", _context14.sent);
-
-          case 3:
-          case "end":
-            return _context14.stop();
-        }
-      }
-    }, _callee14);
-  }));
-  return _deleteBranch.apply(this, arguments);
-}
-
-
-
-/***/ }),
-
-/***/ "./resources/js/javascript/api/hotelRoomAdminService.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/javascript/api/hotelRoomAdminService.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "add": () => (/* binding */ add),
-/* harmony export */   "getAll": () => (/* binding */ getAll),
-/* harmony export */   "getBranchRoomsTable": () => (/* binding */ getBranchRoomsTable),
-/* harmony export */   "getByCategoryId": () => (/* binding */ getByCategoryId)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-var ROOT_API = "http://localhost:8000/api";
-var API_POINT = "admin/hotels/rooms";
-
-function add(_x) {
-  return _add.apply(this, arguments);
-}
-
-function _add() {
-  _add = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/add"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context.abrupt("return", _context.sent);
-
-          case 3:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _add.apply(this, arguments);
-}
-
-function getAll() {
-  return _getAll.apply(this, arguments);
-}
-
-function _getAll() {
-  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context2.abrupt("return", _context2.sent);
-
-          case 3:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _getAll.apply(this, arguments);
-}
-
-function getBranchRoomsTable(_x2) {
-  return _getBranchRoomsTable.apply(this, arguments);
-}
-
-function _getBranchRoomsTable() {
-  _getBranchRoomsTable = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/branch_rooms_table/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context3.abrupt("return", _context3.sent);
-
-          case 3:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _getBranchRoomsTable.apply(this, arguments);
-}
-
-function getByCategoryId(_x3) {
-  return _getByCategoryId.apply(this, arguments);
-}
-
-function _getByCategoryId() {
-  _getByCategoryId = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            console.log(id);
-            _context4.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/branch_rooms_table/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 3:
-            return _context4.abrupt("return", _context4.sent);
-
-          case 4:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee4);
-  }));
-  return _getByCategoryId.apply(this, arguments);
-}
-
-
-
-/***/ }),
-
 /***/ "./resources/js/javascript/api/hotelService.js":
 /*!*****************************************************!*\
   !*** ./resources/js/javascript/api/hotelService.js ***!
@@ -3776,406 +4206,6 @@ function _deleteAdmin() {
     }, _callee8);
   }));
   return _deleteAdmin.apply(this, arguments);
-}
-
-
-
-/***/ }),
-
-/***/ "./resources/js/javascript/api/roomCategoryAdminService.js":
-/*!*****************************************************************!*\
-  !*** ./resources/js/javascript/api/roomCategoryAdminService.js ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "add": () => (/* binding */ add),
-/* harmony export */   "addRoomImages": () => (/* binding */ addRoomImages),
-/* harmony export */   "addViewImages": () => (/* binding */ addViewImages),
-/* harmony export */   "deactivate": () => (/* binding */ deactivate),
-/* harmony export */   "deleteCategory": () => (/* binding */ deleteCategory),
-/* harmony export */   "deleteImage": () => (/* binding */ deleteImage),
-/* harmony export */   "edit": () => (/* binding */ edit),
-/* harmony export */   "get": () => (/* binding */ get),
-/* harmony export */   "getAll": () => (/* binding */ getAll),
-/* harmony export */   "getRoomImages": () => (/* binding */ getRoomImages),
-/* harmony export */   "getSingleBranch": () => (/* binding */ getSingleBranch),
-/* harmony export */   "getViewImages": () => (/* binding */ getViewImages)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-var ROOT_API = "http://localhost:8000/api";
-var API_POINT = "admin/hotels/room_categories";
-
-function add(_x) {
-  return _add.apply(this, arguments);
-}
-
-function _add() {
-  _add = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/add"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context.abrupt("return", _context.sent);
-
-          case 3:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _add.apply(this, arguments);
-}
-
-function edit(_x2) {
-  return _edit.apply(this, arguments);
-}
-
-function _edit() {
-  _edit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/edit"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context2.abrupt("return", _context2.sent);
-
-          case 3:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _edit.apply(this, arguments);
-}
-
-function deactivate(_x3) {
-  return _deactivate.apply(this, arguments);
-}
-
-function _deactivate() {
-  _deactivate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/deactivate/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context3.abrupt("return", _context3.sent);
-
-          case 3:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _deactivate.apply(this, arguments);
-}
-
-function get(_x4) {
-  return _get.apply(this, arguments);
-}
-
-function _get() {
-  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/id/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context4.abrupt("return", _context4.sent);
-
-          case 3:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee4);
-  }));
-  return _get.apply(this, arguments);
-}
-
-function deleteCategory(_x5) {
-  return _deleteCategory.apply(this, arguments);
-}
-
-function _deleteCategory() {
-  _deleteCategory = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            _context5.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/delete/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context5.abrupt("return", _context5.sent);
-
-          case 3:
-          case "end":
-            return _context5.stop();
-        }
-      }
-    }, _callee5);
-  }));
-  return _deleteCategory.apply(this, arguments);
-}
-
-function addViewImages(_x6) {
-  return _addViewImages.apply(this, arguments);
-}
-
-function _addViewImages() {
-  _addViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
-      while (1) {
-        switch (_context6.prev = _context6.next) {
-          case 0:
-            _context6.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/add"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context6.abrupt("return", _context6.sent);
-
-          case 3:
-          case "end":
-            return _context6.stop();
-        }
-      }
-    }, _callee6);
-  }));
-  return _addViewImages.apply(this, arguments);
-}
-
-function getViewImages(_x7) {
-  return _getViewImages.apply(this, arguments);
-}
-
-function _getViewImages() {
-  _getViewImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(branch_id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
-      while (1) {
-        switch (_context7.prev = _context7.next) {
-          case 0:
-            _context7.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/get/").concat(branch_id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context7.abrupt("return", _context7.sent);
-
-          case 3:
-          case "end":
-            return _context7.stop();
-        }
-      }
-    }, _callee7);
-  }));
-  return _getViewImages.apply(this, arguments);
-}
-
-function addRoomImages(_x8) {
-  return _addRoomImages.apply(this, arguments);
-}
-
-function _addRoomImages() {
-  _addRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8(data) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
-      while (1) {
-        switch (_context8.prev = _context8.next) {
-          case 0:
-            _context8.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/add"), data).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context8.abrupt("return", _context8.sent);
-
-          case 3:
-          case "end":
-            return _context8.stop();
-        }
-      }
-    }, _callee8);
-  }));
-  return _addRoomImages.apply(this, arguments);
-}
-
-function getRoomImages(_x9) {
-  return _getRoomImages.apply(this, arguments);
-}
-
-function _getRoomImages() {
-  _getRoomImages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9(branch_id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
-      while (1) {
-        switch (_context9.prev = _context9.next) {
-          case 0:
-            _context9.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/get/").concat(branch_id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context9.abrupt("return", _context9.sent);
-
-          case 3:
-          case "end":
-            return _context9.stop();
-        }
-      }
-    }, _callee9);
-  }));
-  return _getRoomImages.apply(this, arguments);
-}
-
-function deleteImage(_x10) {
-  return _deleteImage.apply(this, arguments);
-}
-
-function _deleteImage() {
-  _deleteImage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10(id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
-      while (1) {
-        switch (_context10.prev = _context10.next) {
-          case 0:
-            _context10.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/images/delete/").concat(id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context10.abrupt("return", _context10.sent);
-
-          case 3:
-          case "end":
-            return _context10.stop();
-        }
-      }
-    }, _callee10);
-  }));
-  return _deleteImage.apply(this, arguments);
-}
-
-function getAll() {
-  return _getAll.apply(this, arguments);
-}
-
-function _getAll() {
-  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11() {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
-      while (1) {
-        switch (_context11.prev = _context11.next) {
-          case 0:
-            _context11.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get")).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context11.abrupt("return", _context11.sent);
-
-          case 3:
-          case "end":
-            return _context11.stop();
-        }
-      }
-    }, _callee11);
-  }));
-  return _getAll.apply(this, arguments);
-}
-
-function getSingleBranch(_x11) {
-  return _getSingleBranch.apply(this, arguments);
-}
-
-function _getSingleBranch() {
-  _getSingleBranch = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12(branch_id) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
-      while (1) {
-        switch (_context12.prev = _context12.next) {
-          case 0:
-            _context12.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/get/").concat(branch_id)).then(function (response) {
-              return response;
-            })["catch"](function (e) {
-              return e.response;
-            });
-
-          case 2:
-            return _context12.abrupt("return", _context12.sent);
-
-          case 3:
-          case "end":
-            return _context12.stop();
-        }
-      }
-    }, _callee12);
-  }));
-  return _getSingleBranch.apply(this, arguments);
 }
 
 
