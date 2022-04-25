@@ -12,6 +12,7 @@ class RoomReservation extends Model
         'user_id',
         'room_id',
         'hotel_id',
+        'category_id',
         'branch_id',
         'payment_id',
         'check_in',

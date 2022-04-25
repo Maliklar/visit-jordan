@@ -4795,6 +4795,18 @@ var routes = [{
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_views_admin_hotel_Reservations_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Reservations.vue */ "./resources/js/views/admin/hotel/Reservations.vue"));
     }
+  }, {
+    path: "reservations/rooms/categories/:id",
+    name: "RoomCategoryReservations",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/RoomCategoryReservations.vue */ "./resources/js/views/admin/hotel/RoomCategoryReservations.vue"));
+    }
+  },, {
+    path: "reservations/branches/:id",
+    name: "BranchReservations",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/BranchReservations.vue */ "./resources/js/views/admin/hotel/BranchReservations.vue"));
+    }
   }],
   component: function component() {
     return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Dashboard.vue */ "./resources/js/views/admin/hotel/Dashboard.vue"));

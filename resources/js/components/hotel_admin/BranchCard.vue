@@ -147,7 +147,7 @@
             <v-icon dark left> mdi-pencil </v-icon> Edit</v-tab
           >
 
-          <v-tab @click="openEdit">
+          <v-tab @click="openReservations">
             <v-icon dark left> mdi-book-edit </v-icon> Reservations</v-tab
           >
 
@@ -213,6 +213,11 @@ export default {
     openEdit() {
       this.$router.push({
         path: "/admin/hotel/dashboard/branches/edit/" + this.branch.id,
+      });
+    },
+    openReservations() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/reservations/branches/" + this.branch.id,
       });
     },
   },

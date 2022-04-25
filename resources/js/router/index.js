@@ -132,7 +132,19 @@ const routes = [{
                 name: "Reservations",
                 component: () =>
                     import ("../views/admin/hotel/Reservations.vue"),
-            }
+            },
+            {
+                path: "reservations/rooms/categories/:id",
+                name: "RoomCategoryReservations",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/RoomCategoryReservations.vue"),
+            }, ,
+            {
+                path: "reservations/branches/:id",
+                name: "BranchReservations",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/BranchReservations.vue"),
+            },
         ],
         component: () =>
             import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Dashboard.vue"),

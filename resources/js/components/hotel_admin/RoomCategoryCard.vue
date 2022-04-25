@@ -102,7 +102,7 @@
             <v-tab @click="openEdit">
               <v-icon dark left> mdi-pencil </v-icon> Edit</v-tab
             >
-            <v-tab @click="openEdit">
+            <v-tab @click="openReservations">
               <v-icon dark left> mdi-book-edit </v-icon> Reservations</v-tab
             >
 
@@ -167,6 +167,14 @@ export default {
     openEdit() {
       this.$router.push({
         path: "/admin/hotel/dashboard/room_categories/edit/" + this.category.id,
+      });
+    },
+
+    openReservations() {
+      this.$router.push({
+        path:
+          "/admin/hotel/dashboard/reservations/rooms/categories/" +
+          this.category.id,
       });
     },
 
