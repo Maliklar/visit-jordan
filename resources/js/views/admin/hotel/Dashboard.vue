@@ -29,6 +29,16 @@
             <v-list-item-title>Account</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-divider></v-divider>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-chart-areaspline</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Overview</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
 
         <v-list-item @click="hotelProfile" link>
           <v-list-item-icon>
@@ -59,19 +69,37 @@
 
         <v-list-item @click="rooms" link>
           <v-list-item-icon>
-            <v-icon>mdi-chart-tree</v-icon>
+            <v-icon>mdi-bed</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>Rooms</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item @click="room_categories" link>
+        <v-list-item @click="reservations" link>
           <v-list-item-icon>
-            <v-icon>mdi-bed</v-icon>
+            <v-icon>mdi-book-edit</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>Rooms Category</v-list-item-title>
+            <v-list-item-title>Reservations</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item @click="room_categories" link>
+          <v-list-item-icon>
+            <v-icon>mdi-cash</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Revenue</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
+        <v-list-item @click="room_categories" link>
+          <v-list-item-icon>
+            <v-icon>mdi-api</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>API Services</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -118,6 +146,11 @@ export default {
     rooms() {
       this.$router.push({
         path: "/admin/hotel/dashboard/rooms",
+      });
+    },
+    reservations() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/reservations",
       });
     },
   },

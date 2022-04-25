@@ -97,12 +97,14 @@ const routes = [{
                 name: "RoomCategories",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/RoomCategories.vue"),
-            }, {
+            },
+            {
                 path: "room_categories/add",
                 name: "AddRoomCategory",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/AddRoomCategory.vue"),
-            }, {
+            },
+            {
                 path: "room_categories/edit/:id",
                 name: "EditRoomCategory",
                 component: () =>
@@ -114,7 +116,7 @@ const routes = [{
                 name: "AddRoom",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/AddRoom.vue"),
-            }, , {
+            }, {
                 path: "rooms/:id",
                 name: "RoomDetails",
                 component: () =>
@@ -125,6 +127,12 @@ const routes = [{
                 name: "Rooms",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Rooms.vue"),
+            },
+            {
+                path: "reservations",
+                name: "Reservations",
+                component: () =>
+                    import ("../views/admin/hotel/Reservations.vue"),
             }
         ],
         component: () =>

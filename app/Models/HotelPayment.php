@@ -11,6 +11,8 @@ class HotelPayment extends Model
     protected $fillable = [
         'user_id',
         'room_id',
+        'hotel_id',
+        'branch_id',
         'amount',
         'days',
     ];

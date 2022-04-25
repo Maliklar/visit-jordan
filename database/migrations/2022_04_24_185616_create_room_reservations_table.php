@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('user_id')->foreign()->references('users')->on('id'); // Points to the user that make to reservation
             $table->integer('room_id')->foreign()->references('rooms')->on('id'); // Points to the Room
             $table->integer('payment_id')->foreign()->references('hotel_payments')->on('id');
+            $table->integer('hotel_id')->foreign()->references('hotels')->on('id');
+            $table->integer('branch_id')->foreign()->references('branches')->on('id');
             $table->date('check_in');
             $table->date('check_out');
             $table->integer('days');

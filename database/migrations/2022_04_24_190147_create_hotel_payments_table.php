@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->foreign()->references('users')->on('id'); // Points to the user that make to reservation
             $table->integer('room_id')->foreign()->references('rooms')->on('id'); // Points to the Room
+            $table->integer('hotel_id')->foreign()->references('hotels')->on('id');
+            $table->integer('branch_id')->foreign()->references('branches')->on('id');
+
             $table->float('amount');
             // Add another payment services api data here
             $table->softDeletes();

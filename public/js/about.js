@@ -3654,6 +3654,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3690,6 +3718,11 @@ __webpack_require__.r(__webpack_exports__);
     rooms: function rooms() {
       this.$router.push({
         path: "/admin/hotel/dashboard/rooms"
+      });
+    },
+    reservations: function reservations() {
+      this.$router.push({
+        path: "/admin/hotel/dashboard/reservations"
       });
     }
   }
@@ -17739,6 +17772,29 @@ var render = function () {
                 1
               ),
               _vm._v(" "),
+              _c("v-divider"),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-chart-areaspline")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Overview")])],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider"),
+              _vm._v(" "),
               _c(
                 "v-list-item",
                 { attrs: { link: "" }, on: { click: _vm.hotelProfile } },
@@ -17802,7 +17858,7 @@ var render = function () {
                 [
                   _c(
                     "v-list-item-icon",
-                    [_c("v-icon", [_vm._v("mdi-chart-tree")])],
+                    [_c("v-icon", [_vm._v("mdi-bed")])],
                     1
                   ),
                   _vm._v(" "),
@@ -17817,17 +17873,57 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { link: "" }, on: { click: _vm.room_categories } },
+                { attrs: { link: "" }, on: { click: _vm.reservations } },
                 [
                   _c(
                     "v-list-item-icon",
-                    [_c("v-icon", [_vm._v("mdi-bed")])],
+                    [_c("v-icon", [_vm._v("mdi-book-edit")])],
                     1
                   ),
                   _vm._v(" "),
                   _c(
                     "v-list-item-content",
-                    [_c("v-list-item-title", [_vm._v("Rooms Category")])],
+                    [_c("v-list-item-title", [_vm._v("Reservations")])],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" }, on: { click: _vm.room_categories } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-cash")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Revenue")])],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider"),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" }, on: { click: _vm.room_categories } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-api")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("API Services")])],
                     1
                   ),
                 ],

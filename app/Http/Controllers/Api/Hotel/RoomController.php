@@ -100,6 +100,8 @@ class RoomController extends Controller
 
             $payment = HotelPayment::create([
                 'user_id' => $user->id,
+                "hotel_id" => $request->hotel_id,
+                "branch_id" => $request->branch_id,
                 'room_id' => $room->id,
                 'amount' => $request->amount,
             ]);
@@ -115,6 +117,8 @@ class RoomController extends Controller
                 'payment_id' => $payment->id,
                 'room_id' => $room->id,
                 'check_in' => $check_in,
+                "hotel_id" => $request->hotel_id,
+                "branch_id" => $request->branch_id,
                 'check_out' => $check_out,
                 'days' => $difference,
             ]);

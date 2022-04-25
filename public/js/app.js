@@ -2314,7 +2314,8 @@ new vue__WEBPACK_IMPORTED_MODULE_4__["default"]({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "get": () => (/* binding */ get)
+/* harmony export */   "get": () => (/* binding */ get),
+/* harmony export */   "getAll": () => (/* binding */ getAll)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -2328,7 +2329,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var ROOT_API = "http://localhost:8000/api";
-var API_POINT = "hotels/rooms/reservations";
+var API_POINT = "admin/hotels/rooms/reservations";
 
 function get(_x) {
   return _get.apply(this, arguments);
@@ -2341,7 +2342,7 @@ function _get() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/hotels/rooms/reservations/").concat(id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/").concat(id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2358,6 +2359,36 @@ function _get() {
     }, _callee);
   }));
   return _get.apply(this, arguments);
+}
+
+function getAll() {
+  return _getAll.apply(this, arguments);
+}
+
+function _getAll() {
+  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/admin/hotels/reservations/get")).then(function (response) {
+              return response;
+            })["catch"](function (e) {
+              return e.response;
+            });
+
+          case 2:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 3:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _getAll.apply(this, arguments);
 }
 
 
@@ -4501,7 +4532,7 @@ var routes = [{
     component: function component() {
       return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/AddRoom.vue */ "./resources/js/views/admin/hotel/AddRoom.vue"));
     }
-  },, {
+  }, {
     path: "rooms/:id",
     name: "RoomDetails",
     component: function component() {
@@ -4512,6 +4543,12 @@ var routes = [{
     name: "Rooms",
     component: function component() {
       return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Rooms.vue */ "./resources/js/views/admin/hotel/Rooms.vue"));
+    }
+  }, {
+    path: "reservations",
+    name: "Reservations",
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_admin_hotel_Reservations_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Reservations.vue */ "./resources/js/views/admin/hotel/Reservations.vue"));
     }
   }],
   component: function component() {
@@ -30411,7 +30448,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "about") return "js/" + chunkId + ".js";
+/******/ 			if ({"about":1,"resources_js_views_admin_hotel_Reservations_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
