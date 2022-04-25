@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Hotel;
+namespace App\Http\Controllers\Api\Admin\Hotel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hotel;
@@ -10,26 +10,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
-use function PHPUnit\Framework\isEmpty;
-
-class HotelController extends Controller
+class HotelAdminController extends Controller
 {
-
-    /**
-     * __________________________________________________________________________________________________
-     * 
-     * Admin Methods
-     * __________________________________________________________________________________________________
-     */
     public function auth()
     {
         $user =  Auth::user();
         if ($user->type->type == 'hotel') {
             return Auth::user();
         } else {
-            return response(['message' => 'You are not a hotel admin'], Response::HTTP_UNAUTHORIZED);;
+            return response(['message' => 'You are not authorized'], Response::HTTP_UNAUTHORIZED);;
         }
     }
+
     public function register(Request $request)
     {
         $validated = $request->validate(
@@ -51,7 +43,7 @@ class HotelController extends Controller
         ]);
         return response("Hotel Admin User Created");
     }
-    public function adminUpdate(Request $request)
+    public function update(Request $request)
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
@@ -83,7 +75,6 @@ class HotelController extends Controller
             }
             // update everything
             else {
-                dump('here');
                 $image = $request->file('logo');
                 $name_gen = hexdec(uniqid());
                 $img_ext = strtolower($image->getClientOriginalExtension());
@@ -109,7 +100,7 @@ class HotelController extends Controller
             return response(['message' => 'You are not an hotel'], Response::HTTP_UNAUTHORIZED);;
         }
     }
-    public function getAdmin()
+    public function get()
     {
         $user =  Auth::user();
         if ($user->type->type == 'hotel') {

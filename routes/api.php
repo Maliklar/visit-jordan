@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\Hotel\HotelBranchController;
-use App\Http\Controllers\Api\Hotel\HotelController;
+use App\Http\Controllers\Api\Admin\Hotel\HotelAdminController;
+use App\Http\Controllers\Api\Admin\Hotel\HotelBranchAdminController;
+use App\Http\Controllers\Api\Admin\Hotel\HotelBranchImagesAdminController;
 use App\Http\Controllers\Api\Hotel\HoteReservationController;
 use App\Http\Controllers\Api\Hotel\RoomCategoryController;
 use App\Http\Controllers\Api\Hotel\RoomController;
@@ -11,56 +12,8 @@ use App\Http\Controllers\CityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-/*
-|--------------------------------------------------------------------------
-| All Users Login Point (Single piont to login all users)
-|----------------------------------------------------------------------------------------------------------------------------------------------------
-*/
 
 Route::post('/users/login', [UserController::class, 'login']);
-
-/*
-|--------------------------------------------------------------------------
-| Admin Users
-|----------------------------------------------------------------------------------------------------------------------------------------------------
-*/
-
-// Route::post('/admin/login', [AdminController::class, 'login']);
-// Route::middleware('auth:sanctum')->group(function () {
-//     Route::get('/admin/auth', [AdminController::class, 'auth']);
-// });
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Home Banners (Only Admin can access) ss
-|----------------------------------------------------------------------------------------------------------------------------------------------------
-*/
-
-// Route::middleware('auth:sanctum')->group(function () {
-//     Route::post('/homebanners/add', [HomeBannerController::class, 'add']);
-// });
-
-// Route::get('/homebanners/get', [HomeBannerController::class, 'get']);
-
-
-
 
 
 /*
@@ -71,13 +24,13 @@ Route::post('/users/login', [UserController::class, 'login']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/admin/hotels/auth', [HotelController::class, 'auth']);
-    Route::post('/admin/hotels/update', [HotelController::class, 'adminUpdate']);
-    Route::get('/admin/hotels/get', [HotelController::class, 'getAdmin']);
+    Route::get('/admin/hotels/auth', [HotelAdminController::class, 'auth']);
+    Route::post('/admin/hotels/update', [HotelAdminController::class, 'update']);
+    Route::get('/admin/hotels/get', [HotelAdminController::class, 'get']);
 });
+Route::post('/admin/hotels/register', [HotelAdminController::class, 'register']);
 
 
-Route::post('/admin/hotels/register', [HotelController::class, 'register']);
 
 
 
@@ -87,35 +40,35 @@ Route::post('/admin/hotels/register', [HotelController::class, 'register']);
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/admin/hotels/branches/add', [HotelBranchController::class, 'add']);
-    Route::get('/admin/hotels/branches/get', [HotelBranchController::class, 'getAdmin']);
-    Route::post('/admin/hotels/branches/images/interior/add', [HotelBranchController::class, 'addInteriorImages']);
-    Route::post('/admin/hotels/branches/images/building/add', [HotelBranchController::class, 'addBuildingImages']);
-    Route::post('/admin/hotels/branches/images/view/add', [HotelBranchController::class, 'addViewImages']);
-    Route::post('/admin/hotels/branches/activate', [HotelBranchController::class, 'activate']);
-    Route::patch('/admin/hotels/branches/deactivate/{id}', [HotelBranchController::class, 'deactivate']);
-    Route::delete('/admin/hotels/branches/delete/{id}', [HotelBranchController::class, 'deleteBranch']);
+    Route::post('/admin/hotels/branches/add', [HotelBranchAdminController::class, 'add']);
+    Route::get('/admin/hotels/branches/get', [HotelBranchAdminController::class, 'get']);
+    Route::get('/admin/hotels/branches/get/{id}', [HotelBranchAdminController::class, 'getById']);
+
+    Route::patch('/admin/hotels/branches/update', [HotelBranchAdminController::class, 'update']);
+
+    Route::patch('/admin/hotels/branches/activate', [HotelBranchAdminController::class, 'activate']);
+    Route::patch('/admin/hotels/branches/deactivate', [HotelBranchAdminController::class, 'delete']);
+
+    Route::delete('/admin/hotels/branches/delete', [HotelBranchAdminController::class, 'delete']);
 });
 
 
 /*
 |----------------------------------------------------------------------------------------------------------------------------------------------------
-| Hotel Branch API
+| Hotel Branch Images API
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/admin/hotels/branches/add', [HotelBranchController::class, 'add']);
-    Route::get('/admin/hotels/branches/get', [HotelBranchController::class, 'getAdmin']);
-    Route::get('/admin/hotels/branches/get/{id}', [HotelBranchController::class, 'get']);
-    Route::patch('/admin/hotels/branches/update', [HotelBranchController::class, 'update']);
-    Route::post('/admin/hotels/branches/images/interior/add', [HotelBranchController::class, 'addInteriorImages']);
-    Route::post('/admin/hotels/branches/images/building/add', [HotelBranchController::class, 'addBuildingImages']);
-    Route::post('/admin/hotels/branches/images/view/add', [HotelBranchController::class, 'addViewImages']);
 
-    Route::get('/admin/hotels/branches/images/interior/get/{branch_id}', [HotelBranchController::class, 'getInteriorImages']);
-    Route::get('/admin/hotels/branches/images/building/get/{branch_id}', [HotelBranchController::class, 'getBuildingImages']);
-    Route::get('/admin/hotels/branches/images/view/get/{branch_id}', [HotelBranchController::class, 'getViewImages']);
-    Route::delete('/admin/hotels/branches/images/delete/{id}', [HotelBranchController::class, 'deleteImage']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/admin/hotels/branches/images/interior/add', [HotelBranchImagesAdminController::class, 'addInteriorImages']);
+    Route::post('/admin/hotels/branches/images/building/add', [HotelBranchImagesAdminController::class, 'addBuildingImages']);
+    Route::post('/admin/hotels/branches/images/view/add', [HotelBranchImagesAdminController::class, 'addViewImages']);
+
+    Route::get('/admin/hotels/branches/images/interior/get/{branch_id}', [HotelBranchImagesAdminController::class, 'getInteriorImages']);
+    Route::get('/admin/hotels/branches/images/building/get/{branch_id}', [HotelBranchImagesAdminController::class, 'getBuildingImages']);
+    Route::get('/admin/hotels/branches/images/view/get/{branch_id}', [HotelBranchImagesAdminController::class, 'getViewImages']);
+
+    Route::delete('/admin/hotels/branches/images/delete/{id}', [HotelBranchImagesAdminController::class, 'deleteImage']);
 });
 
 
@@ -155,6 +108,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/hotels/rooms/get/branch_rooms_table/{branch_id}', [RoomController::class, 'getBranchRoomsTable']);
     Route::get('/admin/hotels/rooms/get/{category_id}', [RoomController::class, 'getByCategoryId']);
 });
+
 
 
 /*
