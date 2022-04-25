@@ -119,12 +119,6 @@
             </v-list-item>
           </v-col>
         </v-row>
-        <v-row align="center" justify="space-around">
-          <v-btn @click="openPublicProfile">Public Profile</v-btn>
-          <v-btn @click="openDetails">Details</v-btn>
-          <v-btn @click="openPhotos">Photos</v-btn>
-          <v-btn @click="openEdit">Edit</v-btn>
-        </v-row>
       </v-col>
       <v-col cols="4">
         <iframe
@@ -136,61 +130,42 @@
         ></iframe>
       </v-col>
     </v-row>
-
-    <v-progress-circular
-      v-if="isLoading"
-      :size="70"
-      :width="7"
-      color="purple"
-      indeterminate
-    ></v-progress-circular>
-    <v-row v-else-if="activeState">
+    <hr />
+    <v-row>
       <v-container>
-        <v-alert prominent type="success">
-          <v-row align="center">
-            <v-col class="grow">
-              <div v-if="resultMessage">{{ resultMessage }}</div>
-              <div v-else>The branch is active</div>
-            </v-col>
-            <v-col class="shrink">
-              <v-btn @click="deactivate" color="error">Deactivate</v-btn>
-            </v-col>
-          </v-row>
-        </v-alert>
+        <v-tabs>
+          <v-tab @click="openPublicProfile">
+            <v-icon dark left> mdi-earth </v-icon> Public Profile</v-tab
+          >
+          <v-tab @click="openDetails">
+            <v-icon dark left> mdi-card-account-details </v-icon> Details</v-tab
+          >
+          <v-tab @click="openPhotos">
+            <v-icon dark left> mdi-image-multiple </v-icon> Photos</v-tab
+          >
+          <v-tab @click="openEdit">
+            <v-icon dark left> mdi-pencil </v-icon> Edit</v-tab
+          >
+          <v-spacer></v-spacer>
+        </v-tabs>
       </v-container>
     </v-row>
-    <v-row v-else>
+    <v-row>
       <v-container>
-        <v-alert prominent type="error">
-          <v-row align="center">
-            <v-col class="grow">
-              <div v-if="resultMessage">
-                {{ resultMessage.message }}
-                <ul>
-                  <li v-for="err in resultMessage.errors" :key="err">
-                    {{ err }}
-                  </li>
-                </ul>
-              </div>
-
-              <div v-else>
-                The branch is not active and is not visible to public users
-              </div>
-            </v-col>
-            <v-col class="shrink">
-              <v-btn @click="activate" color="success">Activate</v-btn>
-            </v-col>
-          </v-row>
-        </v-alert>
+        <BranchActivationAlert :active="branch.active" :id="branch.id" />
       </v-container>
     </v-row>
   </v-card>
 </template>
 
 <script>
+import BranchActivationAlert from "./BranchActivationAlert.vue";
 export default {
+  name: "BranchCard",
+  components: {
+    BranchActivationAlert,
+  },
   async created() {
-    this.activeState = this.branch.active;
     console.log('brancho",', this.branch);
     if (this.branch.interior.length > 0) {
       this.interior_url =
@@ -207,34 +182,15 @@ export default {
   props: {
     branch: Object,
   },
-  components: {},
 
   data() {
     return {
-      activeState: null,
-      resultMessage: null,
-      isLoading: false,
       interior_url: "https://picsum.photos/510/300?random",
       building_url: "https://picsum.photos/510/300?random",
       view_url: "https://picsum.photos/510/300?random",
     };
   },
   methods: {
-    activate() {
-      this.isLoading = true;
-      this.$hotelBranchAdminService.activate(this.branch.id).then((result) => {
-        if (result.status == 200) {
-          this.activeState = true;
-        } else {
-          this.activeState = false;
-        }
-        this.resultMessage = result.data;
-        console.log(this.resultMessage);
-
-        this.isLoading = false;
-      });
-    },
-    deactivate() {},
     openPublicProfile() {},
     openDetails() {
       this.$router.push({

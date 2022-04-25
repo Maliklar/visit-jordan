@@ -196,7 +196,7 @@
 
     <h1>Add Features about payments and revenu</h1>
     <hr />
-    <v-btn color="success" @click="activate">Activate</v-btn>
+    <BranchActivationAlert :id="branch.id" :active="branch.active" />
     <br />
 
     <SubmitionResultsAlert
@@ -209,10 +209,13 @@
 
 <script>
 import GoBackButton from "../../../components/GoBackButton.vue";
+import BranchActivationAlert from "../../../components/hotel_admin/BranchActivationAlert.vue";
+
 import SubmitionResultsAlert from "../../../components/SubmitionResultsAlert.vue";
 export default {
   components: {
     GoBackButton,
+    BranchActivationAlert,
     SubmitionResultsAlert,
   },
   async created() {
