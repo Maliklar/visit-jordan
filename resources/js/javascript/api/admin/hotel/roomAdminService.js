@@ -10,7 +10,7 @@ async function add(data) {
         .catch(e => e.response);
 }
 
-async function getAll() {
+async function get() {
     return await axios
         .get(`${ROOT_API}/${API_POINT}/get`)
         .then(response => response)
@@ -40,6 +40,6 @@ async function getByCategoryId(id) {
 export {
     add,
     getBranchRoomsTable,
-    getAll,
+    get,
     getByCategoryId,
 };

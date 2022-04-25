@@ -151,20 +151,22 @@ export default {
     });
 
     console.log(this.$route);
-    this.$hotelBranchAdminService.get(this.$route.params.id).then((result) => {
-      this.name = result.data.name;
-      this.phone = result.data.phone;
-      this.location_description = result.data.location_description;
-      this.map_location = result.data.map_location;
-      this.tagline = result.data.tagline;
-      this.email = result.data.email;
-      this.website = result.data.website;
-      this.gym = result.data.gym;
-      this.resturant = result.data.resturant;
-      this.swimming_pool = result.data.swimming_pool;
-      this.laundry = result.data.laundry;
-      this.city_id = result.data.city_id;
-    });
+    this.$hotelBranchAdminService
+      .getById(this.$route.params.id)
+      .then((result) => {
+        this.name = result.data.name;
+        this.phone = result.data.phone;
+        this.location_description = result.data.location_description;
+        this.map_location = result.data.map_location;
+        this.tagline = result.data.tagline;
+        this.email = result.data.email;
+        this.website = result.data.website;
+        this.gym = result.data.gym;
+        this.resturant = result.data.resturant;
+        this.swimming_pool = result.data.swimming_pool;
+        this.laundry = result.data.laundry;
+        this.city_id = result.data.city_id;
+      });
   },
   data: () => ({
     valid: true,

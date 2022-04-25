@@ -119,26 +119,22 @@ class HotelBranchAdminController extends Controller
 
 
 
-    public function activate(Request $request)
+    public function activate()
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-
-            $request->validate([
-                'branch_id' => 'required',
-            ]);
-
+            $branch_id = request()->branch_id;
             //condition
             $hasBranchImages = false;
             $hasCategory = false;
             $hasCategoryImages = false;
             $hasRoomsCategory = false;
 
-            $branchPhotos = HotelBranchImage::where('branch_id', $request->branch_id)->get();
+            $branchPhotos = HotelBranchImage::where('branch_id', $branch_id)->get();
             if (sizeof($branchPhotos) >= 6) {
                 $hasBranchImages = true;
             }
-            $categories = RoomCategory::where('branch_id', $request->branch_id)->get();
+            $categories = RoomCategory::where('branch_id', $branch_id)->get();
             if (sizeof($categories) >= 1) {
                 $hasCategory = true;
             }
@@ -165,7 +161,25 @@ class HotelBranchAdminController extends Controller
             if ($hasBranchImages && $hasCategory && $hasCategoryImages && $hasRoomsCategory) {
                 return response(['message' => 'Branch Activated successfully']);
             } else {
-                return response(['message' => 'Some Information are missing'], Response::HTTP_FORBIDDEN);
+                $errors = [];
+
+                if ($hasCategoryImages == false) {
+                    array_push($errors, 'A branch must have at least 3 Category Images ');
+                }
+                if ($hasCategory == false) {
+                    array_push($errors, 'A branch must have at least 1 Room Category ');
+                }
+                if ($hasBranchImages == false) {
+                    array_push($errors, 'A branch must have at least 6 Branch Images ');
+                }
+                if ($hasRoomsCategory == false) {
+                    array_push($errors, 'A branch must have at least 1 Room in a category ');
+                }
+                $errorMessage = [
+                    'message' => 'Branch cannot be activated due to the following',
+                    'errors' => $errors,
+                ];
+                return response($errorMessage, Response::HTTP_FORBIDDEN);
             }
         } else {
             return response(['message' => 'Not a hotel account'], Response::HTTP_UNAUTHORIZED);

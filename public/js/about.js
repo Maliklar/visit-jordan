@@ -504,6 +504,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {
     var _this = this;
@@ -513,6 +545,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              _this.activeState = _this.branch.active;
               console.log('brancho",', _this.branch);
 
               if (_this.branch.interior.length > 0) {
@@ -527,7 +560,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.view_url = "http://localhost:8000/" + _this.branch.views[0].image;
               }
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -541,12 +574,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   components: {},
   data: function data() {
     return {
+      activeState: null,
+      resultMessage: null,
+      isLoading: false,
       interior_url: "https://picsum.photos/510/300?random",
       building_url: "https://picsum.photos/510/300?random",
       view_url: "https://picsum.photos/510/300?random"
     };
   },
   methods: {
+    activate: function activate() {
+      var _this2 = this;
+
+      this.isLoading = true;
+      this.$hotelBranchAdminService.activate(this.branch.id).then(function (result) {
+        if (result.status == 200) {
+          _this2.activeState = true;
+        } else {
+          _this2.activeState = false;
+        }
+
+        _this2.resultMessage = result.data;
+        console.log(_this2.resultMessage);
+        _this2.isLoading = false;
+      });
+    },
+    deactivate: function deactivate() {},
     openPublicProfile: function openPublicProfile() {},
     openDetails: function openDetails() {
       this.$router.push({
@@ -666,7 +719,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     if (this.type == "interior") {
-      this.$hotelBranchAdminService.getInteriorImages(this.$route.params.id).then(function (result) {
+      this.$hotelBranchImagesAdminService.getInterior(this.$route.params.id).then(function (result) {
         for (var i = 0; i < result.data.length; i++) {
           if (result.data[i].number == 1) {
             _this.image_1_url = "http://localhost:8000/" + result.data[i].image;
@@ -692,7 +745,7 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     if (this.type == "building") {
-      this.$hotelBranchAdminService.getBuildingImages(this.$route.params.id).then(function (result) {
+      this.$hotelBranchImagesAdminService.getBuilding(this.$route.params.id).then(function (result) {
         for (var i = 0; i < result.data.length; i++) {
           if (result.data[i].number == 1) {
             _this.image_1_url = "http://localhost:8000/" + result.data[i].image;
@@ -719,7 +772,7 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     if (this.type == "views") {
-      this.$hotelBranchAdminService.getViewImages(this.$route.params.id).then(function (result) {
+      this.$hotelBranchImagesAdminService.getView(this.$route.params.id).then(function (result) {
         for (var i = 0; i < result.data.length; i++) {
           if (result.data[i].number == 1) {
             _this.image_1_url = "http://localhost:8000/" + result.data[i].image;
@@ -793,7 +846,7 @@ __webpack_require__.r(__webpack_exports__);
       data.append("branch_id", this.$route.params.id);
 
       if (this.type == "interior") {
-        this.$hotelBranchAdminService.addInteriorImages(data).then(function (result) {
+        this.$hotelBranchImagesAdminService.addInterior(data).then(function (result) {
           _this2.isLoading = false;
           _this2.resultStatus = result.status;
           _this2.resultMessage = result.data;
@@ -801,7 +854,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (this.type == "building") {
-        this.$hotelBranchAdminService.addBuildingImages(data).then(function (result) {
+        this.$hotelBranchImagesAdminService.addBuilding(data).then(function (result) {
           _this2.resultStatus = result.status;
           _this2.resultMessage = result.data;
           _this2.isLoading = false;
@@ -809,7 +862,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (this.type == "views") {
-        this.$hotelBranchAdminService.addViewImages(data).then(function (result) {
+        this.$hotelBranchImagesAdminService.addView(data).then(function (result) {
           _this2.isLoading = false;
           _this2.resultStatus = result.status;
           _this2.resultMessage = result.data;
@@ -2968,7 +3021,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this.$hotelBranchAdminService.getAll().then(function (result) {
+              _this.$hotelBranchAdminService.get().then(function (result) {
                 for (var i = 0; i < result.data.length; i++) {
                   _this.branches = result.data;
                 }
@@ -3902,7 +3955,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               console.log(_this.$route);
 
-              _this.$hotelBranchAdminService.get(_this.$route.params.id).then(function (result) {
+              _this.$hotelBranchAdminService.getById(_this.$route.params.id).then(function (result) {
                 _this.name = result.data.name;
                 _this.phone = result.data.phone;
                 _this.location_description = result.data.location_description;
@@ -4711,7 +4764,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this.$roomCategoryAdminService.getAll().then(function (result) {
+              _this.$roomCategoryAdminService.get().then(function (result) {
                 _this.categoriesArray = result.data;
               });
 
@@ -4934,11 +4987,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this.$hotelBranchAdminService.getAll().then(function (result) {
+              _this.$hotelBranchAdminService.get().then(function (result) {
                 _this.branches = result.data;
               });
 
-              _this.$hotelRoomAdminService.getAll().then(function (result) {
+              _this.$roomAdminService.get().then(function (result) {
                 _this.rooms = result.data;
                 console.log("llll", _this.rooms);
               });
@@ -4996,7 +5049,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       console.log(this.branch_id);
-      this.$roomCategoryAdminService.getSingleBranch(this.branch_id).then(function (result) {
+      this.$roomCategoryAdminService.getByBranchId(this.branch_id).then(function (result) {
         _this2.categories = [];
         _this2.categories = result.data;
       });
@@ -5004,7 +5057,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     categorySelected: function categorySelected() {
       var _this3 = this;
 
-      this.$hotelRoomAdminService.getByCategoryId(this.category_id).then(function (result) {
+      this.$roomAdminService.getByCategoryId(this.category_id).then(function (result) {
         _this3.rooms = result.data;
       });
     }
@@ -14027,30 +14080,120 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c(
-        "v-row",
-        [
-          _c(
-            "v-container",
+      _vm.isLoading
+        ? _c("v-progress-circular", {
+            attrs: { size: 70, width: 7, color: "purple", indeterminate: "" },
+          })
+        : _vm.activeState
+        ? _c(
+            "v-row",
             [
               _c(
-                "v-alert",
-                { attrs: { prominent: "", type: "error" } },
+                "v-container",
                 [
                   _c(
-                    "v-row",
-                    { attrs: { align: "center" } },
+                    "v-alert",
+                    { attrs: { prominent: "", type: "success" } },
                     [
-                      _c("v-col", { staticClass: "grow" }, [
-                        _vm._v(
-                          "\n            Nunc nonummy metus. Nunc interdum lacus sit amet orci. Nullam\n            dictum felis eu pede mollis pretium. Cras id dui.\n          "
-                        ),
-                      ]),
-                      _vm._v(" "),
                       _c(
-                        "v-col",
-                        { staticClass: "shrink" },
-                        [_c("v-btn", [_vm._v("Take action")])],
+                        "v-row",
+                        { attrs: { align: "center" } },
+                        [
+                          _c("v-col", { staticClass: "grow" }, [
+                            _vm.resultMessage
+                              ? _c("div", [_vm._v(_vm._s(_vm.resultMessage))])
+                              : _c("div", [_vm._v("The branch is active")]),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { staticClass: "shrink" },
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "error" },
+                                  on: { click: _vm.deactivate },
+                                },
+                                [_vm._v("Deactivate")]
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          )
+        : _c(
+            "v-row",
+            [
+              _c(
+                "v-container",
+                [
+                  _c(
+                    "v-alert",
+                    { attrs: { prominent: "", type: "error" } },
+                    [
+                      _c(
+                        "v-row",
+                        { attrs: { align: "center" } },
+                        [
+                          _c("v-col", { staticClass: "grow" }, [
+                            _vm.resultMessage
+                              ? _c("div", [
+                                  _vm._v(
+                                    "\n              " +
+                                      _vm._s(_vm.resultMessage.message) +
+                                      "\n              "
+                                  ),
+                                  _c(
+                                    "ul",
+                                    _vm._l(
+                                      _vm.resultMessage.errors,
+                                      function (err) {
+                                        return _c("li", { key: err }, [
+                                          _vm._v(
+                                            "\n                  " +
+                                              _vm._s(err) +
+                                              "\n                "
+                                          ),
+                                        ])
+                                      }
+                                    ),
+                                    0
+                                  ),
+                                ])
+                              : _c("div", [
+                                  _vm._v(
+                                    "\n              The branch is not active and is not visible to public users\n            "
+                                  ),
+                                ]),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { staticClass: "shrink" },
+                            [
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "success" },
+                                  on: { click: _vm.activate },
+                                },
+                                [_vm._v("Activate")]
+                              ),
+                            ],
+                            1
+                          ),
+                        ],
                         1
                       ),
                     ],
@@ -14062,9 +14205,6 @@ var render = function () {
             ],
             1
           ),
-        ],
-        1
-      ),
     ],
     1
   )
@@ -19912,7 +20052,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItem.js");
 /* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/index.js");
 /* harmony import */ var vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! vuetify/lib/components/VList */ "./node_modules/vuetify/lib/components/VList/VListItemIcon.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VRow.js");
+/* harmony import */ var vuetify_lib_components_VProgressCircular__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! vuetify/lib/components/VProgressCircular */ "./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VRow.js");
 
 
 
@@ -19948,7 +20089,8 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VAlert: vuetify_lib_components_VAlert__WEBPACK_IMPORTED_MODULE_5__["default"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_6__["default"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_7__["default"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_8__.VCardTitle,VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_9__["default"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_10__["default"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_11__["default"],VImg: vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_12__["default"],VListItem: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__["default"],VListItemContent: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemContent,VListItemIcon: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_15__["default"],VListItemSubtitle: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemSubtitle,VListItemTitle: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemTitle,VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_16__["default"]})
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VAlert: vuetify_lib_components_VAlert__WEBPACK_IMPORTED_MODULE_5__["default"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_6__["default"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_7__["default"],VCardTitle: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_8__.VCardTitle,VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_9__["default"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_10__["default"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_11__["default"],VImg: vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_12__["default"],VListItem: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_13__["default"],VListItemContent: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemContent,VListItemIcon: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_15__["default"],VListItemSubtitle: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemSubtitle,VListItemTitle: vuetify_lib_components_VList__WEBPACK_IMPORTED_MODULE_14__.VListItemTitle,VProgressCircular: vuetify_lib_components_VProgressCircular__WEBPACK_IMPORTED_MODULE_16__["default"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_17__["default"]})
 
 
 /* hot reload */

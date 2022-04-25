@@ -48,8 +48,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::patch('/admin/hotels/branches/update', [HotelBranchAdminController::class, 'update']);
 
-    Route::patch('/admin/hotels/branches/activate', [HotelBranchAdminController::class, 'activate']);
-    Route::patch('/admin/hotels/branches/deactivate', [HotelBranchAdminController::class, 'delete']);
+    Route::patch('/admin/hotels/branches/activate/{branch_id}', [HotelBranchAdminController::class, 'activate']);
+    Route::patch('/admin/hotels/branches/deactivate/{branch_id}', [HotelBranchAdminController::class, 'deactivate']);
 
     Route::delete('/admin/hotels/branches/delete', [HotelBranchAdminController::class, 'delete']);
 });

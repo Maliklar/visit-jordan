@@ -2616,13 +2616,13 @@ function activate(_x4) {
 }
 
 function _activate() {
-  _activate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(data) {
+  _activate = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/activate/"), data).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(ROOT_API, "/").concat(API_POINT, "/activate/").concat(id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2747,7 +2747,7 @@ function _addInterior() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/interior/add"), data).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/interior/add"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2777,7 +2777,7 @@ function _getInterior() {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/interior/get/").concat(branch_id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/interior/get/").concat(branch_id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2807,7 +2807,7 @@ function _addBuilding() {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/building/add"), data).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/building/add"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2837,7 +2837,7 @@ function _getBuilding() {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/building/get/").concat(branch_id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/building/get/").concat(branch_id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2867,7 +2867,7 @@ function _addView() {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/add"), data).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(ROOT_API, "/").concat(API_POINT, "/view/add"), data).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2897,7 +2897,7 @@ function _getView() {
         switch (_context6.prev = _context6.next) {
           case 0:
             _context6.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/images/view/get/").concat(branch_id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(ROOT_API, "/").concat(API_POINT, "/view/get/").concat(branch_id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2927,7 +2927,7 @@ function _deleteImage() {
         switch (_context7.prev = _context7.next) {
           case 0:
             _context7.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/images/delete/").concat(id)).then(function (response) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("".concat(ROOT_API, "/").concat(API_POINT, "/delete/").concat(id)).then(function (response) {
               return response;
             })["catch"](function (e) {
               return e.response;
@@ -2960,7 +2960,7 @@ function _deleteImage() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "add": () => (/* binding */ add),
-/* harmony export */   "getAll": () => (/* binding */ getAll),
+/* harmony export */   "get": () => (/* binding */ get),
 /* harmony export */   "getBranchRoomsTable": () => (/* binding */ getBranchRoomsTable),
 /* harmony export */   "getByCategoryId": () => (/* binding */ getByCategoryId)
 /* harmony export */ });
@@ -3008,12 +3008,12 @@ function _add() {
   return _add.apply(this, arguments);
 }
 
-function getAll() {
-  return _getAll.apply(this, arguments);
+function get() {
+  return _get.apply(this, arguments);
 }
 
-function _getAll() {
-  _getAll = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+function _get() {
+  _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -3035,7 +3035,7 @@ function _getAll() {
       }
     }, _callee2);
   }));
-  return _getAll.apply(this, arguments);
+  return _get.apply(this, arguments);
 }
 
 function getBranchRoomsTable(_x2) {

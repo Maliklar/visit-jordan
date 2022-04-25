@@ -68,10 +68,10 @@
 export default {
   components: {},
   async created() {
-    this.$hotelBranchAdminService.getAll().then((result) => {
+    this.$hotelBranchAdminService.get().then((result) => {
       this.branches = result.data;
     });
-    this.$hotelRoomAdminService.getAll().then((result) => {
+    this.$roomAdminService.get().then((result) => {
       this.rooms = result.data;
       console.log("llll", this.rooms);
     });
@@ -108,7 +108,7 @@ export default {
     branchSelected() {
       console.log(this.branch_id);
       this.$roomCategoryAdminService
-        .getSingleBranch(this.branch_id)
+        .getByBranchId(this.branch_id)
         .then((result) => {
           this.categories = [];
           this.categories = result.data;
@@ -116,7 +116,7 @@ export default {
     },
 
     categorySelected() {
-      this.$hotelRoomAdminService
+      this.$roomAdminService
         .getByCategoryId(this.category_id)
         .then((result) => {
           this.rooms = result.data;

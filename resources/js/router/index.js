@@ -109,9 +109,8 @@ const routes = [{
                 name: "EditRoomCategory",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/EditRoomCategory.vue"),
-            }
-
-            , {
+            },
+            {
                 path: "rooms/add",
                 name: "AddRoom",
                 component: () =>

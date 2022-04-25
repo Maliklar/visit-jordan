@@ -31,9 +31,9 @@ async function getById(id) {
         .catch(e => e.response);
 }
 
-async function activate(data) {
+async function activate(id) {
     return await axios
-        .post(`${ROOT_API}/${API_POINT}/activate/`, data)
+        .patch(`${ROOT_API}/${API_POINT}/activate/${id}`)
         .then(response => response)
         .catch(e => e.response);
 }

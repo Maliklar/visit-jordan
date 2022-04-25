@@ -235,7 +235,7 @@ export default {
     SubmitionResultsAlert,
   },
   async created() {
-    this.$hotelBranchAdminService.getAll().then((result) => {
+    this.$hotelBranchAdminService.get().then((result) => {
       for (let i = 0; i < result.data.length; i++) {
         this.branches = result.data;
       }

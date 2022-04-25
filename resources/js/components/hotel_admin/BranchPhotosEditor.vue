@@ -83,8 +83,8 @@ export default {
   },
   created() {
     if (this.type == "interior") {
-      this.$hotelBranchAdminService
-        .getInteriorImages(this.$route.params.id)
+      this.$hotelBranchImagesAdminService
+        .getInterior(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
             if (result.data[i].number == 1) {
@@ -111,8 +111,8 @@ export default {
         });
     }
     if (this.type == "building") {
-      this.$hotelBranchAdminService
-        .getBuildingImages(this.$route.params.id)
+      this.$hotelBranchImagesAdminService
+        .getBuilding(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
             if (result.data[i].number == 1) {
@@ -140,8 +140,8 @@ export default {
         });
     }
     if (this.type == "views") {
-      this.$hotelBranchAdminService
-        .getViewImages(this.$route.params.id)
+      this.$hotelBranchImagesAdminService
+        .getView(this.$route.params.id)
         .then((result) => {
           for (let i = 0; i < result.data.length; i++) {
             if (result.data[i].number == 1) {
@@ -219,21 +219,21 @@ export default {
       data.append("branch_id", this.$route.params.id);
 
       if (this.type == "interior") {
-        this.$hotelBranchAdminService.addInteriorImages(data).then((result) => {
+        this.$hotelBranchImagesAdminService.addInterior(data).then((result) => {
           this.isLoading = false;
           this.resultStatus = result.status;
           this.resultMessage = result.data;
         });
       }
       if (this.type == "building") {
-        this.$hotelBranchAdminService.addBuildingImages(data).then((result) => {
+        this.$hotelBranchImagesAdminService.addBuilding(data).then((result) => {
           this.resultStatus = result.status;
           this.resultMessage = result.data;
           this.isLoading = false;
         });
       }
       if (this.type == "views") {
-        this.$hotelBranchAdminService.addViewImages(data).then((result) => {
+        this.$hotelBranchImagesAdminService.addView(data).then((result) => {
           this.isLoading = false;
           this.resultStatus = result.status;
           this.resultMessage = result.data;
