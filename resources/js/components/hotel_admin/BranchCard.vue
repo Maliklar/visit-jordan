@@ -146,6 +146,14 @@
           <v-tab @click="openEdit">
             <v-icon dark left> mdi-pencil </v-icon> Edit</v-tab
           >
+
+          <v-tab @click="openEdit">
+            <v-icon dark left> mdi-book-edit </v-icon> Reservations</v-tab
+          >
+
+          <v-tab @click="openEdit">
+            <v-icon dark left> mdi-cash </v-icon> Revenue</v-tab
+          >
           <v-spacer></v-spacer>
         </v-tabs>
       </v-container>

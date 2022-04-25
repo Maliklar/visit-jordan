@@ -99,7 +99,7 @@ export default {
       (this.date.getMonth() + 1) +
       "-" +
       this.date.getDate();
-    this.$adminRoomReservations.get(18).then((result) => {
+    this.$reservationAdminService.getByRoomId(2).then((result) => {
       console.log(result.data);
       for (let i = 0; i < result.data.length; i++) {
         this.events.push({

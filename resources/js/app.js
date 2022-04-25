@@ -20,6 +20,7 @@ Vue.prototype.$hotelBranchImagesAdminService = require('./javascript/api/admin/h
 Vue.prototype.$roomCategoryAdminService = require('./javascript/api/admin/hotel/roomCategoryAdminService');
 Vue.prototype.$roomCategoryImagesAdminService = require('./javascript/api/admin/hotel/roomCategoryImagesAdminService');
 Vue.prototype.$roomAdminService = require('./javascript/api/admin/hotel/roomAdminService');
+Vue.prototype.$reservationAdminService = require('./javascript/api/admin/hotel/reservationAdminService');
 
 
 // Public 

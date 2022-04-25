@@ -622,6 +622,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "BranchCard",
@@ -1285,7 +1293,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               _this.date = new Date();
               _this.today = _this.date.getFullYear() + "-" + (_this.date.getMonth() + 1) + "-" + _this.date.getDate();
 
-              _this.$adminRoomReservations.get(18).then(function (result) {
+              _this.$reservationAdminService.getByRoomId(2).then(function (result) {
                 console.log(result.data);
 
                 for (var i = 0; i < result.data.length; i++) {
@@ -1554,6 +1562,13 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14496,6 +14511,30 @@ var render = function () {
                     1
                   ),
                   _vm._v(" "),
+                  _c(
+                    "v-tab",
+                    { on: { click: _vm.openEdit } },
+                    [
+                      _c("v-icon", { attrs: { dark: "", left: "" } }, [
+                        _vm._v(" mdi-book-edit "),
+                      ]),
+                      _vm._v(" Reservations"),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-tab",
+                    { on: { click: _vm.openEdit } },
+                    [
+                      _c("v-icon", { attrs: { dark: "", left: "" } }, [
+                        _vm._v(" mdi-cash "),
+                      ]),
+                      _vm._v(" Revenue"),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
                   _c("v-spacer"),
                 ],
                 1
@@ -15691,6 +15730,30 @@ var render = function () {
                             _vm._v(" mdi-pencil "),
                           ]),
                           _vm._v(" Edit"),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab",
+                        { on: { click: _vm.openEdit } },
+                        [
+                          _c("v-icon", { attrs: { dark: "", left: "" } }, [
+                            _vm._v(" mdi-book-edit "),
+                          ]),
+                          _vm._v(" Reservations"),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-tab",
+                        { on: { click: _vm.openEdit } },
+                        [
+                          _c("v-icon", { attrs: { dark: "", left: "" } }, [
+                            _vm._v(" mdi-cash "),
+                          ]),
+                          _vm._v(" Revenue"),
                         ],
                         1
                       ),

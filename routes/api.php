@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\Admin\Hotel\HotelBranchImagesAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\RoomAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\RoomCategoryAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\RoomCategoryImagesAdminController;
-use App\Http\Controllers\Api\Hotel\HoteReservationController;
+use App\Http\Controllers\Api\Admin\Hotel\RoomReservationAdminController;
 use App\Http\Controllers\Api\User\Hotel\RoomController;
 use App\Http\Controllers\Api\User\PublicUserController;
 use App\Http\Controllers\Api\UserController;
@@ -137,7 +137,11 @@ Route::middleware('auth:sanctum')->group(function () {
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/admin/hotels/reservations/get', [HoteReservationController::class, 'get']);
+    Route::get('/admin/hotels/reservations/get', [RoomReservationAdminController::class, 'get']);
+    Route::get('/admin/hotels/reservations/get/branches/{branch_id}', [RoomReservationAdminController::class, 'getByBranchId']);
+    Route::get('/admin/hotels/reservations/get/categories/{category_id}', [RoomReservationAdminController::class, 'getByCategoryId']);
+    Route::get('/admin/hotels/reservations/get/rooms/{room_id}', [RoomReservationAdminController::class, 'getByRoomId']);
+    Route::get('/admin/hotels/reservations/get/{id}', [RoomReservationAdminController::class, 'getById']);
 });
 
 /*
