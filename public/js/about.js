@@ -1251,23 +1251,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {
     console.log("from table", this.reservations);
   },
   props: {
-    reservations: Object
+    reservations: Array
+  },
+  methods: {
+    selected: function selected(i) {
+      console.log(i);
+    },
+    rowClicked: function rowClicked(row) {
+      this.toggleSelection(row.id);
+      console.log(row);
+    }
   },
   data: function data() {
     return {
+      expanded: [],
+      singleExpand: false,
       headers: [{
         text: "Category",
         align: "start",
         sortable: false,
-        value: "category_id"
+        value: "category"
+      }, {
+        text: "User ID",
+        value: "user_id"
       }, {
         text: "Room ID",
         value: "room_id"
+      }, {
+        text: "Payment Details",
+        value: "payment"
       }, {
         text: "Check In",
         value: "check_in"
@@ -1275,14 +1305,8 @@ __webpack_require__.r(__webpack_exports__);
         text: "Check Out",
         value: "check_out"
       }, {
-        text: "User ID",
-        value: "user_id"
-      }, {
         text: "Days",
         value: "days"
-      }, {
-        text: "Payment Details",
-        value: "payment_id"
       }, {
         text: "Timestamp",
         value: "created_at"
@@ -15741,6 +15765,33 @@ var render = function () {
           items: _vm.reservations,
           "items-per-page": 5,
         },
+        scopedSlots: _vm._u([
+          {
+            key: "item",
+            fn: function (ref) {
+              var item = ref.item
+              return [
+                _c("tr", [
+                  _c("td", [_vm._v(_vm._s(item.category.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.room_id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.user.email))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.payment.id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.check_in))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.check_out))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.days))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.created_at))]),
+                ]),
+              ]
+            },
+          },
+        ]),
       }),
     ],
     1

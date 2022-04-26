@@ -19,4 +19,17 @@ class RoomReservation extends Model
         'check_out',
         'days',
     ];
+
+    public function category()
+    {
+        return $this->hasOne(RoomCategory::class, 'id', 'category_id');
+    }
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+    public function payment()
+    {
+        return $this->hasOne(HotelPayment::class, 'id', 'payment_id');
+    }
 }

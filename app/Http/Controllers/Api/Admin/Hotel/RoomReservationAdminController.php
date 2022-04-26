@@ -36,6 +36,7 @@ class RoomReservationAdminController extends Controller
 
             $reservations = RoomReservation::where('hotel_id', $hotel_id)
                 ->where('branch_id', request()->branch_id)
+                ->with('category', 'user', 'payment')
                 ->get();
             return $reservations;
         } else {
