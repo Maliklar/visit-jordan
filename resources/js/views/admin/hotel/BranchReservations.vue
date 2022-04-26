@@ -2,26 +2,72 @@
   <div>
     <h1>Branch Reservations</h1>
     <hr />
-    data:
-    <div>
-      {{ data }}
-    </div>
+    <v-card>
+      <v-tabs v-model="tab" background-color="primary" dark>
+        <v-tab> Calendar </v-tab>
+        <v-tab> Table </v-tab>
+      </v-tabs>
+      <v-autocomplete
+        v-model="filter"
+        :items="filterData"
+        item-text="name"
+        item-value="id"
+        @change="filterSelected"
+        dense
+        filled
+        label="Filter"
+      ></v-autocomplete>
+      <v-tabs-items v-model="tab">
+        <v-tab-item>
+          <v-card flat>
+            <BranchReservationCalendar />
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card flat>
+            <BranchReservationTable :reservations="reservations" />
+          </v-card>
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card>
   </div>
 </template>
 
 <script>
+import BranchReservationCalendar from "../../../components/hotel_admin/BranchReservationCalendar.vue";
+import BranchReservationTable from "../../../components/hotel_admin/BranchReservationTable.vue";
 export default {
+  components: {
+    BranchReservationCalendar,
+    BranchReservationTable,
+  },
   data() {
     return {
-      data: null,
+      reservations: null,
+      tab: null,
+      filter: null,
+      filterData: null,
     };
   },
   async created() {
     this.$reservationAdminService
       .getByBranchId(this.$route.params.id)
       .then((result) => {
-        this.data = result;
+        this.reservations = result.data;
+        console.log("dd", this.reservations);
       });
+
+    this.$roomCategoryAdminService
+      .getByBranchId(this.$route.params.id)
+      .then((result) => {
+        this.filterData = result.data;
+      });
+  },
+
+  methods: {
+    filterSelected() {
+      console.log(this.filter);
+    },
   },
 };
 </script>

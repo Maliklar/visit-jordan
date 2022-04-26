@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Admin\Hotel\RoomCategoryAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\RoomCategoryImagesAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\RoomReservationAdminController;
 use App\Http\Controllers\Api\User\Hotel\RoomController;
+use App\Http\Controllers\Api\User\Hotel\RoomRservationController;
 use App\Http\Controllers\Api\User\PublicUserController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\CityController;
@@ -173,7 +174,7 @@ Route::post('/users/register', [PublicUserController::class, 'register']);
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/hotels/rooms/reserve', [RoomController::class, 'reserve']);
+    Route::post('/hotels/rooms/reserve', [RoomRservationController::class, 'reserve']);
 });
 
 
