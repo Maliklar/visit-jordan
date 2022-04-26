@@ -26,9 +26,8 @@ class RoomRservationController extends Controller
 
             //find empty room
 
-            $currentDate = Carbon::now();
-            // $check_in = Carbon::createFromDate($request->check_in);
-            // $check_out = Carbon::createFromDate($request->check_out);
+            $check_in = Carbon::createFromDate($request->check_in);
+            $check_out = Carbon::createFromDate($request->check_out);
 
             $from = ($request->check_in);
             $to = ($request->check_out);
@@ -46,13 +45,45 @@ class RoomRservationController extends Controller
                 ->pluck('room_id')->toArray();
 
 
-            dump($occupiedRooms[0]);
 
             // 2- get an empty room that its id doesn't match any of the occupied
 
             $freeRoom = Room::whereNotIn('id', $occupiedRooms)->first();
 
-            dump($freeRoom);
+            //There are no available rooms at that day with the same category
+            if ($freeRoom == null) {
+                return response(['message' => 'Sorry There are no rooms available that belongs to the same category'], Response::HTTP_FORBIDDEN);
+            } else {
+                // 3- Manage payment here
+                // If payment is successful - insert the payment information to the payments table and then reserve the room for the user
+                $payment = HotelPayment::create([
+                    'user_id' => $user->id,
+                    "hotel_id" => $request->hotel_id,
+                    "branch_id" => $request->branch_id,
+                    'category_id' => $request->category_id,
+                    'room_id' => $freeRoom->id,
+                    'amount' => $request->amount,
+                ]);
+                $difference = ($check_out->diff($check_in)->days < 1)
+                    ? 1
+                    : $check_out->diffInDays($check_in);
+
+
+                RoomReservation::create([
+                    'user_id' => $user->id,
+                    'payment_id' => $payment->id,
+                    'room_id' => $freeRoom->id,
+                    'check_in' => $from,
+                    "hotel_id" => $request->hotel_id,
+                    "branch_id" => $request->branch_id,
+                    "category_id" => $request->category_id,
+                    'check_out' => $to,
+                    'days' => $difference,
+                ]);
+
+                return response(['message' => 'Room has been reserved successfully']);
+            }
+
 
 
             // $room = Room::where('category_id', $request->category_id)

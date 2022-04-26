@@ -13,6 +13,7 @@ class HotelPayment extends Model
         'room_id',
         'hotel_id',
         'branch_id',
+        'category_id',
         'amount',
         'days',
     ];
