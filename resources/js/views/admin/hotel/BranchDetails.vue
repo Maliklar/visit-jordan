@@ -127,89 +127,51 @@
       </v-list-item-content>
     </v-list-item>
     <v-divider inset></v-divider>
-    <br />
-    <h1>Photos</h1>
-    <br />
-    <h3>Interior</h3>
-    <hr />
-    <br />
-    <v-container fluid>
-      <v-row align="center" justify="space-around">
-        <v-img
-          v-for="image in branch.interior"
-          :key="image.id"
-          lazy-src="https://picsum.photos/id/11/10/6"
-          height="250"
-          width="300"
-          :src="'http://localhost:8000/' + image.image"
-        ></v-img>
-      </v-row>
-    </v-container>
-    <h3>Building</h3>
-    <hr />
-    <br />
-    <v-container fluid>
-      <v-row align="center" justify="space-around">
-        <v-img
-          v-for="image in branch.building"
-          :key="image.id"
-          lazy-src="https://picsum.photos/id/11/10/6"
-          height="250"
-          width="300"
-          :src="'http://localhost:8000/' + image.image"
-        ></v-img>
-      </v-row>
-    </v-container>
-    <h3>Views</h3>
-    <hr />
-    <br />
-    <v-container fluid>
-      <v-row align="center" justify="space-around">
-        <v-img
-          v-for="image in branch.views"
-          :key="image.id"
-          lazy-src="https://picsum.photos/id/11/10/6"
-          height="250"
-          width="300"
-          :src="'http://localhost:8000/' + image.image"
-        ></v-img>
-      </v-row>
-    </v-container>
 
     <br />
-    <h1>Rooms</h1>
-    <v-data-table
-      :headers="roomsHeaders"
-      :items="roomsData"
-      :items-per-page="5"
-      class="elevation-1"
-    ></v-data-table>
+    <h3>Building Images</h3>
+    <hr />
+    <BranchImagesRow :images="branch.building" />
     <br />
-    <h1>Rooms Types</h1>
+    <br />
+    <h3>Interior Images</h3>
+    <hr />
+    <BranchImagesRow :images="branch.interior" />
+    <br />
+    <br />
+    <h3>Views Images</h3>
+    <hr />
+    <BranchImagesRow :images="branch.views" />
+    <br />
+
+    <h3>Rooms</h3>
+    <hr />
     <v-data-table
       :headers="categoryHeaders"
       :items="roomCategoryData"
       :items-per-page="5"
       class="elevation-1"
     ></v-data-table>
-    <br />
 
-    <h1>Add Features about payments and revenu</h1>
+    <br />
+    <h3>Revenue</h3>
     <hr />
-    <BranchActivationAlert :id="branch.id" :active="branch.active" />
+    <PaymentsTable :paymentsData="paymentsData" />
     <br />
-
-    <SubmitionResultsAlert
-      v-if="resultMessage"
-      :status="resultStatus"
-      :message="resultMessage"
-    />
+    <h3>State</h3>
+    <hr />
+    <v-container
+      ><BranchActivationAlert :id="branch.id" :active="branch.active" />
+      <br />
+    </v-container>
   </div>
 </template>
 
 <script>
 import GoBackButton from "../../../components/GoBackButton.vue";
 import BranchActivationAlert from "../../../components/hotel_admin/BranchActivationAlert.vue";
+import BranchImagesRow from "../../../components/hotel_admin/BranchImagesRow.vue";
+import PaymentsTable from "../../../components/hotel_admin/PaymentsTable.vue";
 
 import SubmitionResultsAlert from "../../../components/SubmitionResultsAlert.vue";
 export default {
@@ -217,6 +179,8 @@ export default {
     GoBackButton,
     BranchActivationAlert,
     SubmitionResultsAlert,
+    BranchImagesRow,
+    PaymentsTable,
   },
   async created() {
     await this.$hotelBranchAdminService
@@ -226,23 +190,24 @@ export default {
         console.log("branch data:  ", this.branch);
       });
 
-    // await this.$hotelRoomAdminService
-    //   .getBranchRoomsTable(this.$route.params.id)
-    //   .then((result) => {
-    //     console.log(result.data);
-    //     this.roomsData = result.data;
-    //   });
-
     await this.$roomCategoryAdminService
       .getByBranchId(this.$route.params.id)
       .then((result) => {
         console.log(result.data);
         this.roomCategoryData = result.data;
       });
+
+    await this.$hotelPaymentAdminService
+      .getByBranchId(this.$route.params.id)
+      .then((result) => {
+        console.log("read", result.data);
+        this.paymentsData = result.data;
+      });
     this.isLoading = false;
   },
   data() {
     return {
+      paymentsData: null,
       isLoading: true,
       branch: null,
       roomsData: null,

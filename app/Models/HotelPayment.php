@@ -17,4 +17,17 @@ class HotelPayment extends Model
         'amount',
         'days',
     ];
+
+    public function category()
+    {
+        return $this->hasOne(RoomCategory::class, 'id', 'category_id');
+    }
+    public function branch()
+    {
+        return $this->hasOne(HotelBranch::class, 'id', 'branch_id');
+    }
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

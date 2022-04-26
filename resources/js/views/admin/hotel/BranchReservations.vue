@@ -20,12 +20,12 @@
       <v-tabs-items v-model="tab">
         <v-tab-item>
           <v-card flat>
-            <BranchReservationCalendar />
+            <ReservationsTable :reservations="reservations" />
           </v-card>
         </v-tab-item>
         <v-tab-item>
           <v-card flat>
-            <BranchReservationTable :reservations="reservations" />
+            <ReservationsTable :reservations="reservations" />
           </v-card>
         </v-tab-item>
       </v-tabs-items>
@@ -34,12 +34,10 @@
 </template>
 
 <script>
-import BranchReservationCalendar from "../../../components/hotel_admin/BranchReservationCalendar.vue";
-import BranchReservationTable from "../../../components/hotel_admin/BranchReservationTable.vue";
+import ReservationsTable from "../../../components/hotel_admin/ReservationsTable.vue";
 export default {
   components: {
-    BranchReservationCalendar,
-    BranchReservationTable,
+    ReservationsTable,
   },
   data() {
     return {

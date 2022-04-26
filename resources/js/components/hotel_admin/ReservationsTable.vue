@@ -24,6 +24,7 @@
 
 <script>
 export default {
+  name: "ReservationsTable",
   created() {
     console.log("from table", this.reservations);
   },
@@ -41,8 +42,6 @@ export default {
   },
   data() {
     return {
-      expanded: [],
-      singleExpand: false,
       headers: [
         {
           text: "Category",

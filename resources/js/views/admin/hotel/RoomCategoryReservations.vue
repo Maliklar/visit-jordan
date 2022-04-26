@@ -1,26 +1,28 @@
 <template>
-  <div>
+  <div v-if="reservations">
     <h1>Reservations</h1>
     <hr />
-    data:
-    <div>
-      {{ data }}
-    </div>
+    <ReservationsTable :reservations="reservations" />
   </div>
 </template>
 
 <script>
+import ReservationsTable from "../../../components/hotel_admin/ReservationsTable.vue";
+
 export default {
+  components: {
+    ReservationsTable,
+  },
   data() {
     return {
-      data: null,
+      reservations: null,
     };
   },
   async created() {
     this.$reservationAdminService
       .getByCategoryId(this.$route.params.id)
       .then((result) => {
-        this.data = result;
+        this.reservations = result.data;
       });
   },
 };

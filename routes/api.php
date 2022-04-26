@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Admin\Hotel\HotelAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\HotelBranchAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\HotelBranchImagesAdminController;
+use App\Http\Controllers\Api\Admin\Hotel\HotelPaymentController;
 use App\Http\Controllers\Api\Admin\Hotel\RoomAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\RoomCategoryAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\RoomCategoryImagesAdminController;
@@ -145,6 +146,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/hotels/reservations/get/{id}', [RoomReservationAdminController::class, 'getById']);
 });
 
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+| Hotel Admin Payments API
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/admin/hotels/payments/get', [HotelPaymentController::class, 'get']);
+    Route::get('/admin/hotels/payments/get/{id}', [HotelPaymentController::class, 'getById']);
+    Route::get('/admin/hotels/payments/get/rooms/{room_id}', [HotelPaymentController::class, 'getByRoomId']);
+    Route::get('/admin/hotels/payments/get/categories/{category_id}', [HotelPaymentController::class, 'getByCategoryId']);
+    Route::get('/admin/hotels/payments/get/branches/{branch_id}', [HotelPaymentController::class, 'getByBranchId']);
+});
+
 /*
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 | City API
@@ -176,6 +191,10 @@ Route::post('/users/register', [PublicUserController::class, 'register']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/hotels/rooms/reserve', [RoomRservationController::class, 'reserve']);
 });
+
+
+
+
 
 
 
