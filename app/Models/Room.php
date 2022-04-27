@@ -13,7 +13,8 @@ class Room extends Model
         'branch_id',
         'category_id',
         'reservation_id',
-        'available'
+        'available',
+        'active',
     ];
 
     public function category()
