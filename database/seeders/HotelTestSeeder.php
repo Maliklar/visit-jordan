@@ -5,8 +5,10 @@ namespace Database\Seeders;
 use App\Models\City;
 use App\Models\Hotel;
 use App\Models\HotelBranch;
+use App\Models\HotelBranchImage;
 use App\Models\Room;
 use App\Models\RoomCategory;
+use App\Models\RoomCategoryImage;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -57,6 +59,32 @@ class HotelTestSeeder extends Seeder
                     'laundry' => rand(0, 1),
                 ]);
 
+                // Add images to branches
+                for ($im = 1; $im <= 4; $im++) {
+                    HotelBranchImage::create([
+                        'image' => 'interior_' . $im . '.png',
+                        'type' => 'interior',
+                        'branch_id' => $branch->id,
+                        'number' => $im
+                    ]);
+                }
+                for ($im = 1; $im <= 4; $im++) {
+                    HotelBranchImage::create([
+                        'image' => 'building_' . $im . '.png',
+                        'type' => 'building',
+                        'branch_id' => $branch->id,
+                        'number' => $im
+                    ]);
+                }
+                for ($im = 1; $im <= 4; $im++) {
+                    HotelBranchImage::create([
+                        'image' => 'view_' . $im . '.png',
+                        'type' => 'view',
+                        'branch_id' => $branch->id,
+                        'number' => $im
+                    ]);
+                }
+
 
                 for ($k = 1; $k <= 2; $k++) {
                     $category = RoomCategory::create([
@@ -77,6 +105,23 @@ class HotelTestSeeder extends Seeder
                         'lunch' => rand(0, 1),
                         'active' => 1,
                     ]);
+
+                    for ($im = 1; $im <= 4; $im++) {
+                        RoomCategoryImage::create([
+                            'image' => 'room_' . $im . '.png',
+                            'type' => 'room',
+                            'branch_id' => $category->id,
+                            'number' => $im
+                        ]);
+                    }
+                    for ($im = 1; $im <= 4; $im++) {
+                        RoomCategoryImage::create([
+                            'image' => 'view_' . $im . '.png',
+                            'type' => 'view',
+                            'category_id' => $category->id,
+                            'number' => $im
+                        ]);
+                    }
 
                     for ($l = 1; $l <= 10; $l++) {
                         Room::create([
