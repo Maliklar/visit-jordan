@@ -25,7 +25,7 @@ Vue.prototype.$hotelPaymentAdminService = require('./javascript/api/admin/hotel/
 
 
 // Public 
-Vue.prototype.$userService = require('./javascript/api/userService');
+Vue.prototype.$userService = require('./javascript/api/users/userService');
 
 
 import Vue from 'vue'

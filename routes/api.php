@@ -175,7 +175,6 @@ Route::get('/cities/get', [CityController::class, 'get']);
 |----------------------------------------------------------------------------------------------------------------------------------------------------
 */
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/users/register', [RoomController::class, 'register']);
     Route::get('/hotels/rooms/reservations/{id}', [RoomController::class, 'getReservations']);
 });
 Route::post('/users/register', [PublicUserController::class, 'register']);

@@ -1,30 +1,15 @@
 <template>
   <div class="signup-page">
     <div>
-      <h1>Sign Up</h1>
-      <hr />
-      <div class="sign-up-options-container">
-        <CarCard class="sign-up-option-card" @click="car" />
-        <HotelCard class="sign-up-option-card" @click="hotel" />
-        <UserCard class="sign-up-option-card" @click="user" />
-        <GuideCard class="sign-up-option-card" @click="guide" />
-      </div>
+      <SignUpForm />
     </div>
   </div>
 </template>
 
 <script>
-import HotelCard from "../components/signup/HotelCard.vue";
-import CarCard from "../components/signup/CarCard.vue";
-import GuideCard from "../components/signup/GuideCard.vue";
-import UserCard from "../components/signup/UserCard.vue";
+import SignUpForm from "../components/signup/SignUpForm.vue";
 export default {
-  components: {
-    HotelCard,
-    UserCard,
-    CarCard,
-    GuideCard,
-  },
+  components: { SignUpForm },
   methods: {
     car() {
       this.$router.push({

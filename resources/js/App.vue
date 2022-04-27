@@ -10,7 +10,7 @@
         <v-btn text>Visit Jordan</v-btn>
       </v-toolbar-items>
 
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items @click="goToStays" class="hidden-sm-and-down">
         <v-btn text>
           <v-icon dark left> mdi-bed </v-icon>
           Stays
@@ -41,13 +41,13 @@
     </v-app-bar>
 
     <!-- Sizes your content based upon application components -->
-    <!-- <v-main> -->
-    <!-- Provides the application the proper gutter -->
-    <!-- <v-container fluid> -->
-    <!-- If using vue-router -->
-    <router-view></router-view>
-    <!-- </v-container> -->
-    <!-- </v-main> -->
+    <v-main>
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid>
+        <!-- If using vue-router -->
+        <router-view></router-view>
+      </v-container>
+    </v-main>
 
     <v-footer app> This is My Footer: Malik </v-footer>
   </v-app>
@@ -74,6 +74,11 @@ export default {
         path: "/",
       });
     },
+    goToStays(){
+      this.$router.push({
+        path: "/stays",
+      });
+    }
   },
 };
 </script>
