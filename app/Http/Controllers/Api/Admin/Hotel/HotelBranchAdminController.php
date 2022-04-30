@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Admin\Hotel;
 
 use App\Http\Controllers\Controller;
+use App\Models\BranchFoodAndDrinksService;
 use App\Models\Hotel;
 use App\Models\HotelBranch;
 use App\Models\HotelBranchImage;
@@ -27,7 +28,7 @@ class HotelBranchAdminController extends Controller
                 'city_id' => 'required',
             ]);
             $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
-            HotelBranch::create([
+            $branch = HotelBranch::create([
                 'hotel_id' => $hotel_id,
                 'user_id' => $user->id,
                 'city_id' => $request->city_id,
@@ -37,6 +38,7 @@ class HotelBranchAdminController extends Controller
                 'map_location' => $request->map_location,
                 'location_description' => $request->location_description,
             ]);
+            BranchFoodAndDrinksService::create(['branch_id' => $branch->id]);
             return response(['message' => 'Hotel Branch Added Successfully']);
         } else {
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
@@ -60,7 +62,7 @@ class HotelBranchAdminController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-            return HotelBranch::with('building', 'interior', 'views', 'city')
+            return HotelBranch::with('building', 'interior', 'views', 'city', 'foodAndDrinkService')
                 ->where('user_id', $user->id)
                 ->where('id', request()->id)
                 ->first();

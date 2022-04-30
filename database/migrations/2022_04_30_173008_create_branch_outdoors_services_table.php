@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('branch_outdoors_services', function (Blueprint $table) {
             $table->id();
             $table->integer('branch_id');
-            $table->integer('fireplace'); // 0- no 1- yes 2- yes with additional charge
-            $table->integer('sun_terrace');
-            $table->integer('furnitire');
+            $table->integer('fireplace')->nullable(); // 0- no 1- yes 2- yes with additional charge null = not set
+            $table->integer('sun_terrace')->nullable();
+            $table->integer('furnitire')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

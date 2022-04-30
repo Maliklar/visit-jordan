@@ -30,7 +30,7 @@
 </template>
 <script>
 import BranchDetails from "../../../components/hotel_admin/branch_details_tabs/BranchDetails.vue";
-import BranchPhotos from "./BranchPhotos.vue";
+import BranchPhotos from "../../../components/hotel_admin/branch_details_tabs/BranchPhotos.vue";
 export default {
   components: { BranchDetails, BranchPhotos },
   data() {

@@ -43,4 +43,8 @@ class HotelBranch extends Model
     {
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
+    public function foodAndDrinkService()
+    {
+        return $this->hasOne(BranchFoodAndDrinksService::class, 'branch_id', 'id');
+    }
 }

@@ -4925,7 +4925,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Branches.vue */ "./resources/js/views/admin/hotel/Branches.vue"));
     }
   }, {
-    path: "branches/:id",
+    path: "branches/details/:id",
     name: "AdminBranchDetails",
     component: function component() {
       return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/AdminBranchDetails.vue */ "./resources/js/views/admin/hotel/AdminBranchDetails.vue"));
