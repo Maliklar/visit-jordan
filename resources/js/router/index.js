@@ -14,6 +14,13 @@ const routes = [{
         component: () =>
             import ( /* webpackChunkName: "about" */ "../views/Stays.vue"),
     },
+
+    {
+        path: "/stays/hotels/:id",
+        name: "HoteProfile",
+        component: () =>
+            import ( /* webpackChunkName: "about" */ "../views/HotelProfile.vue"),
+    },
     {
         path: "/signup",
         name: "SignUp",
@@ -67,6 +74,12 @@ const routes = [{
                 name: "Branches",
                 component: () =>
                     import ( /* webpackChunkName: "about" */ "../views/admin/hotel/Branches.vue"),
+            },
+            {
+                path: "branches/:id",
+                name: "AdminBranchDetails",
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ "../views/admin/hotel/AdminBranchDetails.vue"),
             },
             {
                 path: "branches/add",

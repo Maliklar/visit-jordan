@@ -5,11 +5,6 @@
     >
   </div>
   <div v-else class="branch-details-view">
-    <h1>
-      <GoBackButton />
-      Branch Details
-    </h1>
-    <br />
     <h3>General Information</h3>
     <hr />
     <br />
@@ -20,17 +15,8 @@
         <v-list-item-subtitle>{{ branch.id }}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
-    <v-divider inset></v-divider>
 
-    <v-list-item>
-      <v-list-item-action></v-list-item-action>
-      <v-list-item-content>
-        <v-list-item-title>Branch Name</v-list-item-title>
-        <v-list-item-subtitle>{{ branch.name }}</v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
     <v-divider inset></v-divider>
-
     <v-list-item>
       <v-list-item-action></v-list-item-action>
       <v-list-item-content>
@@ -77,53 +63,6 @@
       <v-list-item-content>
         <v-list-item-title>Email</v-list-item-title>
         <v-list-item-subtitle>{{ branch.email }}</v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-    <v-divider inset></v-divider>
-    <br />
-    <h3>Feature Information</h3>
-    <hr />
-
-    <v-list-item>
-      <v-list-item-action></v-list-item-action>
-      <v-list-item-content>
-        <v-list-item-title>Swimming Pool</v-list-item-title>
-        <v-list-item-subtitle>{{
-          interruptTrueFalse(branch.swimming_pool)
-        }}</v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-    <v-divider inset></v-divider>
-
-    <v-list-item>
-      <v-list-item-action></v-list-item-action>
-      <v-list-item-content>
-        <v-list-item-title>Resturant</v-list-item-title>
-        <v-list-item-subtitle>{{
-          interruptTrueFalse(branch.resturant)
-        }}</v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-    <v-divider inset></v-divider>
-
-    <v-list-item>
-      <v-list-item-action></v-list-item-action>
-      <v-list-item-content>
-        <v-list-item-title>Gym</v-list-item-title>
-        <v-list-item-subtitle>{{
-          interruptTrueFalse(branch.gym)
-        }}</v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-    <v-divider inset></v-divider>
-
-    <v-list-item>
-      <v-list-item-action></v-list-item-action>
-      <v-list-item-content>
-        <v-list-item-title>Laundry Services</v-list-item-title>
-        <v-list-item-subtitle>{{
-          interruptTrueFalse(branch.laundry)
-        }}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
     <v-divider inset></v-divider>
@@ -204,6 +143,7 @@ export default {
         this.paymentsData = result.data;
       });
     this.isLoading = false;
+    this.$emit("isLoading", this.isLoading);
   },
   data() {
     return {

@@ -62,7 +62,7 @@ class HotelTestSeeder extends Seeder
                 // Add images to branches
                 for ($im = 1; $im <= 4; $im++) {
                     HotelBranchImage::create([
-                        'image' => 'interior_' . $im . '.png',
+                        'image' => 'images/interior_' . $im . '.png',
                         'type' => 'interior',
                         'branch_id' => $branch->id,
                         'number' => $im
@@ -70,7 +70,7 @@ class HotelTestSeeder extends Seeder
                 }
                 for ($im = 1; $im <= 4; $im++) {
                     HotelBranchImage::create([
-                        'image' => 'building_' . $im . '.png',
+                        'image' => 'images/building_' . $im . '.png',
                         'type' => 'building',
                         'branch_id' => $branch->id,
                         'number' => $im
@@ -78,7 +78,7 @@ class HotelTestSeeder extends Seeder
                 }
                 for ($im = 1; $im <= 4; $im++) {
                     HotelBranchImage::create([
-                        'image' => 'view_' . $im . '.png',
+                        'image' => 'images/view_' . $im . '.png',
                         'type' => 'view',
                         'branch_id' => $branch->id,
                         'number' => $im
@@ -108,15 +108,15 @@ class HotelTestSeeder extends Seeder
 
                     for ($im = 1; $im <= 4; $im++) {
                         RoomCategoryImage::create([
-                            'image' => 'room_' . $im . '.png',
+                            'image' => 'images/room_' . $im . '.png',
                             'type' => 'room',
-                            'branch_id' => $category->id,
+                            'category_id' => $category->id,
                             'number' => $im
                         ]);
                     }
                     for ($im = 1; $im <= 4; $im++) {
                         RoomCategoryImage::create([
-                            'image' => 'view_' . $im . '.png',
+                            'image' => 'images/view_' . $im . '.png',
                             'type' => 'view',
                             'category_id' => $category->id,
                             'number' => $im

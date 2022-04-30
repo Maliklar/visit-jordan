@@ -24,13 +24,9 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
 
-            $table->boolean('swimming_pool');
-            $table->boolean('resturant');
-            $table->boolean('gym');
-            $table->boolean('laundry');
+
 
             $table->boolean('active')->default(false);
-            $table->longText('active_description')->default('not set');
             $table->softDeletes();
             $table->timestamps();
         });

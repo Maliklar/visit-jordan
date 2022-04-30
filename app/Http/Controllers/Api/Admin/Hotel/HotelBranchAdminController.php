@@ -22,29 +22,20 @@ class HotelBranchAdminController extends Controller
             $request->validate([
                 'map_location' => 'required',
                 'location_description' => 'required',
-                'name' => 'required',
                 'email' => 'required',
                 'phone' => 'required',
-                'swimming_pool' => 'required',
-                'gym' => 'required',
                 'city_id' => 'required',
-                'resturant' => 'required',
-                'laundry' => 'required',
             ]);
             $hotel_id = Hotel::where('user_id', $user->id)->first()->id;
             HotelBranch::create([
                 'hotel_id' => $hotel_id,
                 'user_id' => $user->id,
                 'city_id' => $request->city_id,
-                'name' => $request->name,
+                'name' => 'remove it later',
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'map_location' => $request->map_location,
                 'location_description' => $request->location_description,
-                'swimming_pool' => $request->swimming_pool,
-                'resturant' => $request->resturant,
-                'gym' => $request->gym,
-                'laundry' => $request->laundry,
             ]);
             return response(['message' => 'Hotel Branch Added Successfully']);
         } else {

@@ -4868,6 +4868,12 @@ var routes = [{
     return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/Stays.vue */ "./resources/js/views/Stays.vue"));
   }
 }, {
+  path: "/stays/hotels/:id",
+  name: "HoteProfile",
+  component: function component() {
+    return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/HotelProfile.vue */ "./resources/js/views/HotelProfile.vue"));
+  }
+}, {
   path: "/signup",
   name: "SignUp",
   component: function component() {
@@ -4919,6 +4925,12 @@ var routes = [{
       return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/Branches.vue */ "./resources/js/views/admin/hotel/Branches.vue"));
     }
   }, {
+    path: "branches/:id",
+    name: "AdminBranchDetails",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/AdminBranchDetails.vue */ "./resources/js/views/admin/hotel/AdminBranchDetails.vue"));
+    }
+  }, {
     path: "branches/add",
     name: "AddBranch",
     component: function component() {
@@ -4934,7 +4946,7 @@ var routes = [{
     path: "branches/details/:id",
     name: "BranchDetails",
     component: function component() {
-      return __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/hotel/BranchDetails.vue */ "./resources/js/views/admin/hotel/BranchDetails.vue"));
+      return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../views/admin/hotel/BranchDetails.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
     }
   }, {
     path: "branches/photos/:id",
@@ -5185,30 +5197,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".theme--light.v-footer {\n  background
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./node_modules/vuetify/src/components/VGrid/VGrid.sass":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./node_modules/vuetify/src/components/VGrid/VGrid.sass ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".container {\n  width: 100%;\n  padding: 12px;\n  margin-right: auto;\n  margin-left: auto;\n}\n@media (min-width: 960px) {\n  .container {\n    max-width: 900px;\n  }\n}\n@media (min-width: 1264px) {\n  .container {\n    max-width: 1185px;\n  }\n}\n@media (min-width: 1904px) {\n  .container {\n    max-width: 1785px;\n  }\n}\n.container--fluid {\n  max-width: 100%;\n}\n\n.row {\n  display: flex;\n  flex-wrap: wrap;\n  flex: 1 1 auto;\n  margin: -12px;\n}\n.row + .row {\n  margin-top: 12px;\n}\n.row + .row--dense {\n  margin-top: 4px;\n}\n.row--dense {\n  margin: -4px;\n}\n.row--dense > .col,\n.row--dense > [class*=col-] {\n  padding: 4px;\n}\n.row.no-gutters {\n  margin: 0;\n}\n.row.no-gutters > .col,\n.row.no-gutters > [class*=col-] {\n  padding: 0;\n}\n\n.col-xl,\n.col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,\n.col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,\n.col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,\n.col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,\n.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {\n  width: 100%;\n  padding: 12px;\n}\n\n.col {\n  flex-basis: 0;\n  flex-grow: 1;\n  max-width: 100%;\n}\n\n.col-auto {\n  flex: 0 0 auto;\n  width: auto;\n  max-width: 100%;\n}\n\n.col-1 {\n  flex: 0 0 8.3333333333%;\n  max-width: 8.3333333333%;\n}\n\n.col-2 {\n  flex: 0 0 16.6666666667%;\n  max-width: 16.6666666667%;\n}\n\n.col-3 {\n  flex: 0 0 25%;\n  max-width: 25%;\n}\n\n.col-4 {\n  flex: 0 0 33.3333333333%;\n  max-width: 33.3333333333%;\n}\n\n.col-5 {\n  flex: 0 0 41.6666666667%;\n  max-width: 41.6666666667%;\n}\n\n.col-6 {\n  flex: 0 0 50%;\n  max-width: 50%;\n}\n\n.col-7 {\n  flex: 0 0 58.3333333333%;\n  max-width: 58.3333333333%;\n}\n\n.col-8 {\n  flex: 0 0 66.6666666667%;\n  max-width: 66.6666666667%;\n}\n\n.col-9 {\n  flex: 0 0 75%;\n  max-width: 75%;\n}\n\n.col-10 {\n  flex: 0 0 83.3333333333%;\n  max-width: 83.3333333333%;\n}\n\n.col-11 {\n  flex: 0 0 91.6666666667%;\n  max-width: 91.6666666667%;\n}\n\n.col-12 {\n  flex: 0 0 100%;\n  max-width: 100%;\n}\n\n.v-application--is-ltr .offset-1 {\n  margin-left: 8.3333333333%;\n}\n.v-application--is-rtl .offset-1 {\n  margin-right: 8.3333333333%;\n}\n\n.v-application--is-ltr .offset-2 {\n  margin-left: 16.6666666667%;\n}\n.v-application--is-rtl .offset-2 {\n  margin-right: 16.6666666667%;\n}\n\n.v-application--is-ltr .offset-3 {\n  margin-left: 25%;\n}\n.v-application--is-rtl .offset-3 {\n  margin-right: 25%;\n}\n\n.v-application--is-ltr .offset-4 {\n  margin-left: 33.3333333333%;\n}\n.v-application--is-rtl .offset-4 {\n  margin-right: 33.3333333333%;\n}\n\n.v-application--is-ltr .offset-5 {\n  margin-left: 41.6666666667%;\n}\n.v-application--is-rtl .offset-5 {\n  margin-right: 41.6666666667%;\n}\n\n.v-application--is-ltr .offset-6 {\n  margin-left: 50%;\n}\n.v-application--is-rtl .offset-6 {\n  margin-right: 50%;\n}\n\n.v-application--is-ltr .offset-7 {\n  margin-left: 58.3333333333%;\n}\n.v-application--is-rtl .offset-7 {\n  margin-right: 58.3333333333%;\n}\n\n.v-application--is-ltr .offset-8 {\n  margin-left: 66.6666666667%;\n}\n.v-application--is-rtl .offset-8 {\n  margin-right: 66.6666666667%;\n}\n\n.v-application--is-ltr .offset-9 {\n  margin-left: 75%;\n}\n.v-application--is-rtl .offset-9 {\n  margin-right: 75%;\n}\n\n.v-application--is-ltr .offset-10 {\n  margin-left: 83.3333333333%;\n}\n.v-application--is-rtl .offset-10 {\n  margin-right: 83.3333333333%;\n}\n\n.v-application--is-ltr .offset-11 {\n  margin-left: 91.6666666667%;\n}\n.v-application--is-rtl .offset-11 {\n  margin-right: 91.6666666667%;\n}\n\n@media (min-width: 600px) {\n  .col-sm {\n    flex-basis: 0;\n    flex-grow: 1;\n    max-width: 100%;\n  }\n\n  .col-sm-auto {\n    flex: 0 0 auto;\n    width: auto;\n    max-width: 100%;\n  }\n\n  .col-sm-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n  }\n\n  .col-sm-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n  }\n\n  .col-sm-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n  }\n\n  .col-sm-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n  }\n\n  .col-sm-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n  }\n\n  .col-sm-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n  }\n\n  .col-sm-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n  }\n\n  .col-sm-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n  }\n\n  .col-sm-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n  }\n\n  .col-sm-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n  }\n\n  .col-sm-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n  }\n\n  .col-sm-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n  }\n\n  .v-application--is-ltr .offset-sm-0 {\n    margin-left: 0;\n  }\n  .v-application--is-rtl .offset-sm-0 {\n    margin-right: 0;\n  }\n\n  .v-application--is-ltr .offset-sm-1 {\n    margin-left: 8.3333333333%;\n  }\n  .v-application--is-rtl .offset-sm-1 {\n    margin-right: 8.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-sm-2 {\n    margin-left: 16.6666666667%;\n  }\n  .v-application--is-rtl .offset-sm-2 {\n    margin-right: 16.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-sm-3 {\n    margin-left: 25%;\n  }\n  .v-application--is-rtl .offset-sm-3 {\n    margin-right: 25%;\n  }\n\n  .v-application--is-ltr .offset-sm-4 {\n    margin-left: 33.3333333333%;\n  }\n  .v-application--is-rtl .offset-sm-4 {\n    margin-right: 33.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-sm-5 {\n    margin-left: 41.6666666667%;\n  }\n  .v-application--is-rtl .offset-sm-5 {\n    margin-right: 41.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-sm-6 {\n    margin-left: 50%;\n  }\n  .v-application--is-rtl .offset-sm-6 {\n    margin-right: 50%;\n  }\n\n  .v-application--is-ltr .offset-sm-7 {\n    margin-left: 58.3333333333%;\n  }\n  .v-application--is-rtl .offset-sm-7 {\n    margin-right: 58.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-sm-8 {\n    margin-left: 66.6666666667%;\n  }\n  .v-application--is-rtl .offset-sm-8 {\n    margin-right: 66.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-sm-9 {\n    margin-left: 75%;\n  }\n  .v-application--is-rtl .offset-sm-9 {\n    margin-right: 75%;\n  }\n\n  .v-application--is-ltr .offset-sm-10 {\n    margin-left: 83.3333333333%;\n  }\n  .v-application--is-rtl .offset-sm-10 {\n    margin-right: 83.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-sm-11 {\n    margin-left: 91.6666666667%;\n  }\n  .v-application--is-rtl .offset-sm-11 {\n    margin-right: 91.6666666667%;\n  }\n}\n@media (min-width: 960px) {\n  .col-md {\n    flex-basis: 0;\n    flex-grow: 1;\n    max-width: 100%;\n  }\n\n  .col-md-auto {\n    flex: 0 0 auto;\n    width: auto;\n    max-width: 100%;\n  }\n\n  .col-md-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n  }\n\n  .col-md-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n  }\n\n  .col-md-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n  }\n\n  .col-md-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n  }\n\n  .col-md-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n  }\n\n  .col-md-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n  }\n\n  .col-md-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n  }\n\n  .col-md-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n  }\n\n  .col-md-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n  }\n\n  .col-md-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n  }\n\n  .col-md-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n  }\n\n  .col-md-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n  }\n\n  .v-application--is-ltr .offset-md-0 {\n    margin-left: 0;\n  }\n  .v-application--is-rtl .offset-md-0 {\n    margin-right: 0;\n  }\n\n  .v-application--is-ltr .offset-md-1 {\n    margin-left: 8.3333333333%;\n  }\n  .v-application--is-rtl .offset-md-1 {\n    margin-right: 8.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-md-2 {\n    margin-left: 16.6666666667%;\n  }\n  .v-application--is-rtl .offset-md-2 {\n    margin-right: 16.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-md-3 {\n    margin-left: 25%;\n  }\n  .v-application--is-rtl .offset-md-3 {\n    margin-right: 25%;\n  }\n\n  .v-application--is-ltr .offset-md-4 {\n    margin-left: 33.3333333333%;\n  }\n  .v-application--is-rtl .offset-md-4 {\n    margin-right: 33.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-md-5 {\n    margin-left: 41.6666666667%;\n  }\n  .v-application--is-rtl .offset-md-5 {\n    margin-right: 41.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-md-6 {\n    margin-left: 50%;\n  }\n  .v-application--is-rtl .offset-md-6 {\n    margin-right: 50%;\n  }\n\n  .v-application--is-ltr .offset-md-7 {\n    margin-left: 58.3333333333%;\n  }\n  .v-application--is-rtl .offset-md-7 {\n    margin-right: 58.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-md-8 {\n    margin-left: 66.6666666667%;\n  }\n  .v-application--is-rtl .offset-md-8 {\n    margin-right: 66.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-md-9 {\n    margin-left: 75%;\n  }\n  .v-application--is-rtl .offset-md-9 {\n    margin-right: 75%;\n  }\n\n  .v-application--is-ltr .offset-md-10 {\n    margin-left: 83.3333333333%;\n  }\n  .v-application--is-rtl .offset-md-10 {\n    margin-right: 83.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-md-11 {\n    margin-left: 91.6666666667%;\n  }\n  .v-application--is-rtl .offset-md-11 {\n    margin-right: 91.6666666667%;\n  }\n}\n@media (min-width: 1264px) {\n  .col-lg {\n    flex-basis: 0;\n    flex-grow: 1;\n    max-width: 100%;\n  }\n\n  .col-lg-auto {\n    flex: 0 0 auto;\n    width: auto;\n    max-width: 100%;\n  }\n\n  .col-lg-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n  }\n\n  .col-lg-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n  }\n\n  .col-lg-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n  }\n\n  .col-lg-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n  }\n\n  .col-lg-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n  }\n\n  .col-lg-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n  }\n\n  .col-lg-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n  }\n\n  .col-lg-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n  }\n\n  .col-lg-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n  }\n\n  .col-lg-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n  }\n\n  .col-lg-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n  }\n\n  .col-lg-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n  }\n\n  .v-application--is-ltr .offset-lg-0 {\n    margin-left: 0;\n  }\n  .v-application--is-rtl .offset-lg-0 {\n    margin-right: 0;\n  }\n\n  .v-application--is-ltr .offset-lg-1 {\n    margin-left: 8.3333333333%;\n  }\n  .v-application--is-rtl .offset-lg-1 {\n    margin-right: 8.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-lg-2 {\n    margin-left: 16.6666666667%;\n  }\n  .v-application--is-rtl .offset-lg-2 {\n    margin-right: 16.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-lg-3 {\n    margin-left: 25%;\n  }\n  .v-application--is-rtl .offset-lg-3 {\n    margin-right: 25%;\n  }\n\n  .v-application--is-ltr .offset-lg-4 {\n    margin-left: 33.3333333333%;\n  }\n  .v-application--is-rtl .offset-lg-4 {\n    margin-right: 33.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-lg-5 {\n    margin-left: 41.6666666667%;\n  }\n  .v-application--is-rtl .offset-lg-5 {\n    margin-right: 41.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-lg-6 {\n    margin-left: 50%;\n  }\n  .v-application--is-rtl .offset-lg-6 {\n    margin-right: 50%;\n  }\n\n  .v-application--is-ltr .offset-lg-7 {\n    margin-left: 58.3333333333%;\n  }\n  .v-application--is-rtl .offset-lg-7 {\n    margin-right: 58.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-lg-8 {\n    margin-left: 66.6666666667%;\n  }\n  .v-application--is-rtl .offset-lg-8 {\n    margin-right: 66.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-lg-9 {\n    margin-left: 75%;\n  }\n  .v-application--is-rtl .offset-lg-9 {\n    margin-right: 75%;\n  }\n\n  .v-application--is-ltr .offset-lg-10 {\n    margin-left: 83.3333333333%;\n  }\n  .v-application--is-rtl .offset-lg-10 {\n    margin-right: 83.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-lg-11 {\n    margin-left: 91.6666666667%;\n  }\n  .v-application--is-rtl .offset-lg-11 {\n    margin-right: 91.6666666667%;\n  }\n}\n@media (min-width: 1904px) {\n  .col-xl {\n    flex-basis: 0;\n    flex-grow: 1;\n    max-width: 100%;\n  }\n\n  .col-xl-auto {\n    flex: 0 0 auto;\n    width: auto;\n    max-width: 100%;\n  }\n\n  .col-xl-1 {\n    flex: 0 0 8.3333333333%;\n    max-width: 8.3333333333%;\n  }\n\n  .col-xl-2 {\n    flex: 0 0 16.6666666667%;\n    max-width: 16.6666666667%;\n  }\n\n  .col-xl-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n  }\n\n  .col-xl-4 {\n    flex: 0 0 33.3333333333%;\n    max-width: 33.3333333333%;\n  }\n\n  .col-xl-5 {\n    flex: 0 0 41.6666666667%;\n    max-width: 41.6666666667%;\n  }\n\n  .col-xl-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n  }\n\n  .col-xl-7 {\n    flex: 0 0 58.3333333333%;\n    max-width: 58.3333333333%;\n  }\n\n  .col-xl-8 {\n    flex: 0 0 66.6666666667%;\n    max-width: 66.6666666667%;\n  }\n\n  .col-xl-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n  }\n\n  .col-xl-10 {\n    flex: 0 0 83.3333333333%;\n    max-width: 83.3333333333%;\n  }\n\n  .col-xl-11 {\n    flex: 0 0 91.6666666667%;\n    max-width: 91.6666666667%;\n  }\n\n  .col-xl-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n  }\n\n  .v-application--is-ltr .offset-xl-0 {\n    margin-left: 0;\n  }\n  .v-application--is-rtl .offset-xl-0 {\n    margin-right: 0;\n  }\n\n  .v-application--is-ltr .offset-xl-1 {\n    margin-left: 8.3333333333%;\n  }\n  .v-application--is-rtl .offset-xl-1 {\n    margin-right: 8.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-xl-2 {\n    margin-left: 16.6666666667%;\n  }\n  .v-application--is-rtl .offset-xl-2 {\n    margin-right: 16.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-xl-3 {\n    margin-left: 25%;\n  }\n  .v-application--is-rtl .offset-xl-3 {\n    margin-right: 25%;\n  }\n\n  .v-application--is-ltr .offset-xl-4 {\n    margin-left: 33.3333333333%;\n  }\n  .v-application--is-rtl .offset-xl-4 {\n    margin-right: 33.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-xl-5 {\n    margin-left: 41.6666666667%;\n  }\n  .v-application--is-rtl .offset-xl-5 {\n    margin-right: 41.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-xl-6 {\n    margin-left: 50%;\n  }\n  .v-application--is-rtl .offset-xl-6 {\n    margin-right: 50%;\n  }\n\n  .v-application--is-ltr .offset-xl-7 {\n    margin-left: 58.3333333333%;\n  }\n  .v-application--is-rtl .offset-xl-7 {\n    margin-right: 58.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-xl-8 {\n    margin-left: 66.6666666667%;\n  }\n  .v-application--is-rtl .offset-xl-8 {\n    margin-right: 66.6666666667%;\n  }\n\n  .v-application--is-ltr .offset-xl-9 {\n    margin-left: 75%;\n  }\n  .v-application--is-rtl .offset-xl-9 {\n    margin-right: 75%;\n  }\n\n  .v-application--is-ltr .offset-xl-10 {\n    margin-left: 83.3333333333%;\n  }\n  .v-application--is-rtl .offset-xl-10 {\n    margin-right: 83.3333333333%;\n  }\n\n  .v-application--is-ltr .offset-xl-11 {\n    margin-left: 91.6666666667%;\n  }\n  .v-application--is-rtl .offset-xl-11 {\n    margin-right: 91.6666666667%;\n  }\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./node_modules/vuetify/src/components/VGrid/_grid.sass":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./node_modules/vuetify/src/components/VGrid/_grid.sass ***!
@@ -5275,30 +5263,6 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".theme--light.v-image {\n  color: rgba(0, 0, 0, 0.87);\n}\n\n.theme--dark.v-image {\n  color: #FFFFFF;\n}\n\n.v-image {\n  z-index: 0;\n}\n\n.v-image__image,\n.v-image__placeholder {\n  z-index: -1;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n\n.v-image__image {\n  background-repeat: no-repeat;\n}\n.v-image__image--preload {\n  filter: blur(2px);\n}\n.v-image__image--contain {\n  background-size: contain;\n}\n.v-image__image--cover {\n  background-size: cover;\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./node_modules/vuetify/src/components/VMain/VMain.sass":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./node_modules/vuetify/src/components/VMain/VMain.sass ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".v-main {\n  display: flex;\n  flex: 1 0 auto;\n  max-width: 100%;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n}\n.v-main:not([data-booted=true]) {\n  transition: none !important;\n}\n.v-main__wrap {\n  flex: 1 1 auto;\n  max-width: 100%;\n  position: relative;\n}\n@-moz-document url-prefix() {\n  @media print {\n    .v-main {\n      display: block;\n    }\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6930,36 +6894,6 @@ var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMP
 
 /***/ }),
 
-/***/ "./node_modules/vuetify/src/components/VGrid/VGrid.sass":
-/*!**************************************************************!*\
-  !*** ./node_modules/vuetify/src/components/VGrid/VGrid.sass ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_2_sass_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_3_VGrid_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!../../../../postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!../../../../sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./VGrid.sass */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./node_modules/vuetify/src/components/VGrid/VGrid.sass");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_2_sass_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_3_VGrid_sass__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_2_sass_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_3_VGrid_sass__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./node_modules/vuetify/src/components/VGrid/_grid.sass":
 /*!**************************************************************!*\
   !*** ./node_modules/vuetify/src/components/VGrid/_grid.sass ***!
@@ -7047,36 +6981,6 @@ var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMP
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_2_sass_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_3_VImg_sass__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./node_modules/vuetify/src/components/VMain/VMain.sass":
-/*!**************************************************************!*\
-  !*** ./node_modules/vuetify/src/components/VMain/VMain.sass ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_2_sass_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_3_VMain_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!../../../../postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!../../../../sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./VMain.sass */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-15[0].rules[0].use[3]!./node_modules/vuetify/src/components/VMain/VMain.sass");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_2_sass_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_3_VMain_sass__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_2_sass_loader_dist_cjs_js_clonedRuleSet_15_0_rules_0_use_3_VMain_sass__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -7811,11 +7715,7 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c(
-        "v-main",
-        [_c("v-container", { attrs: { fluid: "" } }, [_c("router-view")], 1)],
-        1
-      ),
+      _c("router-view"),
       _vm._v(" "),
       _c("v-footer", { attrs: { app: "" } }, [
         _vm._v(" This is My Footer: Malik "),
@@ -23177,12 +23077,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify_lib_components_VAppBar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VAppBar */ "./node_modules/vuetify/lib/components/VAppBar/VAppBarNavIcon.js");
 /* harmony import */ var vuetify_lib_components_VAvatar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VAvatar */ "./node_modules/vuetify/lib/components/VAvatar/VAvatar.js");
 /* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/VBtn.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VContainer.js");
-/* harmony import */ var vuetify_lib_components_VFooter__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VFooter */ "./node_modules/vuetify/lib/components/VFooter/VFooter.js");
-/* harmony import */ var vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuetify/lib/components/VIcon */ "./node_modules/vuetify/lib/components/VIcon/VIcon.js");
-/* harmony import */ var vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vuetify/lib/components/VMain */ "./node_modules/vuetify/lib/components/VMain/VMain.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VSpacer.js");
-/* harmony import */ var vuetify_lib_components_VToolbar__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! vuetify/lib/components/VToolbar */ "./node_modules/vuetify/lib/components/VToolbar/index.js");
+/* harmony import */ var vuetify_lib_components_VFooter__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VFooter */ "./node_modules/vuetify/lib/components/VFooter/VFooter.js");
+/* harmony import */ var vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VIcon */ "./node_modules/vuetify/lib/components/VIcon/VIcon.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/VSpacer.js");
+/* harmony import */ var vuetify_lib_components_VToolbar__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vuetify/lib/components/VToolbar */ "./node_modules/vuetify/lib/components/VToolbar/index.js");
 
 
 
@@ -23213,9 +23111,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 
 
-
-
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VApp: vuetify_lib_components_VApp__WEBPACK_IMPORTED_MODULE_5__["default"],VAppBar: vuetify_lib_components_VAppBar__WEBPACK_IMPORTED_MODULE_6__["default"],VAppBarNavIcon: vuetify_lib_components_VAppBar__WEBPACK_IMPORTED_MODULE_7__["default"],VAvatar: vuetify_lib_components_VAvatar__WEBPACK_IMPORTED_MODULE_8__["default"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_9__["default"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_10__["default"],VFooter: vuetify_lib_components_VFooter__WEBPACK_IMPORTED_MODULE_11__["default"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_12__["default"],VMain: vuetify_lib_components_VMain__WEBPACK_IMPORTED_MODULE_13__["default"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_14__["default"],VToolbarItems: vuetify_lib_components_VToolbar__WEBPACK_IMPORTED_MODULE_15__.VToolbarItems})
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VApp: vuetify_lib_components_VApp__WEBPACK_IMPORTED_MODULE_5__["default"],VAppBar: vuetify_lib_components_VAppBar__WEBPACK_IMPORTED_MODULE_6__["default"],VAppBarNavIcon: vuetify_lib_components_VAppBar__WEBPACK_IMPORTED_MODULE_7__["default"],VAvatar: vuetify_lib_components_VAvatar__WEBPACK_IMPORTED_MODULE_8__["default"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_9__["default"],VFooter: vuetify_lib_components_VFooter__WEBPACK_IMPORTED_MODULE_10__["default"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_11__["default"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_12__["default"],VToolbarItems: vuetify_lib_components_VToolbar__WEBPACK_IMPORTED_MODULE_13__.VToolbarItems})
 
 
 /* hot reload */
@@ -24026,89 +23922,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vuetify/lib/components/VGrid/VContainer.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/vuetify/lib/components/VGrid/VContainer.js ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _src_components_VGrid_grid_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../src/components/VGrid/_grid.sass */ "./node_modules/vuetify/src/components/VGrid/_grid.sass");
-/* harmony import */ var _src_components_VGrid_VGrid_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../src/components/VGrid/VGrid.sass */ "./node_modules/vuetify/src/components/VGrid/VGrid.sass");
-/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grid */ "./node_modules/vuetify/lib/components/VGrid/grid.js");
-/* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/mergeData */ "./node_modules/vuetify/lib/util/mergeData.js");
-
-
-
-
-/* @vue/component */
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_grid__WEBPACK_IMPORTED_MODULE_2__["default"])('container').extend({
-  name: 'v-container',
-  functional: true,
-  props: {
-    id: String,
-    tag: {
-      type: String,
-      default: 'div'
-    },
-    fluid: {
-      type: Boolean,
-      default: false
-    }
-  },
-
-  render(h, {
-    props,
-    data,
-    children
-  }) {
-    let classes;
-    const {
-      attrs
-    } = data;
-
-    if (attrs) {
-      // reset attrs to extract utility clases like pa-3
-      data.attrs = {};
-      classes = Object.keys(attrs).filter(key => {
-        // TODO: Remove once resolved
-        // https://github.com/vuejs/vue/issues/7841
-        if (key === 'slot') return false;
-        const value = attrs[key]; // add back data attributes like data-test="foo" but do not
-        // add them as classes
-
-        if (key.startsWith('data-')) {
-          data.attrs[key] = value;
-          return false;
-        }
-
-        return value || typeof value === 'string';
-      });
-    }
-
-    if (props.id) {
-      data.domProps = data.domProps || {};
-      data.domProps.id = props.id;
-    }
-
-    return h(props.tag, (0,_util_mergeData__WEBPACK_IMPORTED_MODULE_3__["default"])(data, {
-      staticClass: 'container',
-      class: Array({
-        'container--fluid': props.fluid
-      }).concat(classes || [])
-    }), children);
-  }
-
-}));
-//# sourceMappingURL=VContainer.js.map
-
-/***/ }),
-
 /***/ "./node_modules/vuetify/lib/components/VGrid/VSpacer.js":
 /*!**************************************************************!*\
   !*** ./node_modules/vuetify/lib/components/VGrid/VSpacer.js ***!
@@ -24126,77 +23939,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_util_helpers__WEBPACK_IMPORTED_MODULE_1__.createSimpleFunctional)('spacer', 'div', 'v-spacer'));
 //# sourceMappingURL=VSpacer.js.map
-
-/***/ }),
-
-/***/ "./node_modules/vuetify/lib/components/VGrid/grid.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/vuetify/lib/components/VGrid/grid.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ VGrid)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-// Types
-
-function VGrid(name) {
-  /* @vue/component */
-  return vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
-    name: `v-${name}`,
-    functional: true,
-    props: {
-      id: String,
-      tag: {
-        type: String,
-        default: 'div'
-      }
-    },
-
-    render(h, {
-      props,
-      data,
-      children
-    }) {
-      data.staticClass = `${name} ${data.staticClass || ''}`.trim();
-      const {
-        attrs
-      } = data;
-
-      if (attrs) {
-        // reset attrs to extract utility clases like pa-3
-        data.attrs = {};
-        const classes = Object.keys(attrs).filter(key => {
-          // TODO: Remove once resolved
-          // https://github.com/vuejs/vue/issues/7841
-          if (key === 'slot') return false;
-          const value = attrs[key]; // add back data attributes like data-test="foo" but do not
-          // add them as classes
-
-          if (key.startsWith('data-')) {
-            data.attrs[key] = value;
-            return false;
-          }
-
-          return value || typeof value === 'string';
-        });
-        if (classes.length) data.staticClass += ` ${classes.join(' ')}`;
-      }
-
-      if (props.id) {
-        data.domProps = data.domProps || {};
-        data.domProps.id = props.id;
-      }
-
-      return h(props.tag, data, children);
-    }
-
-  });
-}
-//# sourceMappingURL=grid.js.map
 
 /***/ }),
 
@@ -24765,70 +24507,6 @@ const hasIntersect = typeof window !== 'undefined' && 'IntersectionObserver' in 
 
 }));
 //# sourceMappingURL=VImg.js.map
-
-/***/ }),
-
-/***/ "./node_modules/vuetify/lib/components/VMain/VMain.js":
-/*!************************************************************!*\
-  !*** ./node_modules/vuetify/lib/components/VMain/VMain.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _src_components_VMain_VMain_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../src/components/VMain/VMain.sass */ "./node_modules/vuetify/src/components/VMain/VMain.sass");
-/* harmony import */ var _mixins_ssr_bootable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/ssr-bootable */ "./node_modules/vuetify/lib/mixins/ssr-bootable/index.js");
-// Styles
- // Mixins
-
-
-/* @vue/component */
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mixins_ssr_bootable__WEBPACK_IMPORTED_MODULE_1__["default"].extend({
-  name: 'v-main',
-  props: {
-    tag: {
-      type: String,
-      default: 'main'
-    }
-  },
-  computed: {
-    styles() {
-      const {
-        bar,
-        top,
-        right,
-        footer,
-        insetFooter,
-        bottom,
-        left
-      } = this.$vuetify.application;
-      return {
-        paddingTop: `${top + bar}px`,
-        paddingRight: `${right}px`,
-        paddingBottom: `${footer + insetFooter + bottom}px`,
-        paddingLeft: `${left}px`
-      };
-    }
-
-  },
-
-  render(h) {
-    const data = {
-      staticClass: 'v-main',
-      style: this.styles,
-      ref: 'main'
-    };
-    return h(this.tag, data, [h('div', {
-      staticClass: 'v-main__wrap'
-    }, this.$slots.default)]);
-  }
-
-}));
-//# sourceMappingURL=VMain.js.map
 
 /***/ }),
 

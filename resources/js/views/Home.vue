@@ -15,7 +15,7 @@
       <SlideGroup />
       <v-list-item two-line>
         <v-list-item-content>
-          <v-list-item-title> <h2>Explore Jordan</h2></v-list-item-title>
+          <v-list-item-title> <h2>Hotels</h2></v-list-item-title>
           <v-list-item-subtitle
             >Most popular destinations by turests</v-list-item-subtitle
           >
