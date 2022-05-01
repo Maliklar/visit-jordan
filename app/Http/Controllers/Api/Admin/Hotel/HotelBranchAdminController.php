@@ -38,7 +38,6 @@ class HotelBranchAdminController extends Controller
                 'map_location' => $request->map_location,
                 'location_description' => $request->location_description,
             ]);
-            BranchFoodAndDrinksService::create(['branch_id' => $branch->id]);
             return response(['message' => 'Hotel Branch Added Successfully']);
         } else {
             return response(['message' => 'Invalid Credintials'], Response::HTTP_UNAUTHORIZED);
@@ -62,7 +61,7 @@ class HotelBranchAdminController extends Controller
     {
         $user = Auth::user();
         if ($user->type->type == 'hotel') {
-            return HotelBranch::with('building', 'interior', 'views', 'city', 'foodAndDrinkService')
+            return HotelBranch::with('building', 'interior', 'views', 'city')
                 ->where('user_id', $user->id)
                 ->where('id', request()->id)
                 ->first();

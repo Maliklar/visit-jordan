@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('branch_outdoors_services', function (Blueprint $table) {
+        Schema::create('branch_services_categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('branch_id');
-            $table->integer('fireplace')->nullable(); // 0- no 1- yes 2- yes with additional charge null = not set
-            $table->integer('sun_terrace')->nullable();
-            $table->integer('furnitire')->nullable();
-
+            $table->string('name');
+            $table->string('icon')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branch_outdoors_services');
+        Schema::dropIfExists('branch_services_categories');
     }
 };
