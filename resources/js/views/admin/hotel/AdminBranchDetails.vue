@@ -8,9 +8,7 @@
       <v-tab> Details </v-tab>
       <v-tab> Gallery </v-tab>
       <v-tab> Facilities & Services </v-tab>
-      <v-tab> Facilities & Services </v-tab>
-      <v-tab> Facilities & Services </v-tab>
-      <v-tab> Facilities & Services </v-tab>
+
       <v-tab> Reservatuibs </v-tab>
     </v-tabs>
 
@@ -25,14 +23,25 @@
           <BranchPhotos />
         </v-card>
       </v-tab-item>
+
+      <v-tab-item>
+        <v-card color="basil" flat>
+          <BranchServices />
+        </v-card>
+      </v-tab-item>
     </v-tabs-items>
   </v-card>
 </template>
 <script>
 import BranchDetails from "../../../components/hotel_admin/branch_details_tabs/BranchDetails.vue";
 import BranchPhotos from "../../../components/hotel_admin/branch_details_tabs/BranchPhotos.vue";
+import BranchServices from "../../../components/hotel_admin/branch_details_tabs/BranchServices.vue";
 export default {
-  components: { BranchDetails, BranchPhotos },
+  components: {
+    BranchDetails,
+    BranchServices,
+    BranchPhotos,
+  },
   data() {
     return {
       tab: null,

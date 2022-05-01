@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\Hotel\BranchServicesCategoryController;
 use App\Http\Controllers\Api\Admin\Hotel\HotelAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\HotelBranchAdminController;
 use App\Http\Controllers\Api\Admin\Hotel\HotelBranchImagesAdminController;
@@ -55,6 +56,15 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::delete('/admin/hotels/branches/delete', [HotelBranchAdminController::class, 'delete']);
 });
+
+/*
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+| Hotel Branch Services Category API
+|----------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+Route::get('/admin/hotels/branches/services/categories/get', [BranchServicesCategoryController::class, 'get']);
+
+
 
 
 /*
